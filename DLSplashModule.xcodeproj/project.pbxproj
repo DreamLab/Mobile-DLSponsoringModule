@@ -1,0 +1,253 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
+		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87E8BCF91C6DDAFD004C2EAD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
+		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87E8BCF81C6DDAFD004C2EAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87E8BCF21C6DDAFD004C2EAD = {
+			isa = PBXGroup;
+			children = (
+				87E8BCFD1C6DDAFD004C2EAD /* DLSplashModule */,
+				87E8BCFC1C6DDAFD004C2EAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87E8BCFC1C6DDAFD004C2EAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87E8BCFD1C6DDAFD004C2EAD /* DLSplashModule */ = {
+			isa = PBXGroup;
+			children = (
+				87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */,
+				87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */,
+			);
+			path = DLSplashModule;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87E8BCFA1C6DDAFD004C2EAD /* DLSplashModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E8BD041C6DDAFD004C2EAD /* Build configuration list for PBXNativeTarget "DLSplashModule" */;
+			buildPhases = (
+				87E8BCF71C6DDAFD004C2EAD /* Sources */,
+				87E8BCF81C6DDAFD004C2EAD /* Frameworks */,
+				87E8BCF91C6DDAFD004C2EAD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DLSplashModule;
+			productName = DLSplashModule;
+			productReference = 87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87E8BCF31C6DDAFD004C2EAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = DreamLab;
+				TargetAttributes = {
+					87E8BCFA1C6DDAFD004C2EAD = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 87E8BCF61C6DDAFD004C2EAD /* Build configuration list for PBXProject "DLSplashModule" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 87E8BCF21C6DDAFD004C2EAD;
+			productRefGroup = 87E8BCFC1C6DDAFD004C2EAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87E8BCFA1C6DDAFD004C2EAD /* DLSplashModule */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87E8BCF71C6DDAFD004C2EAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		87E8BD021C6DDAFD004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		87E8BD031C6DDAFD004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87E8BD051C6DDAFD004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		87E8BD061C6DDAFD004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87E8BCF61C6DDAFD004C2EAD /* Build configuration list for PBXProject "DLSplashModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD021C6DDAFD004C2EAD /* Debug */,
+				87E8BD031C6DDAFD004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E8BD041C6DDAFD004C2EAD /* Build configuration list for PBXNativeTarget "DLSplashModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD051C6DDAFD004C2EAD /* Debug */,
+				87E8BD061C6DDAFD004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87E8BCF31C6DDAFD004C2EAD /* Project object */;
+}
