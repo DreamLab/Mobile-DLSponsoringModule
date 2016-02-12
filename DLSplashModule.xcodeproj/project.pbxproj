@@ -9,7 +9,19 @@
 /* Begin PBXBuildFile section */
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
+		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
+		87E8BD161C6DEDAD004C2EAD /* libDLSplashModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87E8BD171C6DEDAD004C2EAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E8BCF31C6DDAFD004C2EAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87E8BCFA1C6DDAFD004C2EAD;
+			remoteInfo = DLSplashModule;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		87E8BCF91C6DDAFD004C2EAD /* CopyFiles */ = {
@@ -28,6 +40,9 @@
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
+		87E8BD111C6DEDAD004C2EAD /* DLSplashModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLSplashModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModuleTests.m; sourceTree = "<group>"; };
+		87E8BD151C6DEDAD004C2EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +53,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87E8BD0E1C6DEDAD004C2EAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E8BD161C6DEDAD004C2EAD /* libDLSplashModule.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				87E8BCFD1C6DDAFD004C2EAD /* DLSplashModule */,
+				87E8BD121C6DEDAD004C2EAD /* DLSplashModuleTests */,
 				87E8BCFC1C6DDAFD004C2EAD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */,
+				87E8BD111C6DEDAD004C2EAD /* DLSplashModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +89,15 @@
 				87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */,
 			);
 			path = DLSplashModule;
+			sourceTree = "<group>";
+		};
+		87E8BD121C6DEDAD004C2EAD /* DLSplashModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */,
+				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
+			);
+			path = DLSplashModuleTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +120,24 @@
 			productReference = 87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		87E8BD101C6DEDAD004C2EAD /* DLSplashModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E8BD1B1C6DEDAD004C2EAD /* Build configuration list for PBXNativeTarget "DLSplashModuleTests" */;
+			buildPhases = (
+				87E8BD0D1C6DEDAD004C2EAD /* Sources */,
+				87E8BD0E1C6DEDAD004C2EAD /* Frameworks */,
+				87E8BD0F1C6DEDAD004C2EAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87E8BD181C6DEDAD004C2EAD /* PBXTargetDependency */,
+			);
+			name = DLSplashModuleTests;
+			productName = DLSplashModuleTests;
+			productReference = 87E8BD111C6DEDAD004C2EAD /* DLSplashModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +148,9 @@
 				ORGANIZATIONNAME = DreamLab;
 				TargetAttributes = {
 					87E8BCFA1C6DDAFD004C2EAD = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					87E8BD101C6DEDAD004C2EAD = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
@@ -113,9 +168,20 @@
 			projectRoot = "";
 			targets = (
 				87E8BCFA1C6DDAFD004C2EAD /* DLSplashModule */,
+				87E8BD101C6DEDAD004C2EAD /* DLSplashModuleTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87E8BD0F1C6DEDAD004C2EAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		87E8BCF71C6DDAFD004C2EAD /* Sources */ = {
@@ -126,7 +192,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87E8BD0D1C6DEDAD004C2EAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87E8BD181C6DEDAD004C2EAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87E8BCFA1C6DDAFD004C2EAD /* DLSplashModule */;
+			targetProxy = 87E8BD171C6DEDAD004C2EAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		87E8BD021C6DDAFD004C2EAD /* Debug */ = {
@@ -227,6 +309,26 @@
 			};
 			name = Release;
 		};
+		87E8BD191C6DEDAD004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DLSplashModuleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.dreamlab.DLSplashModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		87E8BD1A1C6DEDAD004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DLSplashModuleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.dreamlab.DLSplashModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -244,6 +346,15 @@
 			buildConfigurations = (
 				87E8BD051C6DDAFD004C2EAD /* Debug */,
 				87E8BD061C6DDAFD004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E8BD1B1C6DEDAD004C2EAD /* Build configuration list for PBXNativeTarget "DLSplashModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD191C6DEDAD004C2EAD /* Debug */,
+				87E8BD1A1C6DEDAD004C2EAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
