@@ -9,22 +9,22 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  Class to fetch data from server.
+ *  Class to fetch data from server
  */
 @interface DLSplashScreenWebService : NSObject
 
 /**
- *  Designated initializer.
+ *  Designated initializer
  *
  *  @param appSite App Site
  *  @param slots   Slots
  *
- *  @return Instance of DLSplashScreenWebService with URL to webservice.
+ *  @return Instance of DLSplashScreenWebService with URL to webservice
  */
 - (instancetype)initWithAppSite:(NSString *)appSite andSlots:(NSString *)slots;
 
 /**
- *  Fetch data from server.
+ *  Fetch data from server
  */
 - (void)fetchData;
 

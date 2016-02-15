@@ -10,61 +10,61 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 /**
- *  Class to parse Splash JSON and to expose its parameters.
+ *  Class to parse Splash JSON and to expose its parameters
  */
 @interface DLPersisteStore : NSObject
 
 /**
- *  URL to ad image.
+ *  URL to ad image
  */
-@property (nonatomic, strong) NSURL *imageAdURL;
+@property (nonatomic, strong, readonly) NSURL *imageAdURL;
 
 /**
- *  Width of ad image.
+ *  Width of ad image
  */
-@property (nonatomic, assign) CGFloat imageAdWidth;
+@property (nonatomic, assign, readonly) CGFloat imageAdWidth;
 
 /**
- *  Height of ad image.
+ *  Height of ad image
  */
-@property (nonatomic, assign) CGFloat imageAdHeight;
+@property (nonatomic, assign, readonly) CGFloat imageAdHeight;
 
 /**
- *  Text for corresponding ad.
+ *  Text for corresponding ad
  */
-@property (nonatomic, strong) NSString *adText;
+@property (nonatomic, strong, readonly) NSString *adText;
 
 /**
- *  Duration how long ad should be displayed.
+ *  Duration how long ad should be displayed
  */
-@property (nonatomic, assign) NSTimeInterval time;
+@property (nonatomic, assign, readonly) NSTimeInterval time;
 
 /**
- *  URL to audit.
+ *  URL to audit
  */
-@property (nonatomic, strong) NSURL *auditURL;
+@property (nonatomic, strong, readonly) NSURL *auditURL;
 
 /**
- *  URL to audit2.
+ *  URL to audit2
  */
-@property (nonatomic, strong) NSURL *audit2URL;
+@property (nonatomic, strong, readonly) NSURL *audit2URL;
 
 /**
- *  URL to click.
+ *  URL to click
  */
-@property (nonatomic, strong) NSURL *clickURL;
+@property (nonatomic, strong, readonly) NSURL *clickURL;
 
 /**
- *  Version of campain.
+ *  Version of campain
  */
-@property (nonatomic, assign) int version;
+@property (nonatomic, assign, readonly) int version;
 
 /**
- *  Designated initializer for DLPersisteStore class.
+ *  Designated initializer for DLPersisteStore class
  *
- *  @param data NSData object of JSON fetched from server.
+ *  @param data NSData object of JSON fetched from server
  *
- *  @return Instance of DLPersisteStore with parsed JSON.
+ *  @return Instance of DLPersisteStore with parsed JSON
  */
 - (instancetype)initWithJSONData:(NSData *)data;
 

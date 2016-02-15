@@ -22,7 +22,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 @implementation DLSplashScreenWebService
 
-- (instancetype)initWithAppSite:(id)appSite andSlots:(id)slots {
+- (instancetype)initWithAppSite:(NSString *)appSite andSlots:(NSString *)slots {
     self = [super init];
     if (!self) {
         return nil;
