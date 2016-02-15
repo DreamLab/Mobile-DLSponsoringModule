@@ -22,16 +22,27 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 {
     NSError *parsingError = nil;
 
-    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+    NSDictionary *bodyDictionary = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:kNilOptions
                                                                      error:&parsingError];
 
     if (parsingError) {
-        NSLog(@"Parsing error occured: %@", parsingError.description);
+        NSLog(@"Parsing error occurred: %@", parsingError.description);
         return nil;
     }
 
-    return jsonDictionary[@"splash"];
+    NSData *splashData = [bodyDictionary[@"splash"] dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSDictionary *splashDictionary = [NSJSONSerialization JSONObjectWithData:splashData
+                                                                     options:kNilOptions
+                                                                       error:&parsingError];
+
+    if (parsingError) {
+        NSLog(@"Parsing error occurred: %@", parsingError.description);
+        return nil;
+    }
+
+    return splashDictionary;
 }
 
 - (instancetype)initWithJSONData:(NSData *)data
