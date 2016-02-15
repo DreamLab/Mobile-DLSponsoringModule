@@ -10,7 +10,7 @@
 #import "DLSplashAd.h"
 
 // Example: https://csr.onet.pl/_s/csr-005/app_site/exclusive:app_area/slots=splash/csr.json
-NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=%@/csr.json";
+NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=splash/csr.json";
 
 @interface DLSplashScreenWebService ()
 
@@ -22,13 +22,13 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 @implementation DLSplashScreenWebService
 
-- (instancetype)initWithAppSite:(NSString *)appSite andSlots:(NSString *)slots {
+- (instancetype)initWithAppSite:(NSString *)appSite {
     self = [super init];
     if (!self) {
         return nil;
     }
     
-    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, appSite, slots]];
+    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, appSite]];
 
     return self;
 }

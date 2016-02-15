@@ -17,11 +17,10 @@
  *  Designated initializer
  *
  *  @param appSite App Site
- *  @param slots   Slots
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice
  */
-- (instancetype)initWithAppSite:(NSString *)appSite andSlots:(NSString *)slots;
+- (instancetype)initWithAppSite:(NSString *)appSite;
 
 /**
  *  Fetch data from server
