@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class DLSplashAd;
+
 /**
  *  Class to fetch data from server
  */
@@ -24,7 +26,9 @@
 
 /**
  *  Fetch data from server
+ *
+ *  @param result Block with DLSplashAd and NSError as result of fetching data
  */
-- (void)fetchData;
+- (void)fetchDataWithCompletion:(void(^)(DLSplashAd *splashAd, NSError *error))completion;
 
 @end

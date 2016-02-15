@@ -14,8 +14,6 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 @interface DLSplashScreenWebService ()
 
-@property (nonatomic, strong) NSURLSession *session;
-
 @property (nonatomic, strong) NSURL *url;
 
 @end
@@ -33,7 +31,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     return self;
 }
 
-- (void)fetchData
+- (void)fetchDataWithCompletion:(void (^)(DLSplashAd *, NSError *))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
 
@@ -42,12 +40,12 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                     if (error) {
-                                                        NSLog(@"Error occured: %@", error.description);
+                                                        completion(nil, error);
                                                         return;
                                                     }
 
                                                     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:data];
-
+                                                    completion(splashAd, error);
     }];
 
     [dataTask resume];
