@@ -8,7 +8,18 @@
 
 #import "DLSplashModule.h"
 
+@interface DLSplashModule()
+@property (nonatomic, strong) NSString *appSite;
+@end
+
 @implementation DLSplashModule
+
++ (void)initializeWithAppSite:(NSString *)appSite
+{
+    // Create instance of the DLSplashModule and set appSite
+    DLSplashModule.sharedInstance.appSite = appSite;
+    // TODO: start fetching data
+}
 
 + (instancetype)sharedInstance
 {

@@ -11,7 +11,14 @@
 @interface DLSplashModule : NSObject
 
 /**
- Returns the singleton instance of the DLSplashModule class
+ Initializes module with the app site parameter. It initialize the shared instance. Should be called before first use.
+
+ @param appSite app site parameter - identifier of the ad.
+ */
++ (void)initializeWithAppSite:(NSString *)appSite;
+
+/**
+ Returns the singleton instance of the DLSplashModule class. Method initializeWithAppSite: should be called before first use.
 
  @return Instance of DLSplashModule
  */
