@@ -10,4 +10,11 @@
 
 @interface DLSplashModule : NSObject
 
+/**
+ Returns the singleton instance of the DLSplashModule class
+
+ @return Instance of DLSplashModule
+ */
++ (instancetype)sharedInstance;
+
 @end
