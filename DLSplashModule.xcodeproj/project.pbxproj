@@ -10,6 +10,11 @@
 		71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */; };
 		71ABFA3F1C6E237A003734E6 /* DLSplashScreenWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */; };
 		71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA411C6E38C9003734E6 /* DLSplashAd.m */; };
+		71F841AB1C72368B003CF0E4 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F841AA1C72368B003CF0E4 /* CorrectJsonData.json */; };
+		71F841AD1C7236C1003CF0E4 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F841AC1C7236C1003CF0E4 /* WrongJsonData.json */; };
+		71F841AF1C7236D7003CF0E4 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F841AE1C7236D7003CF0E4 /* EmptyJsonData.json */; };
+		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
+		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
@@ -45,6 +50,12 @@
 		71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebService.m; sourceTree = "<group>"; };
 		71ABFA401C6E38C9003734E6 /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
 		71ABFA411C6E38C9003734E6 /* DLSplashAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAd.m; sourceTree = "<group>"; };
+		71F841AA1C72368B003CF0E4 /* CorrectJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CorrectJsonData.json; sourceTree = "<group>"; };
+		71F841AC1C7236C1003CF0E4 /* WrongJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WrongJsonData.json; sourceTree = "<group>"; };
+		71F841AE1C7236D7003CF0E4 /* EmptyJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EmptyJsonData.json; sourceTree = "<group>"; };
+		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
+		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
+		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
@@ -72,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71F841B21C723A11003CF0E4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				71F841B31C723A57003CF0E4 /* DLTestingHelper.h */,
+				71F841B41C723A57003CF0E4 /* DLTestingHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		87E8BCF21C6DDAFD004C2EAD = {
 			isa = PBXGroup;
 			children = (
@@ -106,8 +126,13 @@
 		87E8BD121C6DEDAD004C2EAD /* DLSplashModuleTests */ = {
 			isa = PBXGroup;
 			children = (
+				71F841B21C723A11003CF0E4 /* Helpers */,
 				87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */,
+				71F841B01C723770003CF0E4 /* DLSplashAdTests.m */,
 				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
+				71F841AA1C72368B003CF0E4 /* CorrectJsonData.json */,
+				71F841AC1C7236C1003CF0E4 /* WrongJsonData.json */,
+				71F841AE1C7236D7003CF0E4 /* EmptyJsonData.json */,
 			);
 			path = DLSplashModuleTests;
 			sourceTree = "<group>";
@@ -190,6 +215,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F841AB1C72368B003CF0E4 /* CorrectJsonData.json in Resources */,
+				71F841AD1C7236C1003CF0E4 /* WrongJsonData.json in Resources */,
+				71F841AF1C7236D7003CF0E4 /* EmptyJsonData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
+				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
