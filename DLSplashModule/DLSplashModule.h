@@ -12,6 +12,13 @@
 @interface DLSplashModule : NSObject
 
 /**
+ Returns the singleton instance of the DLSplashModule class
+
+ @return Instance of DLSplashModule
+ */
++ (instancetype)sharedInstance;
+
+/**
  Size of the ad image
 
  @return Size of the currenty fetched ad image
