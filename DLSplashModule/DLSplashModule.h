@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DLSplashModule : NSObject
+
+/**
+ Size of the ad image
+
+ @return Size of the currenty fetched ad image
+ */
+- (CGSize)imageSize;
+
+/**
+ Image of the ad
+
+ @return Ad image
+ */
+- (UIImage *)image;
 
 @end

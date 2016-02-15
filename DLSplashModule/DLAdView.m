@@ -9,8 +9,12 @@
 #import "DLAdView.h"
 #import "DLSplashModule.h"
 
+/// Max size of ImageView
+static int kMaxSizeOfImageView = 150;
+
 @interface DLAdView()
 @property (nonatomic, weak) DLSplashModule* splashModule;
+@property (nonatomic, strong) UIImageView *imageView;
 @end
 
 @implementation DLAdView
@@ -19,7 +23,7 @@
 {
     self = [super init];
     if (self) {
-        // [JZ] TODO
+        [self initialize];
     }
     return self;
 }
@@ -28,7 +32,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        // [JZ] TODO
+        [self initialize];
     }
     return self;
 }
@@ -37,22 +41,33 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // [JZ] TODO
+        [self initialize];
     }
     return self;
 }
 
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-//- (void)drawRect:(CGRect)rect {
-//    // Drawing code
-//    self.image.size =
-//}
-
-- (void)setSize:(CGSize)size
+- (void)initialize
 {
+    UIImage *image = self.splashModule.image;
+    CGSize imageSize = self.splashModule.imageSize;
 
+    self.imageView = [[UIImageView alloc] initWithImage: image];
+
+    // if image is smaller than view, then center it, otherwise aspect fit.
+    if (imageSize.width < kMaxSizeOfImageView && imageSize.height < kMaxSizeOfImageView) {
+        self.imageView.contentMode = UIViewContentModeCenter;
+    } else {
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+
+    [self addSubview:self.imageView];
+
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
+
+    [self addConstraints: @[centerX, centerY, width, height]];
 }
 
 @end

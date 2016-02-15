@@ -7,9 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface DLAdView : UIImageView
+/**
+ Interface of the DLAdViewDelegate.
+ */
+@interface DLAdViewDelegate
 
-- (void)setSize:(CGSize)size;
+/**
+ Method is called when user taps on the DLAdView
+
+ @param url NSURL to be displayed in webview.
+ */
+- (void)adViewDidTapImageWithUrl:(NSURL *)url;
+
+@end
+
+@interface DLAdView : UIView
+
+@property (nonatomic, weak) DLAdViewDelegate* delegate;
 
 @end
