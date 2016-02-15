@@ -10,9 +10,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- Interface of the DLAdViewDelegate.
+ Protocol of the DLAdViewDelegate.
  */
-@interface DLAdViewDelegate
+@protocol DLAdViewDelegate
 
 /**
  Method is called when user taps on the DLAdView
@@ -25,6 +25,6 @@
 
 @interface DLAdView : UIView
 
-@property (nonatomic, weak) DLAdViewDelegate* delegate;
+@property (nonatomic, weak) id<DLAdViewDelegate> delegate;
 
 @end
