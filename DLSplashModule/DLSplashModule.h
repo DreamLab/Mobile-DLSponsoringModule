@@ -9,6 +9,9 @@
 @import Foundation;
 @import UIKit;
 
+/**
+Module responsible for providing ads for splash screen.
+ */
 @interface DLSplashModule : NSObject
 
 /**
