@@ -1,5 +1,5 @@
 //
-//  DLPersisteStore.h
+//  DLSplashAd.h
 //  DLSplashModule
 //
 //  Created by Konrad Kierys on 12.02.2016.
@@ -12,7 +12,7 @@
 /**
  *  Class to parse Splash JSON and to expose its parameters
  */
-@interface DLPersisteStore : NSObject
+@interface DLSplashAd : NSObject
 
 /**
  *  URL to ad image
@@ -60,11 +60,11 @@
 @property (nonatomic, assign, readonly) int version;
 
 /**
- *  Designated initializer for DLPersisteStore class
+ *  Designated initializer for DLSplashAd class
  *
  *  @param data NSData object of JSON fetched from server
  *
- *  @return Instance of DLPersisteStore with parsed JSON
+ *  @return Instance of DLSplashAd with parsed JSON
  */
 - (instancetype)initWithJSONData:(NSData *)data;
 

@@ -7,7 +7,7 @@
 //
 
 #import "DLSplashScreenWebService.h"
-#import "DLPersisteStore.h"
+#import "DLSplashAd.h"
 
 // Example: https://csr.onet.pl/_s/csr-005/app_site/exclusive:app_area/slots=splash/csr.json
 NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=%@/csr.json";
@@ -46,7 +46,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
                                                         return;
                                                     }
 
-                                                    DLPersisteStore *store = [[DLPersisteStore alloc] initWithJSONData:data];
+                                                    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:data];
 
     }];
 

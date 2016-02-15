@@ -1,22 +1,22 @@
 //
-//  DLPersisteStore.m
+//  DLSplashAd.m
 //  DLSplashModule
 //
 //  Created by Konrad Kierys on 12.02.2016.
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import "DLPersisteStore.h"
+#import "DLSplashAd.h"
 
 NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.persiste_store";
 
-@interface DLPersisteStore ()
+@interface DLSplashAd ()
 
 @property (nonatomic, strong) NSDictionary *jsonDictionary;
 
 @end
 
-@implementation DLPersisteStore
+@implementation DLSplashAd
 
 + (NSDictionary *)parseJSONData:(NSData *)data
 {
@@ -41,7 +41,9 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    _jsonDictionary = [DLPersisteStore parseJSONData:data];
+    _jsonDictionary = [DLSplashAd parseJSONData:data];
+
+    NSLog(@"JSON: %@", _jsonDictionary);
 
     return self;
 }
