@@ -6,8 +6,8 @@
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 @interface DLSplashModule : NSObject
 

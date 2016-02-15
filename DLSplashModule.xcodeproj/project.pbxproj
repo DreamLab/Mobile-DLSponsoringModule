@@ -13,6 +13,7 @@
 		87E8BD161C6DEDAD004C2EAD /* libDLSplashModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */; };
 		87E8BD2E1C6E01DE004C2EAD /* DLAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */; };
 		87E8BD2F1C6E06A2004C2EAD /* DLAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */; };
+		87E8BD311C71E7D2004C2EAD /* DLAdViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				87E8BD311C71E7D2004C2EAD /* DLAdViewDelegate.h in CopyFiles */,
 				87E8BD2F1C6E06A2004C2EAD /* DLAdView.h in CopyFiles */,
 				87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */,
 			);
@@ -48,6 +50,7 @@
 		87E8BD151C6DEDAD004C2EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdView.h; sourceTree = "<group>"; };
 		87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdView.m; sourceTree = "<group>"; };
+		87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 				87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */,
 				87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */,
 				87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */,
+				87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */,
 			);
 			path = DLSplashModule;
 			sourceTree = "<group>";
@@ -365,6 +369,7 @@
 				87E8BD1A1C6DEDAD004C2EAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,22 +6,10 @@
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
+#import "DLAdViewDelegate.h"
 
-/**
- Protocol of the DLAdViewDelegate.
- */
-@protocol DLAdViewDelegate
-
-/**
- Method is called when user taps on the DLAdView
-
- @param url NSURL to be displayed in webview.
- */
-- (void)adViewDidTapImageWithUrl:(NSURL *)url;
-
-@end
+@import UIKit;
+@import Foundation;
 
 @interface DLAdView : UIView
 
