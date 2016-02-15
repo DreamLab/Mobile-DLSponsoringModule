@@ -9,11 +9,14 @@
 #import "DLSplashScreenWebService.h"
 #import "DLPersisteStore.h"
 
+// Example: http://csr.onet.pl/_s/csr-005/app_site/exclusive:app_area/slots=splash/csr.json
 NSString * const kSplashScreenBaseURL = @"http://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=%@/csr.json";
 
 @interface DLSplashScreenWebService ()
 
 @property (nonatomic, strong) NSURLSession *session;
+
+@property (nonatomic, strong) NSURL *url;
 
 @end
 
@@ -24,6 +27,7 @@ NSString * const kSplashScreenBaseURL = @"http://csr.onet.pl/_s/csr-005/%@/exclu
     if (!self) {
         return nil;
     }
+    
     _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, appSite, slots]];
 
     return self;

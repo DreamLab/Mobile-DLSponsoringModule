@@ -18,19 +18,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
 @implementation DLPersisteStore
 
-- (instancetype)initWithJSONData:(NSData *)data
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    _jsonDictionary = [self parseJSONData:data];
-
-    return self;
-}
-
-- (NSDictionary *)parseJSONData:(NSData *)data
++ (NSDictionary *)parseJSONData:(NSData *)data
 {
     NSError *parsingError = nil;
 
@@ -43,8 +31,19 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    NSLog(@"Json parsed: %@", jsonDictionary[@"splash"]);
     return jsonDictionary[@"splash"];
+}
+
+- (instancetype)initWithJSONData:(NSData *)data
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    _jsonDictionary = [DLPersisteStore parseJSONData:data];
+
+    return self;
 }
 
 - (NSURL *)imageAdURL
