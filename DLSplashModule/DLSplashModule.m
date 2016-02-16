@@ -17,7 +17,7 @@
 static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
-+ (void)initializeWithAppSite:(NSString *)appSite
++ (instancetype)initializeWithAppSite:(NSString *)appSite
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
@@ -26,6 +26,8 @@ static DLSplashModule* sharedInstance;
     // Create instance of the DLSplashModule and set appSite
     sharedInstance.appSite = appSite;
     // TODO: start fetching data
+
+    return sharedInstance;
 }
 
 + (instancetype)sharedInstance
