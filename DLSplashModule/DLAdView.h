@@ -11,8 +11,14 @@
 @import UIKit;
 @import Foundation;
 
+/**
+View to display the image of the ad.
+ */
 @interface DLAdView : UIView
 
+/**
+ Delegate of the DLAdViewDelegate protocol.
+ */
 @property (nonatomic, weak) id<DLAdViewDelegate> delegate;
 
 @end
