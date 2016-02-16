@@ -17,7 +17,7 @@
 static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
-+ (instancetype)initializeWithidentifier:(NSString *)identifier
++ (instancetype)initializeWithIdentifier:(NSString *)identifier
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
