@@ -8,6 +8,7 @@
 
 @import UIKit;
 @import Foundation;
+@class DLAdView;
 
 /**
  Protocol of the DLAdViewDelegate.
@@ -19,6 +20,6 @@
 
  @param url NSURL to be displayed in webview.
  */
-- (void)adViewDidTapImageWithUrl:(NSURL *)url;
+- (void)adView:(DLAdView *)adView didTapImageWithUrl:(NSURL *)url;
 
 @end
