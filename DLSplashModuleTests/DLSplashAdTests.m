@@ -38,14 +38,14 @@
     [super tearDown];
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_splashAdShouldNotBeNil
+- (void)testInitWithJSONData_givenCorrectJSONData_splashAdShouldNotBeNil
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertNotNil(splashAd, @"Splash Ad should not be nil");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_imageUrlIsNotNilAndCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_imageUrlIsNotNilAndCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
@@ -54,21 +54,21 @@
     XCTAssertEqualObjects(splashAd.imageURL, testURL, @"SplashAd ImageURL should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_imageWidthIsCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_imageWidthIsCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertEqual(splashAd.imageWidth, 90, @"SplashAd imageWidth should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_imageHeightIsCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_imageHeightIsCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertEqual(splashAd.imageHeight, 60, @"SplashAd imageHeight should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_adTextIsNotNilAndCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_adTextIsNotNilAndCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
@@ -76,14 +76,14 @@
     XCTAssertEqualObjects(splashAd.text, @"Partner aplikacji", @"SplashAd text should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_timeIsCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_timeIsCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertEqual(splashAd.time, 5, @"SplashAd time should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_auditUrlIsNotNilAndCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_auditUrlIsNotNilAndCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
@@ -92,7 +92,7 @@
     XCTAssertEqualObjects(splashAd.auditURL, testURL, @"SplashAd auditURL should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_audit2UrlIsNotNilAndCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_audit2UrlIsNotNilAndCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
@@ -101,7 +101,7 @@
     XCTAssertEqualObjects(splashAd.audit2URL, testURL, @"SplashAd audit2URL should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_clickUrlIsNotNilAndCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_clickUrlIsNotNilAndCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
@@ -110,23 +110,30 @@
     XCTAssertEqualObjects(splashAd.clickURL, testURL, @"SplashAd clickURL should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_versionIsCorrect
+- (void)testInitWithJSONData_givenCorrectJSONData_versionIsCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertEqual(splashAd.version, 1234512, @"SplashAd version should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorruptedJSONData_splashAdShouldBeNil
+- (void)testInitWithJSONData_givenCorruptedJSONData_splashAdShouldBeNil
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.wrongJSONData];
 
     XCTAssertNil(splashAd, @"Splash Ad should be nil");
 }
 
-- (void)testCreatingSplashAd_givenEmptyJSONData_splashAdShouldBeNil
+- (void)testInitWithJSONData_givenEmptyJSONData_splashAdShouldBeNil
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.emptyJSONData];
+
+    XCTAssertNil(splashAd, @"Splash Ad should be nil");
+}
+
+- (void)testInitWithJSONData_givenNilAsJSONData_splashAdShouldBeNil
+{
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:nil];
 
     XCTAssertNil(splashAd, @"Splash Ad should be nil");
 }

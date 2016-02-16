@@ -79,6 +79,9 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
 + (NSDictionary *)parseJSONData:(NSData *)data
 {
+    if (!data) {
+        return nil;
+    }
     NSError *parsingError = nil;
 
     NSDictionary *bodyDictionary = [NSJSONSerialization JSONObjectWithData:data
