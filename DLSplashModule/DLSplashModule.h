@@ -6,8 +6,12 @@
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import UIKit;
 
+/**
+Module responsible for providing ads for splash screen.
+ */
 @interface DLSplashModule : NSObject
 
 /**
@@ -26,5 +30,19 @@
  @return Instance of DLSplashModule or nil if not initialized
  */
 + (instancetype)sharedInstance;
+
+/**
+ Size of the ad image
+
+ @return Size of the currenty fetched ad image
+ */
+- (CGSize)imageSize;
+
+/**
+ Image of the ad
+
+ @return Ad image
+ */
+- (UIImage *)image;
 
 @end
