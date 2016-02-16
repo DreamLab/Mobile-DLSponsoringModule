@@ -14,22 +14,22 @@
 
 @implementation DLSplashModule
 
+static dispatch_once_t once;
+static DLSplashModule* sharedInstance;
+
 + (void)initializeWithAppSite:(NSString *)appSite
 {
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+
     // Create instance of the DLSplashModule and set appSite
-    [DLSplashModule sharedInstance].appSite = appSite;
+    sharedInstance.appSite = appSite;
     // TODO: start fetching data
 }
 
 + (instancetype)sharedInstance
 {
-    static dispatch_once_t once;
-    static id sharedInstance;
-
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
-    
     return sharedInstance;
 }
 
