@@ -90,7 +90,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    if ([bodyDictionary count] <=  0) {
+    if ([bodyDictionary count] <= 0) {
         return nil;
     }
 
