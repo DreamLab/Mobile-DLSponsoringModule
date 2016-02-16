@@ -10,11 +10,13 @@
 #import "DLSplashModule.h"
 
 /// Max size of ImageView
-static int kMaxSizeOfImageView = 150;
+static NSInteger kMaxSizeOfImageView = 150;
 
 @interface DLAdView()
 @property (nonatomic, weak) DLSplashModule* splashModule;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic) BOOL isDisplayed;
+@property (nonatomic, strong) NSTimer* displayTimer;
 @end
 
 @implementation DLAdView
@@ -48,6 +50,8 @@ static int kMaxSizeOfImageView = 150;
 
 - (void)initialize
 {
+    self.isDisplayed = false;
+
     UIImage *image = self.splashModule.image;
     CGSize imageSize = self.splashModule.imageSize;
 
@@ -68,6 +72,38 @@ static int kMaxSizeOfImageView = 150;
     NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
 
     [self addConstraints: @[centerX, centerY, width, height]];
+}
+
+- (void)layoutSubviews
+{
+    if (!self.isDisplayed) {
+        self.isDisplayed = true;
+        [self startWaitingForDataToDisplay];
+    }
+}
+
+- (void)startWaitingForDataToDisplay
+{
+    // [JZ] TODO: get time from DLSplashModule/DLSplashAd
+    NSInteger displayTime = 3;
+
+    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:displayTime
+                                                         target:self
+                                                       selector:@selector(displayTimePassed)
+                                                       userInfo:nil
+                                                        repeats:NO];
+}
+
+- (void)displayTimePassed
+{
+    if (self.displayTimer) {
+        // TODO: notify app that can hide splash
+    }
+}
+
+- (void)sendAuditData
+{
+    // [JZ] TODO: send Audit Data (separate task)
 }
 
 @end

@@ -8,6 +8,7 @@
 
 @import Foundation;
 @import UIKit;
+#import "DLSplashModuleDelegate.h"
 
 /**
 Module responsible for providing ads for splash screen.
@@ -15,11 +16,30 @@ Module responsible for providing ads for splash screen.
 @interface DLSplashModule : NSObject
 
 /**
- Returns the singleton instance of the DLSplashModule class
+ Returns the singleton instance of the DLSplashModule class.
 
  @return Instance of DLSplashModule
  */
 + (instancetype)sharedInstance;
+
+/**
+ Add delegate to the DLSplashModule.
+
+ @param delegate DLSplashModuleDelegate implementation
+ */
+- (void)addDelegate:(id<DLSplashModuleDelegate>)delegate;
+
+/**
+ Remove delegate from the DLSplash module.
+
+ @param delegate DLSplashModuleDelegate implementation
+ */
+- (void)removeDelegate:(id<DLSplashModuleDelegate>)delegate;
+
+/**
+ Remove all delegates from the DLSplashModule.
+ */
+- (void)removeAllDelegates;
 
 /**
  Size of the ad image

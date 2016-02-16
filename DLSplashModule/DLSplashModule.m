@@ -8,6 +8,11 @@
 
 #import "DLSplashModule.h"
 
+@interface DLSplashModule ()
+@property (nonatomic, strong) NSMutableSet *delegates;
+@end
+
+
 @implementation DLSplashModule
 
 + (instancetype)sharedInstance
@@ -22,6 +27,18 @@
     return sharedInstance;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+
+    self.delegates = [[NSMutableSet alloc] init];
+
+    return self;
+}
+
 - (CGSize)imageSize
 {
     // [JZ] TODO: set values received in json
@@ -33,5 +50,29 @@
     // [JZ] TODO: return fetched image
     return nil;
 }
+
+#pragma mark - Delegate
+- (void)addDelegate:(id<DLSplashModuleDelegate>)delegate
+{
+    [self.delegates addObject:delegate];
+}
+
+- (void)removeDelegate:(id<DLSplashModuleDelegate>)delegate
+{
+    [self.delegates removeObject:delegate];
+}
+
+- (void)removeAllDelegates
+{
+    [self.delegates removeAllObjects];
+}
+
+//- (void)notifyDelegates
+//{
+//    for (id<DLSplashModuleDelegate> delegate in self.delegates) {
+//        [delegate TODO];
+//    }
+//}
+
 
 @end
