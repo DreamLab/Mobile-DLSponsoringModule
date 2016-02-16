@@ -15,9 +15,9 @@
 @protocol DLAdViewDelegate
 
 /**
- Method is called when user taps on the DLAdView
+ Method is called when user taps on the DLAdView.
 
- @param url NSURL to be displayed in webview.
+ @param url NSURL to be displayed in webview
  */
 - (void)adViewDidTapImageWithUrl:(NSURL *)url;
 
