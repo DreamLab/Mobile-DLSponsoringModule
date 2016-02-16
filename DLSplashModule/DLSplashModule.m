@@ -9,7 +9,7 @@
 #import "DLSplashModule.h"
 
 @interface DLSplashModule()
-@property (nonatomic, strong) NSString *appSite;
+@property (nonatomic, strong) NSString *identifier;
 @end
 
 @implementation DLSplashModule
@@ -17,14 +17,14 @@
 static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
-+ (instancetype)initializeWithAppSite:(NSString *)appSite
++ (instancetype)initializeWithidentifier:(NSString *)identifier
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
 
-    // Create instance of the DLSplashModule and set appSite
-    sharedInstance.appSite = appSite;
+    // Create instance of the DLSplashModule and set identifier
+    sharedInstance.identifier = identifier;
     // TODO: start fetching data
 
     return sharedInstance;

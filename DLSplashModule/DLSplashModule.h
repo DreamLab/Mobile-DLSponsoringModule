@@ -13,15 +13,15 @@
 /**
  Initializes module with the app site parameter. It initialize the shared instance. Should be called before first use.
 
- @param appSite app site parameter - identifier of the ad
+ @param identifier the identifier of the ad
  
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithAppSite:(NSString *)appSite;
++ (instancetype)initializeWithIdentifier:(NSString *)identifier;
 
 /**
  Returns the singleton instance of the DLSplashModule class. 
- Method initializeWithAppSite: should be called before first use, otherwise sharedInstance will be nil.
+ Method initializeWithIdentifier: should be called before first use, otherwise sharedInstance will be nil.
 
  @return Instance of DLSplashModule or nil if not initialized
  */
