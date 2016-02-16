@@ -20,6 +20,8 @@ static int kMaxSizeOfImageView = 150;
 
 @implementation DLAdView
 
+#pragma mark Initializers
+
 - (instancetype)init
 {
     self = [super init];
@@ -46,6 +48,8 @@ static int kMaxSizeOfImageView = 150;
     }
     return self;
 }
+
+#pragma mark Private Initializers
 
 - (void)initialize
 {
@@ -80,12 +84,12 @@ static int kMaxSizeOfImageView = 150;
     [self.imageView addGestureRecognizer:self.tapGestureRecognizer];
 }
 
+#pragma mark Private Methods
+
 - (void)imageTapped:(id)sender
 {
-    if (self.delegate) {
         // [JZ] TODO: pass url from the DLSplashAd -- waiting for merge!
 //        [self.delegate adViewDidTapImageWithUrl: ];
-    }
 }
 
 @end
