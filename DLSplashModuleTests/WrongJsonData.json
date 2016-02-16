@@ -1,3 +1,1 @@
-{
-    "splash": "{\n\"image\":\"http://ocdn.eu/images/mastt/MTc7MDA_/b1f3414c51e4d27c5266ec3f490e7662.png\", \n\"width\": 90,\n\"height\":60,\n\"txt\":\"Partner aplikacji\",\n\"time\": 5, \n\"audit\": \"http://csr.onet.pl/eclk/fa4,125202,255484/view?1455554080\",\n\"audit2\": \"http://e.clk.onet.pl/clk,5450,16749/view/\",\n\"click\":\"http://csr.onet.pl/adclick/CID=125202/CCID=255484/CT=str/URL=http://m.onet.pl\"\n\"ver\":123451\n}"
-}
+{"splash": {"click": "http://csr.onet.pl/adclick/CID=125202/CCID=255484/CT=str/URL=http://m.onet.pl", "height": 60 "width": 90, "audit2": "http://e.clk.onet.pl/clk,5450,16749/view/", "image": "http://ocdn.eu/images/mastt/MTc7MDA_/b1f3414c51e4d27c5266ec3f490e7662.png", "ver": 1234512, "time": 5, "txt": "Partner aplikacji", "audit": "http://csr.onet.pl/eclk/fa4,125202,255484/view?1455617456"}}

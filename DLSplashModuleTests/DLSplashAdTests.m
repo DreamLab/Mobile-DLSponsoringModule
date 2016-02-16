@@ -42,4 +42,79 @@
     XCTAssertNotNil(splashAd, @"Splash Ad should not be nil");
 }
 
+- (void)testCreatingSplashAd_givenCorrectJSONData_imageAdUrlIsNotNilAndCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertNotNil(splashAd.imageAdURL, @"SplashAd ImageURL should not be nil");
+    NSURL *testURL = [NSURL URLWithString:@"http://ocdn.eu/images/mastt/MTc7MDA_/b1f3414c51e4d27c5266ec3f490e7662.png"];
+    XCTAssertEqualObjects(splashAd.imageAdURL, testURL, @"SplashAd ImageURL should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_imageAdWidthIsCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertEqual(splashAd.imageAdWidth, 90, @"SplashAd imageAdWidth should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_imageAdHeightIsCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertEqual(splashAd.imageAdHeight, 60, @"SplashAd imageAdHeight should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_adTextIsNotNilAndCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertNotNil(splashAd.adText, @"SplashAd adText should not be nil");
+    XCTAssertEqualObjects(splashAd.adText, @"Partner aplikacji", @"SplashAd adText should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_timeIsCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertEqual(splashAd.time, 5, @"SplashAd time should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_auditUrlIsNotNilAndCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertNotNil(splashAd.auditURL, @"SplashAd auditURL should not be nil");
+    NSURL *testURL = [NSURL URLWithString:@"http://csr.onet.pl/eclk/fa4,125202,255484/view?1455617456"];
+    XCTAssertEqualObjects(splashAd.auditURL, testURL, @"SplashAd auditURL should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_audit2UrlIsNotNilAndCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertNotNil(splashAd.audit2URL, @"SplashAd audit2URL should not be nil");
+    NSURL *testURL = [NSURL URLWithString:@"http://e.clk.onet.pl/clk,5450,16749/view/"];
+    XCTAssertEqualObjects(splashAd.audit2URL, testURL, @"SplashAd audit2URL should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_clickUrlIsNotNilAndCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertNotNil(splashAd.clickURL, @"SplashAd clickURL should not be nil");
+    NSURL *testURL = [NSURL URLWithString:@"http://csr.onet.pl/adclick/CID=125202/CCID=255484/CT=str/URL=http://m.onet.pl"];
+    XCTAssertEqualObjects(splashAd.clickURL, testURL, @"SplashAd clickURL should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorrectJSONData_versionIsCorrect {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+
+    XCTAssertEqual(splashAd.version, 1234512, @"SplashAd version should be correct");
+}
+
+- (void)testCreatingSplashAd_givenCorruptedJSONData_splashAdShouldBeNil {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.wrongJSONData];
+
+    XCTAssertNil(splashAd, @"Splash Ad should be nil");
+}
+
+- (void)testCreatingSplashAd_givenEmptyJSONData_splashAdShouldBeNil {
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.emptyJSONData];
+
+    XCTAssertNil(splashAd, @"Splash Ad should be nil");
+}
+
 @end

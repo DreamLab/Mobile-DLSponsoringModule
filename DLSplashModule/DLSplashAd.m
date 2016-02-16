@@ -31,18 +31,11 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    NSData *splashData = [bodyDictionary[@"splash"] dataUsingEncoding:NSUTF8StringEncoding];
-
-    NSDictionary *splashDictionary = [NSJSONSerialization JSONObjectWithData:splashData
-                                                                     options:kNilOptions
-                                                                       error:&parsingError];
-
-    if (parsingError) {
-        NSLog(@"Parsing error occurred: %@", parsingError.description);
+    if ([bodyDictionary count] <=  0) {
         return nil;
     }
 
-    return splashDictionary;
+    return bodyDictionary[@"splash"];
 }
 
 - (instancetype)initWithJSONData:(NSData *)data
@@ -54,9 +47,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
     _jsonDictionary = [DLSplashAd parseJSONData:data];
 
-    NSLog(@"JSON: %@", _jsonDictionary);
-
-    return self;
+    return (_jsonDictionary != nil) ? self : nil;
 }
 
 - (NSURL *)imageAdURL
