@@ -8,6 +8,7 @@
 
 @import UIKit;
 @import Foundation;
+@class DLAdView;
 
 /**
  Protocol of the DLAdViewDelegate.
@@ -15,10 +16,11 @@
 @protocol DLAdViewDelegate
 
 /**
- Method is called when user taps on the DLAdView
+ Method is called when user taps on the DLAdView.
 
- @param url NSURL to be displayed in webview.
+ @param adView DLAdView that generated event
+ @param url NSURL to be displayed in webview
  */
-- (void)adViewDidTapImageWithUrl:(NSURL *)url;
+- (void)adView:(DLAdView *)adView didTapImageWithUrl:(NSURL *)url;
 
 @end

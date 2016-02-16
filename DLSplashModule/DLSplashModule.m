@@ -9,34 +9,31 @@
 #import "DLSplashModule.h"
 
 @interface DLSplashModule ()
+@property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSMutableSet *delegates;
 @end
 
-
 @implementation DLSplashModule
 
-+ (instancetype)sharedInstance
-{
-    static dispatch_once_t once;
-    static id sharedInstance;
+static dispatch_once_t once;
+static DLSplashModule* sharedInstance;
 
++ (instancetype)initializeWithIdentifier:(NSString *)identifier
+{
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
-    
+
+    // Create instance of the DLSplashModule and set identifier
+    sharedInstance.identifier = identifier;
+    // TODO: start fetching data
+
     return sharedInstance;
 }
 
-- (instancetype)init
++ (instancetype)sharedInstance
 {
-    self = [super init];
-    if (self == nil) {
-        return nil;
-    }
-
-    self.delegates = [[NSMutableSet alloc] init];
-
-    return self;
+    return sharedInstance;
 }
 
 - (CGSize)imageSize

@@ -15,11 +15,14 @@ static NSInteger kMaxSizeOfImageView = 150;
 @interface DLAdView()
 @property (nonatomic, weak) DLSplashModule* splashModule;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic) BOOL isDisplayed;
 @property (nonatomic, strong) NSTimer* displayTimer;
 @end
 
 @implementation DLAdView
+
+#pragma mark Initializers
 
 - (instancetype)init
 {
@@ -48,6 +51,8 @@ static NSInteger kMaxSizeOfImageView = 150;
     return self;
 }
 
+#pragma mark Private Initializers
+
 - (void)initialize
 {
     self.isDisplayed = false;
@@ -65,6 +70,7 @@ static NSInteger kMaxSizeOfImageView = 150;
     }
 
     [self addSubview:self.imageView];
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
     NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
     NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
@@ -72,6 +78,22 @@ static NSInteger kMaxSizeOfImageView = 150;
     NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
 
     [self addConstraints: @[centerX, centerY, width, height]];
+
+    [self initializeGestureRecognizer];
+}
+
+- (void)initializeGestureRecognizer
+{
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+    [self.imageView addGestureRecognizer:self.tapGestureRecognizer];
+}
+
+#pragma mark Private Methods
+
+- (void)imageTapped:(id)sender
+{
+        // [JZ] TODO: pass url from the DLSplashAd -- waiting for merge!
+//        [self.delegate adViewDidTapImageWithUrl: ];
 }
 
 - (void)layoutSubviews
