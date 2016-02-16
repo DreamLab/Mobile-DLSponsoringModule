@@ -31,4 +31,13 @@
  */
 - (void)fetchDataWithCompletion:(void(^)(DLSplashAd *splashAd, NSError *error))completion;
 
+/**
+ *  Fetch image from server.
+ *
+ *  @param url          URL to the image.
+ *  @param successBlock Success block containing downloaded image and path to its permanent location on disk.
+ *  @param failureBlock Failure block containing error.
+ */
+- (void)fetchImageAtURL:(NSURL *)url success:(void (^)(UIImage *image, NSURL *imagePath))successBlock failure:(void (^)(NSError *error))failureBlock;
+
 @end
