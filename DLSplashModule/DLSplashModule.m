@@ -35,18 +35,6 @@ static DLSplashModule* sharedInstance;
     return sharedInstance;
 }
 
-- (CGSize)imageSize
-{
-    // [JZ] TODO: set values received in json
-    return CGSizeMake(150, 150);
-}
-
-- (UIImage *)image
-{
-    // [JZ] TODO: return fetched image
-    return nil;
-}
-
 // TODO: probably this should be private
 - (DLSplashAd *)splashAd
 {

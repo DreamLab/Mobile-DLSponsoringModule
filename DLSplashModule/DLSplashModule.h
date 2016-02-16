@@ -53,20 +53,6 @@ Module responsible for providing ads for splash screen.
  */
 - (void)removeAllDelegates;
 
-/**
- Size of the ad image.
-
- @return Size of the currenty fetched ad image
- */
-- (CGSize)imageSize;
-
-/**
- Image of the ad.
-
- @return Ad image
- */
-- (UIImage *)image;
-
 // TODO: probably this should be private
 - (DLSplashAd *)splashAd;
 
