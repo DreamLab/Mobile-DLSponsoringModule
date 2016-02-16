@@ -42,31 +42,31 @@
     XCTAssertNotNil(splashAd, @"Splash Ad should not be nil");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_imageAdUrlIsNotNilAndCorrect {
+- (void)testCreatingSplashAd_givenCorrectJSONData_imageUrlIsNotNilAndCorrect {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertNotNil(splashAd.imageAdURL, @"SplashAd ImageURL should not be nil");
+    XCTAssertNotNil(splashAd.imageURL, @"SplashAd ImageURL should not be nil");
     NSURL *testURL = [NSURL URLWithString:@"http://ocdn.eu/images/mastt/MTc7MDA_/b1f3414c51e4d27c5266ec3f490e7662.png"];
-    XCTAssertEqualObjects(splashAd.imageAdURL, testURL, @"SplashAd ImageURL should be correct");
+    XCTAssertEqualObjects(splashAd.imageURL, testURL, @"SplashAd ImageURL should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_imageAdWidthIsCorrect {
+- (void)testCreatingSplashAd_givenCorrectJSONData_imageWidthIsCorrect {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertEqual(splashAd.imageAdWidth, 90, @"SplashAd imageAdWidth should be correct");
+    XCTAssertEqual(splashAd.imageWidth, 90, @"SplashAd imageWidth should be correct");
 }
 
-- (void)testCreatingSplashAd_givenCorrectJSONData_imageAdHeightIsCorrect {
+- (void)testCreatingSplashAd_givenCorrectJSONData_imageHeightIsCorrect {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertEqual(splashAd.imageAdHeight, 60, @"SplashAd imageAdHeight should be correct");
+    XCTAssertEqual(splashAd.imageHeight, 60, @"SplashAd imageHeight should be correct");
 }
 
 - (void)testCreatingSplashAd_givenCorrectJSONData_adTextIsNotNilAndCorrect {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertNotNil(splashAd.adText, @"SplashAd adText should not be nil");
-    XCTAssertEqualObjects(splashAd.adText, @"Partner aplikacji", @"SplashAd adText should be correct");
+    XCTAssertNotNil(splashAd.text, @"SplashAd text should not be nil");
+    XCTAssertEqualObjects(splashAd.text, @"Partner aplikacji", @"SplashAd text should be correct");
 }
 
 - (void)testCreatingSplashAd_givenCorrectJSONData_timeIsCorrect {

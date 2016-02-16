@@ -17,22 +17,22 @@
 /**
  *  URL to ad image
  */
-@property (nonatomic, strong, readonly) NSURL *imageAdURL;
+@property (nonatomic, strong, readonly) NSURL *imageURL;
 
 /**
  *  Width of ad image
  */
-@property (nonatomic, assign, readonly) CGFloat imageAdWidth;
+@property (nonatomic, assign, readonly) CGFloat imageWidth;
 
 /**
  *  Height of ad image
  */
-@property (nonatomic, assign, readonly) CGFloat imageAdHeight;
+@property (nonatomic, assign, readonly) CGFloat imageHeight;
 
 /**
  *  Text for corresponding ad
  */
-@property (nonatomic, strong, readonly) NSString *adText;
+@property (nonatomic, strong, readonly) NSString *text;
 
 /**
  *  Duration how long ad should be displayed
@@ -57,7 +57,7 @@
 /**
  *  Version of campain
  */
-@property (nonatomic, assign, readonly) int version;
+@property (nonatomic, assign, readonly) NSInteger version;
 
 /**
  *  Designated initializer for DLSplashAd class

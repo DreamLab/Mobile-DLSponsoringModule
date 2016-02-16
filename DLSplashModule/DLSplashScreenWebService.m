@@ -9,7 +9,6 @@
 #import "DLSplashScreenWebService.h"
 #import "DLSplashAd.h"
 
-// Example: https://csr.onet.pl/_s/csr-005/app_site/exclusive:app_area/slots=splash/csr.json
 NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=splash/csr.json";
 
 @interface DLSplashScreenWebService ()
@@ -23,6 +22,10 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 - (instancetype)initWithAppSite:(NSString *)appSite {
     self = [super init];
     if (!self) {
+        return nil;
+    }
+
+    if (appSite == nil) {
         return nil;
     }
     
@@ -40,12 +43,16 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                     if (error) {
-                                                        completion(nil, error);
+                                                        if (completion) {
+                                                            completion(nil, error);
+                                                        }
                                                         return;
                                                     }
 
                                                     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:data];
-                                                    completion(splashAd, error);
+                                                    if (completion) {
+                                                        completion(splashAd, error);
+                                                    }
     }];
 
     [dataTask resume];
