@@ -8,12 +8,15 @@
 
 #import "DLAdView.h"
 #import "DLSplashModule.h"
+#import "DLSplashAd.h"
 
 /// Max size of ImageView
 static NSInteger kMaxSizeOfImageView = 150;
+static NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 
 @interface DLAdView()
 @property (nonatomic, weak) DLSplashModule* splashModule;
+@property (nonatomic, strong) DLSplashAd* splashAd;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic) BOOL isDisplayed;
@@ -22,7 +25,7 @@ static NSInteger kMaxSizeOfImageView = 150;
 
 @implementation DLAdView
 
-#pragma mark Initializers
+#pragma mark - Initializers
 
 - (instancetype)init
 {
@@ -51,24 +54,16 @@ static NSInteger kMaxSizeOfImageView = 150;
     return self;
 }
 
-#pragma mark Private Initializers
+#pragma mark - Private Initializers
 
 - (void)initialize
 {
     self.isDisplayed = false;
+    self.splashModule = DLSplashModule.sharedInstance;
 
-    UIImage *image = self.splashModule.image;
-    CGSize imageSize = self.splashModule.imageSize;
+    UIImage *image = nil;
 
     self.imageView = [[UIImageView alloc] initWithImage: image];
-
-    // if image is smaller than view, then center it, otherwise aspect fit.
-    if (imageSize.width < kMaxSizeOfImageView && imageSize.height < kMaxSizeOfImageView) {
-        self.imageView.contentMode = UIViewContentModeCenter;
-    } else {
-        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    }
-
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -88,12 +83,11 @@ static NSInteger kMaxSizeOfImageView = 150;
     [self.imageView addGestureRecognizer:self.tapGestureRecognizer];
 }
 
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)imageTapped:(id)sender
 {
-        // [JZ] TODO: pass url from the DLSplashAd -- waiting for merge!
-//        [self.delegate adViewDidTapImageWithUrl: ];
+    [self.delegate adView:self didTapImageWithUrl:self.splashAd.clickURL];
 }
 
 - (void)layoutSubviews
@@ -106,21 +100,47 @@ static NSInteger kMaxSizeOfImageView = 150;
 
 - (void)startWaitingForDataToDisplay
 {
-    // [JZ] TODO: get time from DLSplashModule/DLSplashAd
-    NSInteger displayTime = 3;
-
-    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:displayTime
+    NSInteger waitingTime = kMaxTimeOfWaitingForContent;
+    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:waitingTime
                                                          target:self
-                                                       selector:@selector(displayTimePassed)
+                                                       selector:@selector(waitingTimePassed)
                                                        userInfo:nil
                                                         repeats:NO];
 }
 
-- (void)displayTimePassed
+- (void)waitingTimePassed
 {
-    if (self.displayTimer) {
-        // TODO: notify app that can hide splash
+    self.displayTimer = nil;
+
+    // TODO: Get cached version of splashAd and display it
+    self.splashAd = self.splashModule.splashAd;
+    [self displayAd];
+}
+
+- (void)displayAd
+{
+    UIImage *image = nil; // TODO: get image from splashAd <- add image property
+    [self.imageView setImage:image];
+
+    // if image is smaller than view, then center it, otherwise aspect fit.
+    if (self.splashAd.imageWidth < kMaxSizeOfImageView && self.splashAd.imageHeight < kMaxSizeOfImageView) {
+        self.imageView.contentMode = UIViewContentModeCenter;
+    } else {
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
+
+    NSInteger waitingTime = self.splashAd.time;
+    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:waitingTime
+                                                         target:self
+                                                       selector:@selector(displayingTimePassed)
+                                                       userInfo:nil
+                                                        repeats:NO];
+}
+
+- (void)displayingTimePassed
+{
+    self.displayTimer = nil;
+    // TODO: notify about displaying time passed
 }
 
 - (void)sendAuditData

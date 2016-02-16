@@ -168,8 +168,8 @@
 			buildConfigurationList = 87E8BD041C6DDAFD004C2EAD /* Build configuration list for PBXNativeTarget "DLSplashModule" */;
 			buildPhases = (
 				87E8BCF71C6DDAFD004C2EAD /* Sources */,
-				87E8BCF81C6DDAFD004C2EAD /* Frameworks */,
 				87E8BCF91C6DDAFD004C2EAD /* CopyFiles */,
+				87E8BCF81C6DDAFD004C2EAD /* Frameworks */,
 			);
 			buildRules = (
 			);

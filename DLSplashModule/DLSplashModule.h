@@ -10,6 +10,8 @@
 @import UIKit;
 #import "DLSplashModuleDelegate.h"
 
+@class DLSplashAd;
+
 /**
 Module responsible for providing ads for splash screen.
  */
@@ -64,5 +66,8 @@ Module responsible for providing ads for splash screen.
  @return Ad image
  */
 - (UIImage *)image;
+
+// TODO: probably this should be private
+- (DLSplashAd *)splashAd;
 
 @end

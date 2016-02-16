@@ -15,12 +15,6 @@
 @protocol DLSplashModuleDelegate
 
 /**
- Notifies that splash screen should be displayed. Parameter displayAd tells if ad data is ready to display.
- @param displayAd tells if ad should be displayed on splash screen.
- */
-- (void)splashScreenShouldBeDisplayedWithAd:(BOOL)displayAd;
-
-/**
  Notifies that splash screen should display ad.
  */
 - (void)splashScreenShouldDisplayAd;

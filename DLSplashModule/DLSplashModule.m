@@ -24,9 +24,8 @@ static DLSplashModule* sharedInstance;
         sharedInstance = [[self alloc] init];
     });
 
-    // Create instance of the DLSplashModule and set identifier
     sharedInstance.identifier = identifier;
-    // TODO: start fetching data
+    // [KK] TODO: start fetching data
 
     return sharedInstance;
 }
@@ -45,6 +44,13 @@ static DLSplashModule* sharedInstance;
 - (UIImage *)image
 {
     // [JZ] TODO: return fetched image
+    return nil;
+}
+
+// TODO: probably this should be private
+- (DLSplashAd *)splashAd
+{
+    // TODO: return DLSplashAd correctly, with the correct values, should be correlated with fetchind data
     return nil;
 }
 
