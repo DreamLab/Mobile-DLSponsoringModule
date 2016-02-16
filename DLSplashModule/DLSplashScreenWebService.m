@@ -49,8 +49,8 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
                                                         return;
                                                     }
 
-                                                    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:data];
                                                     if (completion) {
+                                                        DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:data];
                                                         completion(splashAd, error);
                                                     }
     }];

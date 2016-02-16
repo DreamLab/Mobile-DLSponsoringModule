@@ -27,7 +27,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
     _json = [DLSplashAd parseJSONData:data];
 
-    return (_json != nil) ? self : nil;
+    return (_json != nil ? self : nil);
 }
 
 - (NSURL *)imageURL
