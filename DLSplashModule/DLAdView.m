@@ -11,16 +11,16 @@
 #import "DLSplashAd.h"
 
 /// Max size of ImageView
-static NSInteger kMaxSizeOfImageView = 150;
-static NSTimeInterval kMaxTimeOfWaitingForContent = 3;
+static const NSInteger kMaxSizeOfImageView = 150;
+static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 
 @interface DLAdView()
-@property (nonatomic, weak) DLSplashModule* splashModule;
-@property (nonatomic, strong) DLSplashAd* splashAd;
+@property (nonatomic, weak) DLSplashModule *splashModule;
+@property (nonatomic, strong) DLSplashAd *splashAd;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
-@property (nonatomic) BOOL isDisplayed;
-@property (nonatomic, strong) NSTimer* displayTimer;
+@property (nonatomic) BOOL displayed;
+@property (nonatomic, strong) NSTimer *displayTimer;
 @end
 
 @implementation DLAdView
@@ -58,7 +58,7 @@ static NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 
 - (void)initialize
 {
-    self.isDisplayed = false;
+    self.displayed = NO;
     self.splashModule = DLSplashModule.sharedInstance;
 
     UIImage *image = nil;
@@ -92,8 +92,8 @@ static NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 
 - (void)layoutSubviews
 {
-    if (!self.isDisplayed) {
-        self.isDisplayed = true;
+    if (!self.displayed) {
+        self.displayed = YES;
         [self startWaitingForDataToDisplay];
     }
 }
