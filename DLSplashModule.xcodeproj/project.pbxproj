@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		87E8BD361C74631E004C2EAD /* DLSplashModuleUniversal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 87E8BD391C74631E004C2EAD /* Build configuration list for PBXAggregateTarget "DLSplashModuleUniversal" */;
+			buildPhases = (
+				87E8BD3A1C746324004C2EAD /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = DLSplashModuleUniversal;
+			productName = DLSplashModuleUniversal;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */; };
 		71ABFA3F1C6E237A003734E6 /* DLSplashScreenWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */; };
@@ -209,6 +223,9 @@
 					87E8BD101C6DEDAD004C2EAD = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					87E8BD361C74631E004C2EAD = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 87E8BCF61C6DDAFD004C2EAD /* Build configuration list for PBXProject "DLSplashModule" */;
@@ -225,6 +242,7 @@
 			targets = (
 				87E8BCFA1C6DDAFD004C2EAD /* DLSplashModule */,
 				87E8BD101C6DEDAD004C2EAD /* DLSplashModuleTests */,
+				87E8BD361C74631E004C2EAD /* DLSplashModuleUniversal */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +259,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		87E8BD3A1C746324004C2EAD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=./build/${CONFIGURATION}-universal\nLIB_NAME=\"lib${PROJECT_NAME}.a\"\n\n# clean build folder\nrm -rf ./build\n\n# Build all needed architectures\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/arm' BUILT_PRODUCTS_DIR='build/arm'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='arm64' VALID_ARCHS='arm64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/arm64' BUILT_PRODUCTS_DIR='build/arm64'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='i386' VALID_ARCHS='i386' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/i386' BUILT_PRODUCTS_DIR='build/i386'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='x86_64' VALID_ARCHS='x86_64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/x86_64' BUILT_PRODUCTS_DIR='build/x86_64'\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# make one binary\nlipo -create \"./build/arm/${LIB_NAME}\" \"./build/arm64/${LIB_NAME}\" \"./build/i386/${LIB_NAME}\" \"./build/x86_64/${LIB_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}\"\n\n# copy headers\ncp -R \"./build/arm/include\" \"${UNIVERSAL_OUTPUTFOLDER}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		87E8BCF71C6DDAFD004C2EAD /* Sources */ = {
@@ -393,6 +427,20 @@
 			};
 			name = Release;
 		};
+		87E8BD371C74631E004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		87E8BD381C74631E004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -422,6 +470,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		87E8BD391C74631E004C2EAD /* Build configuration list for PBXAggregateTarget "DLSplashModuleUniversal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD371C74631E004C2EAD /* Debug */,
+				87E8BD381C74631E004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
