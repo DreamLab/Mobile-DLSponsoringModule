@@ -71,6 +71,11 @@
 @property (nonatomic, strong, readonly) NSDictionary *json;
 
 /**
+ *  Path to permanent image location.
+ */
+@property (nonatomic, strong) NSString *imageLocationPath;
+
+/**
  *  Convenience initializer for DLSplashAd class
  *
  *  @param data NSData object of JSON fetched from server
@@ -86,6 +91,6 @@
  *
  *  @return Instance of DLSplashAd with parsed JSON
  */
-- (instancetype)initWithJSON:(NSDictionary *)json;
+- (instancetype)initWithJSONDictionary:(NSDictionary *)json;
 
 @end

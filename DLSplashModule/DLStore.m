@@ -14,25 +14,28 @@ NSString * const kDLSplashAdImageLocationCacheKey = @"com.dreamlab.splash_screen
 
 @implementation DLStore
 
-- (NSURL *)saveFilePermanently:(NSURL *)temporaryLocation withName:(NSString *)fileName
+- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofSplashAd:(DLSplashAd *)splashAd
 {
+    NSString *fileName = [NSString stringWithFormat:@"%ld", (long)splashAd.version];
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsURL = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
+    NSURL *documentsURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
     NSURL *fileURL = [documentsURL URLByAppendingPathComponent:fileName];
     NSError *moveError;
     if (![fileManager moveItemAtURL:temporaryLocation toURL:fileURL error:&moveError]) {
         NSLog(@"moveItemAtURL failed: %@", moveError);
-        return nil;
+        return NO;
     }
+    splashAd.imageLocationPath = [fileURL path];
 
-    return fileURL;
+    return YES;
 }
 
-- (void)cacheSplashAd:(DLSplashAd *)splashAd imageLocation:(NSString *)imageLocationPath
+- (void)cacheSplashAd:(DLSplashAd *)splashAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:splashAd.json forKey:kDLSplashAdJSONCacheKey];
-    [userDefaults setObject:imageLocationPath forKey:kDLSplashAdImageLocationCacheKey];
+    [userDefaults setObject:splashAd.imageLocationPath forKey:kDLSplashAdImageLocationCacheKey];
     [userDefaults synchronize];
 }
 
@@ -42,8 +45,9 @@ NSString * const kDLSplashAdImageLocationCacheKey = @"com.dreamlab.splash_screen
     NSDictionary *json = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
     NSString *imageLocationPath = [userDefaults objectForKey:kDLSplashAdImageLocationCacheKey];
 
-    DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSON:json];
+    DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
     cachedSplashAd.image = [self imageAtLocation:[NSURL URLWithString:imageLocationPath]];
+    cachedSplashAd.imageLocationPath = imageLocationPath;
 
     return cachedSplashAd;
 }

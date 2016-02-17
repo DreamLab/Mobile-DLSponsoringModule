@@ -26,7 +26,7 @@ static DLSplashModule* sharedInstance;
 
     // Create instance of the DLSplashModule and set identifier
     sharedInstance.identifier = identifier;
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:@"app_site"];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:identifier];
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);

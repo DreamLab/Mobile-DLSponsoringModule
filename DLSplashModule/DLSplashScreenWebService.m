@@ -61,7 +61,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     [dataTask resume];
 }
 
-- (void)fetchImageAtURL:(NSURL *)url success:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion
+- (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];

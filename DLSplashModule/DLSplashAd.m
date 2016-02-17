@@ -12,7 +12,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
 @implementation DLSplashAd
 
-- (instancetype)initWithJSON:(NSDictionary *)json
+- (instancetype)initWithJSONDictionary:(NSDictionary *)json
 {
     self = [super init];
     if (!self) {
@@ -28,7 +28,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 {
     NSDictionary *parsedJSON = [DLSplashAd parseJSONData:data];
 
-    return [self initWithJSON:parsedJSON];
+    return [self initWithJSONDictionary:parsedJSON];
 }
 
 - (NSURL *)imageURL

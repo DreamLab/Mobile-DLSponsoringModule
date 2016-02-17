@@ -9,17 +9,44 @@
 @import Foundation;
 #import "DLSplashAd.h"
 
+//Key to store JSON Dictionary in NSUserDefaults.
 extern NSString * const kDLSplashAdJSONCacheKey;
+
+// Key to store Ad image location in NSUserDefaults.
 extern NSString * const kDLSplashAdImageLocationCacheKey;
 
+/**
+ *  Class to manage caching of Splash Ad.
+ */
 @interface DLStore : NSObject
 
-- (NSURL *)saveFilePermanently:(NSURL *)temporaryLocation withName:(NSString *)fileName;
+/**
+ *  Saves Ad image permanently to cache folder on disk.
+ *
+ *  @param temporaryLocation Temporary location of fetched ad image.
+ *  @param splashAd          SplashAd of ad image.
+ *
+ *  @return Status if saving file was successful.
+ */
+- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofSplashAd:(DLSplashAd *)splashAd;
 
-- (void)cacheSplashAd:(DLSplashAd *)splashAd imageLocation:(NSString *)imageLocationPath;
+/**
+ *  Cache given SplashAd object to NSUserDefaults.
+ *
+ *  @param splashAd SplashAd to cache.
+ */
+- (void)cacheSplashAd:(DLSplashAd *)splashAd;
 
+/**
+ *  Cached SplashAd from NSUserDefaults.
+ *
+ *  @return Cached SplashAd.
+ */
 - (DLSplashAd *)cachedSplashAd;
 
+/**
+ *  Clears cache.
+ */
 - (void)clearCache;
 
 @end
