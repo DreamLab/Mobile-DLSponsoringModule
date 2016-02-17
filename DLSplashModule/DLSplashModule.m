@@ -7,6 +7,7 @@
 //
 
 #import "DLSplashModule.h"
+#import "DLSplashScreenWebService.h"
 
 @interface DLSplashModule()
 @property (nonatomic, strong) NSString *identifier;
@@ -25,7 +26,15 @@ static DLSplashModule* sharedInstance;
 
     // Create instance of the DLSplashModule and set identifier
     sharedInstance.identifier = identifier;
-    // TODO: start fetching data
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:@"app_site"];
+    [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
+        if (error) {
+            NSLog(@"Error occured: %@", error);
+            return;
+        }
+
+        NSLog(@"Fetched splash ad: %@", splashAd);
+    }];
 
     return sharedInstance;
 }

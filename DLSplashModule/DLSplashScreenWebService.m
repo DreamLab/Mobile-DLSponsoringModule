@@ -61,7 +61,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     [dataTask resume];
 }
 
-- (void)fetchImageAtURL:(NSURL *)url success:(void (^)(UIImage *image, NSURL *imagePath))successBlock failure:(void (^)(NSError *error))failureBlock
+- (void)fetchImageAtURL:(NSURL *)url success:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
@@ -69,41 +69,19 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:urlRequest
                                                             completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                                 if (error) {
-                                                                    if (failureBlock) {
-                                                                        failureBlock(error);
+                                                                    if (completion) {
+                                                                        completion(nil, nil, error);
                                                                     }
                                                                     return;
                                                                 }
 
-                                                                if (successBlock) {
+                                                                if (completion) {
                                                                     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-                                                                    NSURL *permanentLocation = [self saveFilePermanently:location];
-                                                                    if (permanentLocation) {
-                                                                        successBlock(image, permanentLocation);
-                                                                    } else {
-                                                                        NSLog(@"Error occurred.");
-                                                                    }
+                                                                    completion(image, location, error);
                                                                 }
     }];
 
     [downloadTask resume];
-}
-
-#pragma mark - Private methods
-
-- (NSURL *)saveFilePermanently:(NSURL *)temporaryLocation
-{
-    NSString *fileName = @"splash_ad.png";
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsURL = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
-    NSURL *fileURL = [documentsURL URLByAppendingPathComponent:fileName];
-    NSError *moveError;
-    if (![fileManager moveItemAtURL:temporaryLocation toURL:fileURL error:&moveError]) {
-        NSLog(@"moveItemAtURL failed: %@", moveError);
-        return nil;
-    }
-
-    return fileURL;
 }
 
 @end

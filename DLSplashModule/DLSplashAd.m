@@ -10,69 +10,70 @@
 
 NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.persiste_store";
 
-@interface DLSplashAd ()
-
-@property (nonatomic, strong) NSDictionary *json;
-
-@end
-
 @implementation DLSplashAd
 
-- (instancetype)initWithJSONData:(NSData *)data
+- (instancetype)initWithJSON:(NSDictionary *)json
 {
     self = [super init];
     if (!self) {
         return nil;
     }
 
-    _json = [DLSplashAd parseJSONData:data];
+    _json = json;
 
     return (_json != nil ? self : nil);
 }
 
+- (instancetype)initWithJSONData:(NSData *)data
+{
+    NSDictionary *parsedJSON = [DLSplashAd parseJSONData:data];
+
+    return [self initWithJSON:parsedJSON];
+}
+
 - (NSURL *)imageURL
 {
-    return [NSURL URLWithString:self.json[@"image"]];
+    return [NSURL URLWithString:self.json[@"splash"][@"image"]];
 }
 
 - (CGFloat)imageWidth
 {
-    return [self.json[@"width"] doubleValue];
+    return [self.json[@"splash"][@"width"] doubleValue];
 }
 
 - (CGFloat)imageHeight
 {
-    return [self.json[@"height"] doubleValue];
+    return [self.json[@"splash"][@"height"] doubleValue];
 }
 
 - (NSString *)text
 {
-    return self.json[@"txt"];
+    return self.json[@"splash"][@"txt"];
 }
 
 - (NSTimeInterval)time
 {
-    return [self.json[@"time"] doubleValue];
+    return [self.json[@"splash"][@"time"] doubleValue];
 }
 
 - (NSURL *)auditURL
 {
-    return [NSURL URLWithString:self.json[@"audit"]];
+    return [NSURL URLWithString:self.json[@"splash"][@"audit"]];
 }
 
 - (NSURL *)audit2URL
 {
-    return [NSURL URLWithString:self.json[@"audit2"]];
+    return [NSURL URLWithString:self.json[@"splash"][@"audit2"]];
 }
 
 - (NSURL *)clickURL
 {
-    return [NSURL URLWithString:self.json[@"click"]];
+    return [NSURL URLWithString:self.json[@"splash"][@"click"]];
 }
 
 - (NSInteger)version
 {
-    return [self.json[@"ver"] intValue];
+    return [self.json[@"splash"][@"ver"] intValue];
 }
 
 #pragma mark - private methods
@@ -97,7 +98,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    return bodyDictionary[@"splash"];
+    return bodyDictionary;
 }
 
 @end

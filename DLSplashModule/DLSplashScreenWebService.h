@@ -35,9 +35,8 @@
  *  Fetch image from server.
  *
  *  @param url          URL to the image.
- *  @param successBlock Success block containing downloaded image and path to its permanent location on disk.
- *  @param failureBlock Failure block containing error.
+ *  @param completion   Completion block containing downloaded image and path to its temporary location on disk and error if occurred.
  */
-- (void)fetchImageAtURL:(NSURL *)url success:(void (^)(UIImage *image, NSURL *imagePath))successBlock failure:(void (^)(NSError *error))failureBlock;
+- (void)fetchImageAtURL:(NSURL *)url success:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion;
 
 @end
