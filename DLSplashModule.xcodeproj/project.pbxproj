@@ -272,7 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=./build/${CONFIGURATION}-universal\nLIB_NAME=\"lib${PROJECT_NAME}.a\"\n\n# clean build folder\nrm -rf ./build\n\n# Build all needed architectures\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/arm' BUILT_PRODUCTS_DIR='build/arm'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='arm64' VALID_ARCHS='arm64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/arm64' BUILT_PRODUCTS_DIR='build/arm64'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='i386' VALID_ARCHS='i386' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/i386' BUILT_PRODUCTS_DIR='build/i386'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='x86_64' VALID_ARCHS='x86_64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/x86_64' BUILT_PRODUCTS_DIR='build/x86_64'\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# make one binary\nlipo -create \"./build/arm/${LIB_NAME}\" \"./build/arm64/${LIB_NAME}\" \"./build/i386/${LIB_NAME}\" \"./build/x86_64/${LIB_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}\"\n\n# copy headers\ncp -R \"./build/arm/include\" \"${UNIVERSAL_OUTPUTFOLDER}\"";
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=\"${CONFIGURATION_BUILD_DIR}\"\nLIB_NAME=\"lib${PROJECT_NAME}.a\"\n\n# clean build folder\nrm -rf ./build\n\n# Build all needed architectures\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/arm' BUILT_PRODUCTS_DIR='build/arm'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='arm64' VALID_ARCHS='arm64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/arm64' BUILT_PRODUCTS_DIR='build/arm64'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='i386' VALID_ARCHS='i386' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/i386' BUILT_PRODUCTS_DIR='build/i386'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='x86_64' VALID_ARCHS='x86_64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/x86_64' BUILT_PRODUCTS_DIR='build/x86_64'\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# make one binary\nlipo -create \"./build/arm/${LIB_NAME}\" \"./build/arm64/${LIB_NAME}\" \"./build/i386/${LIB_NAME}\" \"./build/x86_64/${LIB_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}\"\n\n# copy headers\ncp -R \"./build/arm/include\" \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# copy results to Pod directory\nrm -rf \"Pod\"\ncp -r \"${UNIVERSAL_OUTPUTFOLDER}\" \"Pod\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -345,7 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -382,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -478,6 +478,7 @@
 				87E8BD381C74631E004C2EAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
