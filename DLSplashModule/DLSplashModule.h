@@ -59,9 +59,19 @@ Module responsible for providing ads for splash screen.
  */
 - (void)removeAllDelegates;
 
-// TODO: maybe it should be in delegate - should
-- (void)adViewDidShow:(DLAdView *)adView;
-- (void)adViewDidDisplayImage:(DLAdView *)adView;
+// TODO: probably those two method should be extracted to some protocol, or extension - shouldn't be visible from outside
+/**
+ Notifies DLSplashModule that ad view was displayed
 
+ @param adView DLAdView that generated event.
+ */
+- (void)adViewDidShow:(DLAdView *)adView;
+
+/**
+ Notifies DLSplashModule that ad view displayed image
+
+ @param adView DLAdView that generated event.
+ */
+- (void)adViewDidDisplayImage:(DLAdView *)adView;
 
 @end
