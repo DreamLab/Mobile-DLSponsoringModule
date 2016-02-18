@@ -11,20 +11,6 @@
 @class DLSplashAd;
 
 /**
- *  Type of tracking types.
- */
-typedef NS_ENUM(NSInteger, DLSplashTracking) {
-    /**
-     *  Audit tracking.
-     */
-    DLSplashTrackingAudit,
-    /**
-     *  Audit 2 tracking.
-     */
-    DLSplashTrackingAudit2
-};
-
-/**
  *  Class to fetch data from server
  */
 @interface DLSplashScreenWebService : NSObject
@@ -54,10 +40,10 @@ typedef NS_ENUM(NSInteger, DLSplashTracking) {
 - (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion;
 
 /**
- *  Send http request in order to do tracking.
+ *  Send tracking requests.
  *
- *  @param splashTrackingType Type of Audit to track.
+ *  @param splashAd SplashAd to track.
  */
-- (void)track:(DLSplashTracking)splashTrackingType;
+- (void)trackForSplashAd:(DLSplashAd *)splashAd;
 
 @end

@@ -11,7 +11,6 @@
 
 #import "DLSplashScreenWebService.h"
 #import "DLSplashAd.h"
-#import "DLStore.h"
 
 NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=splash/csr.json";
 
@@ -85,40 +84,27 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     [downloadTask resume];
 }
 
-- (void)track:(DLSplashTracking)splashTrackingType
+- (void)trackForSplashAd:(DLSplashAd *)splashAd
 {
-    DLStore *store = [[DLStore alloc] init];
-    DLSplashAd *cachedSplashAd = [store cachedSplashAd];
-
-    if (!cachedSplashAd) {
-        return;
-    }
-
     NSURLSession *session = [NSURLSession sharedSession];
 
-    NSURLRequest *urlRequest = nil;
-    switch (splashTrackingType) {
-        case DLSplashTrackingAudit:
-            urlRequest = [NSURLRequest requestWithURL:cachedSplashAd.auditURL];
-            break;
-        case DLSplashTrackingAudit2:
-            urlRequest = [NSURLRequest requestWithURL:cachedSplashAd.audit2URL];
-            break;
-        default:
-            break;
-    }
+    NSURLRequest *urlRequestAudit = [NSURLRequest requestWithURL:splashAd.auditURL];
+    NSURLRequest *urlRequestAudit2 = [NSURLRequest requestWithURL:splashAd.audit2URL];
 
-    if (!urlRequest) {
-        return;
-    }
-
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *dataTaskAudit = [session dataTaskWithRequest:urlRequestAudit completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error occurred while tracking audit: %@", error.description);
         }
     }];
 
-    [dataTask resume];
+    NSURLSessionDataTask *dataTaskAudit2 = [session dataTaskWithRequest:urlRequestAudit2 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error occurred while tracking audit2: %@", error.description);
+        }
+    }];
+
+    [dataTaskAudit resume];
+    [dataTaskAudit2 resume];
 }
 
 @end
