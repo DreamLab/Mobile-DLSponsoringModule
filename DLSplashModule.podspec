@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name            = 'DLSplashModule'
   s.version         = '0.1.0'
-  s.platform        = :ios
+  s.platform        = :ios, "7.0"
   s.summary         = 'Module to provide Ad for splash screen.'
   s.author          = { 'Konrad Kierys' => 'konrad.kierys@asideas.de','Jacek Zapart' => 'jacek.zapart@asideas.de' }
   s.homepage        = 'http://<STASH_USER_NAME>@stash.grupa.onet/scm/pod/ios-splashmodule.git'
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
     :tag => s.version.to_s
   }
   s.source_files = "Pod/**/*.h"
-  s.ios.vendored_libraries = 'Pod/libDLSplashModule.a'
+  s.vendored_libraries = 'Pod/libDLSplashModule.a'
 end
