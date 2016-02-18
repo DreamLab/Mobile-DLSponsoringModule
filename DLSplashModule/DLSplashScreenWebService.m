@@ -6,6 +6,9 @@
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
+@import UIKit;
+@import Foundation;
+
 #import "DLSplashScreenWebService.h"
 #import "DLSplashAd.h"
 
@@ -56,6 +59,29 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     }];
 
     [dataTask resume];
+}
+
+- (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:urlRequest
+                                                            completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                                if (error) {
+                                                                    if (completion) {
+                                                                        completion(nil, nil, error);
+                                                                    }
+                                                                    return;
+                                                                }
+
+                                                                if (completion) {
+                                                                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                                                                    completion(image, location, error);
+                                                                }
+    }];
+
+    [downloadTask resume];
 }
 
 @end
