@@ -86,25 +86,27 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 - (void)trackForSplashAd:(DLSplashAd *)splashAd
 {
-    NSURLSession *session = [NSURLSession sharedSession];
-
-    NSURLRequest *urlRequestAudit = [NSURLRequest requestWithURL:splashAd.auditURL];
-    NSURLRequest *urlRequestAudit2 = [NSURLRequest requestWithURL:splashAd.audit2URL];
-
-    NSURLSessionDataTask *dataTaskAudit = [session dataTaskWithRequest:urlRequestAudit completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Error occurred while tracking audit: %@", error.description);
-        }
-    }];
-
-    NSURLSessionDataTask *dataTaskAudit2 = [session dataTaskWithRequest:urlRequestAudit2 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Error occurred while tracking audit2: %@", error.description);
-        }
-    }];
+    NSURLSessionDataTask *dataTaskAudit = [self sessionDataTaskForURL:splashAd.auditURL];
+    NSURLSessionDataTask *dataTaskAudit2 = [self sessionDataTaskForURL:splashAd.audit2URL];
 
     [dataTaskAudit resume];
     [dataTaskAudit2 resume];
+}
+
+#pragma mark - Private methods
+
+- (NSURLSessionDataTask *)sessionDataTaskForURL:(NSURL *)url
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error occurred: %@ while sending request to url: %@", error.description, url);
+        }
+    }];
+
+    return dataTask;
 }
 
 @end
