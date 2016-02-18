@@ -13,6 +13,7 @@
 		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
 		71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B21C734F1200CF6981 /* EmptyJsonData.json */; };
 		71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* WrongJsonData.json */; };
+		71ED73221C7492C500CFF031 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED73211C7492C500CFF031 /* DLStore.m */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
@@ -60,6 +61,8 @@
 		71C020B11C734F1200CF6981 /* CorrectJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CorrectJsonData.json; path = "Unit Tests Data/CorrectJsonData.json"; sourceTree = "<group>"; };
 		71C020B21C734F1200CF6981 /* EmptyJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EmptyJsonData.json; path = "Unit Tests Data/EmptyJsonData.json"; sourceTree = "<group>"; };
 		71C020B31C734F1200CF6981 /* WrongJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WrongJsonData.json; path = "Unit Tests Data/WrongJsonData.json"; sourceTree = "<group>"; };
+		71ED73201C7492C500CFF031 /* DLStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStore.h; sourceTree = "<group>"; };
+		71ED73211C7492C500CFF031 /* DLStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStore.m; sourceTree = "<group>"; };
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */,
 				87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */,
 				87E8BD321C7326CC004C2EAD /* DLSplashModuleDelegate.h */,
+				71ED73201C7492C500CFF031 /* DLStore.h */,
+				71ED73211C7492C500CFF031 /* DLStore.m */,
 			);
 			path = DLSplashModule;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			files = (
 				87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */,
 				71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */,
+				71ED73221C7492C500CFF031 /* DLStore.m in Sources */,
 				71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */,
 				87E8BD2E1C6E01DE004C2EAD /* DLAdView.m in Sources */,
 			);
