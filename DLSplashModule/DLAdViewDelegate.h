@@ -23,4 +23,9 @@
  */
 - (void)adView:(DLAdView *)adView didTapImageWithUrl:(NSURL *)url;
 
+/**
+ Notifies that splash screen should be closed - time of displaying it passed.
+ */
+- (void)splashScreenShouldClose;
+
 @end

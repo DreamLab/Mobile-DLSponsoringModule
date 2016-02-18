@@ -12,7 +12,6 @@
 
 /// Max size of ImageView
 static const NSInteger kMaxSizeOfImageView = 150;
-static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 
 @interface DLAdView()
 @property (nonatomic, weak) DLSplashModule *splashModule;
@@ -20,7 +19,6 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic) BOOL displayed;
-@property (nonatomic, strong) NSTimer *displayTimer;
 @end
 
 @implementation DLAdView
@@ -60,10 +58,9 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 {
     self.displayed = NO;
     self.splashModule = DLSplashModule.sharedInstance;
+    [self.splashModule addDelegate:self];
 
-    UIImage *image = nil;
-
-    self.imageView = [[UIImageView alloc] initWithImage: image];
+    self.imageView = [[UIImageView alloc] initWithImage: nil];
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -75,12 +72,18 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
     [self addConstraints: @[centerX, centerY, width, height]];
 
     [self initializeGestureRecognizer];
+    [self displayAd];
 }
 
 - (void)initializeGestureRecognizer
 {
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
     [self.imageView addGestureRecognizer:self.tapGestureRecognizer];
+}
+
+- (void)dealloc
+{
+    [self.splashModule removeDelegate:self];
 }
 
 #pragma mark - Private Methods
@@ -94,58 +97,36 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 {
     if (!self.displayed) {
         self.displayed = YES;
-        [self startWaitingForDataToDisplay];
+        [self.splashModule adViewDidShow:self];
     }
-}
-
-- (void)startWaitingForDataToDisplay
-{
-    NSInteger waitingTime = kMaxTimeOfWaitingForContent;
-    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:waitingTime
-                                                         target:self
-                                                       selector:@selector(waitingTimePassed)
-                                                       userInfo:nil
-                                                        repeats:NO];
-}
-
-- (void)waitingTimePassed
-{
-    self.displayTimer = nil;
-
-    // TODO: Get cached version of splashAd and display it
-    self.splashAd = self.splashModule.splashAd;
-    [self displayAd];
 }
 
 - (void)displayAd
 {
-    UIImage *image = nil; // TODO: get image from splashAd <- add image property
-    [self.imageView setImage:image];
-
-    // if image is smaller than view, then center it, otherwise aspect fit.
-    if (self.splashAd.imageWidth < kMaxSizeOfImageView && self.splashAd.imageHeight < kMaxSizeOfImageView) {
-        self.imageView.contentMode = UIViewContentModeCenter;
-    } else {
-        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *image = DLSplashModule.sharedInstance.splashAd.image;
+    if (image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.imageView setImage:image];
+            // if image is smaller than view, then center it, otherwise aspect fit.
+            if (self.splashAd.imageWidth < kMaxSizeOfImageView && self.splashAd.imageHeight < kMaxSizeOfImageView) {
+                self.imageView.contentMode = UIViewContentModeCenter;
+            } else {
+                self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            }
+            [self.splashModule adViewDidDisplayImage:self];
+        });
     }
-
-    NSInteger waitingTime = self.splashAd.time;
-    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:waitingTime
-                                                         target:self
-                                                       selector:@selector(displayingTimePassed)
-                                                       userInfo:nil
-                                                        repeats:NO];
 }
 
-- (void)displayingTimePassed
+#pragma mark - DLSplashModuleDelegate
+- (void)splashScreenShouldDisplayAd
 {
-    self.displayTimer = nil;
-    // TODO: notify about displaying time passed
+    [self displayAd];
 }
 
-- (void)sendAuditData
+- (void)splashScreenShouldClose
 {
-    // [JZ] TODO: send Audit Data (separate task)
+    [self.delegate splashScreenShouldClose];
 }
 
 @end

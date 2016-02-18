@@ -9,6 +9,7 @@
 @import Foundation;
 @import UIKit;
 #import "DLSplashModuleDelegate.h"
+#import "DLAdView.h"
 
 @class DLSplashAd;
 
@@ -16,6 +17,11 @@
 Module responsible for providing ads for splash screen.
  */
 @interface DLSplashModule : NSObject
+
+/**
+ Splash Ad
+ */
+@property (nonatomic, strong, readonly) DLSplashAd *splashAd;
 
 /**
  Initializes module with the app site parameter. It initialize the shared instance. Should be called before first use.
@@ -53,7 +59,9 @@ Module responsible for providing ads for splash screen.
  */
 - (void)removeAllDelegates;
 
-// TODO: probably this should be private
-- (DLSplashAd *)splashAd;
+// TODO: maybe it should be in delegate - should
+- (void)adViewDidShow:(DLAdView *)adView;
+- (void)adViewDidDisplayImage:(DLAdView *)adView;
+
 
 @end
