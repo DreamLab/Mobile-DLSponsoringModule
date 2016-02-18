@@ -1,4 +1,4 @@
-# DLCocoaLumberjackHelper
+# DLSplashModule
 
 Module to provide Ad for splash screen.
 
