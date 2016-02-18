@@ -11,6 +11,20 @@
 @class DLSplashAd;
 
 /**
+ *  Type of tracking types.
+ */
+typedef NS_ENUM(NSInteger, DLSplashTracking) {
+    /**
+     *  Audit tracking.
+     */
+    DLSplashTrackingAudit,
+    /**
+     *  Audit 2 tracking.
+     */
+    DLSplashTrackingAudit2
+};
+
+/**
  *  Class to fetch data from server
  */
 @interface DLSplashScreenWebService : NSObject
@@ -38,5 +52,12 @@
  *  @param completion   Completion block containing downloaded image and path to its temporary location on disk and error if occurred.
  */
 - (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion;
+
+/**
+ *  Send http request in order to do tracking.
+ *
+ *  @param splashTrackingType Type of Audit to track.
+ */
+- (void)track:(DLSplashTracking)splashTrackingType;
 
 @end
