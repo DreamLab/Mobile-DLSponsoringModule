@@ -99,6 +99,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
+            // TODO: Think of storing tracking request if error occurred and send them again in some point in the future. PO decision needed here.
             NSLog(@"Error occurred: %@ while sending request to url: %@", error.description, url);
         }
     }];
