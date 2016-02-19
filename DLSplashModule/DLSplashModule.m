@@ -73,18 +73,21 @@ static DLSplashModule* sharedInstance;
 
         if (splashAd.version != cachedSplashAd.version || !cachedSplashAd.image) {
             [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
+                if (error) {
+                    self.splashAd = nil;
+                    NSLog(@"Error occured: %@", error);
+                    return;
+                }
                 splashAd.image = image;
                 self.splashAd = splashAd;
-                // TODO: clear cache?
+                [store clearCache];
                 [store saveAdImageFromTemporaryLocation:imageLocation ofSplashAd:splashAd];
                 [store cacheSplashAd:splashAd];
-                [self waitingForDataFinished];
             }];
         } else {
             splashAd.image = cachedSplashAd.image;
             splashAd.imageLocationPath = cachedSplashAd.imageLocationPath;
             self.splashAd = splashAd;
-            [self waitingForDataFinished];
         }
 
         NSLog(@"Fetched splash ad: %@", splashAd);
@@ -97,6 +100,16 @@ static DLSplashModule* sharedInstance;
         _adView = [[DLAdView alloc] init];
     }
     return _adView;
+}
+
+-(void)setSplashAd:(DLSplashAd *)splashAd
+{
+    _splashAd = splashAd;
+    if (_splashAd) {
+        [self waitingForDataFinished];
+    } else {
+        [self notifyDelegatesSplashScreenShouldBeClosed];
+    }
 }
 
 #pragma mark - Delegate
