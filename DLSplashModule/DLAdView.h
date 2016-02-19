@@ -7,6 +7,7 @@
 //
 
 #import "DLAdViewDelegate.h"
+#import "DLSplashModuleDelegate.h"
 
 @import UIKit;
 @import Foundation;
@@ -14,7 +15,7 @@
 /**
 View to display the image of the ad.
  */
-@interface DLAdView : UIView
+@interface DLAdView : UIView <DLSplashModuleDelegate>
 
 /**
  Delegate of the DLAdViewDelegate protocol.

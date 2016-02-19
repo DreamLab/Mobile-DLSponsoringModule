@@ -22,7 +22,6 @@
 
 /* Begin PBXBuildFile section */
 		71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */; };
-		71ABFA3F1C6E237A003734E6 /* DLSplashScreenWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */; };
 		71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA411C6E38C9003734E6 /* DLSplashAd.m */; };
 		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
 		71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B21C734F1200CF6981 /* EmptyJsonData.json */; };
@@ -56,7 +55,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				71ABFA3F1C6E237A003734E6 /* DLSplashScreenWebService.h in CopyFiles */,
 				87E8BD311C71E7D2004C2EAD /* DLAdViewDelegate.h in CopyFiles */,
 				87E8BD2F1C6E06A2004C2EAD /* DLAdView.h in CopyFiles */,
 				87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */,
@@ -78,6 +76,7 @@
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
+		872C68DC1C762426006064FD /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdView.h; sourceTree = "<group>"; };
 		87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdView.m; sourceTree = "<group>"; };
 		87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
+		87E8BD321C7326CC004C2EAD /* DLSplashModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashModuleDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,12 +151,14 @@
 				71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */,
 				71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */,
 				87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */,
+				872C68DC1C762426006064FD /* DLSplashModule+Internal.h */,
 				87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */,
 				71ABFA401C6E38C9003734E6 /* DLSplashAd.h */,
 				71ABFA411C6E38C9003734E6 /* DLSplashAd.m */,
 				87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */,
 				87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */,
 				87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */,
+				87E8BD321C7326CC004C2EAD /* DLSplashModuleDelegate.h */,
 				71ED73201C7492C500CFF031 /* DLStore.h */,
 				71ED73211C7492C500CFF031 /* DLStore.m */,
 			);
@@ -183,8 +185,8 @@
 			buildConfigurationList = 87E8BD041C6DDAFD004C2EAD /* Build configuration list for PBXNativeTarget "DLSplashModule" */;
 			buildPhases = (
 				87E8BCF71C6DDAFD004C2EAD /* Sources */,
-				87E8BCF81C6DDAFD004C2EAD /* Frameworks */,
 				87E8BCF91C6DDAFD004C2EAD /* CopyFiles */,
+				87E8BCF81C6DDAFD004C2EAD /* Frameworks */,
 			);
 			buildRules = (
 			);
