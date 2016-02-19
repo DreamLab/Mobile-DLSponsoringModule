@@ -24,6 +24,14 @@
 - (void)adView:(DLAdView *)adView didTapImageWithUrl:(NSURL *)url;
 
 /**
+ Method is called when DLAdView fulfill the content of the ad.
+
+ @param adView         DLAdView that generated this event.
+ @param associatedText NSString that should be displayed next to the Ad.
+ */
+- (void)adView:(DLAdView *)adView didDisplayAdWithAssociatedText:(NSString *)associatedText;
+
+/**
  Notifies that splash screen should be closed - time of displaying it passed.
  */
 - (void)splashScreenShouldBeClosed;

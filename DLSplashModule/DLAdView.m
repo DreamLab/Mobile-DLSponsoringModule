@@ -53,6 +53,11 @@ static const NSInteger kMaxSizeOfImageView = 150;
     return self;
 }
 
+- (NSString *)associatedText
+{
+    return self.splashAd.text;
+}
+
 #pragma mark - Private Initializers
 
 - (void)initialize
@@ -114,6 +119,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
             } else {
                 self.imageView.contentMode = UIViewContentModeScaleAspectFit;
             }
+            [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
             [self.splashModule adViewDidDisplayImage:self];
         });
     }
