@@ -86,16 +86,13 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 - (void)trackForSplashAd:(DLSplashAd *)splashAd
 {
-    NSURLSessionDataTask *dataTaskAudit = [self sessionDataTaskForURL:splashAd.auditURL];
-    NSURLSessionDataTask *dataTaskAudit2 = [self sessionDataTaskForURL:splashAd.audit2URL];
-
-    [dataTaskAudit resume];
-    [dataTaskAudit2 resume];
+    [self performSessionDataTaskForURL:splashAd.auditURL];
+    [self performSessionDataTaskForURL:splashAd.audit2URL];
 }
 
 #pragma mark - Private methods
 
-- (NSURLSessionDataTask *)sessionDataTaskForURL:(NSURL *)url
+- (void)performSessionDataTaskForURL:(NSURL *)url
 {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
@@ -106,7 +103,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
         }
     }];
 
-    return dataTask;
+    [dataTask resume];
 }
 
 @end
