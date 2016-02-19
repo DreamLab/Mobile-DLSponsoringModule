@@ -39,4 +39,11 @@
  */
 - (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion;
 
+/**
+ *  Send tracking requests.
+ *
+ *  @param splashAd SplashAd to track.
+ */
+- (void)trackForSplashAd:(DLSplashAd *)splashAd;
+
 @end
