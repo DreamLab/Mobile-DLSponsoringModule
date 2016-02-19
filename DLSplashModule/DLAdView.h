@@ -18,6 +18,11 @@ View to display the image of the ad.
 @interface DLAdView : UIView <DLSplashModuleDelegate>
 
 /**
+ Property for reading text associated with currently displayed ad.
+ */
+@property (nonatomic, readonly) NSString *associatedText;
+
+/**
  Delegate of the DLAdViewDelegate protocol.
  */
 @property (nonatomic, weak) id<DLAdViewDelegate> delegate;
