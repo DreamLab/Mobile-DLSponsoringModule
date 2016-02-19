@@ -18,11 +18,9 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 @property (nonatomic, strong) NSMutableSet *delegates;
 @property (nonatomic, strong) NSTimer *displayTimer;
 @property (nonatomic, strong) NSTimer *waitingTimer;
-
 @property (nonatomic, weak) DLAdView *displayedAdView;
-
 @property (nonatomic, strong) DLSplashAd *splashAd;
-@property (nonatomic, strong) DLAdView *adView;
+@property (nonatomic, strong) DLAdView *generatedAdView;
 
 @end
 
@@ -74,7 +72,7 @@ static DLSplashModule* sharedInstance;
         if (splashAd.version != cachedSplashAd.version || !cachedSplashAd.image) {
             [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
-                    self.splashAd = nil;
+                    self.splashAd = cachedSplashAd.image ? cachedSplashAd : nil;
                     NSLog(@"Error occured: %@", error);
                     return;
                 }
@@ -96,10 +94,10 @@ static DLSplashModule* sharedInstance;
 
 - (DLAdView *)adView
 {
-    if (!_adView) {
-        _adView = [[DLAdView alloc] init];
+    if (!_generatedAdView) {
+        _generatedAdView = [[DLAdView alloc] init];
     }
-    return _adView;
+    return _generatedAdView;
 }
 
 -(void)setSplashAd:(DLSplashAd *)splashAd
