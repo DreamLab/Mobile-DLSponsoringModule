@@ -6,8 +6,9 @@
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
+@import Foundation;
+@import UIKit;
+@import CoreGraphics;
 
 /**
  *  Class to parse Splash JSON and to expose its parameters
@@ -28,6 +29,11 @@
  *  Height of ad image
  */
 @property (nonatomic, assign, readonly) CGFloat imageHeight;
+
+/**
+ *  Ad image.
+ */
+@property (nonatomic, strong) UIImage *image;
 
 /**
  *  Text for corresponding ad
@@ -60,12 +66,31 @@
 @property (nonatomic, assign, readonly) NSInteger version;
 
 /**
- *  Designated initializer for DLSplashAd class
+ *  JSON of Splash Ad.
+ */
+@property (nonatomic, strong, readonly) NSDictionary *json;
+
+/**
+ *  Path to permanent image location.
+ */
+@property (nonatomic, strong) NSString *imageLocationPath;
+
+/**
+ *  Convenience initializer for DLSplashAd class
  *
  *  @param data NSData object of JSON fetched from server
  *
  *  @return Instance of DLSplashAd with parsed JSON
  */
 - (instancetype)initWithJSONData:(NSData *)data;
+
+/**
+ *  Desingated initializer for DLSplashAd class
+ *
+ *  @param json JSON Dictionary
+ *
+ *  @return Instance of DLSplashAd with parsed JSON
+ */
+- (instancetype)initWithJSONDictionary:(NSDictionary *)json;
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "DLSplashModule.h"
+#import "DLSplashScreenWebService.h"
+#import "DLStore.h"
 
 @interface DLSplashModule()
 @property (nonatomic, strong) NSString *identifier;
@@ -25,7 +27,29 @@ static DLSplashModule* sharedInstance;
 
     // Create instance of the DLSplashModule and set identifier
     sharedInstance.identifier = identifier;
-    // TODO: start fetching data
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:identifier];
+    [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
+        if (error) {
+            NSLog(@"Error occured: %@", error);
+            return;
+        }
+
+        DLStore *store = [[DLStore alloc] init];
+        DLSplashAd *cachedSplashAd = [store cachedSplashAd];
+
+        if (splashAd.version != cachedSplashAd.version || !cachedSplashAd.image) {
+            [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
+                splashAd.image = image;
+                [store saveAdImageFromTemporaryLocation:imageLocation ofSplashAd:splashAd];
+                [store cacheSplashAd:splashAd];
+            }];
+        } else {
+            splashAd.image = cachedSplashAd.image;
+            splashAd.imageLocationPath = cachedSplashAd.imageLocationPath;
+        }
+
+        NSLog(@"Fetched splash ad: %@", splashAd);
+    }];
 
     return sharedInstance;
 }
