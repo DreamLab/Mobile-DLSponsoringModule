@@ -19,9 +19,9 @@ Module responsible for providing ads for splash screen.
 @interface DLSplashModule : NSObject
 
 /**
- Splash Ad
+ Returns initialized object of class DLAdView. Each time it returns the same object.
  */
-@property (nonatomic, strong, readonly) DLSplashAd *splashAd;
+@property (nonatomic, readonly) DLAdView *adView;
 
 /**
  Initializes module with the app site parameter. It initialize the shared instance. Should be called before first use.
@@ -39,39 +39,5 @@ Module responsible for providing ads for splash screen.
  @return Instance of DLSplashModule or nil if not initialized
  */
 + (instancetype)sharedInstance;
-
-/**
- Add delegate to the DLSplashModule.
-
- @param delegate DLSplashModuleDelegate implementation
- */
-- (void)addDelegate:(id<DLSplashModuleDelegate>)delegate;
-
-/**
- Remove delegate from the DLSplash module.
-
- @param delegate DLSplashModuleDelegate implementation
- */
-- (void)removeDelegate:(id<DLSplashModuleDelegate>)delegate;
-
-/**
- Remove all delegates from the DLSplashModule.
- */
-- (void)removeAllDelegates;
-
-// TODO: probably those two method should be extracted to some protocol, or extension - shouldn't be visible from outside
-/**
- Notifies DLSplashModule that ad view was displayed
-
- @param adView DLAdView that generated event.
- */
-- (void)adViewDidShow:(DLAdView *)adView;
-
-/**
- Notifies DLSplashModule that ad view displayed image
-
- @param adView DLAdView that generated event.
- */
-- (void)adViewDidDisplayImage:(DLAdView *)adView;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DLAdView.h"
 #import "DLSplashModule.h"
+#import "DLSplashModule+Internal.h"
 #import "DLSplashAd.h"
 
 /// Max size of ImageView
@@ -124,9 +125,9 @@ static const NSInteger kMaxSizeOfImageView = 150;
     [self displayAd];
 }
 
-- (void)splashScreenShouldClose
+- (void)splashScreenShouldBeClosed
 {
-    [self.delegate splashScreenShouldClose];
+    [self.delegate splashScreenShouldBeClosed];
 }
 
 @end

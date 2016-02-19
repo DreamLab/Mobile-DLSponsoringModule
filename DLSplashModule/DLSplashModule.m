@@ -7,6 +7,7 @@
 //
 
 #import "DLSplashModule.h"
+#import "DLSplashModule+Internal.h"
 #import "DLSplashScreenWebService.h"
 #import "DLStore.h"
 
@@ -19,6 +20,10 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 @property (nonatomic, strong) NSTimer *waitingTimer;
 
 @property (nonatomic, weak) DLAdView *displayedAdView;
+
+@property (nonatomic, strong) DLSplashAd *splashAd;
+@property (nonatomic, strong) DLAdView *adView;
+
 @end
 
 @implementation DLSplashModule
@@ -46,9 +51,10 @@ static DLSplashModule* sharedInstance;
 - (instancetype)init
 {
     self = [super init];
-    if (self != nil) {
-        _delegates = [[NSMutableSet alloc] init];
+    if (!self) {
+        return nil;
     }
+    _delegates = [[NSMutableSet alloc] init];
     return self;
 }
 
@@ -60,7 +66,7 @@ static DLSplashModule* sharedInstance;
     DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.identifier];
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
-            _splashAd = cachedSplashAd;
+            self.splashAd = cachedSplashAd;
             NSLog(@"Error occured: %@", error);
             return;
         }
@@ -68,7 +74,7 @@ static DLSplashModule* sharedInstance;
         if (splashAd.version != cachedSplashAd.version || !cachedSplashAd.image) {
             [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 splashAd.image = image;
-                _splashAd = splashAd;
+                self.splashAd = splashAd;
                 // TODO: clear cache?
                 [store saveAdImageFromTemporaryLocation:imageLocation ofSplashAd:splashAd];
                 [store cacheSplashAd:splashAd];
@@ -77,12 +83,20 @@ static DLSplashModule* sharedInstance;
         } else {
             splashAd.image = cachedSplashAd.image;
             splashAd.imageLocationPath = cachedSplashAd.imageLocationPath;
-            _splashAd = splashAd;
+            self.splashAd = splashAd;
             [self waitingForDataFinished];
         }
 
         NSLog(@"Fetched splash ad: %@", splashAd);
     }];
+}
+
+- (DLAdView *)adView
+{
+    if (!_adView) {
+        _adView = [[DLAdView alloc] init];
+    }
+    return _adView;
 }
 
 #pragma mark - Delegate
@@ -108,14 +122,14 @@ static DLSplashModule* sharedInstance;
     }
 }
 
-- (void)notifyDelegatesSplashScreenShouldClose
+- (void)notifyDelegatesSplashScreenShouldBeClosed
 {
     for (id<DLSplashModuleDelegate> delegate in self.delegates) {
-        [delegate splashScreenShouldClose];
+        [delegate splashScreenShouldBeClosed];
     }
 }
 
-# pragma mark - Timers
+#pragma mark - Timers
 - (void)waitingForDataStarted
 {
     NSInteger waitingTime = kMaxTimeOfWaitingForContent;
@@ -148,10 +162,10 @@ static DLSplashModule* sharedInstance;
 - (void)displayingTimePassed
 {
     self.displayTimer = nil;
-    [self notifyDelegatesSplashScreenShouldClose];
+    [self notifyDelegatesSplashScreenShouldBeClosed];
 }
 
-# pragma mark - Communication with ad view
+#pragma mark - Communication with ad view
 
 - (void)adViewDidShow:(DLAdView *)adView
 {
@@ -163,7 +177,7 @@ static DLSplashModule* sharedInstance;
     [self displayingTimeStarted];
 }
 
-# pragma mark - Auditing
+#pragma mark - Auditing
 - (void)sendAuditData
 {
     // TODO: send Audit Data (separate task)
