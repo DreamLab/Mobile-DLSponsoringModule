@@ -7,6 +7,7 @@
 //
 
 #import "DLAdViewDelegate.h"
+#import "DLSplashModuleDelegate.h"
 
 @import UIKit;
 @import Foundation;
@@ -14,7 +15,12 @@
 /**
 View to display the image of the ad.
  */
-@interface DLAdView : UIView
+@interface DLAdView : UIView <DLSplashModuleDelegate>
+
+/**
+ Property for reading text associated with currently displayed ad.
+ */
+@property (nonatomic, readonly) NSString *associatedText;
 
 /**
  Delegate of the DLAdViewDelegate protocol.

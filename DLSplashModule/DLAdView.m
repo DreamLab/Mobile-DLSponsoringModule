@@ -8,19 +8,23 @@
 
 #import "DLAdView.h"
 #import "DLSplashModule.h"
+#import "DLSplashModule+Internal.h"
+#import "DLSplashAd.h"
 
 /// Max size of ImageView
-static int kMaxSizeOfImageView = 150;
+static const NSInteger kMaxSizeOfImageView = 150;
 
 @interface DLAdView()
-@property (nonatomic, weak) DLSplashModule* splashModule;
+@property (nonatomic, weak) DLSplashModule *splashModule;
+@property (nonatomic, strong) DLSplashAd *splashAd;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic) BOOL displayed;
 @end
 
 @implementation DLAdView
 
-#pragma mark Initializers
+#pragma mark - Initializers
 
 - (instancetype)init
 {
@@ -49,22 +53,20 @@ static int kMaxSizeOfImageView = 150;
     return self;
 }
 
-#pragma mark Private Initializers
+- (NSString *)associatedText
+{
+    return self.splashAd.text;
+}
+
+#pragma mark - Private Initializers
 
 - (void)initialize
 {
-    UIImage *image = self.splashModule.image;
-    CGSize imageSize = self.splashModule.imageSize;
+    self.displayed = NO;
+    self.splashModule = DLSplashModule.sharedInstance;
+    [self.splashModule addDelegate:self];
 
-    self.imageView = [[UIImageView alloc] initWithImage: image];
-
-    // if image is smaller than view, then center it, otherwise aspect fit.
-    if (imageSize.width < kMaxSizeOfImageView && imageSize.height < kMaxSizeOfImageView) {
-        self.imageView.contentMode = UIViewContentModeCenter;
-    } else {
-        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    }
-
+    self.imageView = [[UIImageView alloc] initWithImage: nil];
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -76,6 +78,7 @@ static int kMaxSizeOfImageView = 150;
     [self addConstraints: @[centerX, centerY, width, height]];
 
     [self initializeGestureRecognizer];
+    [self displayAd];
 }
 
 - (void)initializeGestureRecognizer
@@ -84,12 +87,53 @@ static int kMaxSizeOfImageView = 150;
     [self.imageView addGestureRecognizer:self.tapGestureRecognizer];
 }
 
-#pragma mark Private Methods
+- (void)dealloc
+{
+    [self.splashModule removeDelegate:self];
+}
+
+#pragma mark - Private Methods
 
 - (void)imageTapped:(id)sender
 {
-        // [JZ] TODO: pass url from the DLSplashAd -- waiting for merge!
-//        [self.delegate adViewDidTapImageWithUrl: ];
+    [self.delegate adView:self didTapImageWithUrl:self.splashAd.clickURL];
+}
+
+- (void)layoutSubviews
+{
+    if (!self.displayed) {
+        self.displayed = YES;
+        [self.splashModule adViewDidShow:self];
+    }
+}
+
+- (void)displayAd
+{
+    UIImage *image = DLSplashModule.sharedInstance.splashAd.image;
+    if (image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.imageView setImage:image];
+            // if image is smaller than view, then center it, otherwise aspect fit.
+            if (self.splashAd.imageWidth < kMaxSizeOfImageView && self.splashAd.imageHeight < kMaxSizeOfImageView) {
+                self.imageView.contentMode = UIViewContentModeCenter;
+            } else {
+                self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            }
+            [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
+            [self.splashModule adViewDidDisplayImage:self];
+        });
+    }
+}
+
+#pragma mark - DLSplashModuleDelegate
+- (void)splashScreenShouldDisplayAd
+{
+    [self displayAd];
+}
+
+- (void)splashScreenShouldBeClosed
+{
+    [self.delegate splashScreenShouldBeClosed];
 }
 
 @end

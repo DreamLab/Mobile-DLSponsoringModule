@@ -8,11 +8,20 @@
 
 @import Foundation;
 @import UIKit;
+#import "DLSplashModuleDelegate.h"
+#import "DLAdView.h"
+
+@class DLSplashAd;
 
 /**
 Module responsible for providing ads for splash screen.
  */
 @interface DLSplashModule : NSObject
+
+/**
+ Returns initialized object of class DLAdView. Each time it returns the same object.
+ */
+@property (nonatomic, readonly) DLAdView *adView;
 
 /**
  Initializes module with the app site parameter. It initialize the shared instance. Should be called before first use.
@@ -30,19 +39,5 @@ Module responsible for providing ads for splash screen.
  @return Instance of DLSplashModule or nil if not initialized
  */
 + (instancetype)sharedInstance;
-
-/**
- Size of the ad image.
-
- @return Size of the currenty fetched ad image
- */
-- (CGSize)imageSize;
-
-/**
- Image of the ad.
-
- @return Ad image
- */
-- (UIImage *)image;
 
 @end
