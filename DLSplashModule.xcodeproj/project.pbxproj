@@ -29,6 +29,7 @@
 		71ED73221C7492C500CFF031 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED73211C7492C500CFF031 /* DLStore.m */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		872C68DA1C74BE44006064FD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 872C68D91C74BE44006064FD /* README.md */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
@@ -76,6 +77,9 @@
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
+		872C68D71C74BE44006064FD /* DLSplashModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSplashModule.podspec; sourceTree = "<group>"; };
+		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		872C68DC1C762426006064FD /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
@@ -127,9 +131,20 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		872C68D61C74BDA7006064FD /* Podfile metadata */ = {
+			isa = PBXGroup;
+			children = (
+				872C68D71C74BE44006064FD /* DLSplashModule.podspec */,
+				872C68D81C74BE44006064FD /* LICENSE */,
+				872C68D91C74BE44006064FD /* README.md */,
+			);
+			name = "Podfile metadata";
+			sourceTree = "<group>";
+		};
 		87E8BCF21C6DDAFD004C2EAD = {
 			isa = PBXGroup;
 			children = (
+				872C68D61C74BDA7006064FD /* Podfile metadata */,
 				87E8BCFD1C6DDAFD004C2EAD /* DLSplashModule */,
 				87E8BD121C6DEDAD004C2EAD /* DLSplashModuleTests */,
 				87E8BCFC1C6DDAFD004C2EAD /* Products */,
@@ -290,6 +305,7 @@
 			files = (
 				87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */,
 				71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */,
+				872C68DA1C74BE44006064FD /* README.md in Sources */,
 				71ED73221C7492C500CFF031 /* DLStore.m in Sources */,
 				71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */,
 				87E8BD2E1C6E01DE004C2EAD /* DLAdView.m in Sources */,
