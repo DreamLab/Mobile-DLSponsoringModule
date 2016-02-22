@@ -84,6 +84,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
 - (void)initializeGestureRecognizer
 {
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+    self.imageView.userInteractionEnabled = YES;
     [self.imageView addGestureRecognizer:self.tapGestureRecognizer];
 }
 
