@@ -1,0 +1,1 @@
+Module to provide Ad for splash screen.
