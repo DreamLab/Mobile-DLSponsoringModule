@@ -12,8 +12,8 @@
 //Key to store JSON Dictionary in NSUserDefaults.
 extern NSString * const kDLSplashAdJSONCacheKey;
 
-// Key to store Ad image location in NSUserDefaults.
-extern NSString * const kDLSplashAdImageLocationCacheKey;
+// Key to store Ad image file name in NSUserDefaults.
+extern NSString * const kDLSplashAdImageFileNameCacheKey;
 
 /**
  *  Class to manage caching of Splash Ad.

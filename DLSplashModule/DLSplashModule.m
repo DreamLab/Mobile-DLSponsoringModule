@@ -85,7 +85,7 @@ static DLSplashModule* sharedInstance;
             }];
         } else {
             splashAd.image = cachedSplashAd.image;
-            splashAd.imageLocationPath = cachedSplashAd.imageLocationPath;
+            splashAd.imageFileName = cachedSplashAd.imageFileName;
             self.splashAd = splashAd;
             [self waitingForDataFinished];
         }
