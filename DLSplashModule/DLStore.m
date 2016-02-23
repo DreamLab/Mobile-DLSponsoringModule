@@ -22,12 +22,12 @@ NSString * const kDLSplashAdImageLocationCacheKey = @"com.dreamlab.splash_screen
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
     NSURL *fileURL = [documentsURL URLByAppendingPathComponent:fileName];
     NSError *moveError;
+    splashAd.imageLocationPath = [fileURL path];
     if (![fileManager moveItemAtURL:temporaryLocation toURL:fileURL error:&moveError]) {
         NSLog(@"moveItemAtURL failed: %@", moveError);
         return NO;
     }
-    splashAd.imageLocationPath = [fileURL path];
-
+    
     return YES;
 }
 
