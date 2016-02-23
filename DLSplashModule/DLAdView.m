@@ -21,6 +21,9 @@ static const NSInteger kMaxSizeOfImageView = 150;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic) BOOL displayed;
+
+@property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @end
 
 @implementation DLAdView
@@ -71,15 +74,14 @@ static const NSInteger kMaxSizeOfImageView = 150;
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
-    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
+    NSLayoutConstraint *centerXConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    self.widthConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
 
-    [self addConstraints: @[centerX, centerY, width, height]];
+    [self addConstraints: @[centerXConstraint, topConstraint, self.widthConstraint, self.heightConstraint]];
 
     [self initializeGestureRecognizer];
-    [self displayAd];
 }
 
 - (void)initializeGestureRecognizer
@@ -116,12 +118,9 @@ static const NSInteger kMaxSizeOfImageView = 150;
     if (image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.imageView setImage:image];
-            // if image is smaller than view, then center it, otherwise aspect fit.
-            if (self.splashAd.imageWidth < kMaxSizeOfImageView && self.splashAd.imageHeight < kMaxSizeOfImageView) {
-                self.imageView.contentMode = UIViewContentModeCenter;
-            } else {
-                self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-            }
+            self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            self.widthConstraint.constant = self.splashAd.imageWidth;
+            self.heightConstraint.constant = self.splashAd.imageHeight;
             [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
             [self.splashModule adViewDidDisplayImage:self];
         });

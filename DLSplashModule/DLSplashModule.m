@@ -67,6 +67,9 @@ static DLSplashModule* sharedInstance;
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
+            if (self.splashAd) {
+                [self waitingForDataFinished];
+            }
             return;
         }
 
@@ -74,6 +77,9 @@ static DLSplashModule* sharedInstance;
             [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
+                    if (self.splashAd) {
+                        [self waitingForDataFinished];
+                    }
                     return;
                 }
                 splashAd.image = image;
