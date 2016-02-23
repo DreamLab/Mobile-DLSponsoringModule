@@ -10,11 +10,12 @@
 #import "DLSplashModule.h"
 #import "DLSplashModule+Internal.h"
 #import "DLSplashAd.h"
+#import "DLSplashModuleDelegate.h"
 
 /// Max size of ImageView
 static const NSInteger kMaxSizeOfImageView = 150;
 
-@interface DLAdView()
+@interface DLAdView() <DLSplashModuleDelegate>
 @property (nonatomic, weak) DLSplashModule *splashModule;
 @property (nonatomic, strong) DLSplashAd *splashAd;
 @property (nonatomic, strong) UIImageView *imageView;

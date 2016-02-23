@@ -8,6 +8,7 @@
 
 #import "DLSplashModule.h"
 #import "DLSplashModule+Internal.h"
+#import "DLSplashModuleDelegate.h"
 #import "DLSplashScreenWebService.h"
 #import "DLStore.h"
 
