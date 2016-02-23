@@ -11,6 +11,7 @@
 
 NSString * const kDLSplashAdJSONCacheKey = @"com.dreamlab.splash_screen.json_cache_key";
 NSString * const kDLSplashAdImageLocationCacheKey = @"com.dreamlab.splash_screen.image_location_cache_key";
+NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_screen.tracking_links_cache_key";
 
 @implementation DLStore
 
@@ -78,6 +79,46 @@ NSString * const kDLSplashAdImageLocationCacheKey = @"com.dreamlab.splash_screen
 - (UIImage *)imageAtLocation:(NSURL *)imageLocation
 {
     return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageLocation]];
+}
+
+- (BOOL)areAnyTrackingLinksQueued
+{
+    return [[self queuedTrackingLinks] count] != 0;
+}
+
+- (NSArray<NSURL *> *)queuedTrackingLinks
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray<NSURL *> *queuedTrackingLinks = [userDefaults objectForKey:kDLSplashQueuedTrackingLinksCacheKey];
+    return queuedTrackingLinks;
+}
+
+- (void)queueTrackingLinks:(NSArray<NSURL *> *)trackingLinks
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:trackingLinks forKey:kDLSplashQueuedTrackingLinksCacheKey];
+    [userDefaults synchronize];
+}
+
+- (void)queueTrackingLink:(NSURL *)trackingLink
+{
+    NSMutableArray *trackingLinks = [NSMutableArray arrayWithArray:[self queuedTrackingLinks]];
+    [trackingLinks addObject:trackingLink];
+    [self queueTrackingLinks:trackingLinks];
+}
+
+- (void)removeTrackingLink:(NSURL *)trackingLink
+{
+    NSMutableArray *trackingLinks = [NSMutableArray arrayWithArray:[self queuedTrackingLinks]];
+    [trackingLinks removeObject:trackingLink];
+    [self queueTrackingLinks:trackingLinks];
+}
+
+- (void)clearQueuedTrackingLinks
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:kDLSplashQueuedTrackingLinksCacheKey];
+    [userDefaults synchronize];
 }
 
 @end
