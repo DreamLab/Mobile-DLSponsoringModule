@@ -112,7 +112,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
 - (void)displayAd
 {
     self.splashAd = DLSplashModule.sharedInstance.splashAd;
-    UIImage *image = DLSplashModule.sharedInstance.splashAd.image;
+    UIImage *image = self.splashAd.image;
     if (image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.imageView setImage:image];
