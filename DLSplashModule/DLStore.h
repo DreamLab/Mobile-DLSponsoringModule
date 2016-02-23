@@ -49,4 +49,44 @@ extern NSString * const kDLSplashAdImageFileNameCacheKey;
  */
 - (void)clearCache;
 
+/**
+ *  Tells if there are any traking links queued to send.
+ *
+ *  @return Status if there are any queued links.
+ */
+- (BOOL)areAnyTrackingLinksQueued;
+
+/**
+ *  Returns array of queued tracking links.
+ *
+ *  @return queued tracking links.
+ */
+- (NSArray<NSURL *> *)queuedTrackingLinks;
+
+/**
+ *  Queue array of tracking links.
+ *
+ *  @param trackingLinks array of tracking links to queue
+ */
+- (void)queueTrackingLinks:(NSArray<NSURL *> *)trackingLinks;
+
+/**
+ *  Queue tracking link.
+ *
+ *  @param trackingLink Tracking link to queue.
+ */
+- (void)queueTrackingLink:(NSURL *)trackingLink;
+
+/**
+ *  Remove tracking link from queue.
+ *
+ *  @param trackingLink tracking link to remove from queue.
+ */
+- (void)removeTrackingLink:(NSURL *)trackingLink;
+
+/**
+ *  Remove all queue of tracking links from store.
+ */
+- (void)clearQueuedTrackingLinks;
+
 @end
