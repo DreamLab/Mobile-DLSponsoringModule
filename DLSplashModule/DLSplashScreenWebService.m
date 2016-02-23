@@ -87,15 +87,15 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 - (void)trackForSplashAd:(DLSplashAd *)splashAd
 {
-    [self performSessionDataTaskForURL:splashAd.auditURL];
-    [self performSessionDataTaskForURL:splashAd.audit2URL];
-
     DLStore *store = [[DLStore alloc] init];
 
+    [store queueTrackingLink:splashAd.auditURL];
+    [store queueTrackingLink:splashAd.audit2URL];
+
     if ([store areAnyTrackingLinksQueued]) {
-        [[store queuedTrackingLinks] enumerateObjectsUsingBlock:^(NSURL * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self performSessionDataTaskForURL:obj];
-        }];
+        for (NSURL *url in [store queuedTrackingLinks]) {
+            [self performSessionDataTaskForURL:url];
+        }
     }
 }
 
@@ -118,7 +118,6 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     }];
 
     [dataTask resume];
-
 }
 
 @end
