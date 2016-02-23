@@ -25,9 +25,9 @@
 - (instancetype)initWithAppSite:(NSString *)appSite;
 
 /**
- *  Fetch data from server
+ *  Fetch data from server.
  *
- *  @param result Block with DLSplashAd and NSError as result of fetching data
+ *  @param completion Block with DLSplashAd and NSError as result of fetching data
  */
 - (void)fetchDataWithCompletion:(void(^)(DLSplashAd *splashAd, NSError *error))completion;
 
