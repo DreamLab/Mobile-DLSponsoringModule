@@ -11,6 +11,7 @@
 
 #import "DLSplashScreenWebService.h"
 #import "DLSplashAd.h"
+#import "DLStore.h"
 
 NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=splash/csr.json";
 
@@ -88,6 +89,14 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 {
     [self performSessionDataTaskForURL:splashAd.auditURL];
     [self performSessionDataTaskForURL:splashAd.audit2URL];
+
+    DLStore *store = [[DLStore alloc] init];
+
+    if ([store areAnyTrackingLinksQueued]) {
+        [[store queuedTrackingLinks] enumerateObjectsUsingBlock:^(NSURL * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self performSessionDataTaskForURL:obj];
+        }];
+    }
 }
 
 #pragma mark - Private methods
@@ -97,14 +106,19 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
 
+    DLStore *store = [[DLStore alloc] init];
+
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            // TODO: Think of storing tracking request if error occurred and send them again in some point in the future. PO decision needed here.
+            [store queueTrackingLink:url];
             NSLog(@"Error occurred: %@ while sending request to url: %@", error.description, url);
+        } else {
+            [store removeTrackingLink:url];
         }
     }];
 
     [dataTask resume];
+
 }
 
 @end
