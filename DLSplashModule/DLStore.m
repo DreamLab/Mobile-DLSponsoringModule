@@ -10,7 +10,7 @@
 #import "DLStore.h"
 
 NSString * const kDLSplashAdJSONCacheKey = @"com.dreamlab.splash_screen.json_cache_key";
-NSString * const kDLSplashAdImageLocationCacheKey = @"com.dreamlab.splash_screen.image_location_cache_key";
+NSString * const kDLSplashAdImageFileNameCacheKey = @"com.dreamlab.splash_screen.image_filename_cache_key";
 NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_screen.tracking_links_cache_key";
 
 @implementation DLStore
@@ -20,14 +20,14 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
     NSString *fileName = [NSString stringWithFormat:@"%ld", (long)splashAd.version];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
-    NSURL *fileURL = [documentsURL URLByAppendingPathComponent:fileName];
+    NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
+    NSURL *fileURL = [cachesURL URLByAppendingPathComponent:fileName];
     NSError *moveError;
+    splashAd.imageFileName = fileName;
     if (![fileManager moveItemAtURL:temporaryLocation toURL:fileURL error:&moveError]) {
         NSLog(@"moveItemAtURL failed: %@", moveError);
         return NO;
     }
-    splashAd.imageLocationPath = [fileURL path];
 
     return YES;
 }
@@ -36,7 +36,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:splashAd.json forKey:kDLSplashAdJSONCacheKey];
-    [userDefaults setObject:splashAd.imageLocationPath forKey:kDLSplashAdImageLocationCacheKey];
+    [userDefaults setObject:splashAd.imageFileName forKey:kDLSplashAdImageFileNameCacheKey];
     [userDefaults synchronize];
 }
 
@@ -44,11 +44,17 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *json = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
-    NSString *imageLocationPath = [userDefaults objectForKey:kDLSplashAdImageLocationCacheKey];
+    NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
 
     DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
-    cachedSplashAd.image = [self imageAtLocation:[NSURL URLWithString:imageLocationPath]];
-    cachedSplashAd.imageLocationPath = imageLocationPath;
+
+    if (imageFileName) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
+        NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
+        cachedSplashAd.imageFileName = imageFileName;
+        cachedSplashAd.image = [self imageAtLocation:fileURL];
+    }
 
     return cachedSplashAd;
 }
@@ -59,7 +65,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:kDLSplashAdJSONCacheKey];
-    [userDefaults removeObjectForKey:kDLSplashAdImageLocationCacheKey];
+    [userDefaults removeObjectForKey:kDLSplashAdImageFileNameCacheKey];
     [userDefaults synchronize];
 }
 
@@ -68,11 +74,17 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (BOOL)removeCachedImageAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *imageLocationPath = [userDefaults objectForKey:kDLSplashAdImageLocationCacheKey];
+    NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
+    if (!imageFileName) {
+        return false;
+    }
 
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
+
+    NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
     NSError *error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:imageLocationPath error:&error];
-
+    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
     return error == nil;
 }
 

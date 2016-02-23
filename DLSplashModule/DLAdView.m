@@ -10,11 +10,12 @@
 #import "DLSplashModule.h"
 #import "DLSplashModule+Internal.h"
 #import "DLSplashAd.h"
+#import "DLSplashModuleDelegate.h"
 
 /// Max size of ImageView
 static const NSInteger kMaxSizeOfImageView = 150;
 
-@interface DLAdView()
+@interface DLAdView() <DLSplashModuleDelegate>
 @property (nonatomic, weak) DLSplashModule *splashModule;
 @property (nonatomic, strong) DLSplashAd *splashAd;
 @property (nonatomic, strong) UIImageView *imageView;
@@ -111,7 +112,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
 - (void)displayAd
 {
     self.splashAd = DLSplashModule.sharedInstance.splashAd;
-    UIImage *image = DLSplashModule.sharedInstance.splashAd.image;
+    UIImage *image = self.splashAd.image;
     if (image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.imageView setImage:image];

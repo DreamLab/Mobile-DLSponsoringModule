@@ -6,6 +6,8 @@
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
+#import "DLSplashModuleDelegate.h"
+
 @interface DLSplashModule (Internal)
 
 /**

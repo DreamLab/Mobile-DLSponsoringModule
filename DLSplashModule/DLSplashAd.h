@@ -71,9 +71,9 @@
 @property (nonatomic, strong, readonly) NSDictionary *json;
 
 /**
- *  Path to permanent image location.
+ *  Image file name on disk.
  */
-@property (nonatomic, strong) NSString *imageLocationPath;
+@property (nonatomic, strong) NSString *imageFileName;
 
 /**
  *  Convenience initializer for DLSplashAd class

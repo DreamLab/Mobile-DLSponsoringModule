@@ -29,7 +29,6 @@
 		71ED73221C7492C500CFF031 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED73211C7492C500CFF031 /* DLStore.m */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
-		872C68DA1C74BE44006064FD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 872C68D91C74BE44006064FD /* README.md */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
@@ -305,7 +304,6 @@
 			files = (
 				87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */,
 				71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */,
-				872C68DA1C74BE44006064FD /* README.md in Sources */,
 				71ED73221C7492C500CFF031 /* DLStore.m in Sources */,
 				71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */,
 				87E8BD2E1C6E01DE004C2EAD /* DLAdView.m in Sources */,

@@ -8,7 +8,6 @@
 
 @import Foundation;
 @import UIKit;
-#import "DLSplashModuleDelegate.h"
 #import "DLAdView.h"
 
 @class DLSplashAd;
