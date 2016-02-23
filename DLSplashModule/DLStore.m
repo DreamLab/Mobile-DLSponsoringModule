@@ -45,13 +45,15 @@ NSString * const kDLSplashAdImageFileNameCacheKey = @"com.dreamlab.splash_screen
     NSDictionary *json = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
     NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
 
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
-    NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
-
     DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
-    cachedSplashAd.image = [self imageAtLocation:fileURL];
-    cachedSplashAd.imageFileName = imageFileName;
+
+    if (imageFileName) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
+        NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
+        cachedSplashAd.imageFileName = imageFileName;
+        cachedSplashAd.image = [self imageAtLocation:fileURL];
+    }
 
     return cachedSplashAd;
 }
@@ -72,14 +74,16 @@ NSString * const kDLSplashAdImageFileNameCacheKey = @"com.dreamlab.splash_screen
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
+    if (!imageFileName) {
+        return false;
+    }
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
-    NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
 
+    NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
-
     return error == nil;
 }
 

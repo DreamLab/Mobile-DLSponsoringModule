@@ -102,11 +102,6 @@ static DLSplashModule* sharedInstance;
     return _generatedAdView;
 }
 
--(void)setSplashAd:(DLSplashAd *)splashAd
-{
-    _splashAd = splashAd;
-}
-
 #pragma mark - Delegate
 - (void)addDelegate:(id<DLSplashModuleDelegate>)delegate
 {
