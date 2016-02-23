@@ -21,21 +21,18 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */; };
-		71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA411C6E38C9003734E6 /* DLSplashAd.m */; };
+		714D812D1C7CBE4400C6CD68 /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 714D81201C7CBE4400C6CD68 /* DLSplashAd.m */; };
+		714D812E1C7CBE4400C6CD68 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 714D81241C7CBE4400C6CD68 /* DLSplashScreenWebService.m */; };
+		714D812F1C7CBE4400C6CD68 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 714D81261C7CBE4400C6CD68 /* DLStore.m */; };
+		714D81301C7CBE4400C6CD68 /* DLAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714D81291C7CBE4400C6CD68 /* DLAdView.m */; };
+		714D81311C7CBE4400C6CD68 /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 714D812C1C7CBE4400C6CD68 /* DLSplashModule.m */; };
 		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
 		71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B21C734F1200CF6981 /* EmptyJsonData.json */; };
 		71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* WrongJsonData.json */; };
-		71ED73221C7492C500CFF031 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED73211C7492C500CFF031 /* DLStore.m */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
-		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
-		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
 		87E8BD161C6DEDAD004C2EAD /* libDLSplashModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */; };
-		87E8BD2E1C6E01DE004C2EAD /* DLAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */; };
-		87E8BD2F1C6E06A2004C2EAD /* DLAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */; };
-		87E8BD311C71E7D2004C2EAD /* DLAdViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,41 +52,38 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				87E8BD311C71E7D2004C2EAD /* DLAdViewDelegate.h in CopyFiles */,
-				87E8BD2F1C6E06A2004C2EAD /* DLAdView.h in CopyFiles */,
-				87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashScreenWebService.h; sourceTree = "<group>"; };
-		71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebService.m; sourceTree = "<group>"; };
-		71ABFA401C6E38C9003734E6 /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
-		71ABFA411C6E38C9003734E6 /* DLSplashAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAd.m; sourceTree = "<group>"; };
+		714D811F1C7CBE4400C6CD68 /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
+		714D81201C7CBE4400C6CD68 /* DLSplashAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAd.m; sourceTree = "<group>"; };
+		714D81211C7CBE4400C6CD68 /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
+		714D81221C7CBE4400C6CD68 /* DLSplashModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashModuleDelegate.h; sourceTree = "<group>"; };
+		714D81231C7CBE4400C6CD68 /* DLSplashScreenWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashScreenWebService.h; sourceTree = "<group>"; };
+		714D81241C7CBE4400C6CD68 /* DLSplashScreenWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebService.m; sourceTree = "<group>"; };
+		714D81251C7CBE4400C6CD68 /* DLStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStore.h; sourceTree = "<group>"; };
+		714D81261C7CBE4400C6CD68 /* DLStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStore.m; sourceTree = "<group>"; };
+		714D81281C7CBE4400C6CD68 /* DLAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdView.h; sourceTree = "<group>"; };
+		714D81291C7CBE4400C6CD68 /* DLAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdView.m; sourceTree = "<group>"; };
+		714D812A1C7CBE4400C6CD68 /* DLAdViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
+		714D812B1C7CBE4400C6CD68 /* DLSplashModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
+		714D812C1C7CBE4400C6CD68 /* DLSplashModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
 		71C020B11C734F1200CF6981 /* CorrectJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CorrectJsonData.json; path = "Unit Tests Data/CorrectJsonData.json"; sourceTree = "<group>"; };
 		71C020B21C734F1200CF6981 /* EmptyJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EmptyJsonData.json; path = "Unit Tests Data/EmptyJsonData.json"; sourceTree = "<group>"; };
 		71C020B31C734F1200CF6981 /* WrongJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WrongJsonData.json; path = "Unit Tests Data/WrongJsonData.json"; sourceTree = "<group>"; };
-		71ED73201C7492C500CFF031 /* DLStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStore.h; sourceTree = "<group>"; };
-		71ED73211C7492C500CFF031 /* DLStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStore.m; sourceTree = "<group>"; };
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
 		872C68D71C74BE44006064FD /* DLSplashModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSplashModule.podspec; sourceTree = "<group>"; };
 		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		872C68DC1C762426006064FD /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
-		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
 		87E8BD111C6DEDAD004C2EAD /* DLSplashModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLSplashModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModuleTests.m; sourceTree = "<group>"; };
 		87E8BD151C6DEDAD004C2EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdView.h; sourceTree = "<group>"; };
-		87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdView.m; sourceTree = "<group>"; };
-		87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
-		87E8BD321C7326CC004C2EAD /* DLSplashModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashModuleDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +105,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		714D811E1C7CBE4400C6CD68 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				714D811F1C7CBE4400C6CD68 /* DLSplashAd.h */,
+				714D81201C7CBE4400C6CD68 /* DLSplashAd.m */,
+				714D81211C7CBE4400C6CD68 /* DLSplashModule+Internal.h */,
+				714D81221C7CBE4400C6CD68 /* DLSplashModuleDelegate.h */,
+				714D81231C7CBE4400C6CD68 /* DLSplashScreenWebService.h */,
+				714D81241C7CBE4400C6CD68 /* DLSplashScreenWebService.m */,
+				714D81251C7CBE4400C6CD68 /* DLStore.h */,
+				714D81261C7CBE4400C6CD68 /* DLStore.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		714D81271C7CBE4400C6CD68 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				714D81281C7CBE4400C6CD68 /* DLAdView.h */,
+				714D81291C7CBE4400C6CD68 /* DLAdView.m */,
+				714D812A1C7CBE4400C6CD68 /* DLAdViewDelegate.h */,
+				714D812B1C7CBE4400C6CD68 /* DLSplashModule.h */,
+				714D812C1C7CBE4400C6CD68 /* DLSplashModule.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
 		71C020B01C734ECF00CF6981 /* Unit Tests Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,19 +183,8 @@
 		87E8BCFD1C6DDAFD004C2EAD /* DLSplashModule */ = {
 			isa = PBXGroup;
 			children = (
-				71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */,
-				71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */,
-				87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */,
-				872C68DC1C762426006064FD /* DLSplashModule+Internal.h */,
-				87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */,
-				71ABFA401C6E38C9003734E6 /* DLSplashAd.h */,
-				71ABFA411C6E38C9003734E6 /* DLSplashAd.m */,
-				87E8BD2C1C6E01DE004C2EAD /* DLAdView.h */,
-				87E8BD2D1C6E01DE004C2EAD /* DLAdView.m */,
-				87E8BD301C71E6E8004C2EAD /* DLAdViewDelegate.h */,
-				87E8BD321C7326CC004C2EAD /* DLSplashModuleDelegate.h */,
-				71ED73201C7492C500CFF031 /* DLStore.h */,
-				71ED73211C7492C500CFF031 /* DLStore.m */,
+				714D811E1C7CBE4400C6CD68 /* Private */,
+				714D81271C7CBE4400C6CD68 /* Public */,
 			);
 			path = DLSplashModule;
 			sourceTree = "<group>";
@@ -302,11 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */,
-				71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */,
-				71ED73221C7492C500CFF031 /* DLStore.m in Sources */,
-				71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */,
-				87E8BD2E1C6E01DE004C2EAD /* DLAdView.m in Sources */,
+				714D81311C7CBE4400C6CD68 /* DLSplashModule.m in Sources */,
+				714D812F1C7CBE4400C6CD68 /* DLStore.m in Sources */,
+				714D81301C7CBE4400C6CD68 /* DLAdView.m in Sources */,
+				714D812D1C7CBE4400C6CD68 /* DLSplashAd.m in Sources */,
+				714D812E1C7CBE4400C6CD68 /* DLSplashScreenWebService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
