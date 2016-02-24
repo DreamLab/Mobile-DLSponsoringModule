@@ -60,10 +60,14 @@ static DLSplashModule* sharedInstance;
 - (void)initializeSplashAd
 {
     DLStore *store = [[DLStore alloc] init];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.identifier];
+    [self fetchSplashAdWith:webService store:store];
+}
+
+-(void)fetchSplashAdWith:(DLSplashScreenWebService *)webService store:(DLStore *)store
+{
     DLSplashAd *cachedSplashAd = [store cachedSplashAd];
     self.splashAd = cachedSplashAd.image ? cachedSplashAd : nil;
-
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.identifier];
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
@@ -184,6 +188,7 @@ static DLSplashModule* sharedInstance;
 {
     [self waitingForDataStarted];
 }
+
 
 - (void)adViewDidDisplayImage:(DLAdView *)adView
 {
