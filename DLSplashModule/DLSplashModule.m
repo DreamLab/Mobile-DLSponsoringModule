@@ -195,10 +195,4 @@ static DLSplashModule* sharedInstance;
     [self displayingTimeStarted];
 }
 
-#pragma mark - Auditing
-- (void)sendAuditData
-{
-    // TODO: send Audit Data (separate task)
-}
-
 @end
