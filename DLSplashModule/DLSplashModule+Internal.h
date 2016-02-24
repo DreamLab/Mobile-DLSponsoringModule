@@ -7,6 +7,8 @@
 //
 
 #import "DLSplashModuleDelegate.h"
+#import "DLSplashScreenWebService.h"
+#import "DLStore.h"
 
 @interface DLSplashModule (Internal)
 
@@ -47,4 +49,7 @@
  Remove all delegates from the DLSplashModule.
  */
 - (void)removeAllDelegates;
+
+-(void)fetchSplashAdWith:(DLSplashScreenWebService *)webService store:(DLStore *)store;
+
 @end

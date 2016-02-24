@@ -29,7 +29,6 @@
 		71ED73221C7492C500CFF031 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED73211C7492C500CFF031 /* DLStore.m */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
-		874529881C7DB8DD00747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
@@ -83,16 +82,6 @@
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		872C68DC1C762426006064FD /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
 		8745297C1C7DB8DD00747C55 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
-		8745297E1C7DB8DD00747C55 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		8745297F1C7DB8DD00747C55 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		874529801C7DB8DD00747C55 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		874529811C7DB8DD00747C55 /* OCMFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMFunctions.h; sourceTree = "<group>"; };
-		874529821C7DB8DD00747C55 /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
-		874529831C7DB8DD00747C55 /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
-		874529841C7DB8DD00747C55 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		874529851C7DB8DD00747C55 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		874529861C7DB8DD00747C55 /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
-		874529871C7DB8DD00747C55 /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
@@ -110,7 +99,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874529881C7DB8DD00747C55 /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,24 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				8745297C1C7DB8DD00747C55 /* libOCMock.a */,
-				8745297D1C7DB8DD00747C55 /* OCMock */,
-			);
-			path = OCMock;
-			sourceTree = "<group>";
-		};
-		8745297D1C7DB8DD00747C55 /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				8745297E1C7DB8DD00747C55 /* NSNotificationCenter+OCMAdditions.h */,
-				8745297F1C7DB8DD00747C55 /* OCMArg.h */,
-				874529801C7DB8DD00747C55 /* OCMConstraint.h */,
-				874529811C7DB8DD00747C55 /* OCMFunctions.h */,
-				874529821C7DB8DD00747C55 /* OCMLocation.h */,
-				874529831C7DB8DD00747C55 /* OCMMacroState.h */,
-				874529841C7DB8DD00747C55 /* OCMock.h */,
-				874529851C7DB8DD00747C55 /* OCMockObject.h */,
-				874529861C7DB8DD00747C55 /* OCMRecorder.h */,
-				874529871C7DB8DD00747C55 /* OCMStubRecorder.h */,
 			);
 			path = OCMock;
 			sourceTree = "<group>";
@@ -482,7 +452,7 @@
 		87E8BD191C6DEDAD004C2EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock/OCMock";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock";
 				INFOPLIST_FILE = DLSplashModuleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -498,7 +468,7 @@
 		87E8BD1A1C6DEDAD004C2EAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock/OCMock";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock";
 				INFOPLIST_FILE = DLSplashModuleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

@@ -7,9 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "OCMock.h"
+#import <OCMock/OCMock.h>
+
+#import "DLSplashModule.h"
+#import "DLSplashModule+Internal.h"
+#import "DLStore.h"
+#import "DLSplashScreenWebService.h"
 
 @interface DLSplashModuleTests : XCTestCase
+
+@property (nonatomic, strong) DLStore *store;
+@property (nonatomic, strong) DLSplashScreenWebService *webService;
 
 @end
 
@@ -17,17 +25,32 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
+
+    self.store = OCMClassMock([DLStore class]);
+    self.webService =  OCMClassMock([DLSplashScreenWebService class]);
+
+
+    }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testFetchSplashAdWith
+{
+    DLSplashModule *splashModule = [[DLSplashModule alloc] init];
+
+    DLSplashAd *splashAd = OCMClassMock([DLSplashAd class]);
+
+    OCMStub([self.store cachedSplashAd]).andReturn(nil);
+    OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:splashAd, [NSNull null], nil])]);
+    // Call block with YES.
+//    OCMStub([mock theMethod:([OCMArg invokeBlockWithArgs:@YES, nil])];
+
+    [splashModule fetchSplashAdWith:self.webService store:self.store];
+
+
 }
 
 - (void)testPerformanceExample {
