@@ -50,6 +50,4 @@
  */
 - (void)removeAllDelegates;
 
--(void)fetchSplashAdWith:(DLSplashScreenWebService *)webService store:(DLStore *)store;
-
 @end

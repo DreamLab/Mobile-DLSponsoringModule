@@ -117,14 +117,20 @@ static const NSInteger kMaxSizeOfImageView = 150;
     UIImage *image = self.splashAd.image;
     if (image) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.imageView setImage:image];
-            self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-            self.widthConstraint.constant = self.splashAd.imageWidth;
-            self.heightConstraint.constant = self.splashAd.imageHeight;
-            [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
-            [self.splashModule adViewDidDisplayImage:self];
+            [self displayAd:self.splashAd withImage:image];
         });
     }
+}
+
+// This method neet to be called in main queue or will crash!s
+- (void)displayAd:(DLSplashAd *)splashAd withImage:(UIImage *)image
+{
+    [self.imageView setImage:image];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.widthConstraint.constant = splashAd.imageWidth;
+    self.heightConstraint.constant = splashAd.imageHeight;
+    [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
+    [self.splashModule adViewDidDisplayImage:self];
 }
 
 #pragma mark - DLSplashModuleDelegate

@@ -30,6 +30,7 @@
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
+		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
@@ -82,6 +83,7 @@
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		872C68DC1C762426006064FD /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
 		8745297C1C7DB8DD00747C55 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		8745298E1C7F179B00747C55 /* DLAdViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdViewTests.m; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				71C020B01C734ECF00CF6981 /* Unit Tests Data */,
 				71F841B21C723A11003CF0E4 /* Helpers */,
 				87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */,
+				8745298E1C7F179B00747C55 /* DLAdViewTests.m */,
 				71F841B01C723770003CF0E4 /* DLSplashAdTests.m */,
 				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
 			);
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
+				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
 				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
 			);
