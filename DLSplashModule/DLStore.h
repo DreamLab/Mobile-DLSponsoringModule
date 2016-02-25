@@ -15,6 +15,9 @@ extern NSString * const kDLSplashAdJSONCacheKey;
 // Key to store Ad image file name in NSUserDefaults.
 extern NSString * const kDLSplashAdImageFileNameCacheKey;
 
+// Key to store queued tracking links in NSUserDefaults.
+extern NSString * const kDLSplashQueuedTrackingLinksCacheKey;
+
 /**
  *  Class to manage caching of Splash Ad.
  */

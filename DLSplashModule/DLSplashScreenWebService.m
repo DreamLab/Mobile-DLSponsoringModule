@@ -25,11 +25,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 - (instancetype)initWithAppSite:(NSString *)appSite {
     self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    if (appSite == nil) {
+    if (!self || appSite == nil) {
         return nil;
     }
     
