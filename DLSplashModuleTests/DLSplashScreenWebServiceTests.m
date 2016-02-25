@@ -41,7 +41,8 @@
 }
 
 - (void)tearDown {
-
+    self.session = nil;
+    self.webService = nil;
     [super tearDown];
 }
 
