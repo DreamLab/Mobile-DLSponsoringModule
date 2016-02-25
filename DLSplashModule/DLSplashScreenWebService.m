@@ -87,6 +87,10 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 - (void)trackForSplashAd:(DLSplashAd *)splashAd
 {
+    if (!splashAd || !splashAd.auditURL || !splashAd.audit2URL) {
+        return;
+    }
+
     DLStore *store = [[DLStore alloc] init];
 
     [store queueTrackingLink:splashAd.auditURL];

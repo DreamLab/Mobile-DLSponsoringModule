@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */; };
 		71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA411C6E38C9003734E6 /* DLSplashAd.m */; };
 		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
 		71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashScreenWebService.h; sourceTree = "<group>"; };
 		71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebService.m; sourceTree = "<group>"; };
 		71ABFA401C6E38C9003734E6 /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				71F841B21C723A11003CF0E4 /* Helpers */,
 				87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */,
 				71F841B01C723770003CF0E4 /* DLSplashAdTests.m */,
+				710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */,
 				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
 			);
 			path = DLSplashModuleTests;
@@ -329,6 +332,7 @@
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
 				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
+				710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

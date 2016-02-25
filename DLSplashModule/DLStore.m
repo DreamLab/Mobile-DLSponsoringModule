@@ -101,14 +101,16 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (NSArray<NSURL *> *)queuedTrackingLinks
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray<NSURL *> *queuedTrackingLinks = [userDefaults objectForKey:kDLSplashQueuedTrackingLinksCacheKey];
+    NSData *data = [userDefaults objectForKey:kDLSplashQueuedTrackingLinksCacheKey];
+    NSArray<NSURL *> *queuedTrackingLinks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return queuedTrackingLinks;
 }
 
 - (void)queueTrackingLinks:(NSArray<NSURL *> *)trackingLinks
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:trackingLinks forKey:kDLSplashQueuedTrackingLinksCacheKey];
+    NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:trackingLinks];
+    [userDefaults setObject:saveData forKey:kDLSplashQueuedTrackingLinksCacheKey];
     [userDefaults synchronize];
 }
 
