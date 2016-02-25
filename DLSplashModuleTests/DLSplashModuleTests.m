@@ -37,7 +37,6 @@
 
     self.store = OCMClassMock([DLStore class]);
     self.webService =  OCMClassMock([DLSplashScreenWebService class]);
-
     self.splashModule = [[DLSplashModule alloc] init];
     id delegate = OCMProtocolMock(@protocol(DLSplashModuleDelegate));
     [self.splashModule addDelegate: delegate];
@@ -45,6 +44,11 @@
 
 - (void)tearDown {
     [super tearDown];
+    
+    self.store = nil;
+    self.webService = nil;
+    self.splashModule = nil;
+    self.delegate = nil;
 }
 
 - (void)testFetchSplashAdWithWebServiceStore_emptyCacheSuccessfulResponse_splashScreenShouldDisplayAdCalled
