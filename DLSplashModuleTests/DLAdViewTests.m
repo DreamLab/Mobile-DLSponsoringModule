@@ -29,24 +29,18 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testDisplayAd_validSplashAd_imageSizeProperlySet {
     DLAdView *adView = [[DLAdView alloc] init];
 
-    id splashModule = OCMClassMock([DLSplashModule class]);
     id splashAd = OCMClassMock([DLSplashAd class]);
     OCMStub([splashAd imageWidth]).andReturn(121);
     OCMStub([splashAd imageHeight]).andReturn(119);
-    OCMStub([splashAd image]).andReturn(OCMClassMock([UIImage class]));
-    OCMStub([splashModule sharedInstance]).andReturn(splashModule);
-    OCMStub([splashModule splashAd]).andReturn(splashAd);
 
     [adView displayAd:splashAd withImage:OCMClassMock([UIImage class])];
 
