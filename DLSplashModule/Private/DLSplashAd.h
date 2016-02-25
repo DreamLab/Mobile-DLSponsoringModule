@@ -76,6 +76,11 @@
 @property (nonatomic, strong) NSString *imageFileName;
 
 /**
+ *  JSON of SplashAd is empty
+ */
+@property (nonatomic) BOOL empty;
+
+/**
  *  Convenience initializer for DLSplashAd class
  *
  *  @param data NSData object of JSON fetched from server
