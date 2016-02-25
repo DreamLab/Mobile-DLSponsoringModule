@@ -76,6 +76,11 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     return [self.json[@"splash"][@"ver"] intValue];
 }
 
+- (BOOL)empty
+{
+    return self.json[@"splash"] == nil;
+}
+
 #pragma mark - private methods
 
 + (NSDictionary *)parseJSONData:(NSData *)data
@@ -91,10 +96,6 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
     if (parsingError) {
         NSLog(@"Parsing error occurred: %@", parsingError.description);
-        return nil;
-    }
-
-    if ([bodyDictionary count] <= 0) {
         return nil;
     }
 

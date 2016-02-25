@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		71ABFA3E1C6E1F82003734E6 /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */; };
 		71ABFA421C6E38C9003734E6 /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ABFA411C6E38C9003734E6 /* DLSplashAd.m */; };
 		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
@@ -29,6 +30,8 @@
 		71ED73221C7492C500CFF031 /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED73211C7492C500CFF031 /* DLStore.m */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
+		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
 		87E8BCFF1C6DDAFD004C2EAD /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */; };
 		87E8BD011C6DDAFD004C2EAD /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
@@ -64,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
 		71ABFA3C1C6E1F82003734E6 /* DLSplashScreenWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashScreenWebService.h; sourceTree = "<group>"; };
 		71ABFA3D1C6E1F82003734E6 /* DLSplashScreenWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebService.m; sourceTree = "<group>"; };
 		71ABFA401C6E38C9003734E6 /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		872C68DC1C762426006064FD /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
+		8745297C1C7DB8DD00747C55 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		8745298E1C7F179B00747C55 /* DLAdViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdViewTests.m; sourceTree = "<group>"; };
 		87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSplashModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BCFE1C6DDAFD004C2EAD /* DLSplashModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		87E8BD001C6DDAFD004C2EAD /* DLSplashModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */,
 				87E8BD161C6DEDAD004C2EAD /* libDLSplashModule.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,9 +147,18 @@
 			name = "Podfile metadata";
 			sourceTree = "<group>";
 		};
+		8745297B1C7DB8DD00747C55 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				8745297C1C7DB8DD00747C55 /* libOCMock.a */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
 		87E8BCF21C6DDAFD004C2EAD = {
 			isa = PBXGroup;
 			children = (
+				8745297B1C7DB8DD00747C55 /* OCMock */,
 				872C68D61C74BDA7006064FD /* Podfile metadata */,
 				87E8BCFD1C6DDAFD004C2EAD /* DLSplashModule */,
 				87E8BD121C6DEDAD004C2EAD /* DLSplashModuleTests */,
@@ -185,7 +201,9 @@
 				71C020B01C734ECF00CF6981 /* Unit Tests Data */,
 				71F841B21C723A11003CF0E4 /* Helpers */,
 				87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */,
+				8745298E1C7F179B00747C55 /* DLAdViewTests.m */,
 				71F841B01C723770003CF0E4 /* DLSplashAdTests.m */,
+				710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */,
 				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
 			);
 			path = DLSplashModuleTests;
@@ -315,8 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
+				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
 				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
+				710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +434,10 @@
 		87E8BD051C6DDAFD004C2EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -423,6 +447,10 @@
 		87E8BD061C6DDAFD004C2EAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -432,8 +460,14 @@
 		87E8BD191C6DEDAD004C2EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock";
 				INFOPLIST_FILE = DLSplashModuleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.dreamlab.DLSplashModuleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -442,8 +476,14 @@
 		87E8BD1A1C6DEDAD004C2EAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock";
 				INFOPLIST_FILE = DLSplashModuleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.dreamlab.DLSplashModuleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

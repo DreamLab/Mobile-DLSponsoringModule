@@ -60,10 +60,14 @@ static DLSplashModule* sharedInstance;
 - (void)initializeSplashAd
 {
     DLStore *store = [[DLStore alloc] init];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.identifier];
+    [self fetchSplashAdWithWebService:webService store:store];
+}
+
+-(void)fetchSplashAdWithWebService:(DLSplashScreenWebService *)webService store:(DLStore *)store
+{
     DLSplashAd *cachedSplashAd = [store cachedSplashAd];
     self.splashAd = cachedSplashAd.image ? cachedSplashAd : nil;
-
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.identifier];
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
@@ -73,7 +77,14 @@ static DLSplashModule* sharedInstance;
             return;
         }
 
-        if (splashAd.version != cachedSplashAd.version || !cachedSplashAd.image) {
+        // if we get empty json
+        if (splashAd.empty) {
+            self.splashAd = nil;
+            [store clearCache];
+            return;
+        }
+
+        if (splashAd.version != self.splashAd.version || !self.splashAd.image) {
             [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
@@ -90,8 +101,8 @@ static DLSplashModule* sharedInstance;
                 [self waitingForDataFinished];
             }];
         } else {
-            splashAd.image = cachedSplashAd.image;
-            splashAd.imageFileName = cachedSplashAd.imageFileName;
+            splashAd.image = self.splashAd.image;
+            splashAd.imageFileName = self.splashAd.imageFileName;
             self.splashAd = splashAd;
             [self waitingForDataFinished];
         }
@@ -188,12 +199,6 @@ static DLSplashModule* sharedInstance;
 - (void)adViewDidDisplayImage:(DLAdView *)adView
 {
     [self displayingTimeStarted];
-}
-
-#pragma mark - Auditing
-- (void)sendAuditData
-{
-    // TODO: send Audit Data (separate task)
 }
 
 @end
