@@ -26,3 +26,5 @@ DerivedData
 Pods
 Podfile.lock
 
+# AppleDoc documentation
+Documentation/
