@@ -18,6 +18,17 @@
 /**
  *  Designated initializer
  *
+ *  @param appSite   App Site URL parameter
+ *  @param exclusive Exclusive URL parameter
+ *  @param slots     Slots URL parameter
+ *
+ *  @return Instance of DLSplashScreenWebService with URL to webservice
+ */
+- (instancetype)initWithAppSite:(NSString *)appSite exclusive:(NSString *)exclusive slots:(NSString *)slots;
+
+/**
+ *  Convenience initializer
+ *
  *  @param appSite App Site
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice

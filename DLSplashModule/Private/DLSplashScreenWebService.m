@@ -13,7 +13,10 @@
 #import "DLSplashAd.h"
 #import "DLStore.h"
 
-NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:app_area/slots=splash/csr.json";
+NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/exclusive:%@/slots=%@/csr.json";
+
+NSString * const kSplashScreenExclusiveDefaultParameter = @"app_area";
+NSString * const kSplashScreenSlotsDefaultParameter = @"splash";
 
 @interface DLSplashScreenWebService ()
 
@@ -23,13 +26,24 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/excl
 
 @implementation DLSplashScreenWebService
 
-- (instancetype)initWithAppSite:(NSString *)appSite {
-    self = [super init];
-    if (!self || appSite == nil) {
+- (instancetype)initWithAppSite:(NSString *)appSite
+{
+    self = [self initWithAppSite:appSite exclusive:kSplashScreenExclusiveDefaultParameter slots:kSplashScreenSlotsDefaultParameter];
+    if (!self) {
         return nil;
     }
-    
-    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, appSite]];
+
+    return self;
+}
+
+- (instancetype)initWithAppSite:(NSString *)appSite exclusive:(NSString *)exclusive slots:(NSString *)slots
+{
+    self = [super init];
+    if (!self || !appSite || !exclusive || !slots) {
+        return nil;
+    }
+
+    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, appSite, exclusive, slots]];
 
     return self;
 }
