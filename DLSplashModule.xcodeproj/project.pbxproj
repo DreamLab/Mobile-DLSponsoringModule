@@ -12,6 +12,7 @@
 			buildConfigurationList = 87E8BD391C74631E004C2EAD /* Build configuration list for PBXAggregateTarget "DLSplashModuleUniversal" */;
 			buildPhases = (
 				87E8BD3A1C746324004C2EAD /* ShellScript */,
+				874529941C8072B700747C55 /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -34,6 +35,9 @@
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
+		874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10C1C7F703500D4BB7F /* DLAdView.h */; };
+		874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */; };
+		874529931C8072AB00747C55 /* DLSplashModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10F1C7F703500D4BB7F /* DLSplashModule.h */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */; };
 		87E8BD161C6DEDAD004C2EAD /* libDLSplashModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E8BCFB1C6DDAFD004C2EAD /* libDLSplashModule.a */; };
 /* End PBXBuildFile section */
@@ -55,6 +59,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */,
+				874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */,
+				874529931C8072AB00747C55 /* DLSplashModule.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +317,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		874529941C8072B700747C55 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if hash appledoc 2>/dev/null; then\n    appledoc --output \"${CONFIGURATION_BUILD_DIR}/Help\" .\nelse\n    # install appledoc\n    echo \"AppleDoc is not installed!\"\nfi";
+		};
 		87E8BD3A1C746324004C2EAD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
