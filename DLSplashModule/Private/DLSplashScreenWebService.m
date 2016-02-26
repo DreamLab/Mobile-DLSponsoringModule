@@ -28,12 +28,7 @@ NSString * const kSplashScreenSlotsDefaultParameter = @"splash";
 
 - (instancetype)initWithAppSite:(NSString *)appSite
 {
-    self = [self initWithAppSite:appSite exclusive:kSplashScreenExclusiveDefaultParameter slots:kSplashScreenSlotsDefaultParameter];
-    if (!self) {
-        return nil;
-    }
-
-    return self;
+    return [self initWithAppSite:appSite exclusive:kSplashScreenExclusiveDefaultParameter slots:kSplashScreenSlotsDefaultParameter];
 }
 
 - (instancetype)initWithAppSite:(NSString *)appSite exclusive:(NSString *)exclusive slots:(NSString *)slots
