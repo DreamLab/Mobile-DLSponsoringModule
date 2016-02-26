@@ -77,6 +77,13 @@ static DLSplashModule* sharedInstance;
             return;
         }
 
+        // if we get empty json
+        if (splashAd.empty) {
+            self.splashAd = nil;
+            [store clearCache];
+            return;
+        }
+
         if (splashAd.version != self.splashAd.version || !self.splashAd.image) {
             [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {

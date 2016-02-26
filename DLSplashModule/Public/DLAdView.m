@@ -122,7 +122,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
     }
 }
 
-// This method neet to be called in main queue or will crash!s
+// This method need to be called in main queue or will crash!
 - (void)displayAd:(DLSplashAd *)splashAd withImage:(UIImage *)image
 {
     [self.imageView setImage:image];

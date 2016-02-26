@@ -124,11 +124,11 @@
     XCTAssertNil(splashAd, @"Splash Ad should be nil");
 }
 
-- (void)testInitWithJSONData_givenEmptyJSONData_splashAdShouldBeNil
+- (void)testInitWithJSONData_givenEmptyJSONData_splashAdEmptyPropertyIsTrue
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.emptyJSONData];
 
-    XCTAssertNil(splashAd, @"Splash Ad should be nil");
+    XCTAssertTrue(splashAd.empty, @"Splash Ad should be nil");
 }
 
 - (void)testInitWithJSONData_givenNilAsJSONData_splashAdShouldBeNil
