@@ -59,8 +59,6 @@
 
     OCMVerify([fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask]);
     OCMVerify([fileManager moveItemAtURL:[OCMArg any] toURL:[OCMArg any] error:(NSError *__autoreleasing *)[OCMArg anyPointer]]);
-
-    fileManager = nil;
 }
 
 - (void)testSaveAdImageFromTemporaryLocationOfSplashAd_givenCorrectTemporaryLocation_shouldReturnTrue
@@ -77,8 +75,6 @@
 
     OCMVerify([fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask]);
     OCMVerify([fileManager moveItemAtURL:[OCMArg any] toURL:[OCMArg any] error:(NSError *__autoreleasing *)[OCMArg anyPointer]]);
-
-    fileManager = nil;
 }
 
 - (void)testCacheSplashAd_givenNilAsSplashAd_dataIsSavedToUserDefaults
@@ -131,8 +127,6 @@
 
     OCMVerify([fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask]);
     OCMVerify([fileManager removeItemAtURL:[OCMArg any] error:(NSError *__autoreleasing *)[OCMArg anyPointer]]);
-
-    fileManager = nil;
 }
 
 - (void)testClearCache_methodInvoked_nsUserDefaultsShouldBeUsed
@@ -152,7 +146,6 @@
     [self.store imageAtLocation:[NSURL URLWithString:@"file://somelocation"]];
 
     OCMVerify([data dataWithContentsOfURL:[OCMArg isNotNil]]);
-    data = nil;
 }
 
 - (void)testImageAtLocation_givenUrl_imageWithDataShouldBeInvoked
@@ -163,7 +156,6 @@
     [self.store imageAtLocation:[NSURL URLWithString:@"file://somelocation"]];
 
     OCMVerify([image imageWithData:[OCMArg any]]);
-    image = nil;
 }
 
 - (void)testClearQueuedTrackingLinks_methodInvoked_nsUserDefaultsShouldBeUsed
@@ -185,9 +177,6 @@
     OCMVerify([store queuedTrackingLinks]);
     OCMVerify([mutableArray removeObject:[OCMArg isNotNil]]);
     OCMVerify([store queueTrackingLinks:[OCMArg any]]);
-
-    store = nil;
-    mutableArray = nil;
 }
 
 - (void)testQueueTrackingLink_givenUrl_urlShouldBeAddedToQueue
@@ -201,9 +190,6 @@
     OCMVerify([store queuedTrackingLinks]);
     OCMVerify([mutableArray addObject:[OCMArg isNotNil]]);
     OCMVerify([store queueTrackingLinks:[OCMArg isNotNil]]);
-
-    store = nil;
-    mutableArray = nil;
 }
 
 - (void)testAreAnyTrackingLinksQueued_methodInvoked_shouldCallQueuedTrackingLinks
@@ -214,8 +200,6 @@
     [store areAnyTrackingLinksQueued];
 
     OCMVerify([store queuedTrackingLinks]);
-
-    store = nil;
 }
 
 @end
