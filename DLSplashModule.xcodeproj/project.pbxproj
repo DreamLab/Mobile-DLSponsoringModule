@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
+		7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLStoreTests.m */; };
 		71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSplashAd.m */; };
 		71BAF1121C7F703500D4BB7F /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1081C7F703500D4BB7F /* DLSplashScreenWebService.m */; };
 		71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10A1C7F703500D4BB7F /* DLStore.m */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
+		7170B75A1C80550600DC020B /* DLStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStoreTests.m; sourceTree = "<group>"; };
 		71BAF1031C7F703500D4BB7F /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
 		71BAF1041C7F703500D4BB7F /* DLSplashAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAd.m; sourceTree = "<group>"; };
 		71BAF1051C7F703500D4BB7F /* DLSplashModule+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLSplashModule+Internal.h"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				71F841B21C723A11003CF0E4 /* Helpers */,
 				87E8BD131C6DEDAD004C2EAD /* DLSplashModuleTests.m */,
 				8745298E1C7F179B00747C55 /* DLAdViewTests.m */,
+				7170B75A1C80550600DC020B /* DLStoreTests.m */,
 				71F841B01C723770003CF0E4 /* DLSplashAdTests.m */,
 				710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */,
 				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
@@ -345,6 +348,7 @@
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
 				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
+				7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */,
 				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
 				710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */,
 			);
