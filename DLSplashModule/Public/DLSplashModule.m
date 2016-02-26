@@ -35,14 +35,9 @@ static DLSplashModule* sharedInstance;
 
 + (instancetype)initializeWithAppSite:(NSString *)appSite
 {
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
-
-    sharedInstance.appSite = appSite;
-    [sharedInstance initializeSplashAd];
-
-    return sharedInstance;
+    return [DLSplashModule initializeWithAppSite:appSite
+                                       exclusive:kSplashScreenExclusiveDefaultParameter
+                                           slots:kSplashScreenSlotsDefaultParameter];
 }
 
 + (instancetype)initializeWithAppSite:(NSString *)appSite
@@ -80,14 +75,9 @@ static DLSplashModule* sharedInstance;
 {
     DLStore *store = [[DLStore alloc] init];
 
-    DLSplashScreenWebService *webService = nil;
-    if (self.exclusive && self.slots) {
-        webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.appSite
-                                                             exclusive:self.exclusive
-                                                                 slots:self.slots];
-    } else {
-        webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.appSite];
-    }
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.appSite
+                                                                                   exclusive:self.exclusive
+                                                                                       slots:self.slots];
 
     [self fetchSplashAdWithWebService:webService store:store];
 }
