@@ -15,8 +15,8 @@
 static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 
 @interface DLSplashModule ()
-@property (nonatomic, strong) NSString *appSite;
-@property (nonatomic, strong) NSString *exclusive;
+@property (nonatomic, strong) NSString *site;
+@property (nonatomic, strong) NSString *area;
 @property (nonatomic, strong) NSString *slots;
 
 @property (nonatomic, strong) NSMutableSet *delegates;
@@ -33,23 +33,23 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
-+ (instancetype)initializeWithAppSite:(NSString *)appSite
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area
 {
-    return [DLSplashModule initializeWithAppSite:appSite
-                                       exclusive:kSplashScreenExclusiveDefaultParameter
-                                           slots:kSplashScreenSlotsDefaultParameter];
+    return [DLSplashModule initializeWithSite:site
+                                         area:area
+                                        slots:kSplashScreenSlotsDefaultParameter];
 }
 
-+ (instancetype)initializeWithAppSite:(NSString *)appSite
-                            exclusive:(NSString *)exclusive
-                                slots:(NSString *)slots
++ (instancetype)initializeWithSite:(NSString *)site
+                              area:(NSString *)area
+                             slots:(NSString *)slots
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
 
-    sharedInstance.appSite = appSite;
-    sharedInstance.exclusive = exclusive;
+    sharedInstance.site = site;
+    sharedInstance.area = area;
     sharedInstance.slots = slots;
     [sharedInstance initializeSplashAd];
 
@@ -75,9 +75,9 @@ static DLSplashModule* sharedInstance;
 {
     DLStore *store = [[DLStore alloc] init];
 
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:self.appSite
-                                                                                   exclusive:self.exclusive
-                                                                                       slots:self.slots];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:self.site
+                                                                                     area:self.area
+                                                                                    slots:self.slots];
 
     [self fetchSplashAdWithWebService:webService store:store];
 }
