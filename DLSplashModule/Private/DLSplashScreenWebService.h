@@ -10,8 +10,7 @@
 
 @class DLSplashAd;
 
-extern NSString * const kSplashScreenExclusiveDefaultParameter;
-extern NSString * const kSplashScreenSlotsDefaultParameter;
+extern NSString * const kSplashScreenSlotDefaultParameter;
 
 /**
  *  Class to fetch data from server
@@ -21,22 +20,23 @@ extern NSString * const kSplashScreenSlotsDefaultParameter;
 /**
  *  Designated initializer.
  *
- *  @param appSite   App Site URL parameter.
- *  @param exclusive Exclusive URL parameter.
- *  @param slots     Slots URL parameter.
+ *  @param site         Site URL parameter.
+ *  @param area         Area URL parameter.
+ *  @param slot         Slot URL parameter.
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice.
  */
-- (instancetype)initWithAppSite:(NSString *)appSite exclusive:(NSString *)exclusive slots:(NSString *)slots;
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
 
 /**
  *  Convenience initializer.
  *
- *  @param appSite App Site URL parameter.
+ *  @param site Site URL parameter.
+ *  @param area Area URL parameter.
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice.
  */
-- (instancetype)initWithAppSite:(NSString *)appSite;
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area;
 
 /**
  *  Fetch data from server.

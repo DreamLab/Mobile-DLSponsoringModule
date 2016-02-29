@@ -23,24 +23,25 @@ Module responsible for providing ads for splash screen.
 @property (nonatomic, readonly) DLAdView *adView;
 
 /**
- Initializes module with the app site parameter. It initialize the shared instance. Should be called before first use.
+ Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param appSite the appSite URL parameter
+ @param site    the site URL parameter
+ @param area    the area URL parameter
  
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithAppSite:(NSString *)appSite;
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area;
 
 /**
- *   Initializes module with the app site, exclusive and slots parameter. It initialize the shared instance. Should be called before first use.
+ *   Initializes module with the site, area and slots parameter. It initialize the shared instance. Should be called before first use.
  *
- *  @param appSite   the appSite URL parameter
- *  @param exclusive the exclusive URL parameter
- *  @param slots     the slots URL parameter
+ *  @param site     the site URL parameter
+ *  @param area     the area URL parameter
+ *  @param slot     the slot URL parameter
  *
  *  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithAppSite:(NSString *)appSite exclusive:(NSString *)exclusive slots:(NSString *)slots;
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
 
 /**
  Returns the singleton instance of the DLSplashModule class. 
