@@ -37,11 +37,11 @@ Module responsible for providing ads for splash screen.
  *
  *  @param site     the site URL parameter
  *  @param area     the area URL parameter
- *  @param slots    the slots URL parameter
+ *  @param slot     the slot URL parameter
  *
  *  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area slots:(NSString *)slots;
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
 
 /**
  Returns the singleton instance of the DLSplashModule class. 

@@ -17,7 +17,7 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 @interface DLSplashModule ()
 @property (nonatomic, strong) NSString *site;
 @property (nonatomic, strong) NSString *area;
-@property (nonatomic, strong) NSString *slots;
+@property (nonatomic, strong) NSString *slot;
 
 @property (nonatomic, strong) NSMutableSet *delegates;
 @property (nonatomic, strong) NSTimer *displayTimer;
@@ -37,12 +37,12 @@ static DLSplashModule* sharedInstance;
 {
     return [DLSplashModule initializeWithSite:site
                                          area:area
-                                        slots:kSplashScreenSlotsDefaultParameter];
+                                         slot:kSplashScreenSlotDefaultParameter];
 }
 
 + (instancetype)initializeWithSite:(NSString *)site
                               area:(NSString *)area
-                             slots:(NSString *)slots
+                              slot:(NSString *)slot
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
@@ -50,7 +50,7 @@ static DLSplashModule* sharedInstance;
 
     sharedInstance.site = site;
     sharedInstance.area = area;
-    sharedInstance.slots = slots;
+    sharedInstance.slot = slot;
     [sharedInstance initializeSplashAd];
 
     return sharedInstance;
@@ -77,7 +77,7 @@ static DLSplashModule* sharedInstance;
 
     DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:self.site
                                                                                      area:self.area
-                                                                                    slots:self.slots];
+                                                                                     slot:self.slot];
 
     [self fetchSplashAdWithWebService:webService store:store];
 }

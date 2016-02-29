@@ -15,7 +15,7 @@
 
 NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
 
-NSString * const kSplashScreenSlotsDefaultParameter = @"slots=splash";
+NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 
 @interface DLSplashScreenWebService ()
 
@@ -27,17 +27,17 @@ NSString * const kSplashScreenSlotsDefaultParameter = @"slots=splash";
 
 - (instancetype)initWithSite:(NSString *)site area:(NSString *)area
 {
-    return [self initWithSite:site area:area slots:kSplashScreenSlotsDefaultParameter];
+    return [self initWithSite:site area:area slot:kSplashScreenSlotDefaultParameter];
 }
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area slots:(NSString *)slots
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot
 {
     self = [super init];
-    if (!self || !site || !area || !slots) {
+    if (!self || !site || !area || !slot) {
         return nil;
     }
 
-    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, site, area, slots]];
+    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot]];
 
     return self;
 }
