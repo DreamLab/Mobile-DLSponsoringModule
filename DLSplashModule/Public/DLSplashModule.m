@@ -99,6 +99,7 @@ static DLSplashModule* sharedInstance;
         if (splashAd.empty) {
             self.splashAd = nil;
             [store clearCache];
+            [self waitingForDataFinished];
             return;
         }
 
