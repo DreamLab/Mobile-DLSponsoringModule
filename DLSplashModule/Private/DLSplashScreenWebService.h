@@ -48,10 +48,11 @@ extern NSString * const kSplashScreenSlotDefaultParameter;
 /**
  *  Fetch image from server.
  *
- *  @param url          URL to the image.
- *  @param completion   Completion block containing downloaded image and path to its temporary location on disk and error if occurred.
+ *  @param url             URL to the image.
+ *  @param numberOfRetries Number of retries to fetch image.
+ *  @param completion      Completion block containing downloaded image and path to its temporary location on disk and error if occurred.
  */
-- (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion;
+- (void)fetchImageAtURL:(NSURL *)url numberOfRetries:(NSUInteger)numberOfRetries completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion;
 
 /**
  *  Send tracking requests.

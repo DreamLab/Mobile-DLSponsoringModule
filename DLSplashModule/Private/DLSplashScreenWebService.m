@@ -66,7 +66,7 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
     [dataTask resume];
 }
 
-- (void)fetchImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion
+- (void)fetchImageAtURL:(NSURL *)url numberOfRetries:(NSUInteger)numberOfRetries completion:(void (^)(UIImage *image, NSURL *imageLocation, NSError *error))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
@@ -74,17 +74,22 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
     NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:urlRequest
                                                             completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                                 if (error) {
-                                                                    if (completion) {
-                                                                        completion(nil, nil, error);
+                                                                    if (numberOfRetries > 0) {
+                                                                        [self fetchImageAtURL:url numberOfRetries:numberOfRetries-1 completion:completion];
+                                                                        return;
+                                                                    } else {
+                                                                        if (completion) {
+                                                                            completion(nil, nil, error);
+                                                                        }
+                                                                        return;
                                                                     }
-                                                                    return;
                                                                 }
 
                                                                 if (completion) {
                                                                     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
                                                                     completion(image, location, error);
                                                                 }
-    }];
+                                              }];
 
     [downloadTask resume];
 }

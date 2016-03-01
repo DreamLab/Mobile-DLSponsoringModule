@@ -103,7 +103,7 @@ static DLSplashModule* sharedInstance;
         }
 
         if (splashAd.version != self.splashAd.version || !self.splashAd.image) {
-            [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
+            [webService fetchImageAtURL:splashAd.imageURL numberOfRetries:3 completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
                     if (self.splashAd) {
