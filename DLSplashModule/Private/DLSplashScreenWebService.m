@@ -76,16 +76,12 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
                                                                 if (error) {
                                                                     if (numberOfRetries > 0) {
                                                                         [self fetchImageAtURL:url numberOfRetries:numberOfRetries-1 completion:completion];
-                                                                        return;
                                                                     } else {
                                                                         if (completion) {
                                                                             completion(nil, nil, error);
                                                                         }
-                                                                        return;
                                                                     }
-                                                                }
-
-                                                                if (completion) {
+                                                                } else if (completion) {
                                                                     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
                                                                     completion(image, location, error);
                                                                 }
