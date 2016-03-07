@@ -13,6 +13,7 @@
 #import "DLStore.h"
 
 static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
+static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 @interface DLSplashModule ()
 @property (nonatomic, strong) NSString *site;
@@ -100,11 +101,12 @@ static DLSplashModule* sharedInstance;
         if (splashAd.empty) {
             self.splashAd = nil;
             [store clearCache];
+            [self waitingForDataFinished];
             return;
         }
 
         if (splashAd.version != self.splashAd.version || !self.splashAd.image) {
-            [webService fetchImageAtURL:splashAd.imageURL completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
+            [webService fetchImageAtURL:splashAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
                     if (self.splashAd) {
