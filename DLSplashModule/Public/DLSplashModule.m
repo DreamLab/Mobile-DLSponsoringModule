@@ -25,6 +25,7 @@ static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 @property (nonatomic, weak) DLAdView *displayedAdView;
 @property (nonatomic, strong) DLSplashAd *splashAd;
 @property (nonatomic, strong) DLAdView *generatedAdView;
+@property (nonatomic, strong) DLSplashScreenWebService *webService;
 
 @end
 
@@ -75,11 +76,11 @@ static DLSplashModule* sharedInstance;
 {
     DLStore *store = [[DLStore alloc] init];
 
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:self.site
-                                                                                     area:self.area
-                                                                                     slot:self.slot];
+    self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.site
+                                                                area:self.area
+                                                                slot:self.slot];
 
-    [self fetchSplashAdWithWebService:webService store:store];
+    [self fetchSplashAdWithWebService:self.webService store:store];
 }
 
 -(void)fetchSplashAdWithWebService:(DLSplashScreenWebService *)webService store:(DLStore *)store
@@ -217,6 +218,7 @@ static DLSplashModule* sharedInstance;
 - (void)adViewDidDisplayImage:(DLAdView *)adView
 {
     [self displayingTimeStarted];
+    [self.webService trackForSplashAd:self.splashAd];
 }
 
 @end
