@@ -34,7 +34,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@""];
+    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
 
     self.session = OCMClassMock([NSURLSession class]);
     OCMStub([self.session sharedSession]).andReturn(self.session);
