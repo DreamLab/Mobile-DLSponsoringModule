@@ -33,7 +33,8 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 - (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot
 {
     self = [super init];
-    if (!self || !site || !area || !slot) {
+
+    if (!self || ![site length] || ![area length] || ![slot length]) {
         return nil;
     }
 

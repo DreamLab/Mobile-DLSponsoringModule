@@ -34,7 +34,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.webService = [[DLSplashScreenWebService alloc] initWithAppSite:@"appsite_example"];
+    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
 
     self.session = OCMClassMock([NSURLSession class]);
     OCMStub([self.session sharedSession]).andReturn(self.session);
@@ -46,17 +46,24 @@
     [super tearDown];
 }
 
-- (void)testInitWithAppSite_givenProperAppSite_instanceAndPropertyShouldNotBeNil
+- (void)testInitWithSiteArea_givenProperParameters_instanceAndPropertyShouldNotBeNil
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:@"appsite_example"];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
 
     XCTAssertNotNil(webService, @"webservice instance should not be nil");
     XCTAssertNotNil(webService.url, @"URL property should not be nil");
 }
 
-- (void)testInitWithAppSite_givenNilAppSite_instanceShouldBeNil
+- (void)testInitWithSiteArea_givenNilAsParameters_instanceShouldBeNil
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithAppSite:nil];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:nil area:nil];
+
+    XCTAssertNil(webService, @"webservice instance should be nil");
+}
+
+- (void)testInitWithSiteArea_givenEmptyStringAsParameters_instanceShouldBeNil
+{
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@""];
 
     XCTAssertNil(webService, @"webservice instance should be nil");
 }
