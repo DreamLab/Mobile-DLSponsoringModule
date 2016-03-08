@@ -63,9 +63,9 @@
 
 - (void)testInitWithSiteArea_givenEmptyStringAsParameters_instanceShouldBeNil
 {
-  DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@""];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@""];
 
-  XCTAssertNil(webService, @"webservice instance should be nil");
+    XCTAssertNil(webService, @"webservice instance should be nil");
 }
 
 - (void)testFetchDataWithCompletion_methodInvocation_nsURLSessionDataTaskWithRequestShouldBeCalled
