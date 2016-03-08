@@ -472,6 +472,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/OCMock",
 				);
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -485,6 +486,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/OCMock",
 				);
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
