@@ -77,7 +77,7 @@
 
 - (void)testFetchImageAtURLCompletion_methodInvocation_nsURLSessionDownloadTaskWithRequestShouldBeCalled
 {
-    [self.webService fetchImageAtURL:nil completion:nil];
+    [self.webService fetchImageAtURL:nil numberOfRetries:0 completion:nil];
 
     OCMVerify([self.session downloadTaskWithRequest:[OCMArg any] completionHandler:[OCMArg any]]);
 }

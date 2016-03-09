@@ -55,7 +55,7 @@
 {
     OCMStub([self.store cachedSplashAd]).andReturn(nil);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:OCMClassMock([DLSplashAd class]), [NSNull null], nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     OCMExpect([self.store cacheSplashAd:[OCMArg any]]);
@@ -75,7 +75,7 @@
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:OCMClassMock([DLSplashAd class]), [NSNull null], nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     OCMExpect([self.store cacheSplashAd:[OCMArg any]]);
@@ -95,7 +95,7 @@
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:[NSNull null], OCMClassMock([NSError class]), nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
@@ -110,7 +110,7 @@
 {
     OCMStub([self.store cachedSplashAd]).andReturn(nil);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:[NSNull null], OCMClassMock([NSError class]), nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldBeClosed]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
@@ -130,7 +130,7 @@
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:OCMClassMock([DLSplashAd class]), [NSNull null], nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], OCMClassMock([NSError class]), nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], OCMClassMock([NSError class]), nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
@@ -145,7 +145,7 @@
 {
     OCMStub([self.store cachedSplashAd]).andReturn(nil);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:OCMClassMock([DLSplashAd class]), [NSNull null], nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], OCMClassMock([NSError class]), nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], OCMClassMock([NSError class]), nil])]);
 
     OCMExpect([self.delegate splashScreenShouldBeClosed]);
    [[self.store reject] cacheSplashAd:[OCMArg any]];
@@ -164,7 +164,7 @@
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:splashAd, [NSNull null], nil])]);
-    OCMStub([self.webService fetchImageAtURL:[OCMArg any] completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
+    OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
