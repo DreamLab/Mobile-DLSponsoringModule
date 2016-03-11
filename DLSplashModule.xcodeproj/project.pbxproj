@@ -468,7 +468,6 @@
 		87E8BD051C6DDAFD004C2EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = s;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OCMock",
