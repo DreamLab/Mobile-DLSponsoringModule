@@ -46,7 +46,6 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 - (void)fetchDataWithCompletion:(void (^)(DLSplashAd *, NSError *))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
-
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.url];
 
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest
@@ -108,29 +107,29 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 
     if ([store areAnyTrackingLinksQueued]) {
         for (NSURL *url in [store queuedTrackingLinks]) {
-            [self performSessionDataTaskForURL:url];
+            [self performSessionDownloadTaskForURL:url];
         }
     }
 }
 
 #pragma mark - Private methods
 
-- (void)performSessionDataTaskForURL:(NSURL *)url
+- (void)performSessionDownloadTaskForURL:(NSURL *)url
 {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
 
-    DLStore *store = [[DLStore alloc] init];
-
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:urlRequest
+                                                            completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error occurred: %@ while sending request to url: %@", error.description, url);
         } else {
+            DLStore *store = [[DLStore alloc] init];
             [store removeTrackingLink:url];
         }
     }];
 
-    [dataTask resume];
+    [downloadTask resume];
 }
 
 @end

@@ -331,7 +331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if hash appledoc 2>/dev/null; then\n    appledoc --output \"${CONFIGURATION_BUILD_DIR}/Help\" .\nelse\n    # install appledoc\n    echo \"AppleDoc is not installed!\"\nfi";
+			shellScript = "if hash appledoc 2>/dev/null; then\n    appledoc --output \"${CONFIGURATION_BUILD_DIR}/Help\" .\nelse\n    # install appledoc\n    echo \"AppleDoc is not installed!\"\nfi\n\n# copy LICENSE file\ncp \"LICENSE\" \"${CONFIGURATION_BUILD_DIR}\"\n";
 		};
 		87E8BD3A1C746324004C2EAD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -468,6 +468,7 @@
 		87E8BD051C6DDAFD004C2EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = s;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OCMock",
