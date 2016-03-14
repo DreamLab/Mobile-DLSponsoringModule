@@ -19,7 +19,7 @@
 
 @interface DLSplashScreenWebService ()
 @property (nonatomic, strong) NSURL *url;
-- (void)performSessionDataTaskForURL:(NSURL *)url;
+- (void)performSessionDownloadTaskForURL:(NSURL *)url;
 @end
 
 #pragma mark - Unit Tests
@@ -87,8 +87,8 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:[DLTestingHelper dataFromJSONFileNamed:@"CorrectJsonData"]];
 
     id partialMockedWebService = OCMPartialMock(self.webService);
-    OCMExpect([partialMockedWebService performSessionDataTaskForURL:splashAd.auditURL]);
-    OCMExpect([partialMockedWebService performSessionDataTaskForURL:splashAd.audit2URL]);
+    OCMExpect([partialMockedWebService performSessionDownloadTaskForURL:splashAd.auditURL]);
+    OCMExpect([partialMockedWebService performSessionDownloadTaskForURL:splashAd.audit2URL]);
 
     [partialMockedWebService trackForSplashAd:splashAd];
 
@@ -101,7 +101,7 @@
 
     id partialMockedWebService = OCMPartialMock(self.webService);
 
-    [[partialMockedWebService reject] performSessionDataTaskForURL:[OCMArg any]];
+    [[partialMockedWebService reject] performSessionDownloadTaskForURL:[OCMArg any]];
 
     [partialMockedWebService trackForSplashAd:splashAd];
 }
