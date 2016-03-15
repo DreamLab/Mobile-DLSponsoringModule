@@ -5,14 +5,7 @@ default_platform :ios
 
 desc "Run Unit tests"
 lane :unit_tests do
-  scan(
-    scheme: "DLSplashModule",
-    destination:  "platform=iOS Simulator,name=iPhone 6",
-    configuration: "Debug",
-    clean: true,
-    output_directory: "./test-reports",
-    code_coverage: true
-  )
+  run_tests(scheme:"DLSplashModule", skip_cocoapods:true)
 end
 
 desc "Build universal library with documentation"
@@ -24,27 +17,64 @@ lane :build_universal_lib do |options|
     )
 end
 
-lane :publish_pod do |options|
+lane :build_pod do |options|
     if !options[:version]
-        raise "Missing vesion number".red
+        raise "No version specified!".red
     end
     version = options[:version]
-    output_dir = options[:output_dir] ? options[:output_dir] : "build/universal"
-    repo_dir = "build/remote"
-    repo_url = "ssh://git@stash.grupa.onet:7999/msc/dlsplashmodule.git"
     
-    unit_tests
+    project_name = options[:project_name] ? options[:project_name] : ENV["PROJECT_NAME"]
+    if !project_name
+        raise "No Project name specified!".red
+    end
+    ENV["PROJECT_NAME"] = project_name
+    
+    output_dir = options[:output_dir] ? options[:output_dir] : ENV["OUTPUT_DIR"] ? ENV["OUTPUT_DIR"] : "build/#{project_name}"
+    repo_url =  options[:output_git_repo] ? options[:output_git_repo] : ENV["OUTPUT_GIT_REPO"]
+    
+    # build
     version_bump_podspec version_number:version
     build_universal_lib output_dir:output_dir
+    build_documentation output_dir:"#{output_dir}/Help"
+    dl_make_changelog
+    sh "cd .. && cp CHANGELOG.md #{output_dir}/CHANGELOG.md"
+end
+
+lane :publish_pod do |options|
+
+    project_name = options[:project_name] ? options[:project_name] : ENV["PROJECT_NAME"]
+    if !project_name
+        raise "No Project name specified!".red
+    end
+    ENV["PROJECT_NAME"] = project_name
+    
+    repo_dir = options[:repo_dir] ? options[:repo_dir] : ENV["REMOTE_POD_DIR"] ? ENV["REMOTE_POD_DIR"] : "build/remote"
+    
+    repo_url = ENV["OUTPUT_GIT_REPO"]
+    
+    # spec_repository = public|private
+    spec_repository = options[:specs_repository] ? options[:specs_repository] : ENV["OUTPUT_SPEC_REPOSITORY"] ? ENV["OUTPUT_SPEC_REPOSITORY"] : "private"
+    
+    # choose specs repository
+    if spec_repository == "public"
+        spec_repo_name = ENV["PUBLIC_PODSPEC_REPO_NAME"]
+        spec_repo_url = ENV["PUBLIC_PODSPEC_REPO_URL"]
+    elsif spec_repository == "private"
+        spec_repo_name = ENV["PRIVATE_PODSPEC_REPO_NAME"]
+        spec_repo_url = ENV["PRIVATE_PODSPEC_REPO_URL"]
+    else
+        raise "No specs repository specified!".red
+    end
+    output_dir = options[:output_dir] ? options[:output_dir] : ENV["OUTPUT_DIR"] ? ENV["OUTPUT_DIR"] : "build/#{project_name}"
+    
+    podspec_path = "#{output_dir}/#{project_name}.podspec"
     
     # clone remote repository
     git_clone(dir:repo_dir, remote:repo_url)
     copy_files(from:output_dir, to:repo_dir)
-    push_new_lib_version(dir:repo_dir, version:version)
     
-    spec_repo_name = "dreamlab-public-specs"
-    spec_repo_url = "ssh://git@stash.grupa.onet:7999/msc/mobilesdkcocoapods.git"
-    podspec_path = "#{output_dir}/DLSplashModule.podspec"
+    # push new library
+    push_new_lib_version(dir:repo_dir, version:version)
     
     # push podspec
     dl_pod_repo_add(name:spec_repo_name, url:spec_repo_url)
@@ -57,23 +87,7 @@ lane :build_documentation do |options|
     sh "cd .. && appledoc --output #{output_dir} ."
 end
 
-lane :git_clone do |options|
-    repo_dir = options[:dir]
-    repo_url = options[:remote]
-    sh "cd .. && rm -rf #{repo_dir} && git clone #{repo_url} #{repo_dir}"
+lane :make_changelog do |options|
+    dl_make_changelog #project_name:"DLSplashModule"
 end
 
-lane :copy_files do |options|
-    from_dir = options[:from]
-    to_dir = options[:to]
-    sh "cd .. && cp -r #{from_dir}/ #{to_dir}/"
-end
-
-lane :push_new_lib_version do |options|
-    repo_dir = options[:dir]
-    version = options[:version]
-    # commit changes
-    # tag commit
-    # push with tags
-    sh("cd ..&& cd #{repo_dir} && git add -A && git commit -m \'Release #{version}\' && git tag #{version} && git push --tags")
-end

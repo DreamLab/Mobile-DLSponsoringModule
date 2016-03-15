@@ -15,6 +15,11 @@ Run Unit tests
 fastlane build_universal_lib
 ```
 Build universal library with documentation
+### build_pod
+```
+fastlane build_pod
+```
+
 ### publish_pod
 ```
 fastlane publish_pod
@@ -25,19 +30,9 @@ fastlane publish_pod
 fastlane build_documentation
 ```
 Build Documentation
-### git_clone
+### make_changelog
 ```
-fastlane git_clone
-```
-
-### copy_files
-```
-fastlane copy_files
-```
-
-### push_new_lib_version
-```
-fastlane push_new_lib_version
+fastlane make_changelog
 ```
 
 
