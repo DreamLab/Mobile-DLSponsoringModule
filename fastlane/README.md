@@ -5,31 +5,33 @@ fastlane documentation
 sudo gem install fastlane
 ```
 # Available Actions
-### unit_tests
+### build_pod_static_lib
 ```
-fastlane unit_tests
+fastlane build_pod_static_lib
 ```
-Run Unit tests
-### build_universal_lib
-```
-fastlane build_universal_lib
-```
-Build universal library with documentation
-### build_pod
-```
-fastlane build_pod
-```
+Builds static library, documentation, podspec and changelog and put it in one directory.
 
-### publish_pod
-```
-fastlane publish_pod
-```
+Parameters:
 
+* **`version`**: Version number
+
+* **`project_name`**: Name of the project. (`PROJECT_NAME`)
+
+* **`scheme`**: XCode scheme of universal library. (`UNIVERSAL_SCHEME_NAME`)
+
+* **`output_dir`**: Path to output directory. (`OUTPUT_DIR`)
 ### build_documentation
 ```
 fastlane build_documentation
 ```
 Build Documentation
+
+* **`output_dir`**: Path to output directory.
+### unit_tests
+```
+fastlane unit_tests
+```
+Run Unit tests
 ### make_changelog
 ```
 fastlane make_changelog
