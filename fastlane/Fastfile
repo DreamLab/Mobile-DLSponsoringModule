@@ -1,79 +1,12 @@
-import_from_git(url: 'ssh://git@stash.grupa.onet:7999/dep/bamboo-mobile-ios.git',
-               path: 'MasterFastfile')
+import_from_git(url: 'ssh://git@stash.grupa.onet:7999/dep/bamboo-mobile-ios.git')
 
 default_platform :ios
 
 desc "Run Unit tests"
 lane :unit_tests do
-  scan(
-    scheme: "DLSplashModule",
-    destination:  "platform=iOS Simulator,name=iPhone 6",
-    configuration: "Debug",
-    clean: true,
-    output_directory: "./test-reports",
-    code_coverage: true
-  )
+  run_tests(scheme:"DLSplashModule", skip_cocoapods:true)
 end
 
-desc "Build universal library with documentation"
-lane :build_universal_lib do |options|
-    xcodebuild(
-        scheme: "DLSplashModuleUniversal",
-        build: true,
-        build_settings: [["ONLY_ACTIVE_ARCH", "NO"], ["CONFIGURATION_BUILD_DIR", options[:output_dir]]]
-    )
-end
-
-lane :publish_pod do |options|
-    if !options[:version]
-        raise "Missing vesion number".red
-    end
-    version = options[:version]
-    output_dir = options[:output_dir] ? options[:output_dir] : "build/universal"
-    repo_dir = "build/remote"
-    repo_url = "ssh://git@stash.grupa.onet:7999/msc/dlsplashmodule.git"
-    
-    unit_tests
-    version_bump_podspec version_number:version
-    build_universal_lib output_dir:output_dir
-    
-    # clone remote repository
-    git_clone(dir:repo_dir, remote:repo_url)
-    copy_files(from:output_dir, to:repo_dir)
-    push_new_lib_version(dir:repo_dir, version:version)
-    
-    spec_repo_name = "dreamlab-public-specs"
-    spec_repo_url = "ssh://git@stash.grupa.onet:7999/msc/mobilesdkcocoapods.git"
-    podspec_path = "#{output_dir}/DLSplashModule.podspec"
-    
-    # push podspec
-    dl_pod_repo_add(name:spec_repo_name, url:spec_repo_url)
-    pod_push(path:podspec_path, repo:spec_repo_name)
-end
-
-desc "Build Documentation"
-lane :build_documentation do |options|
-    output_dir = options[:output_dir] ? options[:output_dir] : "documentation"
-    sh "cd .. && appledoc --output #{output_dir} ."
-end
-
-lane :git_clone do |options|
-    repo_dir = options[:dir]
-    repo_url = options[:remote]
-    sh "cd .. && rm -rf #{repo_dir} && git clone #{repo_url} #{repo_dir}"
-end
-
-lane :copy_files do |options|
-    from_dir = options[:from]
-    to_dir = options[:to]
-    sh "cd .. && cp -r #{from_dir}/ #{to_dir}/"
-end
-
-lane :push_new_lib_version do |options|
-    repo_dir = options[:dir]
-    version = options[:version]
-    # commit changes
-    # tag commit
-    # push with tags
-    sh("cd ..&& cd #{repo_dir} && git add -A && git commit -m \'Release #{version}\' && git tag #{version} && git push --tags")
+lane :make_changelog do |options|
+    dl_make_changelog #project_name:"DLSplashModule"
 end
