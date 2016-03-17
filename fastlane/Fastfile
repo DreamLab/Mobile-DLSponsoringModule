@@ -1,12 +1,3 @@
-import_from_git(url: 'ssh://git@stash.grupa.onet:7999/dep/bamboo-mobile-ios.git')
+import_from_git(url: 'ssh://git@stash.grupa.onet:7999/dep/bamboo-mobile-ios.git', branch:'feature/env-rename')
 
 default_platform :ios
-
-desc "Run Unit tests"
-lane :unit_tests do
-  run_tests(scheme:"DLSplashModule", skip_cocoapods:true)
-end
-
-lane :make_changelog do |options|
-    dl_make_changelog #project_name:"DLSplashModule"
-end
