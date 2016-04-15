@@ -11,11 +11,11 @@ You need to simply copy the files of DLSplashModule (libDLSplashModule.a and .h 
 
 Next go to your project setting, select given target and then Build Phases tab. Under the "Link Binary With Libraries" section add `libDLSplashModule.a` file.
 
-![Linking library into project](splash_screen_ios_linking_library.png)
+![Linking library into project](tutorial_resources/splash_screen_ios_linking_library.png)
 
 Then in the same target settings in the "Build Settings" tab search for "Header Search Paths" and add path to the headers of DLSplashModule in your project.
 
-![Setting header search paths](splash_screen_ios_header_search_paths.png)
+![Setting header search paths](tutorial_resources/splash_screen_ios_header_search_paths.png)
 
 ### Via CocoaPods
 In order to install it as a pod you need to specify the source of internal pods. Add this source to your Podfile so it will be possible to find Podfile:
