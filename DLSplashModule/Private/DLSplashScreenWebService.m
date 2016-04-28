@@ -8,6 +8,7 @@
 
 @import UIKit;
 @import Foundation;
+@import AdSupport;
 
 #import "DLSplashScreenWebService.h"
 #import "DLSplashAd.h"
@@ -38,8 +39,14 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
         return nil;
     }
 
-    _url = [NSURL URLWithString:[NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot]];
+    NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
 
+    NSString *urlString = [NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot];
+    if (advertisingId != nil && ![advertisingId isEqual:@""]) {
+        urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
+    }
+
+    _url = [NSURL URLWithString:urlString];
     return self;
 }
 
