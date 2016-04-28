@@ -42,7 +42,7 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
 
     NSString *urlString = [NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot];
-    if (advertisingId != nil && ![advertisingId isEqual:@""]) {
+    if (advertisingId && ![advertisingId isEqual:@""]) {
         urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
     }
 

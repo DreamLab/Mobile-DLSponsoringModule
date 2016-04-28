@@ -46,7 +46,7 @@
     [super tearDown];
 }
 
-- (void)testInitWithSiteArea_givenProperParameters_instanceAndPropertyShouldNotBeNil
+- (void)testInitWithSiteArea_givenProperParameters_instanceShouldNotBeNilAndURLisGeneratedProperly
 {
     DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
 
