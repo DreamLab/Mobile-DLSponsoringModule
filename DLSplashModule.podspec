@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
     :git => 'ssh://git@stash.grupa.onet:7999/msc/dlsplashmodule.git',
     :tag => s.version.to_s
   }
+  s.framework = "AdSupport"
   s.source_files = "include/**/*.h"
   s.vendored_libraries = 'libDLSplashModule.a'
 end

@@ -46,12 +46,14 @@
     [super tearDown];
 }
 
-- (void)testInitWithSiteArea_givenProperParameters_instanceAndPropertyShouldNotBeNil
+- (void)testInitWithSiteArea_givenProperParameters_instanceShouldNotBeNilAndURLisGeneratedProperly
 {
     DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
 
     XCTAssertNotNil(webService, @"webservice instance should not be nil");
-    XCTAssertNotNil(webService.url, @"URL property should not be nil");
+
+    NSRange range = [webService.url.absoluteString rangeOfString:@"https://csr.onet.pl/_s/csr-005/appsite_example/area_example/slots=splash/csr.json?DI="];
+    XCTAssertTrue(range.length > 0, @"URL should be generated properly");
 }
 
 - (void)testInitWithSiteArea_givenNilAsParameters_instanceShouldBeNil
