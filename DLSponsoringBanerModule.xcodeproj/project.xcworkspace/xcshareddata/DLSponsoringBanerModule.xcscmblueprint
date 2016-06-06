@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "42D053C8C8D919DA01D9B27C65441273A0497F8E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "42D053C8C8D919DA01D9B27C65441273A0497F8E" : 0,
+    "4B67AE61B7EEC0EA2ADCD0C70A5BF5145E72F492" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2B00FD4E-A5F6-411E-80C1-E26DF0624EBE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "42D053C8C8D919DA01D9B27C65441273A0497F8E" : "ios-sponsoringbanermodule\/",
+    "4B67AE61B7EEC0EA2ADCD0C70A5BF5145E72F492" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DLSponsoringBanerModule",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DLSponsoringBanerModule.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.grupa.onet:7999\/mss\/ios-sponsoringbanermodule.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "42D053C8C8D919DA01D9B27C65441273A0497F8E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/as-stash.axelspringer.de\/ideas\/ina-ios-response-mocks.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4B67AE61B7EEC0EA2ADCD0C70A5BF5145E72F492"
+    }
+  ]
+}

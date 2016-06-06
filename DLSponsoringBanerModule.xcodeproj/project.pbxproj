@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		87E8BD361C74631E004C2EAD /* DLSponsoringBanerModuleUniversal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 87E8BD391C74631E004C2EAD /* Build configuration list for PBXAggregateTarget "DLSponsoringBanerModuleUniversal" */;
+			buildPhases = (
+				87E8BD3A1C746324004C2EAD /* ShellScript */,
+				874529941C8072B700747C55 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = DLSponsoringBanerModuleUniversal;
+			productName = DLSponsoringBanerModuleUniversal;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
+		7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLStoreTests.m */; };
+		71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSplashAd.m */; };
+		71BAF1121C7F703500D4BB7F /* DLSplashScreenWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1081C7F703500D4BB7F /* DLSplashScreenWebService.m */; };
+		71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10A1C7F703500D4BB7F /* DLStore.m */; };
+		71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10D1C7F703500D4BB7F /* DLAdView.m */; };
+		71BAF1151C7F703500D4BB7F /* DLSponsoringBanerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1101C7F703500D4BB7F /* DLSponsoringBanerModule.m */; };
+		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
+		71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B21C734F1200CF6981 /* EmptyJsonData.json */; };
+		71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* WrongJsonData.json */; };
+		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
+		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
+		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
+		874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10C1C7F703500D4BB7F /* DLAdView.h */; };
+		874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */; };
+		874529931C8072AB00747C55 /* DLSponsoringBanerModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10F1C7F703500D4BB7F /* DLSponsoringBanerModule.h */; };
+		87E8BD141C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.m */; };
+		87E8BD161C6DEDAD004C2EAD /* libDLSponsoringBanerModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E8BCFB1C6DDAFD004C2EAD /* libDLSponsoringBanerModule.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87E8BD171C6DEDAD004C2EAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E8BCF31C6DDAFD004C2EAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87E8BCFA1C6DDAFD004C2EAD;
+			remoteInfo = DLSponsoringBanerModule;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87E8BCF91C6DDAFD004C2EAD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */,
+				874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */,
+				874529931C8072AB00747C55 /* DLSponsoringBanerModule.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
+		7170B75A1C80550600DC020B /* DLStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStoreTests.m; sourceTree = "<group>"; };
+		71BAF1031C7F703500D4BB7F /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
+		71BAF1041C7F703500D4BB7F /* DLSplashAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAd.m; sourceTree = "<group>"; };
+		71BAF1051C7F703500D4BB7F /* DLSponsoringBanerModule+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLSponsoringBanerModule+Internal.h"; sourceTree = "<group>"; };
+		71BAF1061C7F703500D4BB7F /* DLSponsoringBanerModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringBanerModuleDelegate.h; sourceTree = "<group>"; };
+		71BAF1071C7F703500D4BB7F /* DLSplashScreenWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashScreenWebService.h; sourceTree = "<group>"; };
+		71BAF1081C7F703500D4BB7F /* DLSplashScreenWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebService.m; sourceTree = "<group>"; };
+		71BAF1091C7F703500D4BB7F /* DLStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStore.h; sourceTree = "<group>"; };
+		71BAF10A1C7F703500D4BB7F /* DLStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStore.m; sourceTree = "<group>"; };
+		71BAF10C1C7F703500D4BB7F /* DLAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdView.h; sourceTree = "<group>"; };
+		71BAF10D1C7F703500D4BB7F /* DLAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdView.m; sourceTree = "<group>"; };
+		71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
+		71BAF10F1C7F703500D4BB7F /* DLSponsoringBanerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringBanerModule.h; sourceTree = "<group>"; };
+		71BAF1101C7F703500D4BB7F /* DLSponsoringBanerModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringBanerModule.m; sourceTree = "<group>"; };
+		71C020B11C734F1200CF6981 /* CorrectJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CorrectJsonData.json; path = "Unit Tests Data/CorrectJsonData.json"; sourceTree = "<group>"; };
+		71C020B21C734F1200CF6981 /* EmptyJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EmptyJsonData.json; path = "Unit Tests Data/EmptyJsonData.json"; sourceTree = "<group>"; };
+		71C020B31C734F1200CF6981 /* WrongJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WrongJsonData.json; path = "Unit Tests Data/WrongJsonData.json"; sourceTree = "<group>"; };
+		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
+		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
+		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
+		872C68D71C74BE44006064FD /* DLSponsoringBanerModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSponsoringBanerModule.podspec; sourceTree = "<group>"; };
+		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8745297C1C7DB8DD00747C55 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		8745298E1C7F179B00747C55 /* DLAdViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdViewTests.m; sourceTree = "<group>"; };
+		87E8BCFB1C6DDAFD004C2EAD /* libDLSponsoringBanerModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDLSponsoringBanerModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E8BD111C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLSponsoringBanerModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E8BD131C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringBanerModuleTests.m; sourceTree = "<group>"; };
+		87E8BD151C6DEDAD004C2EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87E8BCF81C6DDAFD004C2EAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E8BD0E1C6DEDAD004C2EAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */,
+				87E8BD161C6DEDAD004C2EAD /* libDLSponsoringBanerModule.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71BAF1021C7F703500D4BB7F /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				71BAF1031C7F703500D4BB7F /* DLSplashAd.h */,
+				71BAF1041C7F703500D4BB7F /* DLSplashAd.m */,
+				71BAF1051C7F703500D4BB7F /* DLSponsoringBanerModule+Internal.h */,
+				71BAF1061C7F703500D4BB7F /* DLSponsoringBanerModuleDelegate.h */,
+				71BAF1071C7F703500D4BB7F /* DLSplashScreenWebService.h */,
+				71BAF1081C7F703500D4BB7F /* DLSplashScreenWebService.m */,
+				71BAF1091C7F703500D4BB7F /* DLStore.h */,
+				71BAF10A1C7F703500D4BB7F /* DLStore.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		71BAF10B1C7F703500D4BB7F /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				71BAF10C1C7F703500D4BB7F /* DLAdView.h */,
+				71BAF10D1C7F703500D4BB7F /* DLAdView.m */,
+				71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */,
+				71BAF10F1C7F703500D4BB7F /* DLSponsoringBanerModule.h */,
+				71BAF1101C7F703500D4BB7F /* DLSponsoringBanerModule.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		71C020B01C734ECF00CF6981 /* Unit Tests Data */ = {
+			isa = PBXGroup;
+			children = (
+				71C020B11C734F1200CF6981 /* CorrectJsonData.json */,
+				71C020B21C734F1200CF6981 /* EmptyJsonData.json */,
+				71C020B31C734F1200CF6981 /* WrongJsonData.json */,
+			);
+			name = "Unit Tests Data";
+			sourceTree = "<group>";
+		};
+		71F841B21C723A11003CF0E4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				71F841B31C723A57003CF0E4 /* DLTestingHelper.h */,
+				71F841B41C723A57003CF0E4 /* DLTestingHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		872C68D61C74BDA7006064FD /* Podfile metadata */ = {
+			isa = PBXGroup;
+			children = (
+				872C68D71C74BE44006064FD /* DLSponsoringBanerModule.podspec */,
+				872C68D81C74BE44006064FD /* LICENSE */,
+				872C68D91C74BE44006064FD /* README.md */,
+			);
+			name = "Podfile metadata";
+			sourceTree = "<group>";
+		};
+		8745297B1C7DB8DD00747C55 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				8745297C1C7DB8DD00747C55 /* libOCMock.a */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
+		87E8BCF21C6DDAFD004C2EAD = {
+			isa = PBXGroup;
+			children = (
+				8745297B1C7DB8DD00747C55 /* OCMock */,
+				872C68D61C74BDA7006064FD /* Podfile metadata */,
+				87E8BCFD1C6DDAFD004C2EAD /* DLSponsoringBanerModule */,
+				87E8BD121C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests */,
+				87E8BCFC1C6DDAFD004C2EAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87E8BCFC1C6DDAFD004C2EAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87E8BCFB1C6DDAFD004C2EAD /* libDLSponsoringBanerModule.a */,
+				87E8BD111C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87E8BCFD1C6DDAFD004C2EAD /* DLSponsoringBanerModule */ = {
+			isa = PBXGroup;
+			children = (
+				71BAF1021C7F703500D4BB7F /* Private */,
+				71BAF10B1C7F703500D4BB7F /* Public */,
+			);
+			path = DLSponsoringBanerModule;
+			sourceTree = "<group>";
+		};
+		87E8BD121C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				71C020B01C734ECF00CF6981 /* Unit Tests Data */,
+				71F841B21C723A11003CF0E4 /* Helpers */,
+				87E8BD131C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.m */,
+				8745298E1C7F179B00747C55 /* DLAdViewTests.m */,
+				7170B75A1C80550600DC020B /* DLStoreTests.m */,
+				71F841B01C723770003CF0E4 /* DLSplashAdTests.m */,
+				710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */,
+				87E8BD151C6DEDAD004C2EAD /* Info.plist */,
+			);
+			path = DLSponsoringBanerModuleTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87E8BCFA1C6DDAFD004C2EAD /* DLSponsoringBanerModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E8BD041C6DDAFD004C2EAD /* Build configuration list for PBXNativeTarget "DLSponsoringBanerModule" */;
+			buildPhases = (
+				87E8BCF71C6DDAFD004C2EAD /* Sources */,
+				87E8BCF91C6DDAFD004C2EAD /* CopyFiles */,
+				87E8BCF81C6DDAFD004C2EAD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DLSponsoringBanerModule;
+			productName = DLSponsoringBanerModule;
+			productReference = 87E8BCFB1C6DDAFD004C2EAD /* libDLSponsoringBanerModule.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		87E8BD101C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E8BD1B1C6DEDAD004C2EAD /* Build configuration list for PBXNativeTarget "DLSponsoringBanerModuleTests" */;
+			buildPhases = (
+				87E8BD0D1C6DEDAD004C2EAD /* Sources */,
+				87E8BD0E1C6DEDAD004C2EAD /* Frameworks */,
+				87E8BD0F1C6DEDAD004C2EAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87E8BD181C6DEDAD004C2EAD /* PBXTargetDependency */,
+			);
+			name = DLSponsoringBanerModuleTests;
+			productName = DLSponsoringBanerModuleTests;
+			productReference = 87E8BD111C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87E8BCF31C6DDAFD004C2EAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = DreamLab;
+				TargetAttributes = {
+					87E8BCFA1C6DDAFD004C2EAD = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					87E8BD101C6DEDAD004C2EAD = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					87E8BD361C74631E004C2EAD = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 87E8BCF61C6DDAFD004C2EAD /* Build configuration list for PBXProject "DLSponsoringBanerModule" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 87E8BCF21C6DDAFD004C2EAD;
+			productRefGroup = 87E8BCFC1C6DDAFD004C2EAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87E8BCFA1C6DDAFD004C2EAD /* DLSponsoringBanerModule */,
+				87E8BD101C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests */,
+				87E8BD361C74631E004C2EAD /* DLSponsoringBanerModuleUniversal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87E8BD0F1C6DEDAD004C2EAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */,
+				71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */,
+				71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		874529941C8072B700747C55 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if hash appledoc 2>/dev/null; then\n    appledoc --output \"${CONFIGURATION_BUILD_DIR}/Help\" .\nelse\n    # install appledoc\n    echo \"AppleDoc is not installed!\"\nfi\n\n# copy LICENSE file\ncp \"LICENSE\" \"${CONFIGURATION_BUILD_DIR}\"\n";
+		};
+		87E8BD3A1C746324004C2EAD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=\"${CONFIGURATION_BUILD_DIR}\"\nLIB_NAME=\"lib${PROJECT_NAME}.a\"\n\n# clean build folder\nrm -rf ./build\n\n# Build all needed architectures\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/arm' BUILT_PRODUCTS_DIR='build/arm'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphoneos' clean build ARCHS='arm64' VALID_ARCHS='arm64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/arm64' BUILT_PRODUCTS_DIR='build/arm64'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='i386' VALID_ARCHS='i386' IPHONEOS_DEPLOYMENT_TARGET='5.0' TARGET_BUILD_DIR='build/i386' BUILT_PRODUCTS_DIR='build/i386'\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -sdk 'iphonesimulator' clean build ARCHS='x86_64' VALID_ARCHS='x86_64' IPHONEOS_DEPLOYMENT_TARGET='7.0' TARGET_BUILD_DIR='build/x86_64' BUILT_PRODUCTS_DIR='build/x86_64'\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# make one binary\nlipo -create \"./build/arm/${LIB_NAME}\" \"./build/arm64/${LIB_NAME}\" \"./build/i386/${LIB_NAME}\" \"./build/x86_64/${LIB_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}\"\n\n# copy headers\ncp -R \"./build/arm/include/\" \"${UNIVERSAL_OUTPUTFOLDER}/include\"\n\n# copy podfile\ncp \"DLSponsoringBanerModule.podspec\" \"${UNIVERSAL_OUTPUTFOLDER}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87E8BCF71C6DDAFD004C2EAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71BAF1151C7F703500D4BB7F /* DLSponsoringBanerModule.m in Sources */,
+				71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */,
+				71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */,
+				71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */,
+				71BAF1121C7F703500D4BB7F /* DLSplashScreenWebService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E8BD0D1C6DEDAD004C2EAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
+				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
+				87E8BD141C6DEDAD004C2EAD /* DLSponsoringBanerModuleTests.m in Sources */,
+				7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */,
+				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
+				710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87E8BD181C6DEDAD004C2EAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87E8BCFA1C6DDAFD004C2EAD /* DLSponsoringBanerModule */;
+			targetProxy = 87E8BD171C6DEDAD004C2EAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		87E8BD021C6DDAFD004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		87E8BD031C6DDAFD004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87E8BD051C6DDAFD004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		87E8BD061C6DDAFD004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		87E8BD191C6DEDAD004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock";
+				INFOPLIST_FILE = DLSponsoringBanerModuleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.dreamlab.DLSponsoringBanerModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		87E8BD1A1C6DEDAD004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock";
+				INFOPLIST_FILE = DLSponsoringBanerModuleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCMock",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.dreamlab.DLSponsoringBanerModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		87E8BD371C74631E004C2EAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		87E8BD381C74631E004C2EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87E8BCF61C6DDAFD004C2EAD /* Build configuration list for PBXProject "DLSponsoringBanerModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD021C6DDAFD004C2EAD /* Debug */,
+				87E8BD031C6DDAFD004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E8BD041C6DDAFD004C2EAD /* Build configuration list for PBXNativeTarget "DLSponsoringBanerModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD051C6DDAFD004C2EAD /* Debug */,
+				87E8BD061C6DDAFD004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E8BD1B1C6DEDAD004C2EAD /* Build configuration list for PBXNativeTarget "DLSponsoringBanerModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD191C6DEDAD004C2EAD /* Debug */,
+				87E8BD1A1C6DEDAD004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E8BD391C74631E004C2EAD /* Build configuration list for PBXAggregateTarget "DLSponsoringBanerModuleUniversal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E8BD371C74631E004C2EAD /* Debug */,
+				87E8BD381C74631E004C2EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87E8BCF31C6DDAFD004C2EAD /* Project object */;
+}

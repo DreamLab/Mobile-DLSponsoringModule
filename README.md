@@ -1,6 +1,6 @@
-# DLSplashModule
+# DLSponsoringBanerModule
 
-Module to provide Ad for splash screen.
+Module to provide Sponsoring Baner.
 
 TODO: add description
 
@@ -12,19 +12,20 @@ TODO
 
 ## Installation
 
-DLSplashModule is available through DreamLab private pods (please read https://as-wiki.axelspringer.de/display/IDEAS/CocoaPods+Homepage). To install it, simply add the following line to your Podfile
+DLSponsoringBanerModule is available through DreamLab private pods. To install it, simply add the following line to your Podfile
 
 ```ruby
-pod "DLSplashModule"
+pod "DLSponsoringBanerModule"
 ```
 
 ## Author
 
-* Konrad Kierys, konrad.kierys@asideas.de
-* Jacek Zapart, jacek.zapart@asideas.de
+* Konrad Kierys, konrad.kierys@dreamlab.pl
+* Jacek Zapart, jacek.zapart@dreamlab.pl
+* Paweł Kordal, pawel.kordal@dreamlab.pl
 
 ## License
 
 Copyright (c) 2016 DreamLab
 
-DLSplashModule is for internal use only.
+DLSponsoringBanerModule is for internal use only.
