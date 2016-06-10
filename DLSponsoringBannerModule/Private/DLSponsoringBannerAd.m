@@ -1,16 +1,14 @@
 //
-//  DLSplashAd.m
+//  DLSponsoringBannerAd.m
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 12.02.2016.
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import "DLSplashAd.h"
+#import "DLSponsoringBannerAd.h"
 
-NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.persiste_store";
-
-@implementation DLSplashAd
+@implementation DLSponsoringBannerAd
 
 - (instancetype)initWithJSONDictionary:(NSDictionary *)json
 {
@@ -26,59 +24,49 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
 - (instancetype)initWithJSONData:(NSData *)data
 {
-    NSDictionary *parsedJSON = [DLSplashAd parseJSONData:data];
+    NSDictionary *parsedJSON = [DLSponsoringBannerAd parseJSONData:data];
 
     return [self initWithJSONDictionary:parsedJSON];
 }
 
 - (NSURL *)imageURL
 {
-    return [NSURL URLWithString:self.json[@"splash"][@"image"]];
+    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"image"]];
 }
 
 - (CGFloat)imageWidth
 {
-    return [self.json[@"splash"][@"width"] doubleValue];
+    return [self.json[@"flat-belkagorna"][@"width"] doubleValue];
 }
 
 - (CGFloat)imageHeight
 {
-    return [self.json[@"splash"][@"height"] doubleValue];
-}
-
-- (NSString *)text
-{
-    return self.json[@"splash"][@"txt"];
-}
-
-- (NSTimeInterval)time
-{
-    return [self.json[@"splash"][@"time"] doubleValue];
+    return [self.json[@"flat-belkagorna"][@"height"] doubleValue];
 }
 
 - (NSURL *)auditURL
 {
-    return [NSURL URLWithString:self.json[@"splash"][@"audit"]];
+    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"audit"]];
 }
 
 - (NSURL *)audit2URL
 {
-    return [NSURL URLWithString:self.json[@"splash"][@"audit2"]];
+    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"audit2"]];
 }
 
 - (NSURL *)clickURL
 {
-    return [NSURL URLWithString:self.json[@"splash"][@"click"]];
+    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"click"]];
 }
 
-- (NSInteger)version
+- (NSString *)version
 {
-    return [self.json[@"splash"][@"ver"] intValue];
+    return self.json[@"flat-belkagorna"][@"ver"];
 }
 
 - (BOOL)empty
 {
-    return self.json[@"splash"] == nil;
+    return self.json[@"flat-belkagorna"] == nil;
 }
 
 #pragma mark - private methods

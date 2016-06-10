@@ -10,38 +10,30 @@
 @import UIKit;
 #import "DLAdView.h"
 
-@class DLSplashAd;
+@class DLSponsoringBannerAd;
 
 /**
-Module responsible for providing ads for splash screen.
+ *  Main class of DLSponsoringBanner Module, once initialized, being responsible mainly for returning ad views.
  */
 @interface DLSponsoringBannerModule : NSObject
 
 /**
- Returns initialized object of class DLAdView. Each time it returns the same object.
- */
-@property (nonatomic, readonly) DLAdView *adView;
+*  Returns initialized object of class DLAdView to be used in given UIViewController.
+*
+*  @param controller UIViewController
+*
+*  @return DLAdView view
+*/
+- (DLAdView *)adViewForViewController:(UIViewController *)controller;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
  @param site    the site URL parameter
- @param area    the area URL parameter
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area;
-
-/**
- *   Initializes module with the site, area and slots parameter. It initialize the shared instance. Should be called before first use.
- *
- *  @param site     the site URL parameter
- *  @param area     the area URL parameter
- *  @param slot     the slot URL parameter
- *
- *  @return Instance of initialized DLSponsoringBannerModule
- */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
++ (instancetype)initializeWithSite:(NSString *)site;
 
 /**
  Returns the singleton instance of the DLSponsoringBannerModule class. 

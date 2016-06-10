@@ -15,13 +15,8 @@
 @protocol DLSponsoringBannerModuleDelegate
 
 /**
- Notifies that splash screen should display ad.
+ Notifies that ad view should display ad.
  */
-- (void)splashScreenShouldDisplayAd;
-
-/**
- Notifies that splash screen should be closed - time of displaying it passed.
- */
-- (void)splashScreenShouldBeClosed;
+- (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad;
 
 @end

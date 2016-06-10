@@ -9,7 +9,7 @@
 #import "DLSponsoringBannerModule.h"
 #import "DLSponsoringBannerModule+Internal.h"
 #import "DLSponsoringBannerModuleDelegate.h"
-#import "DLSplashScreenWebService.h"
+#import "DLSponsoringBannerWebService.h"
 #import "DLStore.h"
 
 static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
@@ -19,15 +19,13 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) NSString *site;
 @property (nonatomic, strong) NSString *area;
 @property (nonatomic, strong) NSString *slot;
-
 @property (nonatomic, strong) NSMutableSet *delegates;
-@property (nonatomic, strong) NSTimer *displayTimer;
+@property (nonatomic, strong) DLSponsoringBannerAd *bannerAd;
 @property (nonatomic, strong) NSTimer *waitingTimer;
-@property (nonatomic, weak) DLAdView *displayedAdView;
-@property (nonatomic, strong) DLSplashAd *splashAd;
-@property (nonatomic, strong) DLAdView *generatedAdView;
-@property (nonatomic, strong) DLSplashScreenWebService *webService;
-
+@property (nonatomic, strong) DLSponsoringBannerWebService *webService;
+@property (nonatomic, strong) DLStore *store;
+@property (nonatomic, strong) NSMapTable<NSString*, DLAdView*> *viewsForControllers;
+@property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
 @end
 
 @implementation DLSponsoringBannerModule
@@ -35,25 +33,21 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 static dispatch_once_t once;
 static DLSponsoringBannerModule* sharedInstance;
 
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area
-{
-    return [DLSponsoringBannerModule initializeWithSite:site
-                                         area:area
-                                         slot:kSplashScreenSlotDefaultParameter];
-}
-
 + (instancetype)initializeWithSite:(NSString *)site
-                              area:(NSString *)area
-                              slot:(NSString *)slot
 {
+    if (DLSponsoringBannerModule.sharedInstance != nil) {
+        NSLog(@"DLSponsoringBannerModule was already initialized");
+        return nil;
+    }
+
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
 
     sharedInstance.site = site;
-    sharedInstance.area = area;
-    sharedInstance.slot = slot;
-    [sharedInstance initializeSplashAd];
+    sharedInstance.area = @"exclusive:sponsoring";
+    sharedInstance.slot = @"flat-belkagorna";
+    [sharedInstance initializeBannerAd];
 
     return sharedInstance;
 }
@@ -70,74 +64,93 @@ static DLSponsoringBannerModule* sharedInstance;
         return nil;
     }
     _delegates = [[NSMutableSet alloc] init];
+    _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory capacity:5];
     return self;
 }
 
-- (void)initializeSplashAd
+- (void)initializeBannerAd
 {
-    DLStore *store = [[DLStore alloc] init];
-
-    self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.site
+    self.webService = [[DLSponsoringBannerWebService alloc] initWithSite:self.site
                                                                 area:self.area
                                                                 slot:self.slot];
+    self.store = [[DLStore alloc] init];
 
-    [self fetchSplashAdWithWebService:self.webService store:store];
+    if (self.store.isAdFullyCached) {
+        self.bannerAd = self.store.cachedBannerAd;
+    }
+
+    [self fetchBannerAd];
 }
 
--(void)fetchSplashAdWithWebService:(DLSplashScreenWebService *)webService store:(DLStore *)store
+- (void)fetchBannerAd
 {
-    DLSplashAd *cachedSplashAd = [store cachedSplashAd];
-    self.splashAd = cachedSplashAd.image ? cachedSplashAd : nil;
-    [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
+    if (self.isDataFetchingInProgress) {
+        return;
+    }
+
+    self.dataFetchingInProgress = YES;
+    [self waitingForDataStarted];
+
+    [self.webService fetchDataWithCompletion:^(DLSponsoringBannerAd *bannerAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
-            if (self.splashAd) {
+            if (self.store.isAdFullyCached) {
+                self.bannerAd = self.store.cachedBannerAd;
                 [self waitingForDataFinished];
             }
             return;
         }
 
         // if we get empty json
-        if (splashAd.empty) {
-            self.splashAd = nil;
-            [store clearCache];
+        if (bannerAd.empty) {
+            [self.store clearCache];
             [self waitingForDataFinished];
             return;
         }
 
-        if (splashAd.version != self.splashAd.version || !self.splashAd.image) {
-            [webService fetchImageAtURL:splashAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
+        DLSponsoringBannerAd *cachedBannerAd = self.store.cachedBannerAd;
+        if (![bannerAd.version isEqualToString: cachedBannerAd.version] || !cachedBannerAd.image) {
+            [self.webService fetchImageAtURL:bannerAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
-                    if (self.splashAd) {
+                    if (self.store.isAdFullyCached) {
+                        self.bannerAd = self.store.cachedBannerAd;
                         [self waitingForDataFinished];
                     }
                     return;
                 }
-                splashAd.image = image;
-                self.splashAd = splashAd;
-                [store clearCache];
-                [store saveAdImageFromTemporaryLocation:imageLocation ofSplashAd:splashAd];
-                [store cacheSplashAd:splashAd];
+                bannerAd.image = image;
+                self.bannerAd = bannerAd;
+                [self.store clearCache];
+                [self.store saveAdImageFromTemporaryLocation:imageLocation ofBannerAd:bannerAd];
+                [self.store cacheBannerAd:bannerAd];
                 [self waitingForDataFinished];
             }];
-        } else {
-            splashAd.image = self.splashAd.image;
-            splashAd.imageFileName = self.splashAd.imageFileName;
-            self.splashAd = splashAd;
-            [self waitingForDataFinished];
+            return;
         }
 
-        NSLog(@"Fetched splash ad: %@", splashAd);
+        if (!self.bannerAd) {
+            self.bannerAd = cachedBannerAd;
+        }
+
+        [self waitingForDataFinished];
+
+        NSLog(@"Fetched banner ad: %@", bannerAd);
     }];
 }
 
-- (DLAdView *)adView
+- (DLAdView *)adViewForViewController:(UIViewController<DLAdViewDelegate> *)controller
 {
-    if (!_generatedAdView) {
-        _generatedAdView = [[DLAdView alloc] init];
+    DLAdView *adView = [self.viewsForControllers objectForKey:controller.description];
+    if (adView) {
+        return adView;
     }
-    return _generatedAdView;
+
+    adView = [[DLAdView alloc] init];
+    [self.viewsForControllers setObject:adView forKey:controller.description];
+    adView.delegate = controller;
+    
+    return adView;
 }
 
 #pragma mark - Delegate
@@ -156,17 +169,10 @@ static DLSponsoringBannerModule* sharedInstance;
     [self.delegates removeAllObjects];
 }
 
-- (void)notifyDelegatesSplashScreenShouldDisplayAd
+- (void)notifyDelegatesBannerAdViewShouldDisplayAd
 {
     for (id<DLSponsoringBannerModuleDelegate> delegate in self.delegates) {
-        [delegate splashScreenShouldDisplayAd];
-    }
-}
-
-- (void)notifyDelegatesSplashScreenShouldBeClosed
-{
-    for (id<DLSponsoringBannerModuleDelegate> delegate in self.delegates) {
-        [delegate splashScreenShouldBeClosed];
+        [delegate sposoringBannerModuleReceivedAd:self.bannerAd];
     }
 }
 
@@ -181,46 +187,24 @@ static DLSponsoringBannerModule* sharedInstance;
                                                         repeats:NO];
 }
 
-- (void)waitingForDataFinished
-{
+- (void)waitingForDataFinished {
+
+    self.dataFetchingInProgress = NO;
     if (self.waitingTimer) {
         [self.waitingTimer invalidate];
         self.waitingTimer = nil;
-        if (self.splashAd) {
-            [self notifyDelegatesSplashScreenShouldDisplayAd];
-        } else {
-            [self notifyDelegatesSplashScreenShouldBeClosed];
+        if (self.bannerAd) {
+            [self notifyDelegatesBannerAdViewShouldDisplayAd];
         }
     }
 }
 
-- (void)displayingTimeStarted
-{
-    NSInteger waitingTime = self.splashAd.time;
-    self.displayTimer = [NSTimer scheduledTimerWithTimeInterval:waitingTime
-                                                         target:self
-                                                       selector:@selector(displayingTimePassed)
-                                                       userInfo:nil
-                                                        repeats:NO];
-}
-
-- (void)displayingTimePassed
-{
-    self.displayTimer = nil;
-    [self notifyDelegatesSplashScreenShouldBeClosed];
-}
-
 #pragma mark - Communication with ad view
 
-- (void)adViewDidShow:(DLAdView *)adView
+- (void)adViewDidShowSuccesfulyForBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    [self waitingForDataStarted];
-}
-
-- (void)adViewDidDisplayImage:(DLAdView *)adView
-{
-    [self displayingTimeStarted];
-    [self.webService trackForSplashAd:self.splashAd];
+    [self.webService trackForBannerAd:bannerAd];
+    NSLog(@"Tracked displaying banner ad: %@", bannerAd);
 }
 
 @end

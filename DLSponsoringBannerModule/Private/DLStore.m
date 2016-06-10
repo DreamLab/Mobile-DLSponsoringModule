@@ -9,21 +9,21 @@
 @import UIKit;
 #import "DLStore.h"
 
-NSString * const kDLSplashAdJSONCacheKey = @"com.dreamlab.splash_screen.json_cache_key";
-NSString * const kDLSplashAdImageFileNameCacheKey = @"com.dreamlab.splash_screen.image_filename_cache_key";
-NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_screen.tracking_links_cache_key";
+NSString * const kDLSponsoringBannerAdJSONCacheKey = @"pl.dreamlab.sponsoring_banner.json_cache_key";
+NSString * const kDLSponsoringBannerAdImageFileNameCacheKey = @"pl.dreamlab.sponsoring_banner.image_filename_cache_key";
+NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.sponsoring_banner.tracking_links_cache_key";
 
 @implementation DLStore
 
-- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofSplashAd:(DLSplashAd *)splashAd
+- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    NSString *fileName = [NSString stringWithFormat:@"%ld", (long)splashAd.version];
+    NSString *fileName = [NSString stringWithFormat:@"%ld", (long)bannerAd.version];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
     NSURL *fileURL = [cachesURL URLByAppendingPathComponent:fileName];
     NSError *moveError;
-    splashAd.imageFileName = fileName;
+    bannerAd.imageFileName = fileName;
     if (![fileManager moveItemAtURL:temporaryLocation toURL:fileURL error:&moveError]) {
         NSLog(@"moveItemAtURL failed: %@", moveError);
         return NO;
@@ -32,31 +32,35 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
     return YES;
 }
 
-- (void)cacheSplashAd:(DLSplashAd *)splashAd
+- (void)cacheBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:splashAd.json forKey:kDLSplashAdJSONCacheKey];
-    [userDefaults setObject:splashAd.imageFileName forKey:kDLSplashAdImageFileNameCacheKey];
+    [userDefaults setObject:bannerAd.json forKey:kDLSponsoringBannerAdJSONCacheKey];
+    [userDefaults setObject:bannerAd.imageFileName forKey:kDLSponsoringBannerAdImageFileNameCacheKey];
     [userDefaults synchronize];
 }
 
-- (DLSplashAd *)cachedSplashAd
+- (DLSponsoringBannerAd *)cachedBannerAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *json = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
-    NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
+    NSDictionary *json = [userDefaults objectForKey:kDLSponsoringBannerAdJSONCacheKey];
+    NSString *imageFileName = [userDefaults objectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
 
-    DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
+    DLSponsoringBannerAd *cachedBannerAd = [[DLSponsoringBannerAd alloc] initWithJSONDictionary:json];
 
     if (imageFileName) {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
         NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
-        cachedSplashAd.imageFileName = imageFileName;
-        cachedSplashAd.image = [self imageAtLocation:fileURL];
+        cachedBannerAd.imageFileName = imageFileName;
+        cachedBannerAd.image = [self imageAtLocation:fileURL];
     }
 
-    return cachedSplashAd;
+    return cachedBannerAd;
+}
+
+- (BOOL)isAdFullyCached {
+    return self.cachedBannerAd.image != nil;
 }
 
 - (void)clearCache
@@ -64,8 +68,8 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
     [self removeCachedImageAd];
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:kDLSplashAdJSONCacheKey];
-    [userDefaults removeObjectForKey:kDLSplashAdImageFileNameCacheKey];
+    [userDefaults removeObjectForKey:kDLSponsoringBannerAdJSONCacheKey];
+    [userDefaults removeObjectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
     [userDefaults synchronize];
 }
 
@@ -74,7 +78,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (BOOL)removeCachedImageAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
+    NSString *imageFileName = [userDefaults objectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
     if (!imageFileName) {
         return false;
     }
@@ -101,7 +105,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (NSArray<NSURL *> *)queuedTrackingLinks
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [userDefaults objectForKey:kDLSplashQueuedTrackingLinksCacheKey];
+    NSData *data = [userDefaults objectForKey:kDLSponsoringBannerQueuedTrackingLinksCacheKey];
     NSArray<NSURL *> *queuedTrackingLinks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return queuedTrackingLinks;
 }
@@ -110,7 +114,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:trackingLinks];
-    [userDefaults setObject:saveData forKey:kDLSplashQueuedTrackingLinksCacheKey];
+    [userDefaults setObject:saveData forKey:kDLSponsoringBannerQueuedTrackingLinksCacheKey];
     [userDefaults synchronize];
 }
 
@@ -131,7 +135,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (void)clearQueuedTrackingLinks
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:kDLSplashQueuedTrackingLinksCacheKey];
+    [userDefaults removeObjectForKey:kDLSponsoringBannerQueuedTrackingLinksCacheKey];
     [userDefaults synchronize];
 }
 

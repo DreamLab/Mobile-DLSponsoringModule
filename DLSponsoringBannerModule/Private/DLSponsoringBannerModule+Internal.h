@@ -7,29 +7,22 @@
 //
 
 #import "DLSponsoringBannerModuleDelegate.h"
-#import "DLSplashScreenWebService.h"
+#import "DLSponsoringBannerWebService.h"
 #import "DLStore.h"
 
 @interface DLSponsoringBannerModule (Internal)
 
 /**
- Splash Ad
+ Sponsoring Banner Ad
  */
-@property (nonatomic, strong, readonly) DLSplashAd *splashAd;
+@property (nonatomic, strong, readonly) DLSponsoringBannerAd *bannerAd;
 
 /**
- Notifies DLSponsoringBannerModule that ad view was displayed
+ Notifies DLSponsoringBannerModule that ad view was displayed with ad inside
 
- @param adView DLAdView that generated event.
+ @param bannerAd DLSponsoringBannerAd that generated event.
  */
-- (void)adViewDidShow:(DLAdView *)adView;
-
-/**
- Notifies DLSponsoringBannerModule that ad view displayed image
-
- @param adView DLAdView that generated event.
- */
-- (void)adViewDidDisplayImage:(DLAdView *)adView;
+- (void)adViewDidShowSuccesfulyForBannerAd:(DLSponsoringBannerAd *)bannerAd;
 
 /**
  Add delegate to the DLSponsoringBannerModule.
@@ -39,7 +32,7 @@
 - (void)addDelegate:(id<DLSponsoringBannerModuleDelegate>)delegate;
 
 /**
- Remove delegate from the DLSplash module.
+ Remove delegate from the DLSponsoringBannerModule module.
 
  @param delegate DLSponsoringBannerModuleDelegate implementation
  */
@@ -49,5 +42,10 @@
  Remove all delegates from the DLSponsoringBannerModule.
  */
 - (void)removeAllDelegates;
+
+/**
+ *  Fetch Banner Ad data.
+ */
+- (void)fetchBannerAd;
 
 @end

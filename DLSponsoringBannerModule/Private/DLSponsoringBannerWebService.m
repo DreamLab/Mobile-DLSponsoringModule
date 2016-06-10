@@ -1,5 +1,5 @@
 //
-//  DLSplashScreenWebService.m
+//  DLSponsoringBannerWebService.m
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 12.02.2016.
@@ -10,26 +10,19 @@
 @import Foundation;
 @import AdSupport;
 
-#import "DLSplashScreenWebService.h"
-#import "DLSplashAd.h"
+#import "DLSponsoringBannerWebService.h"
+#import "DLSponsoringBannerAd.h"
 #import "DLStore.h"
 
-NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
+NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
 
-NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
-
-@interface DLSplashScreenWebService ()
+@interface DLSponsoringBannerWebService ()
 
 @property (nonatomic, strong) NSURL *url;
 
 @end
 
-@implementation DLSplashScreenWebService
-
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area
-{
-    return [self initWithSite:site area:area slot:kSplashScreenSlotDefaultParameter];
-}
+@implementation DLSponsoringBannerWebService
 
 - (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot
 {
@@ -41,7 +34,7 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
 
-    NSString *urlString = [NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot];
+    NSString *urlString = [NSString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot];
     if (advertisingId && ![advertisingId isEqual:@""]) {
         urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
     }
@@ -50,7 +43,7 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
     return self;
 }
 
-- (void)fetchDataWithCompletion:(void (^)(DLSplashAd *, NSError *))completion
+- (void)fetchDataWithCompletion:(void (^)(DLSponsoringBannerAd *, NSError *))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.url];
@@ -65,8 +58,8 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
                                                     }
 
                                                     if (completion) {
-                                                        DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:data];
-                                                        completion(splashAd, error);
+                                                        DLSponsoringBannerAd *bannerAd = [[DLSponsoringBannerAd alloc] initWithJSONData:data];
+                                                        completion(bannerAd, error);
                                                     }
     }];
 
@@ -97,19 +90,19 @@ NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
     [downloadTask resume];
 }
 
-- (void)trackForSplashAd:(DLSplashAd *)splashAd
+- (void)trackForBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    if (!splashAd) {
+    if (!bannerAd) {
         return;
     }
 
     DLStore *store = [[DLStore alloc] init];
 
-    if (splashAd.auditURL) {
-        [store queueTrackingLink:splashAd.auditURL];
+    if (bannerAd.auditURL) {
+        [store queueTrackingLink:bannerAd.auditURL];
     }
-    if (splashAd.audit2URL) {
-        [store queueTrackingLink:splashAd.audit2URL];
+    if (bannerAd.audit2URL) {
+        [store queueTrackingLink:bannerAd.audit2URL];
     }
 
     if ([store areAnyTrackingLinksQueued]) {
