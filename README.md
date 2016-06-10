@@ -1,6 +1,6 @@
-# DLSponsoringBanerModule
+# DLSponsoringBannerModule
 
-Module to provide Sponsoring Baner.
+Module to provide Sponsoring Banner.
 
 TODO: add description
 
@@ -12,10 +12,10 @@ TODO
 
 ## Installation
 
-DLSponsoringBanerModule is available through DreamLab private pods. To install it, simply add the following line to your Podfile
+DLSponsoringBannerModule is available through DreamLab private pods. To install it, simply add the following line to your Podfile
 
 ```ruby
-pod "DLSponsoringBanerModule"
+pod "DLSponsoringBannerModule"
 ```
 
 ## Author
@@ -28,4 +28,4 @@ pod "DLSponsoringBanerModule"
 
 Copyright (c) 2016 DreamLab
 
-DLSponsoringBanerModule is for internal use only.
+DLSponsoringBannerModule is for internal use only.

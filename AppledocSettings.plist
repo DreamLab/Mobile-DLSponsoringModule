@@ -4,7 +4,7 @@
 <plist version="1.0">
   <dict>
     <key>--project-name</key>
-    <string>DLSponsoringBanerModule</string>
+    <string>DLSponsoringBannerModule</string>
     <key>--project-company</key>
     <string>DreamLab</string>
     <key>--company-id</key>
@@ -25,7 +25,7 @@
     <key>--ignore</key>
     <array>
       <string>Private</string>
-      <string>DLSponsoringBanerModuleTests</string>
+      <string>DLSponsoringBannerModuleTests</string>
     </array>
   </dict>
 </plist>
