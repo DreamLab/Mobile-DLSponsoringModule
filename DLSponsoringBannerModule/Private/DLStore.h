@@ -7,19 +7,10 @@
 //
 
 @import Foundation;
-#import "DLSplashAd.h"
-
-//Key to store JSON Dictionary in NSUserDefaults.
-extern NSString * const kDLSplashAdJSONCacheKey;
-
-// Key to store Ad image file name in NSUserDefaults.
-extern NSString * const kDLSplashAdImageFileNameCacheKey;
-
-// Key to store queued tracking links in NSUserDefaults.
-extern NSString * const kDLSplashQueuedTrackingLinksCacheKey;
+#import "DLSponsoringBannerAd.h"
 
 /**
- *  Class to manage caching of Splash Ad.
+ *  Class to manage caching of Sponsoring Banner Ad.
  */
 @interface DLStore : NSObject
 
@@ -27,25 +18,32 @@ extern NSString * const kDLSplashQueuedTrackingLinksCacheKey;
  *  Saves Ad image permanently to cache folder on disk.
  *
  *  @param temporaryLocation Temporary location of fetched ad image.
- *  @param splashAd          SplashAd of ad image.
+ *  @param bannerAd          Sponsoring Banner Ad of ad image.
  *
  *  @return Status if saving file was successful.
  */
-- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofSplashAd:(DLSplashAd *)splashAd;
+- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd;
 
 /**
- *  Cache given SplashAd object to NSUserDefaults.
+ *  Cache given Sponsoring Banner Ad object to NSUserDefaults.
  *
- *  @param splashAd SplashAd to cache.
+ *  @param bannerAd SposoringBannerAd to cache.
  */
-- (void)cacheSplashAd:(DLSplashAd *)splashAd;
+- (void)cacheBannerAd:(DLSponsoringBannerAd *)bannerAd;
 
 /**
- *  Cached SplashAd from NSUserDefaults.
+ *  Cached Sponsoring Banner Ad from NSUserDefaults.
  *
- *  @return Cached SplashAd.
+ *  @return Cached SposoringBannerAd.
  */
-- (DLSplashAd *)cachedSplashAd;
+- (DLSponsoringBannerAd *)cachedBannerAd;
+
+/**
+ *  Is data fully stored in cache?
+ *
+ *  @return YES when data for ad is fully cached (including image)
+ */
+- (BOOL)isAdFullyCached;
 
 /**
  *  Clears cache.

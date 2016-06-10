@@ -1,5 +1,5 @@
 //
-//  DLSplashAd.h
+//  DLSponsoringBannerAd.h
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 12.02.2016.
@@ -11,9 +11,9 @@
 @import CoreGraphics;
 
 /**
- *  Class to parse Splash JSON and to expose its parameters
+ *  Class to parse Sposnoring Banner JSON and to expose its parameters
  */
-@interface DLSplashAd : NSObject
+@interface DLSponsoringBannerAd : NSObject
 
 /**
  *  URL to ad image
@@ -36,16 +36,6 @@
 @property (nonatomic, strong) UIImage *image;
 
 /**
- *  Text for corresponding ad
- */
-@property (nonatomic, strong, readonly) NSString *text;
-
-/**
- *  Duration how long ad should be displayed
- */
-@property (nonatomic, assign, readonly) NSTimeInterval time;
-
-/**
  *  URL to audit
  */
 @property (nonatomic, strong, readonly) NSURL *auditURL;
@@ -66,7 +56,7 @@
 @property (nonatomic, assign, readonly) NSInteger version;
 
 /**
- *  JSON of Splash Ad.
+ *  JSON of Sponsoring Banner Ad.
  */
 @property (nonatomic, strong, readonly) NSDictionary *json;
 
@@ -76,25 +66,25 @@
 @property (nonatomic, strong) NSString *imageFileName;
 
 /**
- *  JSON of SplashAd is empty
+ *  JSON of BannerAd is empty
  */
 @property (nonatomic) BOOL empty;
 
 /**
- *  Convenience initializer for DLSplashAd class
+ *  Convenience initializer for DLSponsoringBannerAd class
  *
  *  @param data NSData object of JSON fetched from server
  *
- *  @return Instance of DLSplashAd with parsed JSON
+ *  @return Instance of DLSponsoringBannerAd with parsed JSON
  */
 - (instancetype)initWithJSONData:(NSData *)data;
 
 /**
- *  Desingated initializer for DLSplashAd class
+ *  Desingated initializer for DLSponsoringBannerAd class
  *
  *  @param json JSON Dictionary
  *
- *  @return Instance of DLSplashAd with parsed JSON
+ *  @return Instance of DLSponsoringBannerAd with parsed JSON
  */
 - (instancetype)initWithJSONDictionary:(NSDictionary *)json;
 

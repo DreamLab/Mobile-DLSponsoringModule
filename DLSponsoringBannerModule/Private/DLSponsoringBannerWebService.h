@@ -1,5 +1,5 @@
 //
-//  DLSplashScreenWebService.h
+//  DLSponsoringBannerWebService.h
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 12.02.2016.
@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class DLSplashAd;
-
-extern NSString * const kSplashScreenSlotDefaultParameter;
+@class DLSponsoringBannerAd;
 
 /**
  *  Class to fetch data from server
  */
-@interface DLSplashScreenWebService : NSObject
+@interface DLSponsoringBannerWebService : NSObject
 
 /**
  *  Designated initializer.
@@ -24,26 +22,16 @@ extern NSString * const kSplashScreenSlotDefaultParameter;
  *  @param area         Area URL parameter.
  *  @param slot         Slot URL parameter.
  *
- *  @return Instance of DLSplashScreenWebService with URL to webservice.
+ *  @return Instance of DLSponsoringBannerWebService with URL to webservice.
  */
 - (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
 
 /**
- *  Convenience initializer.
- *
- *  @param site Site URL parameter.
- *  @param area Area URL parameter.
- *
- *  @return Instance of DLSplashScreenWebService with URL to webservice.
- */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area;
-
-/**
  *  Fetch data from server.
  *
- *  @param completion Block with DLSplashAd and NSError as result of fetching data
+ *  @param completion Block with DLSponsoringBannerAd and NSError as result of fetching data
  */
-- (void)fetchDataWithCompletion:(void(^)(DLSplashAd *splashAd, NSError *error))completion;
+- (void)fetchDataWithCompletion:(void(^)(DLSponsoringBannerAd *bannerAd, NSError *error))completion;
 
 /**
  *  Fetch image from server.
@@ -57,8 +45,8 @@ extern NSString * const kSplashScreenSlotDefaultParameter;
 /**
  *  Send tracking requests.
  *
- *  @param splashAd SplashAd to track.
+ *  @param bannerAd DLSponsoringBannerAd to track.
  */
-- (void)trackForSplashAd:(DLSplashAd *)splashAd;
+- (void)trackForBannerAd:(DLSponsoringBannerAd *)bannerAd;
 
 @end

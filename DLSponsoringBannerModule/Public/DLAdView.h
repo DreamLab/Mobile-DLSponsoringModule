@@ -7,6 +7,7 @@
 //
 
 #import "DLAdViewDelegate.h"
+@class DLSponsoringBannerAd;
 
 @import UIKit;
 @import Foundation;
@@ -17,13 +18,22 @@ View to display the image of the ad.
 @interface DLAdView : UIView 
 
 /**
- Property for reading text associated with currently displayed ad.
- */
-@property (nonatomic, readonly) NSString *associatedText;
-
-/**
  Delegate of the DLAdViewDelegate protocol.
  */
 @property (nonatomic, weak) id<DLAdViewDelegate> delegate;
 
+/**
+ *  Property defining if ad is ready to be displayed
+ */
+@property (nonatomic, assign, readonly) BOOL isAdReady;
+
+/**
+ *  Ad size - (0,0) when ad is not ready to be displayed.
+ */
+@property (nonatomic, assign, readonly) CGSize adSize;
+
+/**
+ *  IMPORTANT: Load banner on each viewWillAppear of view controller
+ */
+- (void)loadBanner;
 @end

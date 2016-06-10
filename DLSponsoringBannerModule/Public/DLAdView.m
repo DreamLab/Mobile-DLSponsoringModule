@@ -9,21 +9,18 @@
 #import "DLAdView.h"
 #import "DLSponsoringBannerModule.h"
 #import "DLSponsoringBannerModule+Internal.h"
-#import "DLSplashAd.h"
+#import "DLSponsoringBannerAd.h"
 #import "DLSponsoringBannerModuleDelegate.h"
 
-/// Max size of ImageView
-static const NSInteger kMaxSizeOfImageView = 150;
-
 @interface DLAdView() <DLSponsoringBannerModuleDelegate>
-@property (nonatomic, weak) DLSponsoringBannerModule *splashModule;
-@property (nonatomic, strong) DLSplashAd *splashAd;
+@property (nonatomic, weak) DLSponsoringBannerModule *sponsoringBannerModule;
+@property (nonatomic, strong) DLSponsoringBannerAd *bannerAd;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
-@property (nonatomic) BOOL displayed;
 
-@property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, assign) BOOL initialized;
+
 @end
 
 @implementation DLAdView
@@ -57,31 +54,31 @@ static const NSInteger kMaxSizeOfImageView = 150;
     return self;
 }
 
-- (NSString *)associatedText
-{
-    return self.splashAd.text;
+- (void)loadBanner {
+    self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
+    [self reloadAd];
+    [DLSponsoringBannerModule.sharedInstance fetchBannerAd];
 }
 
 #pragma mark - Private Initializers
 
 - (void)initialize
 {
-    self.displayed = NO;
-    self.splashModule = DLSponsoringBannerModule.sharedInstance;
-    [self.splashModule addDelegate:self];
+    if (self.initialized) {
+        return;
+    }
+
+    self.sponsoringBannerModule = DLSponsoringBannerModule.sharedInstance;
+    [self.sponsoringBannerModule addDelegate:self];
 
     self.imageView = [[UIImageView alloc] initWithImage: nil];
+
     [self addSubview:self.imageView];
-    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSLayoutConstraint *centerXConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0];
-    self.widthConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
-    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
-
-    [self addConstraints: @[centerXConstraint, topConstraint, self.widthConstraint, self.heightConstraint]];
-
+    [self setupConstraints];
     [self initializeGestureRecognizer];
+
+    self.initialized = YES;
 }
 
 - (void)initializeGestureRecognizer
@@ -93,55 +90,85 @@ static const NSInteger kMaxSizeOfImageView = 150;
 
 - (void)dealloc
 {
-    [self.splashModule removeDelegate:self];
+    [self.sponsoringBannerModule removeDelegate:self];
 }
 
 #pragma mark - Private Methods
 
+- (void)setupConstraints {
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    topConstraint.priority = 750;
+
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    bottomConstraint.priority = 750;
+
+    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+
+    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
+
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
+
+    [self addConstraints: @[topConstraint, bottomConstraint, leadingConstraint, trailingConstraint, self.heightConstraint]];
+}
+
 - (void)imageTapped:(id)sender
 {
-    [self.delegate adView:self didTapImageWithUrl:self.splashAd.clickURL];
-}
-
-- (void)layoutSubviews
-{
-    if (!self.displayed) {
-        self.displayed = YES;
-        [self.splashModule adViewDidShow:self];
-    }
-}
-
-- (void)displayAd
-{
-    self.splashAd = DLSponsoringBannerModule.sharedInstance.splashAd;
-    UIImage *image = self.splashAd.image;
-    if (image) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self displayAd:self.splashAd withImage:image];
-        });
-    }
+    [self.delegate adView:self didTapImageWithUrl:self.bannerAd.clickURL];
 }
 
 // This method need to be called in main queue or will crash!
-- (void)displayAd:(DLSplashAd *)splashAd withImage:(UIImage *)image
+- (void)displayAd:(DLSponsoringBannerAd *)bannerAd
 {
-    [self.imageView setImage:image];
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.widthConstraint.constant = splashAd.imageWidth;
-    self.heightConstraint.constant = splashAd.imageHeight;
-    [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
-    [self.splashModule adViewDidDisplayImage:self];
+    self.bannerAd = bannerAd;
+    [self reloadAd];
+}
+
+- (CGSize)proportionalAdSize {
+    if (!self.isAdReady) {
+        return CGSizeMake(0, 0);
+    }
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat height = (screenWidth / self.bannerAd.imageWidth) * self.bannerAd.imageHeight;
+
+    return CGSizeMake(screenWidth, height);
+}
+
+- (BOOL)isAdReady {
+    return self.bannerAd;
+}
+
+- (CGSize)adSize {
+    return self.proportionalAdSize;
+}
+
+- (void)reloadAd {
+    if (!self.isAdReady) {
+        return;
+    }
+
+    self.imageView.image = self.bannerAd.image;
+    self.heightConstraint.constant = self.proportionalAdSize.height;
+
+    [self.delegate adViewDidDisplayAd:self.bannerAd withExpectedSize:self.proportionalAdSize];
+    [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
 }
 
 #pragma mark - DLSponsoringBannerModuleDelegate
-- (void)splashScreenShouldDisplayAd
-{
-    [self displayAd];
-}
 
-- (void)splashScreenShouldBeClosed
+- (void)adViewShouldDisplayAd
 {
-    [self.delegate splashScreenShouldBeClosed];
+    if (self.bannerAd) {
+        // Do nothing if ad already displayed here
+        return;
+    }
+
+    self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self displayAd:self.bannerAd];
+    });
 }
 
 @end
