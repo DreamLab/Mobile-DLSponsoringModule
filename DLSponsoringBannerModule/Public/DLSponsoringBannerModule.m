@@ -46,8 +46,6 @@ static DLSponsoringBannerModule* sharedInstance;
 
     sharedInstance.site = site;
     sharedInstance.area = @"exclusive:sponsoring";
-
-    // TODO: also initialize with it
     sharedInstance.slot = @"flat-belkagorna";
     [sharedInstance initializeBannerAd];
 
