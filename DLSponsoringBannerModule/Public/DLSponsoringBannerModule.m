@@ -25,7 +25,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
 @property (nonatomic, strong) DLStore *store;
 @property (nonatomic, strong) NSMapTable<NSString*, DLAdView*> *viewsForControllers;
-@property (atomic, assign) BOOL dataFetchingInProgress;
+@property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
 @end
 
 @implementation DLSponsoringBannerModule
@@ -86,7 +86,7 @@ static DLSponsoringBannerModule* sharedInstance;
 
 - (void)fetchBannerAd
 {
-    if (self.dataFetchingInProgress) {
+    if (self.isDataFetchingInProgress) {
         return;
     }
 

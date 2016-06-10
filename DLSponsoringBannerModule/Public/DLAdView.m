@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 
 @property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
-@property (nonatomic, assign) BOOL initialized;
+@property (nonatomic, assign, getter=isInitialized) BOOL initialized;
 @property (nonatomic, assign, getter=isVisible) BOOL visible;
 @end
 
@@ -77,14 +77,14 @@
 
 - (void)initialize
 {
-    if (self.initialized) {
+    if (self.isInitialized) {
         return;
     }
 
     self.sponsoringBannerModule = DLSponsoringBannerModule.sharedInstance;
     [self.sponsoringBannerModule addDelegate:self];
 
-    self.imageView = [[UIImageView alloc] initWithImage: nil];
+    self.imageView = [[UIImageView alloc] init];
 
     [self addSubview:self.imageView];
 
@@ -140,7 +140,7 @@
 
 - (CGSize)proportionalAdSize {
     if (!self.isAdReady) {
-        return CGSizeMake(0, 0);
+        return CGSizeZero;
     }
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
@@ -163,7 +163,7 @@
 #pragma mark - DLSponsoringBannerModuleDelegate
 
 - (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad
-{    
+{
     if ([self.bannerAd isEqual:ad] || self.isVisible) {
         // Do nothing if ad is already displayed on screen or reload it if it has changed
         return;

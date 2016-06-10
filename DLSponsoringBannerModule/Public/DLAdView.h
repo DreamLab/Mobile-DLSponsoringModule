@@ -25,10 +25,10 @@ View to display the image of the ad.
 /**
  *  Property defining if ad is ready to be displayed
  */
-@property (nonatomic, assign, readonly) BOOL isAdReady;
+@property (nonatomic, assign, readonly, getter=isAdReady) BOOL adReady;
 
 /**
- *  Ad size - (0,0) when ad is not ready to be displayed.
+ *  Ad size - CGSizeZero when ad is not ready to be displayed.
  */
 @property (nonatomic, assign, readonly) CGSize adSize;
 
