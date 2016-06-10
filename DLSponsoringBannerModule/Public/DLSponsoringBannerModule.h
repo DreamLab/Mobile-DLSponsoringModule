@@ -12,7 +12,9 @@
 
 @class DLSponsoringBannerAd;
 
-
+/**
+ *  Main class of DLSponsoringBanner Module, once initialized, being responsible mainly for returning ad views.
+ */
 @interface DLSponsoringBannerModule : NSObject
 
 /**
