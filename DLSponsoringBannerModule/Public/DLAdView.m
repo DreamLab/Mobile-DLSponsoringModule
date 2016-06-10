@@ -139,7 +139,7 @@
 }
 
 - (CGSize)proportionalAdSize {
-    if (!self.isAdReady) {
+    if (!self.isAdReady || self.bannerAd.imageWidth <= 0) {
         return CGSizeZero;
     }
     CGRect screenRect = [[UIScreen mainScreen] bounds];
