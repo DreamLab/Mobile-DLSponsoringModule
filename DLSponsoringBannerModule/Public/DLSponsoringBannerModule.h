@@ -12,14 +12,16 @@
 
 @class DLSponsoringBannerAd;
 
-/**
-Module responsible for providing ads for sposnoring banner ad.
- */
+
 @interface DLSponsoringBannerModule : NSObject
 
 /**
- Returns initialized object of class DLAdView. Each time it returns the same object.
- */
+*  Returns initialized object of class DLAdView to be used in given UIViewController.
+*
+*  @param controller UIViewController
+*
+*  @return DLAdView view
+*/
 - (DLAdView *)adViewForViewController:(UIViewController *)controller;
 
 /**
