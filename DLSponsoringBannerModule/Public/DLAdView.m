@@ -66,7 +66,7 @@
 }
 
 - (BOOL)isAdReady {
-    return self.bannerAd;
+    return self.bannerAd != nil;
 }
 
 - (CGSize)adSize {

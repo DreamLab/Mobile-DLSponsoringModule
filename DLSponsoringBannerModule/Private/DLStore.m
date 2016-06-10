@@ -60,7 +60,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 }
 
 - (BOOL)isAdFullyCached {
-    return self.cachedBannerAd.image ? self.cachedBannerAd : nil;
+    return self.cachedBannerAd.image != nil;
 }
 
 - (void)clearCache
