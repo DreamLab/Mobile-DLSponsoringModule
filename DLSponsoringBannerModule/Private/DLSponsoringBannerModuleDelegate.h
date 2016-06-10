@@ -17,6 +17,6 @@
 /**
  Notifies that ad view should display ad.
  */
-- (void)adViewShouldDisplayAd;
+- (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad;
 
 @end

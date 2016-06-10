@@ -53,7 +53,7 @@
 /**
  *  Version of campain
  */
-@property (nonatomic, assign, readonly) NSInteger version;
+@property (nonatomic, assign, readonly) NSString *version;
 
 /**
  *  JSON of Sponsoring Banner Ad.

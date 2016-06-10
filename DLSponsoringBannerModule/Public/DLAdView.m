@@ -20,7 +20,7 @@
 
 @property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, assign) BOOL initialized;
-
+@property (nonatomic, assign, getter=isVisible) BOOL visible;
 @end
 
 @implementation DLAdView
@@ -54,10 +54,23 @@
     return self;
 }
 
-- (void)loadBanner {
+- (void)controllerViewWillAppear {
     self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
-    [self reloadAd];
     [DLSponsoringBannerModule.sharedInstance fetchBannerAd];
+    [self reloadAd];
+    self.visible = YES;
+}
+
+- (void)controllerViewDidDisappear {
+    self.visible = NO;
+}
+
+- (BOOL)isAdReady {
+    return self.bannerAd;
+}
+
+- (CGSize)adSize {
+    return self.proportionalAdSize;
 }
 
 #pragma mark - Private Initializers
@@ -136,14 +149,6 @@
     return CGSizeMake(screenWidth, height);
 }
 
-- (BOOL)isAdReady {
-    return self.bannerAd;
-}
-
-- (CGSize)adSize {
-    return self.proportionalAdSize;
-}
-
 - (void)reloadAd {
     if (!self.isAdReady) {
         return;
@@ -152,22 +157,22 @@
     self.imageView.image = self.bannerAd.image;
     self.heightConstraint.constant = self.proportionalAdSize.height;
 
-    [self.delegate adViewDidDisplayAd:self.bannerAd withExpectedSize:self.proportionalAdSize];
     [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
 }
 
 #pragma mark - DLSponsoringBannerModuleDelegate
 
-- (void)adViewShouldDisplayAd
-{
-    if (self.bannerAd) {
-        // Do nothing if ad already displayed here
+- (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad
+{    
+    if ([self.bannerAd isEqual:ad] || self.isVisible) {
+        // Do nothing if ad is already displayed on screen or reload it if it has changed
         return;
     }
 
-    self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
+    self.bannerAd = ad;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self displayAd:self.bannerAd];
+        [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
     });
 }
 

@@ -59,9 +59,9 @@
     return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"click"]];
 }
 
-- (NSInteger)version
+- (NSString *)version
 {
-    return [self.json[@"flat-belkagorna"][@"ver"] intValue];
+    return self.json[@"flat-belkagorna"][@"ver"];
 }
 
 - (BOOL)empty

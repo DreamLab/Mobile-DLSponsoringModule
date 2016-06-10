@@ -24,11 +24,11 @@
 - (void)adView:(DLAdView *)adView didTapImageWithUrl:(NSURL *)url;
 
 /**
- *  <#Description#>
+ *  Method called when ad was displayed witch changed content comparing to initial one.
  *
- *  @param adView <#adView description#>
- *  @param size   <#size description#>
+ *  @param adView DLAdView that generated event
+ *  @param size   Size of ad with which ad should be presented to user
  */
-- (void)adViewDidDisplayAd:(DLAdView *)adView withExpectedSize:(CGSize)size;
+- (void)adViewNeedsToBeReloaded:(DLAdView *)adView withExpectedSize:(CGSize)size;
 
 @end

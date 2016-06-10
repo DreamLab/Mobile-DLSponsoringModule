@@ -24,8 +24,8 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) NSTimer *waitingTimer;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
 @property (nonatomic, strong) DLStore *store;
-@property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringBannerAd*> *viewsForControllers;
-@property (atomic, assign) BOOL *dataFetchingInProgress;
+@property (nonatomic, strong) NSMapTable<NSString*, DLAdView*> *viewsForControllers;
+@property (atomic, assign) BOOL dataFetchingInProgress;
 @end
 
 @implementation DLSponsoringBannerModule
@@ -111,7 +111,7 @@ static DLSponsoringBannerModule* sharedInstance;
         }
 
         DLSponsoringBannerAd *cachedBannerAd = self.store.cachedBannerAd;
-        if (bannerAd.version != cachedBannerAd.version || !cachedBannerAd.image) {
+        if (![bannerAd.version isEqualToString: cachedBannerAd.version] || !cachedBannerAd.image) {
             [self.webService fetchImageAtURL:bannerAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
@@ -131,14 +131,17 @@ static DLSponsoringBannerModule* sharedInstance;
             return;
         }
 
-        self.bannerAd = cachedBannerAd;
+        if (!self.bannerAd) {
+            self.bannerAd = cachedBannerAd;
+        }
+
         [self waitingForDataFinished];
 
         NSLog(@"Fetched banner ad: %@", bannerAd);
     }];
 }
 
-- (DLAdView *)adViewForViewController:(UIViewController *)controller
+- (DLAdView *)adViewForViewController:(UIViewController<DLAdViewDelegate> *)controller
 {
     DLAdView *adView = [self.viewsForControllers objectForKey:controller.description];
     if (adView) {
@@ -171,7 +174,7 @@ static DLSponsoringBannerModule* sharedInstance;
 - (void)notifyDelegatesBannerAdViewShouldDisplayAd
 {
     for (id<DLSponsoringBannerModuleDelegate> delegate in self.delegates) {
-        [delegate adViewShouldDisplayAd];
+        [delegate sposoringBannerModuleReceivedAd:self.bannerAd];
     }
 }
 
