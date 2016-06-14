@@ -41,7 +41,6 @@ In application:didFinishLaunchingWithOptions: method of your AppDelegate add fol
 [DLSponsoringBannerModule initializeWithSite:<SITE_PARAMETER>];
 ```
 As `<SITE_PARAMETER>` insert your Site Identifier.
-```
 
 ### Step 2. Instantiation od DLAdView for view controller.
 
