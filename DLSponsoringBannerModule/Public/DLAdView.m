@@ -164,7 +164,7 @@
 
 - (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad
 {
-    if ([self.bannerAd isEqual:ad] || self.isVisible) {
+    if (self.bannerAd && ([self.bannerAd isEqual:ad] || self.isVisible)) {
         // Do nothing if ad is already displayed on screen or reload it if it has changed
         return;
     }

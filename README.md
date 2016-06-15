@@ -2,11 +2,9 @@
 
 Module to provide Sponsoring Banner.
 
-TODO: add description
-
 ## Usage
 
-TODO
+See Tutorial.MD
 
 ## Requirements
 
