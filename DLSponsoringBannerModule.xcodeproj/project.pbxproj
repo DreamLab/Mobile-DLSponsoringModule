@@ -99,6 +99,8 @@
 		87E8BD111C6DEDAD004C2EAD /* DLSponsoringBannerModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLSponsoringBannerModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E8BD131C6DEDAD004C2EAD /* DLSponsoringBannerModuleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringBannerModuleTests.m; sourceTree = "<group>"; };
 		87E8BD151C6DEDAD004C2EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D51880C81D141D0600CB359C /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VERSION; path = "../ios-sponsoringbannermodule/VERSION"; sourceTree = "<group>"; };
+		D51880C91D141D2A00CB359C /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CHANGELOG; path = "../ios-sponsoringbannermodule/CHANGELOG"; sourceTree = "<group>"; };
 		D536CEED1D0FD629003BB079 /* tutorial_resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tutorial_resources; path = "../ios-sponsoringbannermodule/tutorial_resources"; sourceTree = "<group>"; };
 		D536CEEE1D0FD629003BB079 /* TUTORIAL.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = TUTORIAL.md; path = "../ios-sponsoringbannermodule/TUTORIAL.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +174,8 @@
 		872C68D61C74BDA7006064FD /* Podfile metadata */ = {
 			isa = PBXGroup;
 			children = (
+				D51880C91D141D2A00CB359C /* CHANGELOG */,
+				D51880C81D141D0600CB359C /* VERSION */,
 				D536CEED1D0FD629003BB079 /* tutorial_resources */,
 				D536CEEE1D0FD629003BB079 /* TUTORIAL.md */,
 				872C68D71C74BE44006064FD /* DLSponsoringBannerModule.podspec */,

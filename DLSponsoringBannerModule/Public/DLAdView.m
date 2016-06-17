@@ -21,6 +21,7 @@
 @property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, assign, getter=isInitialized) BOOL initialized;
 @property (nonatomic, assign, getter=isVisible) BOOL visible;
+@property (nonatomic, assign) CGSize currentSize;
 @end
 
 @implementation DLAdView
@@ -57,6 +58,7 @@
 - (void)controllerViewWillAppear {
     self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
     [DLSponsoringBannerModule.sharedInstance fetchBannerAd];
+    [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
     [self reloadAd];
     self.visible = YES;
 }
@@ -92,6 +94,12 @@
     [self initializeGestureRecognizer];
 
     self.initialized = YES;
+    self.currentSize = CGSizeZero;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orientationChanged)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
 }
 
 - (void)initializeGestureRecognizer
@@ -104,6 +112,7 @@
 - (void)dealloc
 {
     [self.sponsoringBannerModule removeDelegate:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Private Methods
@@ -138,6 +147,16 @@
     [self reloadAd];
 }
 
+- (void)orientationChanged
+{
+    if (CGSizeEqualToSize(self.currentSize, self.proportionalAdSize)) {
+        return;
+    }
+    self.currentSize = self.proportionalAdSize;
+    [self reloadAd];
+    [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+}
+
 - (CGSize)proportionalAdSize {
     if (!self.isAdReady || self.bannerAd.imageWidth <= 0) {
         return CGSizeZero;
@@ -156,8 +175,6 @@
 
     self.imageView.image = self.bannerAd.image;
     self.heightConstraint.constant = self.proportionalAdSize.height;
-
-    [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
 }
 
 #pragma mark - DLSponsoringBannerModuleDelegate
