@@ -74,7 +74,7 @@ It is very important that you call DLAdView's controllerViewWillAppear and contr
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-[   self.adView controllerViewDidDisappear];
+    [self.adView controllerViewDidDisappear];
 }
 ```
 
