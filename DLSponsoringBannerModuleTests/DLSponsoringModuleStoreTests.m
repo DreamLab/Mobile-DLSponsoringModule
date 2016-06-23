@@ -17,11 +17,11 @@
 @interface DLSponsoringModuleStore : XCTestCase
 
 @property (nonatomic, strong) id userDefaults;
-@property (nonatomic, strong) DLStore *store;
+@property (nonatomic, strong) DLSponsoringModuleStore *store;
 
 @end
 
-@interface DLStore ()
+@interface DLSponsoringModuleStore ()
 - (UIImage *)imageAtLocation:(NSURL *)imageLocation;
 - (BOOL)removeCachedImageAd;
 @end
