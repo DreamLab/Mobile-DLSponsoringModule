@@ -8,7 +8,7 @@
 
 #import "DLSponsoringBannerModuleDelegate.h"
 #import "DLSponsoringBannerWebService.h"
-#import "DLStore.h"
+#import "DLSponsoringModuleStore.h"
 
 @interface DLSponsoringBannerModule (Internal)
 

@@ -10,7 +10,7 @@
 #import "DLSponsoringBannerModule+Internal.h"
 #import "DLSponsoringBannerModuleDelegate.h"
 #import "DLSponsoringBannerWebService.h"
-#import "DLStore.h"
+#import "DLSponsoringModuleStore.h"
 
 static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
@@ -23,7 +23,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSponsoringBannerAd *bannerAd;
 @property (nonatomic, strong) NSTimer *waitingTimer;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
-@property (nonatomic, strong) DLStore *store;
+@property (nonatomic, strong) DLSponsoringModuleStore *store;
 @property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringAdView*> *viewsForControllers;
 @property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
 @end
@@ -73,7 +73,7 @@ static DLSponsoringBannerModule* sharedInstance;
     self.webService = [[DLSponsoringBannerWebService alloc] initWithSite:self.site
                                                                 area:self.area
                                                                 slot:self.slot];
-    self.store = [[DLStore alloc] init];
+    self.store = [[DLSponsoringModuleStore alloc] init];
 
     if (self.store.isAdFullyCached) {
         self.bannerAd = self.store.cachedBannerAd;

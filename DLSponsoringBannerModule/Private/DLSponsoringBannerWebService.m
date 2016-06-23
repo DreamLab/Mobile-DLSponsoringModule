@@ -12,7 +12,7 @@
 
 #import "DLSponsoringBannerWebService.h"
 #import "DLSponsoringBannerAd.h"
-#import "DLStore.h"
+#import "DLSponsoringModuleStore.h"
 
 NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
 
@@ -96,7 +96,7 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/
         return;
     }
 
-    DLStore *store = [[DLStore alloc] init];
+    DLSponsoringModuleStore *store = [[DLSponsoringModuleStore alloc] init];
 
     if (bannerAd.auditURL) {
         [store queueTrackingLink:bannerAd.auditURL];
@@ -124,7 +124,7 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/
         if (error) {
             NSLog(@"Error occurred: %@ while sending request to url: %@", error.description, url);
         } else {
-            DLStore *store = [[DLStore alloc] init];
+            DLSponsoringModuleStore *store = [[DLSponsoringModuleStore alloc] init];
             [store removeTrackingLink:url];
         }
     }];

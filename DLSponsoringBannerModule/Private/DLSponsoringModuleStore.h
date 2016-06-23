@@ -1,5 +1,5 @@
 //
-//  DLStore.h
+//  DLSponsoringModuleStore.h
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 17.02.2016.
@@ -12,7 +12,7 @@
 /**
  *  Class to manage caching of Sponsoring Banner Ad.
  */
-@interface DLStore : NSObject
+@interface DLSponsoringModuleStore : NSObject
 
 /**
  *  Saves Ad image permanently to cache folder on disk.

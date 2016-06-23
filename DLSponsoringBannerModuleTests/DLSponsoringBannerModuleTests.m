@@ -11,13 +11,13 @@
 
 #import "DLSponsoringBannerModule.h"
 #import "DLSponsoringBannerModule+Internal.h"
-#import "DLStore.h"
+#import "DLSponsoringModuleStore.h"
 #import "DLSplashScreenWebService.h"
 
 
 @interface DLSponsoringBannerModule ()
 
--(void)fetchSplashAdWithWebService:(DLSplashScreenWebService *)webService store:(DLStore *)store;
+-(void)fetchSplashAdWithWebService:(DLSplashScreenWebService *)webService store:(DLSponsoringModuleStore *)store;
 
 @end
 
