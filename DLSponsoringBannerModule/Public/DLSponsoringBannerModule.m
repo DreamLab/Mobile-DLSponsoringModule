@@ -24,7 +24,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) NSTimer *waitingTimer;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
 @property (nonatomic, strong) DLStore *store;
-@property (nonatomic, strong) NSMapTable<NSString*, DLAdView*> *viewsForControllers;
+@property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringAdView*> *viewsForControllers;
 @property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
 @end
 
@@ -139,14 +139,14 @@ static DLSponsoringBannerModule* sharedInstance;
     }];
 }
 
-- (DLAdView *)adViewForViewController:(UIViewController<DLAdViewDelegate> *)controller
+- (DLSponsoringAdView *)adViewForViewController:(UIViewController<DLSponsoringAdViewDelegate> *)controller
 {
-    DLAdView *adView = [self.viewsForControllers objectForKey:controller.description];
+    DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:controller.description];
     if (adView) {
         return adView;
     }
 
-    adView = [[DLAdView alloc] init];
+    adView = [[DLSponsoringAdView alloc] init];
     [self.viewsForControllers setObject:adView forKey:controller.description];
     adView.delegate = controller;
     

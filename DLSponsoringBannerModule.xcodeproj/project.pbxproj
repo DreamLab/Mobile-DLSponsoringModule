@@ -27,7 +27,7 @@
 		71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSponsoringBannerAd.m */; };
 		71BAF1121C7F703500D4BB7F /* DLSponsoringBannerWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1081C7F703500D4BB7F /* DLSponsoringBannerWebService.m */; };
 		71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10A1C7F703500D4BB7F /* DLStore.m */; };
-		71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10D1C7F703500D4BB7F /* DLAdView.m */; };
+		71BAF1141C7F703500D4BB7F /* DLSponsoringAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10D1C7F703500D4BB7F /* DLSponsoringAdView.m */; };
 		71BAF1151C7F703500D4BB7F /* DLSponsoringBannerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1101C7F703500D4BB7F /* DLSponsoringBannerModule.m */; };
 		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
 		71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B21C734F1200CF6981 /* EmptyJsonData.json */; };
@@ -36,8 +36,8 @@
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
-		874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10C1C7F703500D4BB7F /* DLAdView.h */; };
-		874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */; };
+		874529911C8072AB00747C55 /* DLSponsoringAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10C1C7F703500D4BB7F /* DLSponsoringAdView.h */; };
+		874529921C8072AB00747C55 /* DLSponsoringAdViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10E1C7F703500D4BB7F /* DLSponsoringAdViewDelegate.h */; };
 		874529931C8072AB00747C55 /* DLSponsoringBannerModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10F1C7F703500D4BB7F /* DLSponsoringBannerModule.h */; };
 		87E8BD141C6DEDAD004C2EAD /* DLSponsoringBannerModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8BD131C6DEDAD004C2EAD /* DLSponsoringBannerModuleTests.m */; };
 		87E8BD161C6DEDAD004C2EAD /* libDLSponsoringBannerModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E8BCFB1C6DDAFD004C2EAD /* libDLSponsoringBannerModule.a */; };
@@ -60,8 +60,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */,
-				874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */,
+				874529911C8072AB00747C55 /* DLSponsoringAdView.h in CopyFiles */,
+				874529921C8072AB00747C55 /* DLSponsoringAdViewDelegate.h in CopyFiles */,
 				874529931C8072AB00747C55 /* DLSponsoringBannerModule.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,9 +79,9 @@
 		71BAF1081C7F703500D4BB7F /* DLSponsoringBannerWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringBannerWebService.m; sourceTree = "<group>"; };
 		71BAF1091C7F703500D4BB7F /* DLStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStore.h; sourceTree = "<group>"; };
 		71BAF10A1C7F703500D4BB7F /* DLStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStore.m; sourceTree = "<group>"; };
-		71BAF10C1C7F703500D4BB7F /* DLAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdView.h; sourceTree = "<group>"; };
-		71BAF10D1C7F703500D4BB7F /* DLAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAdView.m; sourceTree = "<group>"; };
-		71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
+		71BAF10C1C7F703500D4BB7F /* DLSponsoringAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringAdView.h; sourceTree = "<group>"; };
+		71BAF10D1C7F703500D4BB7F /* DLSponsoringAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringAdView.m; sourceTree = "<group>"; };
+		71BAF10E1C7F703500D4BB7F /* DLSponsoringAdViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringAdViewDelegate.h; sourceTree = "<group>"; };
 		71BAF10F1C7F703500D4BB7F /* DLSponsoringBannerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringBannerModule.h; sourceTree = "<group>"; };
 		71BAF1101C7F703500D4BB7F /* DLSponsoringBannerModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringBannerModule.m; sourceTree = "<group>"; };
 		71C020B11C734F1200CF6981 /* CorrectJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CorrectJsonData.json; path = "Unit Tests Data/CorrectJsonData.json"; sourceTree = "<group>"; };
@@ -143,9 +143,9 @@
 		71BAF10B1C7F703500D4BB7F /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				71BAF10C1C7F703500D4BB7F /* DLAdView.h */,
-				71BAF10D1C7F703500D4BB7F /* DLAdView.m */,
-				71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */,
+				71BAF10C1C7F703500D4BB7F /* DLSponsoringAdView.h */,
+				71BAF10D1C7F703500D4BB7F /* DLSponsoringAdView.m */,
+				71BAF10E1C7F703500D4BB7F /* DLSponsoringAdViewDelegate.h */,
 				71BAF10F1C7F703500D4BB7F /* DLSponsoringBannerModule.h */,
 				71BAF1101C7F703500D4BB7F /* DLSponsoringBannerModule.m */,
 			);
@@ -363,7 +363,7 @@
 			files = (
 				71BAF1151C7F703500D4BB7F /* DLSponsoringBannerModule.m in Sources */,
 				71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */,
-				71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */,
+				71BAF1141C7F703500D4BB7F /* DLSponsoringAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */,
 				71BAF1121C7F703500D4BB7F /* DLSponsoringBannerWebService.m in Sources */,
 			);

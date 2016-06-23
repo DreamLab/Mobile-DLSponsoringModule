@@ -1,12 +1,12 @@
 //
-//  DLAdView.h
+//  DLSponsoringAdView.h
 //  DLSponsoringBannerModule
 //
 //  Created by Jacek Zapart on 12.02.2016.
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import "DLAdViewDelegate.h"
+#import "DLSponsoringAdViewDelegate.h"
 @class DLSponsoringBannerAd;
 
 @import UIKit;
@@ -15,12 +15,12 @@
 /**
 View to display the image of the ad.
  */
-@interface DLAdView : UIView 
+@interface DLSponsoringAdView : UIView
 
 /**
  Delegate of the DLAdViewDelegate protocol.
  */
-@property (nonatomic, weak) id<DLAdViewDelegate> delegate;
+@property (nonatomic, weak) id<DLSponsoringAdViewDelegate> delegate;
 
 /**
  *  Property defining if ad is ready to be displayed

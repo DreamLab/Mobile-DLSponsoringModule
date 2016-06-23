@@ -1,18 +1,18 @@
 //
-//  DLAdView.m
+//  DLSponsoringAdView.m
 //  DLSponsoringBannerModule
 //
 //  Created by Jacek Zapart on 12.02.2016.
 //  Copyright © 2016 DreamLab. All rights reserved.
 //
 
-#import "DLAdView.h"
+#import "DLSponsoringAdView.h"
 #import "DLSponsoringBannerModule.h"
 #import "DLSponsoringBannerModule+Internal.h"
 #import "DLSponsoringBannerAd.h"
 #import "DLSponsoringBannerModuleDelegate.h"
 
-@interface DLAdView() <DLSponsoringBannerModuleDelegate>
+@interface DLSponsoringAdView() <DLSponsoringBannerModuleDelegate>
 @property (nonatomic, weak) DLSponsoringBannerModule *sponsoringBannerModule;
 @property (nonatomic, strong) DLSponsoringBannerAd *bannerAd;
 @property (nonatomic, strong) UIImageView *imageView;
@@ -24,7 +24,7 @@
 @property (nonatomic, assign) CGSize currentSize;
 @end
 
-@implementation DLAdView
+@implementation DLSponsoringAdView
 
 #pragma mark - Initializers
 
