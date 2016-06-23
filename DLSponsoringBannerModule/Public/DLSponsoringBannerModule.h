@@ -8,7 +8,7 @@
 
 @import Foundation;
 @import UIKit;
-#import "DLAdView.h"
+#import "DLSponsoringAdView.h"
 
 @class DLSponsoringBannerAd;
 
@@ -18,13 +18,13 @@
 @interface DLSponsoringBannerModule : NSObject
 
 /**
-*  Returns initialized object of class DLAdView to be used in given UIViewController.
+*  Returns initialized object of class DLSponsoringAdView to be used in given UIViewController.
 *
 *  @param controller UIViewController
 *
-*  @return DLAdView view
+*  @return DLSponsoringAdView view
 */
-- (DLAdView *)adViewForViewController:(UIViewController *)controller;
+- (DLSponsoringAdView *)adViewForViewController:(UIViewController *)controller;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
