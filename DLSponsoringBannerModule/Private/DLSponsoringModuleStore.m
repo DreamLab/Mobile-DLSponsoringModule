@@ -1,5 +1,5 @@
 //
-//  DLStore.m
+//  DLSponsoringModuleStore.m
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 17.02.2016.
@@ -7,13 +7,13 @@
 //
 
 @import UIKit;
-#import "DLStore.h"
+#import "DLSponsoringModuleStore.h"
 
 NSString * const kDLSponsoringBannerAdJSONCacheKey = @"pl.dreamlab.sponsoring_banner.json_cache_key";
 NSString * const kDLSponsoringBannerAdImageFileNameCacheKey = @"pl.dreamlab.sponsoring_banner.image_filename_cache_key";
 NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.sponsoring_banner.tracking_links_cache_key";
 
-@implementation DLStore
+@implementation DLSponsoringModuleStore
 
 - (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd
 {

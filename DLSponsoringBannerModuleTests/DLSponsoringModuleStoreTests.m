@@ -1,5 +1,5 @@
 //
-//  DLStoreTests.m
+//  DLSponsoringModuleStoreTests.m
 //  DLSponsoringBannerModule
 //
 //  Created by Konrad Kierys on 25.02.2016.
@@ -10,24 +10,24 @@
 @import UIKit;
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "DLStore.h"
+#import "DLSponsoringModuleStore.h"
 #import "DLSponsoringBannerAd.h"
 #import "DLTestingHelper.h"
 
-@interface DLStoreTests : XCTestCase
+@interface DLSponsoringModuleStore : XCTestCase
 
 @property (nonatomic, strong) id userDefaults;
-@property (nonatomic, strong) DLStore *store;
+@property (nonatomic, strong) DLSponsoringModuleStore *store;
 
 @end
 
-@interface DLStore ()
+@interface DLSponsoringModuleStore ()
 - (UIImage *)imageAtLocation:(NSURL *)imageLocation;
 - (BOOL)removeCachedImageAd;
 @end
 
 
-@implementation DLStoreTests
+@implementation DLSponsoringModuleStore
 // TODO: Rewrite tests for DLSponsoringBannerModule
 //
 //- (void)setUp
