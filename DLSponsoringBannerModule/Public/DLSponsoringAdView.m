@@ -55,15 +55,14 @@
     return self;
 }
 
-- (void)controllerViewWillAppear {
+- (void)parentViewWillAppear {
     self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
     [DLSponsoringBannerModule.sharedInstance fetchBannerAd];
     [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
-    [self reloadAd];
     self.visible = YES;
 }
 
-- (void)controllerViewDidDisappear {
+- (void)parentViewDidDisappear {
     self.visible = NO;
 }
 
@@ -94,7 +93,10 @@
     [self initializeGestureRecognizer];
 
     self.initialized = YES;
-    self.currentSize = CGSizeZero;
+    self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
+    self.currentSize = self.proportionalAdSize;
+
+    [self reloadAd];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orientationChanged)

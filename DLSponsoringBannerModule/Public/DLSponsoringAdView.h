@@ -33,13 +33,15 @@ View to display the image of the ad.
 @property (nonatomic, assign, readonly) CGSize adSize;
 
 /**
- *  IMPORTANT: Call this method each time viewWillAppear method of view controller was called
+ *  IMPORTANT: Call this method each time viewWillAppear method of view controller was called 
+ *  or in other case when parent view is about to be presented to user.
  */
-- (void)controllerViewWillAppear;
+- (void)parentViewWillAppear;
 
 /**
  *  IMPORTANT: Call this method each time viewDidDisappear method of view controller was called
+ *  or in other case when parent view is not presented to user anymore.
  */
-- (void)controllerViewDidDisappear;
+- (void)parentViewDidDisappear;
 
 @end
