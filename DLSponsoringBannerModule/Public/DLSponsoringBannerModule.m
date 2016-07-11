@@ -139,16 +139,16 @@ static DLSponsoringBannerModule* sharedInstance;
     }];
 }
 
-- (DLSponsoringAdView *)adViewForViewController:(UIViewController<DLSponsoringAdViewDelegate> *)controller
+- (DLSponsoringAdView *)adViewForParentView:(id<DLSponsoringAdViewDelegate>)parentView
 {
-    DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:controller.description];
+    DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:parentView];
     if (adView) {
         return adView;
     }
 
     adView = [[DLSponsoringAdView alloc] init];
-    [self.viewsForControllers setObject:adView forKey:controller.description];
-    adView.delegate = controller;
+    [self.viewsForControllers setObject:adView forKey:parentView];
+    adView.delegate = parentView;
     
     return adView;
 }

@@ -44,17 +44,17 @@ As `<SITE_PARAMETER>` insert your Site Identifier.
 
 ### Step 2. Instantiation od `DLSponsoringAdView` for view controller.
 
-Each view controller presenting sponsor banner should use its own instance of `DLSponsoringAdView`. 
+Each view controller or other view presenting sponsor banner should use its own instance of `DLSponsoringAdView`. 
 
-In order to get it you only need calling getter with your controller instance as a parameter. To support memory management please keep adView reference as a strong property of your viewController. At the same time `DLSponsoringAdView` keeps weak reference to your controller.
+In order to get it you only need calling getter with your controller instance as a parameter. To support memory management please keep adView reference as a strong property of your ad parent view. At the same time `DLSponsoringAdView` keeps weak reference to your view.
 
 ```
 @property (strong, nonatomic) DLSponsoringAdView *adView;
 
-self.adView = [DLSponsoringBannerModule.sharedInstance adViewForViewController:self]
+self.adView = [DLSponsoringBannerModule.sharedInstance adViewForParentView:self]
 ```
 
-It is important your view controller conforms to delegate protocol `DLSponsoringAdViewDelegate` as getter automatically assigns your controller to be delegate of `DLSponsoringAdView`.
+It is important your parent view conforms to delegate protocol `DLSponsoringAdViewDelegate` as getter automatically assigns your controller to be delegate of `DLSponsoringAdView`.
 
 ```
 @interface YourViewcontroller: UIViewController<DLSponsoringAdViewDelegate>
@@ -68,13 +68,13 @@ It is very important that you call controllerViewWillAppear and controllerViewDi
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self.adView controllerViewWillAppear];
+    [self.adView parentViewWillAppear];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    [self.adView controllerViewDidDisappear];
+    [self.adView parentViewDidDisappear];
 }
 ```
 
