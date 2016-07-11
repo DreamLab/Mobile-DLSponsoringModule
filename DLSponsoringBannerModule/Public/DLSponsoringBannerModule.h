@@ -20,7 +20,7 @@
 /**
 *  Returns initialized object of class DLSponsoringAdView to be used in given Parent View.
 *
-*  @param Any object conforming to DLSponsoringAdViewDelegate protocol
+*  @param parentView:   Any object conforming to DLSponsoringAdViewDelegate protocol
 *
 *  @return DLSponsoringAdView view
 */
