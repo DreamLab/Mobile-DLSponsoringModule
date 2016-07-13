@@ -64,7 +64,7 @@ static DLSponsoringBannerModule* sharedInstance;
         return nil;
     }
     _delegates = [[NSMutableSet alloc] init];
-    _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory capacity:5];
+    _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory valueOptions:NSMapTableWeakMemory capacity:5];
     return self;
 }
 
