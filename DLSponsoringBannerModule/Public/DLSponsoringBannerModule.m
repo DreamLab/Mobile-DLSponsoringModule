@@ -139,7 +139,7 @@ static DLSponsoringBannerModule* sharedInstance;
     }];
 }
 
-- (DLSponsoringAdView *)adViewForParentView:(id<DLSponsoringAdViewDelegate>)parentView
+- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView
 {
     DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:parentView];
     if (adView) {
@@ -148,8 +148,11 @@ static DLSponsoringBannerModule* sharedInstance;
 
     adView = [[DLSponsoringAdView alloc] init];
     [self.viewsForControllers setObject:adView forKey:parentView];
-    adView.delegate = parentView;
-    
+
+    if ([parentView conformsToProtocol:@protocol(DLSponsoringAdViewDelegate)]) {
+        adView.delegate = parentView;
+    }
+   
     return adView;
 }
 
