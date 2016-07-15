@@ -10,7 +10,7 @@
 @import UIKit;
 #import "DLSponsoringAdView.h"
 
-@class DLSponsoringBannerAd, DLSponsoringAdViewDelegate;
+@class DLSponsoringBannerAd;
 
 /**
  *  Main class of DLSponsoringBanner Module, once initialized, being responsible mainly for returning ad views.
@@ -19,12 +19,13 @@
 
 /**
 *  Returns initialized object of class DLSponsoringAdView to be used in given Parent View.
+*  When parent view conforms to DLSponsoringAdViewDelegate it is also automatically set as DLSponsoringAdView delegate
 *
-*  @param parentView Any object conforming to DLSponsoringAdViewDelegate protocol
+*  @param parentView Any object being e.g. either UIViewController of some UIView
 *
 *  @return DLSponsoringAdView view
 */
-- (DLSponsoringAdView *)adViewForParentView:(id<DLSponsoringAdViewDelegate>)parentView;
+- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
