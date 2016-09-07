@@ -14,7 +14,7 @@
 #import "DLSponsoringBannerAd.h"
 #import "DLSponsoringModuleStore.h"
 
-NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
+NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/slots=%@/csr.json";
 
 @interface DLSponsoringBannerWebService ()
 
