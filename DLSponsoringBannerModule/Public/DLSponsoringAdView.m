@@ -139,6 +139,9 @@
 
 - (void)imageTapped:(id)sender
 {
+    if (!self.bannerAd.clickURL.absoluteString.length) {
+        return;
+    }
     [self.delegate adView:self didTapImageWithUrl:self.bannerAd.clickURL];
 }
 
@@ -151,7 +154,7 @@
 
 - (void)orientationChanged
 {
-    if (CGSizeEqualToSize(self.currentSize, self.proportionalAdSize)) {
+    if (CGSizeEqualToSize(self.currentSize, self.proportionalAdSize) || !self.shouldRespondToOrientationChanges) {
         return;
     }
     self.currentSize = self.proportionalAdSize;
