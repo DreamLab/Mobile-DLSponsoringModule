@@ -139,7 +139,7 @@
 
 - (void)imageTapped:(id)sender
 {
-    if (!self.bannerAd.clickURL) {
+    if (!self.bannerAd.clickURL.absoluteString.length) {
         return;
     }
     [self.delegate adView:self didTapImageWithUrl:self.bannerAd.clickURL];
