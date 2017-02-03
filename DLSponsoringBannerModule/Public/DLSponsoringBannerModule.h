@@ -33,7 +33,7 @@
  *  When parent view conforms to DLSponsoringAdViewDelegate it is also automatically set as DLSponsoringAdView delegate
  *
  *  @param parentView Any object being e.g. either UIViewController of some UIView
- *  @param shouldBeRespondingToOrientationChanges If YES then view will be resizing itself depending on phone position
+ *  @param orientationChangesSupport If YES then view will be resizing itself depending on phone position
  *
  *  @return DLSponsoringAdView view
  */

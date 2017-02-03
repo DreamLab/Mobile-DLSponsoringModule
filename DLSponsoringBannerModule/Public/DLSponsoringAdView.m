@@ -139,6 +139,9 @@
 
 - (void)imageTapped:(id)sender
 {
+    if (!self.bannerAd.clickURL) {
+        return;
+    }
     [self.delegate adView:self didTapImageWithUrl:self.bannerAd.clickURL];
 }
 
