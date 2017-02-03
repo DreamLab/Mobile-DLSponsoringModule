@@ -20,12 +20,25 @@
 /**
 *  Returns initialized object of class DLSponsoringAdView to be used in given Parent View.
 *  When parent view conforms to DLSponsoringAdViewDelegate it is also automatically set as DLSponsoringAdView delegate
+*  By default DLSponsoringAdView has orientationChangesSupport flag set to NO
 *
 *  @param parentView Any object being e.g. either UIViewController of some UIView
 *
 *  @return DLSponsoringAdView view
 */
 - (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView;
+
+/**
+ *  Returns initialized object of class DLSponsoringAdView to be used in given Parent View.
+ *  When parent view conforms to DLSponsoringAdViewDelegate it is also automatically set as DLSponsoringAdView delegate
+ *
+ *  @param parentView Any object being e.g. either UIViewController of some UIView
+ *  @param shouldBeRespondingToOrientationChanges If YES then view will be resizing itself depending on phone position
+ *
+ *  @return DLSponsoringAdView view
+ */
+- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView
+     shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.

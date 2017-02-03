@@ -151,7 +151,7 @@
 
 - (void)orientationChanged
 {
-    if (CGSizeEqualToSize(self.currentSize, self.proportionalAdSize)) {
+    if (CGSizeEqualToSize(self.currentSize, self.proportionalAdSize) || !self.shouldRespondToOrientationChanges) {
         return;
     }
     self.currentSize = self.proportionalAdSize;

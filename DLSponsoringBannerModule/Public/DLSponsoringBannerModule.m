@@ -141,6 +141,11 @@ static DLSponsoringBannerModule* sharedInstance;
 
 - (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView
 {
+    return [self adViewForParentView:parentView shouldBeRespondingToOrientationChanges:NO];
+}
+
+-(DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport {
+
     DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:parentView];
     if (adView) {
         return adView;
@@ -152,7 +157,9 @@ static DLSponsoringBannerModule* sharedInstance;
     if ([parentView conformsToProtocol:@protocol(DLSponsoringAdViewDelegate)]) {
         adView.delegate = parentView;
     }
-   
+
+    adView.shouldRespondToOrientationChanges = orientationChangesSupport;
+
     return adView;
 }
 

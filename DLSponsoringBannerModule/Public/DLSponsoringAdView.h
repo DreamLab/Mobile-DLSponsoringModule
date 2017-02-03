@@ -33,6 +33,11 @@ View to display the image of the ad.
 @property (nonatomic, assign, readonly) CGSize adSize;
 
 /**
+ *  Flag mentioning if ad view should respond to orientation changes, changing it's size 
+ */
+@property (nonatomic, assign) BOOL shouldRespondToOrientationChanges;
+
+/**
  *  IMPORTANT: Call this method each time viewWillAppear method of view controller was called 
  *  or in other case when parent view is about to be presented to user.
  */
