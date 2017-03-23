@@ -107,7 +107,11 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/
 
     if ([store areAnyTrackingLinksQueued]) {
         for (NSURL *url in [store queuedTrackingLinks]) {
-            [self performSessionDownloadTaskForURL:url];
+            // Dispatching onto background thread because method `downloadTaskWithRequest:completionHandler:` of shared NSURLSession
+            // is running on main thread
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self performSessionDownloadTaskForURL:url];
+            });
         }
     }
 }
