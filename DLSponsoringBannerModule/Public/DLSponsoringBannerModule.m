@@ -109,7 +109,7 @@ static DLSponsoringBannerModule* sharedInstance;
         }
 
         DLSponsoringBannerAd *cachedBannerAd = self.store.cachedBannerAd;
-        if (![bannerAd.version isEqualToString: cachedBannerAd.version] || !cachedBannerAd.image) {
+        if (![bannerAd.version isEqual: cachedBannerAd.version] || !cachedBannerAd.image) {
             [self.webService fetchImageAtURL:bannerAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
