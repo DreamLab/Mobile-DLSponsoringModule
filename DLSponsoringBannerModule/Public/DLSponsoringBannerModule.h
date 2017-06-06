@@ -43,11 +43,12 @@
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site    the site URL parameter
+ @param site        the site URL parameter
+ @param appVersion  the application version URL parameter
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site;
++ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion;
 
 /**
  Returns the singleton instance of the DLSponsoringBannerModule class. 

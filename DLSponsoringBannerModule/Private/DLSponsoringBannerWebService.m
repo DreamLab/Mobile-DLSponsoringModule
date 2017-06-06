@@ -14,7 +14,7 @@
 #import "DLSponsoringBannerAd.h"
 #import "DLSponsoringModuleStore.h"
 
-NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/slots=%@/csr.json";
+NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/slots=%@/ver=%@/csr.json";
 
 @interface DLSponsoringBannerWebService ()
 
@@ -24,17 +24,17 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/
 
 @implementation DLSponsoringBannerWebService
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot
 {
     self = [super init];
 
-    if (!self || ![site length] || ![area length] || ![slot length]) {
+    if (!self || ![site length] || ![area length] || ![slot length] || ![appVersion length]) {
         return nil;
     }
 
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
 
-    NSString *urlString = [NSString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot];
+    NSString *urlString = [NSString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
     if (advertisingId && ![advertisingId isEqual:@""]) {
         urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
     }

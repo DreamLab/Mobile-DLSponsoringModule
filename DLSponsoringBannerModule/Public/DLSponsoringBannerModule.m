@@ -17,6 +17,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 @interface DLSponsoringBannerModule ()
 @property (nonatomic, strong) NSString *site;
+@property (nonatomic, strong) NSString *appVersion;
 @property (nonatomic, strong) NSString *area;
 @property (nonatomic, strong) NSString *slot;
 @property (nonatomic, strong) NSMutableSet *delegates;
@@ -33,7 +34,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 static dispatch_once_t once;
 static DLSponsoringBannerModule* sharedInstance;
 
-+ (instancetype)initializeWithSite:(NSString *)site
++ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion
 {
     if (DLSponsoringBannerModule.sharedInstance != nil) {
         NSLog(@"DLSponsoringBannerModule was already initialized");
@@ -45,6 +46,7 @@ static DLSponsoringBannerModule* sharedInstance;
     });
 
     sharedInstance.site = site;
+    sharedInstance.appVersion = appVersion;
     sharedInstance.area = @"exclusive:sponsoring";
     sharedInstance.slot = @"flat-belkagorna";
     [sharedInstance initializeBannerAd];
@@ -72,6 +74,7 @@ static DLSponsoringBannerModule* sharedInstance;
 {
     self.webService = [[DLSponsoringBannerWebService alloc] initWithSite:self.site
                                                                 area:self.area
+                                                                appVersion: self.appVersion
                                                                 slot:self.slot];
     self.store = [[DLSponsoringModuleStore alloc] init];
 
