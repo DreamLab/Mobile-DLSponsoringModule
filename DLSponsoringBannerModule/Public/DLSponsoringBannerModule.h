@@ -47,7 +47,7 @@
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site;
++ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion;
 
 /**
  Returns the singleton instance of the DLSponsoringBannerModule class. 
