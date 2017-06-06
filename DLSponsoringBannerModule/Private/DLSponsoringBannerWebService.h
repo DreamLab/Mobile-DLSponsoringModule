@@ -20,6 +20,7 @@
  *
  *  @param site         Site URL parameter.
  *  @param area         Area URL parameter.
+ *  @param appVersion   Version of application URL parameter
  *  @param slot         Slot URL parameter.
  *
  *  @return Instance of DLSponsoringBannerWebService with URL to webservice.
