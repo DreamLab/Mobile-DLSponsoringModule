@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
     :tag => s.version.to_s
   }
   s.framework = "AdSupport"
-  s.source_files = "include/DLSponsoringBannerModule/{Private,Public}/*.{h,m}"
+  s.source_files = "DLSponsoringBannerModule/{Private,Public}/*.{h,m}"
 end
