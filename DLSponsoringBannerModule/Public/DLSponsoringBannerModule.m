@@ -20,7 +20,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) NSString *appVersion;
 @property (nonatomic, strong) NSString *area;
 @property (nonatomic, strong) NSString *slot;
-@property (nonatomic, strong) NSMutableSet *delegates;
+@property (nonatomic, strong) NSHashTable *delegates;
 @property (nonatomic, strong) DLSponsoringBannerAd *bannerAd;
 @property (nonatomic, strong) NSTimer *waitingTimer;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
@@ -65,7 +65,7 @@ static DLSponsoringBannerModule* sharedInstance;
     if (!self) {
         return nil;
     }
-    _delegates = [[NSMutableSet alloc] init];
+    _delegates = [[NSHashTable alloc] initWithOptions:NSHashTableWeakMemory capacity:5];
     _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory valueOptions:NSMapTableWeakMemory capacity:5];
     return self;
 }
