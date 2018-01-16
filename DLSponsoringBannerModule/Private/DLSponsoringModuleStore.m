@@ -35,7 +35,10 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (void)cacheBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:bannerAd.json forKey:kDLSponsoringBannerAdJSONCacheKey];
+
+    NSData *bannerData = [NSKeyedArchiver archivedDataWithRootObject:bannerAd.json];
+
+    [userDefaults setObject:bannerData forKey:kDLSponsoringBannerAdJSONCacheKey];
     [userDefaults setObject:bannerAd.imageFileName forKey:kDLSponsoringBannerAdImageFileNameCacheKey];
     [userDefaults synchronize];
 }
@@ -43,7 +46,10 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (DLSponsoringBannerAd *)cachedBannerAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *json = [userDefaults objectForKey:kDLSponsoringBannerAdJSONCacheKey];
+
+    NSData *bannerData = [userDefaults objectForKey:kDLSponsoringBannerAdJSONCacheKey];
+    NSDictionary *json = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:bannerData];
+    
     NSString *imageFileName = [userDefaults objectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
 
     DLSponsoringBannerAd *cachedBannerAd = [[DLSponsoringBannerAd alloc] initWithJSONDictionary:json];

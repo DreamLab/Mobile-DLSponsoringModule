@@ -12,9 +12,9 @@ xcode-select --install
 
 <table width="100%" >
 <tr>
-<th width="33%"><a href="http://brew.sh">Homebrew</a></td>
-<th width="33%">Installer Script</td>
-<th width="33%">Rubygems</td>
+<th width="33%"><a href="http://brew.sh">Homebrew</a></th>
+<th width="33%">Installer Script</th>
+<th width="33%">RubyGems</th>
 </tr>
 <tr>
 <td width="33%" align="center">macOS</td>
@@ -83,9 +83,9 @@ fastlane release_app
 Release app
 
 * **`build_number`**: Build number
-### upload_to_testflight
+### upload_to_itunes_connect
 ```
-fastlane upload_to_testflight
+fastlane upload_to_itunes_connect
 ```
 
 ### upload_symbols_to_crashlytics_beta
@@ -186,6 +186,21 @@ fastlane init_env
 Initialize environment for building.
 
 It fetch the .env.default file.
+### build_for_ui_tests
+```
+fastlane build_for_ui_tests
+```
+
+### store_custom_signing_identity
+```
+fastlane store_custom_signing_identity
+```
+
+### store_custom_provisioning_profile
+```
+fastlane store_custom_provisioning_profile
+```
+
 
 ----
 

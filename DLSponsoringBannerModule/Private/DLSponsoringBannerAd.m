@@ -31,42 +31,42 @@
 
 - (NSURL *)imageURL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"image"]];
+    return [NSURL URLWithString:self.fields[@"image"]];
 }
 
 - (CGFloat)imageWidth
 {
-    return [self.json[@"flat-belkagorna"][@"width"] doubleValue];
+    return [self.meta[@"width"] doubleValue];
 }
 
 - (CGFloat)imageHeight
 {
-    return [self.json[@"flat-belkagorna"][@"height"] doubleValue];
+    return [self.meta[@"height"] doubleValue];
 }
 
 - (NSURL *)auditURL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"audit"]];
+    return [NSURL URLWithString:self.fields[@"impression1"]];
 }
 
 - (NSURL *)audit2URL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"audit2"]];
+    return [NSURL URLWithString:self.fields[@"impression2"]];
 }
 
 - (NSURL *)clickURL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"click"]];
+    return [NSURL URLWithString:self.fields[@"click"]];
 }
 
 - (NSString *)version
 {
-    return self.json[@"flat-belkagorna"][@"ver"];
+    return self.fields[@"ver"];
 }
 
 - (BOOL)empty
 {
-    return self.json[@"flat-belkagorna"] == nil;
+    return self.meta == nil;
 }
 
 #pragma mark - private methods
@@ -88,6 +88,14 @@
     }
 
     return bodyDictionary;
+}
+
+- (NSDictionary *)fields {
+    return self.json[@"ads"][0][@"data"][@"fields"];
+}
+
+- (NSDictionary *)meta {
+    return self.json[@"ads"][0][@"data"][@"meta"];
 }
 
 @end

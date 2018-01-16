@@ -28,3 +28,7 @@ Podfile.lock
 
 # AppleDoc documentation
 Documentation/
+.env.default
+report.xml
+test-reports
+ScreenshotExtractor
