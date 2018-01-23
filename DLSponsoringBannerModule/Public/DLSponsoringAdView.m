@@ -28,12 +28,13 @@
 
 #pragma mark - Initializers
 
-- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *) module
+- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *)module
 {
     self = [super init];
     if (self) {
         [self initializeWithSponsoringModule: module];
     }
+    
     return self;
 }
 

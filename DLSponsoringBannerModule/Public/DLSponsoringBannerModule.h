@@ -51,7 +51,7 @@
 - (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion;
 
 /**
- Initializes module with extendend .
+ Initializes module with extendend set of parameters.
 
  @param site            Site parameter
  @param site            Area parameter

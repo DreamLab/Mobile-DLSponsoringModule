@@ -39,6 +39,15 @@ View to display the image of the ad.
 @property (nonatomic, assign) BOOL shouldRespondToOrientationChanges;
 
 /**
+ Initializes view with module object.
+
+ @param module          DLSponsoringBannerModule
+
+ @return Instance of initialized DLSponsoringAdView
+ */
+- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *)module;
+
+/**
  *  IMPORTANT: Call this method each time viewWillAppear method of view controller was called 
  *  or in other case when parent view is about to be presented to user.
  */
@@ -49,7 +58,5 @@ View to display the image of the ad.
  *  or in other case when parent view is not presented to user anymore.
  */
 - (void)parentViewDidDisappear;
-
-- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *) module;
 
 @end
