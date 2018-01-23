@@ -62,7 +62,7 @@
  */
 - (instancetype)initWithSite:(NSString *)site
                         area:(NSString *)area
-                customParams:(NSDictionary<NSString*, NSString*>*)customParams
+                customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion;
 
 @end
