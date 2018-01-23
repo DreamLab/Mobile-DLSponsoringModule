@@ -169,7 +169,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 }
 
 - (NSString *)fileNameCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdImageFileNameCacheKey, self.site, self.area];
 }
 
 - (NSString *)queuedTrakcingLinksCacheKey {
