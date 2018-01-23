@@ -15,6 +15,16 @@
 @interface DLSponsoringModuleStore : NSObject
 
 /**
+*  Initialise Store module.
+*
+*  @param site Site
+*  @param area Area
+*
+*  @return DLSponsoringModuleStore object.
+*/
+- (instancetype)initWithSite:(NSString*)site area:(NSString*) area;
+
+/**
  *  Saves Ad image permanently to cache folder on disk.
  *
  *  @param temporaryLocation Temporary location of fetched ad image.

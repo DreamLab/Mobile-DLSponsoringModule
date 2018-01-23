@@ -48,14 +48,11 @@
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion;
+- (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion;
 
-/**
- Returns the singleton instance of the DLSponsoringBannerModule class. 
- Method initializeWithIdentifier: should be called before first use, otherwise sharedInstance will be nil.
-
- @return Instance of DLSponsoringBannerModule or nil if not initialized
- */
-+ (instancetype)sharedInstance;
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(NSDictionary<NSString*, NSString*>*)customParams
+                  appVersion:(NSString *)appVersion;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DLSponsoringAdViewDelegate.h"
 @class DLSponsoringBannerAd;
+@class DLSponsoringBannerModule;
 
 @import UIKit;
 @import Foundation;
@@ -48,5 +49,7 @@ View to display the image of the ad.
  *  or in other case when parent view is not presented to user anymore.
  */
 - (void)parentViewDidDisappear;
+
+- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *) module;
 
 @end

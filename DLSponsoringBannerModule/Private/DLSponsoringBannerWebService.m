@@ -19,12 +19,17 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
 @interface DLSponsoringBannerWebService ()
 
 @property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) DLSponsoringModuleStore *store;
 
 @end
 
 @implementation DLSponsoringBannerWebService
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(NSDictionary<NSString*, NSString*> *)customParams
+                  appVersion:(NSString *)appVersion
+                        slot:(NSString *)slot
 {
     self = [super init];
 
@@ -34,12 +39,21 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
 
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
 
-    NSString *urlString = [NSString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
+
+    if (customParams && customParams.count > 0) {
+        for (NSString* key in customParams) {
+            NSString *customParam = [NSString stringWithFormat:@"&kv%@=%@", key, customParams[key]];
+            [urlString appendString:customParam];
+        }
+    }
+
     if (advertisingId && ![advertisingId isEqual:@""]) {
         urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
     }
 
     _url = [NSURL URLWithString:urlString];
+    _store = [[DLSponsoringModuleStore alloc] initWithSite:site area:area];
     return self;
 }
 
@@ -96,17 +110,15 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         return;
     }
 
-    DLSponsoringModuleStore *store = [[DLSponsoringModuleStore alloc] init];
-
     if (bannerAd.auditURL) {
-        [store queueTrackingLink:bannerAd.auditURL];
+        [self.store queueTrackingLink:bannerAd.auditURL];
     }
     if (bannerAd.audit2URL) {
-        [store queueTrackingLink:bannerAd.audit2URL];
+        [self.store queueTrackingLink:bannerAd.audit2URL];
     }
 
-    if ([store areAnyTrackingLinksQueued]) {
-        for (NSURL *url in [store queuedTrackingLinks]) {
+    if ([self.store areAnyTrackingLinksQueued]) {
+        for (NSURL *url in [self.store queuedTrackingLinks]) {
             // Dispatching onto background thread because method `downloadTaskWithRequest:completionHandler:` of shared NSURLSession
             // is running on main thread
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -128,8 +140,7 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         if (error) {
             NSLog(@"Error occurred: %@ while sending request to url: %@", error.description, url);
         } else {
-            DLSponsoringModuleStore *store = [[DLSponsoringModuleStore alloc] init];
-            [store removeTrackingLink:url];
+            [self.store removeTrackingLink:url];
         }
     }];
 

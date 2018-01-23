@@ -56,7 +56,9 @@
 
 - (NSURL *)clickURL
 {
-    return [NSURL URLWithString:self.fields[@"click"]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", self.meta[@"adclick"], self.fields[@"click"]];
+
+    return [NSURL URLWithString:urlString];
 }
 
 - (NSString *)version
@@ -91,11 +93,15 @@
 }
 
 - (NSDictionary *)fields {
-    return self.json[@"ads"][0][@"data"][@"fields"];
+    NSDictionary *firstElement = [((NSArray *)self.json[@"ads"]) firstObject];
+
+    return firstElement[@"data"][@"fields"];
 }
 
 - (NSDictionary *)meta {
-    return self.json[@"ads"][0][@"data"][@"meta"];
+    NSDictionary *firstElement = [((NSArray *)self.json[@"ads"]) firstObject];
+
+    return firstElement[@"data"][@"meta"];
 }
 
 @end

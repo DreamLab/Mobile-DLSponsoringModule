@@ -13,11 +13,30 @@ NSString * const kDLSponsoringBannerAdJSONCacheKey = @"pl.dreamlab.sponsoring_ba
 NSString * const kDLSponsoringBannerAdImageFileNameCacheKey = @"pl.dreamlab.sponsoring_banner.image_filename_cache_key";
 NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.sponsoring_banner.tracking_links_cache_key";
 
+@interface DLSponsoringModuleStore ()
+
+@property (nonatomic, strong) NSString *site;
+@property (nonatomic, strong) NSString *area;
+
+@end
+
 @implementation DLSponsoringModuleStore
+
+- (instancetype)initWithSite:(NSString*)site area:(NSString*)area {
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+
+    _site = site;
+    _area = area;
+
+    return self;
+}
 
 - (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    NSString *fileName = [NSString stringWithFormat:@"%ld", (long)bannerAd.version];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%ld", self.site, self.area, (long)bannerAd.version];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
@@ -38,8 +57,8 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
     NSData *bannerData = [NSKeyedArchiver archivedDataWithRootObject:bannerAd.json];
 
-    [userDefaults setObject:bannerData forKey:kDLSponsoringBannerAdJSONCacheKey];
-    [userDefaults setObject:bannerAd.imageFileName forKey:kDLSponsoringBannerAdImageFileNameCacheKey];
+    [userDefaults setObject:bannerData forKey:self.jsonCacheKey];
+    [userDefaults setObject:bannerAd.imageFileName forKey:self.fileNameCacheKey];
     [userDefaults synchronize];
 }
 
@@ -47,10 +66,10 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSData *bannerData = [userDefaults objectForKey:kDLSponsoringBannerAdJSONCacheKey];
+    NSData *bannerData = [userDefaults objectForKey:self.jsonCacheKey];
     NSDictionary *json = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:bannerData];
     
-    NSString *imageFileName = [userDefaults objectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
+    NSString *imageFileName = [userDefaults objectForKey:self.fileNameCacheKey];
 
     DLSponsoringBannerAd *cachedBannerAd = [[DLSponsoringBannerAd alloc] initWithJSONDictionary:json];
 
@@ -74,8 +93,8 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
     [self removeCachedImageAd];
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:kDLSponsoringBannerAdJSONCacheKey];
-    [userDefaults removeObjectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
+    [userDefaults removeObjectForKey:self.jsonCacheKey];
+    [userDefaults removeObjectForKey:self.fileNameCacheKey];
     [userDefaults synchronize];
 }
 
@@ -84,7 +103,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (BOOL)removeCachedImageAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *imageFileName = [userDefaults objectForKey:kDLSponsoringBannerAdImageFileNameCacheKey];
+    NSString *imageFileName = [userDefaults objectForKey:self.fileNameCacheKey];
     if (!imageFileName) {
         return false;
     }
@@ -111,7 +130,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (NSArray<NSURL *> *)queuedTrackingLinks
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [userDefaults objectForKey:kDLSponsoringBannerQueuedTrackingLinksCacheKey];
+    NSData *data = [userDefaults objectForKey:self.queuedTrakcingLinksCacheKey];
     NSArray<NSURL *> *queuedTrackingLinks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return queuedTrackingLinks;
 }
@@ -120,7 +139,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:trackingLinks];
-    [userDefaults setObject:saveData forKey:kDLSponsoringBannerQueuedTrackingLinksCacheKey];
+    [userDefaults setObject:saveData forKey:self.queuedTrakcingLinksCacheKey];
     [userDefaults synchronize];
 }
 
@@ -141,8 +160,20 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (void)clearQueuedTrackingLinks
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:kDLSponsoringBannerQueuedTrackingLinksCacheKey];
+    [userDefaults removeObjectForKey:self.queuedTrakcingLinksCacheKey];
     [userDefaults synchronize];
+}
+
+- (NSString *)jsonCacheKey {
+    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area];
+}
+
+- (NSString *)fileNameCacheKey {
+    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area];
+}
+
+- (NSString *)queuedTrakcingLinksCacheKey {
+    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerQueuedTrackingLinksCacheKey, self.site, self.area];
 }
 
 @end

@@ -25,7 +25,11 @@
  *
  *  @return Instance of DLSponsoringBannerWebService with URL to webservice.
  */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(NSDictionary<NSString*, NSString*> *)customParams
+                   appVersion:(NSString *)appVersion
+                        slot:(NSString *)slot;
 
 /**
  *  Fetch data from server.
