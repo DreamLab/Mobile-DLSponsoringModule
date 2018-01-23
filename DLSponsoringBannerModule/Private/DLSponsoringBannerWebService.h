@@ -18,10 +18,11 @@
 /**
  *  Designated initializer.
  *
- *  @param site         Site URL parameter.
- *  @param area         Area URL parameter.
- *  @param appVersion   Version of application URL parameter
- *  @param slot         Slot URL parameter.
+ *  @param site             Site URL parameter.
+ *  @param area             Area URL parameter.
+ *  @param customParams     Custom parameters for ad requests.
+ *  @param appVersion       Version of application URL parameter
+ *  @param slot             Slot URL parameter.
  *
  *  @return Instance of DLSponsoringBannerWebService with URL to webservice.
  */

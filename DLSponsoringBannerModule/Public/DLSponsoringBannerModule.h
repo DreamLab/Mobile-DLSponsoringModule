@@ -43,13 +43,23 @@
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site        the site URL parameter
- @param appVersion  the application version URL parameter
+ @param site        Site parameter
+ @param appVersion  Application version
  
  @return Instance of initialized DLSponsoringBannerModule
  */
 - (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion;
 
+/**
+ Initializes module with extendend .
+
+ @param site            Site parameter
+ @param site            Area parameter
+ @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
+ @param appVersion      Application version
+
+ @return Instance of initialized DLSponsoringBannerModule
+ */
 - (instancetype)initWithSite:(NSString *)site
                         area:(NSString *)area
                 customParams:(NSDictionary<NSString*, NSString*>*)customParams
