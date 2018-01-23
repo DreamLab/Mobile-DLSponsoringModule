@@ -54,7 +54,7 @@
  Initializes module with extendend set of parameters.
 
  @param site            Site parameter
- @param site            Area parameter
+ @param area            Area parameter
  @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
  @param appVersion      Application version
 
