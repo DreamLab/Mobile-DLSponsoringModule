@@ -28,36 +28,19 @@
 
 #pragma mark - Initializers
 
-- (instancetype)init
+- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *)module
 {
     self = [super init];
     if (self) {
-        [self initialize];
+        [self initializeWithSponsoringModule: module];
     }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    if (self) {
-        [self initialize];
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self initialize];
-    }
+    
     return self;
 }
 
 - (void)parentViewWillAppear {
-    self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
-    [DLSponsoringBannerModule.sharedInstance fetchBannerAd];
+    self.bannerAd = self.sponsoringBannerModule.bannerAd;
+    [self.sponsoringBannerModule fetchBannerAd];
     [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
     self.visible = YES;
 }
@@ -76,13 +59,13 @@
 
 #pragma mark - Private Initializers
 
-- (void)initialize
+- (void)initializeWithSponsoringModule:(DLSponsoringBannerModule *)module
 {
     if (self.isInitialized) {
         return;
     }
 
-    self.sponsoringBannerModule = DLSponsoringBannerModule.sharedInstance;
+    _sponsoringBannerModule = module;
     [self.sponsoringBannerModule addDelegate:self];
 
     self.imageView = [[UIImageView alloc] init];
@@ -93,7 +76,7 @@
     [self initializeGestureRecognizer];
 
     self.initialized = YES;
-    self.bannerAd = DLSponsoringBannerModule.sharedInstance.bannerAd;
+    self.bannerAd = module.bannerAd;
     self.currentSize = self.proportionalAdSize;
 
     [self reloadAd];

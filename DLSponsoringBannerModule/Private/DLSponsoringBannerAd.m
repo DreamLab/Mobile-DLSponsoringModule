@@ -31,42 +31,44 @@
 
 - (NSURL *)imageURL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"image"]];
+    return [NSURL URLWithString:self.fields[@"image"]];
 }
 
 - (CGFloat)imageWidth
 {
-    return [self.json[@"flat-belkagorna"][@"width"] doubleValue];
+    return [self.meta[@"width"] doubleValue];
 }
 
 - (CGFloat)imageHeight
 {
-    return [self.json[@"flat-belkagorna"][@"height"] doubleValue];
+    return [self.meta[@"height"] doubleValue];
 }
 
 - (NSURL *)auditURL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"audit"]];
+    return [NSURL URLWithString:self.fields[@"impression1"]];
 }
 
 - (NSURL *)audit2URL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"audit2"]];
+    return [NSURL URLWithString:self.fields[@"impression2"]];
 }
 
 - (NSURL *)clickURL
 {
-    return [NSURL URLWithString:self.json[@"flat-belkagorna"][@"click"]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", self.meta[@"adclick"], self.fields[@"click"]];
+
+    return [NSURL URLWithString:urlString];
 }
 
 - (NSString *)version
 {
-    return self.json[@"flat-belkagorna"][@"ver"];
+    return self.fields[@"ver"];
 }
 
 - (BOOL)empty
 {
-    return self.json[@"flat-belkagorna"] == nil;
+    return self.meta == nil;
 }
 
 #pragma mark - private methods
@@ -88,6 +90,18 @@
     }
 
     return bodyDictionary;
+}
+
+- (NSDictionary *)fields {
+    NSDictionary *firstElement = [((NSArray *)self.json[@"ads"]) firstObject];
+
+    return firstElement[@"data"][@"fields"];
+}
+
+- (NSDictionary *)meta {
+    NSDictionary *firstElement = [((NSArray *)self.json[@"ads"]) firstObject];
+
+    return firstElement[@"data"][@"meta"];
 }
 
 @end

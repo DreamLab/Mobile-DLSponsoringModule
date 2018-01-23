@@ -20,6 +20,8 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) NSString *appVersion;
 @property (nonatomic, strong) NSString *area;
 @property (nonatomic, strong) NSString *slot;
+@property (nonatomic, strong) NSDictionary<NSString*, NSString*> *customParams;
+
 @property (nonatomic, strong) NSHashTable *delegates;
 @property (nonatomic, strong) DLSponsoringBannerAd *bannerAd;
 @property (nonatomic, strong) NSTimer *waitingTimer;
@@ -31,52 +33,44 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 @implementation DLSponsoringBannerModule
 
-static dispatch_once_t once;
-static DLSponsoringBannerModule* sharedInstance;
-
-+ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion
-{
-    if (DLSponsoringBannerModule.sharedInstance != nil) {
-        NSLog(@"DLSponsoringBannerModule was already initialized");
-        return nil;
-    }
-
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
-
-    sharedInstance.site = site;
-    sharedInstance.appVersion = appVersion;
-    sharedInstance.area = @"exclusive:sponsoring";
-    sharedInstance.slot = @"flat-belkagorna";
-    [sharedInstance initializeBannerAd];
-
-    return sharedInstance;
-}
-
-+ (instancetype)sharedInstance
-{
-    return sharedInstance;
-}
-
-- (instancetype)init
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
+                  appVersion:(NSString *)appVersion
 {
     self = [super init];
+
     if (!self) {
         return nil;
     }
+
+    _site = site;
+    _appVersion = appVersion;
+    _area = area;
+    _customParams = customParams;
+
+    _slot = @"flat-belkagorna";
     _delegates = [[NSHashTable alloc] initWithOptions:NSHashTableWeakMemory capacity:5];
     _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory valueOptions:NSMapTableWeakMemory capacity:5];
+
+    [self initializeBannerAd];
+
     return self;
+}
+
+- (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion
+{
+    return [self initWithSite:site area:@"SPONSORING" customParams:nil appVersion:appVersion];
 }
 
 - (void)initializeBannerAd
 {
     self.webService = [[DLSponsoringBannerWebService alloc] initWithSite:self.site
-                                                                area:self.area
-                                                                appVersion: self.appVersion
-                                                                slot:self.slot];
-    self.store = [[DLSponsoringModuleStore alloc] init];
+                                                                    area:self.area
+                                                            customParams:self.customParams
+                                                              appVersion:self.appVersion
+                                                                    slot:self.slot];
+    self.store = [[DLSponsoringModuleStore alloc] initWithSite:self.site area:self.area];
 
     if (self.store.isAdFullyCached) {
         self.bannerAd = self.store.cachedBannerAd;
@@ -154,7 +148,7 @@ static DLSponsoringBannerModule* sharedInstance;
         return adView;
     }
 
-    adView = [[DLSponsoringAdView alloc] init];
+    adView = [[DLSponsoringAdView alloc] initWithSponsoringModule:self];
     [self.viewsForControllers setObject:adView forKey:parentView];
 
     if ([parentView conformsToProtocol:@protocol(DLSponsoringAdViewDelegate)]) {

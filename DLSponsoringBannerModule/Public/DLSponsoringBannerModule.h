@@ -43,19 +43,26 @@
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site        the site URL parameter
- @param appVersion  the application version URL parameter
+ @param site        Site parameter
+ @param appVersion  Application version
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion;
+- (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion;
 
 /**
- Returns the singleton instance of the DLSponsoringBannerModule class. 
- Method initializeWithIdentifier: should be called before first use, otherwise sharedInstance will be nil.
+ Initializes module with extendend set of parameters.
 
- @return Instance of DLSponsoringBannerModule or nil if not initialized
+ @param site            Site parameter
+ @param area            Area parameter
+ @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
+ @param appVersion      Application version
+
+ @return Instance of initialized DLSponsoringBannerModule
  */
-+ (instancetype)sharedInstance;
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
+                  appVersion:(NSString *)appVersion;
 
 @end

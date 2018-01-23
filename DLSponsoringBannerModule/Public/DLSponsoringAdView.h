@@ -8,6 +8,7 @@
 
 #import "DLSponsoringAdViewDelegate.h"
 @class DLSponsoringBannerAd;
+@class DLSponsoringBannerModule;
 
 @import UIKit;
 @import Foundation;
@@ -36,6 +37,15 @@ View to display the image of the ad.
  *  Flag mentioning if ad view should respond to orientation changes, changing it's size 
  */
 @property (nonatomic, assign) BOOL shouldRespondToOrientationChanges;
+
+/**
+ Initializes view with module object.
+
+ @param module          DLSponsoringBannerModule
+
+ @return Instance of initialized DLSponsoringAdView
+ */
+- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *)module;
 
 /**
  *  IMPORTANT: Call this method each time viewWillAppear method of view controller was called 

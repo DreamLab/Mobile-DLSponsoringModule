@@ -18,14 +18,19 @@
 /**
  *  Designated initializer.
  *
- *  @param site         Site URL parameter.
- *  @param area         Area URL parameter.
- *  @param appVersion   Version of application URL parameter
- *  @param slot         Slot URL parameter.
+ *  @param site             Site URL parameter.
+ *  @param area             Area URL parameter.
+ *  @param customParams     Custom parameters for ad requests.
+ *  @param appVersion       Version of application URL parameter
+ *  @param slot             Slot URL parameter.
  *
  *  @return Instance of DLSponsoringBannerWebService with URL to webservice.
  */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(NSDictionary<NSString*, NSString*> *)customParams
+                   appVersion:(NSString *)appVersion
+                        slot:(NSString *)slot;
 
 /**
  *  Fetch data from server.
