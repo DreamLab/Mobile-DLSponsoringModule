@@ -48,7 +48,7 @@
 /**
  *  URL to action count
  */
-@property (nonatomic, strong, readonly) NSURL *actionCount;
+@property (nonatomic, strong, readonly) NSURL *actionCountURL;
 
 /**
  *  URL to click

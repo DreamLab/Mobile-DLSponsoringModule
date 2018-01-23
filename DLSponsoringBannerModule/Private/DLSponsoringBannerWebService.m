@@ -126,8 +126,8 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
     if (bannerAd.audit2URL) {
         [self.store queueTrackingLink:bannerAd.audit2URL];
     }
-    if (bannerAd.actionCount) {
-        [self.store queueTrackingLink:bannerAd.actionCount];
+    if (bannerAd.actionCountURL) {
+        [self.store queueTrackingLink:bannerAd.actionCountURL];
     }
 
     if ([self.store areAnyTrackingLinksQueued]) {
