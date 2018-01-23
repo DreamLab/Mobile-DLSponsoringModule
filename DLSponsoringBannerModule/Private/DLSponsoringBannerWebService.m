@@ -41,15 +41,25 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
 
     NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
 
-    if (customParams && customParams.count > 0) {
-        for (NSString* key in customParams) {
-            NSString *customParam = [NSString stringWithFormat:@"&kv%@=%@", key, customParams[key]];
+    // Add keyword cs005r in order to exclude calls from Bizon
+    NSString *kwrdParam = [customParams objectForKey:@"kwrd"];
+    if (kwrdParam && kwrdParam.length > 0) {
+        kwrdParam = [NSString stringWithFormat:@"%@+cs005r", kwrdParam];
+    } else {
+        kwrdParam = @"cs005r";
+    }
+    NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
+    [customParamsMutable setObject:kwrdParam forKey:@"kwrd"];
+
+    if (customParamsMutable && customParamsMutable.count > 0) {
+        for (NSString* key in customParamsMutable) {
+            NSString *customParam = [NSString stringWithFormat:@"&kv%@=%@", key, customParamsMutable[key]];
             [urlString appendString:customParam];
         }
     }
 
     if (advertisingId && ![advertisingId isEqual:@""]) {
-        urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
+        urlString = [NSMutableString stringWithFormat:@"%@&DI=%@", urlString, advertisingId];
     }
 
     _url = [NSURL URLWithString:urlString];
@@ -115,6 +125,9 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
     }
     if (bannerAd.audit2URL) {
         [self.store queueTrackingLink:bannerAd.audit2URL];
+    }
+    if (bannerAd.actionCount) {
+        [self.store queueTrackingLink:bannerAd.actionCount];
     }
 
     if ([self.store areAnyTrackingLinksQueued]) {

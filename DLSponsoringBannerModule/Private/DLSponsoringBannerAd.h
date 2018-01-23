@@ -46,6 +46,11 @@
 @property (nonatomic, strong, readonly) NSURL *audit2URL;
 
 /**
+ *  URL to action count
+ */
+@property (nonatomic, strong, readonly) NSURL *actionCount;
+
+/**
  *  URL to click
  */
 @property (nonatomic, strong, readonly) NSURL *clickURL;

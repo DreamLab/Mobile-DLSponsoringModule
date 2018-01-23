@@ -46,12 +46,20 @@
 
 - (NSURL *)auditURL
 {
-    return [NSURL URLWithString:self.fields[@"impression1"]];
+    return [NSURL URLWithString:self.fields[@"audit"]];
 }
 
 - (NSURL *)audit2URL
 {
-    return [NSURL URLWithString:self.fields[@"impression2"]];
+    return [NSURL URLWithString:self.fields[@"audit2"]];
+}
+
+- (NSURL *)actionCountURL
+{
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *actionCountUrlString = [NSString stringWithFormat:@"%@view?%f", self.meta[@"actioncount"], timeStamp];
+
+    return [NSURL URLWithString:actionCountUrlString];
 }
 
 - (NSURL *)clickURL
