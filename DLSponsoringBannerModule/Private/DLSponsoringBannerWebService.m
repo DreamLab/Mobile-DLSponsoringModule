@@ -41,15 +41,13 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
 
     NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
 
-    // Add keyword cs006r in order to exclude calls from Bizon
+    NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
+
+    // Add custom keywords
     NSString *kwrdParam = [customParams objectForKey:@"kwrd"];
     if (kwrdParam && kwrdParam.length > 0) {
-        kwrdParam = [NSString stringWithFormat:@"%@+cs006r", kwrdParam];
-    } else {
-        kwrdParam = @"cs006r";
+        [customParamsMutable setObject:kwrdParam forKey:@"kwrd"];
     }
-    NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
-    [customParamsMutable setObject:kwrdParam forKey:@"kwrd"];
 
     if (customParamsMutable && customParamsMutable.count > 0) {
         for (NSString* key in customParamsMutable) {
