@@ -46,8 +46,12 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
     // Add custom keywords
     NSString *kwrdParam = [customParams objectForKey:@"kwrd"];
     if (kwrdParam && kwrdParam.length > 0) {
-        [customParamsMutable setObject:kwrdParam forKey:@"kwrd"];
+        kwrdParam = [NSString stringWithFormat:@"%@+cs006r", kwrdParam];
+    } else {
+        kwrdParam = @"cs006r";
     }
+
+    [customParamsMutable setObject:kwrdParam forKey:@"kwrd"];
 
     if (customParamsMutable && customParamsMutable.count > 0) {
         for (NSString* key in customParamsMutable) {
