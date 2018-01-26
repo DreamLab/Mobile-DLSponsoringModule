@@ -69,6 +69,8 @@
     [self.sponsoringBannerModule addDelegate:self];
 
     self.imageView = [[UIImageView alloc] init];
+    self.imageView.accessibilityIdentifier = @"sponsoringBannerImageView";
+    self.imageView.isAccessibilityElement = true;
 
     [self addSubview:self.imageView];
 
