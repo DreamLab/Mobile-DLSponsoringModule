@@ -56,7 +56,7 @@
         return nil;
     }
 
-    NSDictionary *firstElement = [((NSArray *)self.json[@"ads"]) firstObject];
+    NSDictionary *firstElement = [((NSArray *)json[@"ads"]) firstObject];
     if (!firstElement) {
         return nil;
     }
