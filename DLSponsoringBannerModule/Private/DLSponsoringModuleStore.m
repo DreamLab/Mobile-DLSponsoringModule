@@ -36,7 +36,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
 - (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%ld", self.site, self.area, (long)bannerAd.version];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@", self.site, self.area, bannerAd.version];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
