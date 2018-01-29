@@ -73,7 +73,7 @@
 /**
  *  JSON of BannerAd is empty
  */
-@property (nonatomic) BOOL empty;
+@property (nonatomic, readonly) BOOL empty;
 
 /**
  *  Convenience initializer for DLSponsoringBannerAd class

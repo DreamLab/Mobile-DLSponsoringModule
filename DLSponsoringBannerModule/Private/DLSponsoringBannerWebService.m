@@ -41,14 +41,20 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
 
     NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
 
-    // Add keyword cs006r in order to exclude calls from Bizon
+    NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
+
+    // Add custom keywords
     NSString *kwrdParam = [customParams objectForKey:@"kwrd"];
     if (kwrdParam && kwrdParam.length > 0) {
-        kwrdParam = [NSString stringWithFormat:@"%@+cs006r", kwrdParam];
+        NSString *unreserved = @"-._~/?:";
+        NSMutableCharacterSet *allowed = [NSMutableCharacterSet alphanumericCharacterSet];
+        [allowed addCharactersInString:unreserved];
+
+        kwrdParam = [[NSString stringWithFormat:@"%@+cs006r", kwrdParam] stringByAddingPercentEncodingWithAllowedCharacters:allowed];
     } else {
         kwrdParam = @"cs006r";
     }
-    NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
+
     [customParamsMutable setObject:kwrdParam forKey:@"kwrd"];
 
     if (customParamsMutable && customParamsMutable.count > 0) {
@@ -62,8 +68,10 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         urlString = [NSMutableString stringWithFormat:@"%@&DI=%@", urlString, advertisingId];
     }
 
+
+
     _url = [NSURL URLWithString:urlString];
-    _store = [[DLSponsoringModuleStore alloc] initWithSite:site area:area];
+    _store = [[DLSponsoringModuleStore alloc] initWithSite:site area:area customParams: customParams];
     return self;
 }
 

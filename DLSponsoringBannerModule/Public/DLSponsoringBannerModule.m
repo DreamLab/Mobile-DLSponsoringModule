@@ -70,7 +70,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                                                             customParams:self.customParams
                                                               appVersion:self.appVersion
                                                                     slot:self.slot];
-    self.store = [[DLSponsoringModuleStore alloc] initWithSite:self.site area:self.area];
+    self.store = [[DLSponsoringModuleStore alloc] initWithSite:self.site area:self.area customParams:self.customParams];
 
     if (self.store.isAdFullyCached) {
         self.bannerAd = self.store.cachedBannerAd;
