@@ -17,12 +17,13 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
 @property (nonatomic, strong) NSString *site;
 @property (nonatomic, strong) NSString *area;
+@property (nonatomic, strong) NSDictionary<NSString*, NSString*> *customParams;
 
 @end
 
 @implementation DLSponsoringModuleStore
 
-- (instancetype)initWithSite:(NSString*)site area:(NSString*)area {
+- (instancetype)initWithSite:(NSString*)site area:(NSString*)area customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams {
     self = [super init];
     if (self == nil) {
         return nil;
@@ -30,13 +31,14 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
     _site = site;
     _area = area;
+    _customParams = customParams;
 
     return self;
 }
 
 - (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@", self.site, self.area, bannerAd.version];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@_%@", self.site, self.area, bannerAd.version, [self firstKeyword]];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
@@ -164,16 +166,24 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
     [userDefaults synchronize];
 }
 
+- (NSString *)firstKeyword {
+    if ([[_customParams allValues] count] == 0) {
+        return @"";
+    }
+
+    return [_customParams allValues][0];
+}
+
 - (NSString *)jsonCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area, [self firstKeyword]];
 }
 
 - (NSString *)fileNameCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdImageFileNameCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerAdImageFileNameCacheKey, self.site, self.area, [self firstKeyword]];
 }
 
 - (NSString *)queuedTrakcingLinksCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerQueuedTrackingLinksCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerQueuedTrackingLinksCacheKey, self.site, self.area, [self firstKeyword]];
 }
 
 @end

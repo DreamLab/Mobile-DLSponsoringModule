@@ -22,7 +22,7 @@
 *
 *  @return DLSponsoringModuleStore object.
 */
-- (instancetype)initWithSite:(NSString*)site area:(NSString*)area;
+- (instancetype)initWithSite:(NSString*)site area:(NSString*)area customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams;
 
 /**
  *  Saves Ad image permanently to cache folder on disk.
