@@ -172,7 +172,8 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
         return @"";
     }
 
-    return [self md5:[_customParams allValues][0]];
+    NSString *values = [[_customParams allValues] componentsJoinedByString:@"_"];
+    return [self md5:values];
 }
 
 - (NSString *)jsonCacheKey {
