@@ -8,6 +8,7 @@
 
 @import UIKit;
 #import "DLSponsoringModuleStore.h"
+#import <CommonCrypto/CommonDigest.h>
 
 NSString * const kDLSponsoringBannerAdJSONCacheKey = @"pl.dreamlab.sponsoring_banner.json_cache_key";
 NSString * const kDLSponsoringBannerAdImageFileNameCacheKey = @"pl.dreamlab.sponsoring_banner.image_filename_cache_key";
@@ -171,7 +172,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
         return @"";
     }
 
-    return [_customParams allValues][0];
+    return [self md5:[_customParams allValues][0]];
 }
 
 - (NSString *)jsonCacheKey {
@@ -184,6 +185,20 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
 - (NSString *)queuedTrakcingLinksCacheKey {
     return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerQueuedTrackingLinksCacheKey, self.site, self.area, [self firstKeyword]];
+}
+
+- (NSString *)md5:(NSString *)input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    [output appendFormat:@"%02x", digest[i]];
+
+    return  output;
 }
 
 @end

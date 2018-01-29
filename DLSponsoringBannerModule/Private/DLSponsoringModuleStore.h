@@ -19,6 +19,7 @@
 *
 *  @param site Site
 *  @param area Area
+*  @param customParams Custom params passed to SponsoringModule
 *
 *  @return DLSponsoringModuleStore object.
 */
