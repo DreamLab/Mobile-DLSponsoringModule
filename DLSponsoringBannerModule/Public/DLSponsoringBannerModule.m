@@ -143,16 +143,18 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 -(DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport {
 
-    DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:parentView];
+    NSString *identifier = [NSString stringWithFormat:@"%@", parentView.description];
+    DLSponsoringAdView* adView = [self.viewsForControllers objectForKey:identifier];
+
     if (adView) {
         return adView;
     }
 
     adView = [[DLSponsoringAdView alloc] initWithSponsoringModule:self];
-    [self.viewsForControllers setObject:adView forKey:parentView];
+    [self.viewsForControllers setObject:adView forKey:identifier];
 
     if ([parentView conformsToProtocol:@protocol(DLSponsoringAdViewDelegate)]) {
-        adView.delegate = parentView;
+        adView.delegate = (id<DLSponsoringAdViewDelegate>)parentView;
     }
 
     adView.shouldRespondToOrientationChanges = orientationChangesSupport;
