@@ -8,6 +8,7 @@
 
 @import UIKit;
 #import "DLSponsoringModuleStore.h"
+#import <CommonCrypto/CommonDigest.h>
 
 NSString * const kDLSponsoringBannerAdJSONCacheKey = @"pl.dreamlab.sponsoring_banner.json_cache_key";
 NSString * const kDLSponsoringBannerAdImageFileNameCacheKey = @"pl.dreamlab.sponsoring_banner.image_filename_cache_key";
@@ -17,12 +18,13 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
 @property (nonatomic, strong) NSString *site;
 @property (nonatomic, strong) NSString *area;
+@property (nonatomic, strong) NSDictionary<NSString*, NSString*> *customParams;
 
 @end
 
 @implementation DLSponsoringModuleStore
 
-- (instancetype)initWithSite:(NSString*)site area:(NSString*)area {
+- (instancetype)initWithSite:(NSString*)site area:(NSString*)area customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams {
     self = [super init];
     if (self == nil) {
         return nil;
@@ -30,13 +32,14 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
     _site = site;
     _area = area;
+    _customParams = customParams;
 
     return self;
 }
 
 - (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%ld", self.site, self.area, (long)bannerAd.version];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@_%@", self.site, self.area, bannerAd.version, [self firstKeyword]];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
@@ -164,16 +167,39 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
     [userDefaults synchronize];
 }
 
+- (NSString *)firstKeyword {
+    if ([[_customParams allValues] count] == 0) {
+        return @"";
+    }
+
+    NSString *values = [[_customParams allValues] componentsJoinedByString:@"_"];
+    return [self md5:values];
+}
+
 - (NSString *)jsonCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerAdJSONCacheKey, self.site, self.area, [self firstKeyword]];
 }
 
 - (NSString *)fileNameCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerAdImageFileNameCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerAdImageFileNameCacheKey, self.site, self.area, [self firstKeyword]];
 }
 
 - (NSString *)queuedTrakcingLinksCacheKey {
-    return [NSString stringWithFormat:@"%@_%@_%@", kDLSponsoringBannerQueuedTrackingLinksCacheKey, self.site, self.area];
+    return [NSString stringWithFormat:@"%@_%@_%@_%@", kDLSponsoringBannerQueuedTrackingLinksCacheKey, self.site, self.area, [self firstKeyword]];
+}
+
+- (NSString *)md5:(NSString *)input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    [output appendFormat:@"%02x", digest[i]];
+
+    return  output;
 }
 
 @end

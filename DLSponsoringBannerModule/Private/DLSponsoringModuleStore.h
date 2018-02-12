@@ -19,10 +19,11 @@
 *
 *  @param site Site
 *  @param area Area
+*  @param customParams Custom params passed to SponsoringModule
 *
 *  @return DLSponsoringModuleStore object.
 */
-- (instancetype)initWithSite:(NSString*)site area:(NSString*)area;
+- (instancetype)initWithSite:(NSString*)site area:(NSString*)area customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams;
 
 /**
  *  Saves Ad image permanently to cache folder on disk.
