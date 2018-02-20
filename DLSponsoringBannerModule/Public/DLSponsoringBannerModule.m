@@ -136,14 +136,14 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
     }];
 }
 
-- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView
+- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer, DLSponsoringAdViewDelegate>)parentView
 {
     return [self adViewForParentView:parentView shouldBeRespondingToOrientationChanges:NO];
 }
 
 -(DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport {
 
-    NSString *identifier = [NSString stringWithFormat:@"%@", parentView.description];
+    NSString *identifier = [NSString stringWithFormat:@"%p", parentView];
     DLSponsoringAdView* adView = [self.viewsForControllers objectForKey:identifier];
 
     if (adView) {

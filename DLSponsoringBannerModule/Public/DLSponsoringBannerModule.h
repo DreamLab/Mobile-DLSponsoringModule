@@ -37,8 +37,8 @@
  *
  *  @return DLSponsoringAdView view
  */
-- (DLSponsoringAdView * _Nonnull)adViewForParentView:(id<UIAppearanceContainer> _Nonnull)parentView
-     shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport;
+- (DLSponsoringAdView * _Nonnull)adViewForParentView:(id<UIAppearanceContainer, DLSponsoringAdViewDelegate> _Nonnull)parentView
+              shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
