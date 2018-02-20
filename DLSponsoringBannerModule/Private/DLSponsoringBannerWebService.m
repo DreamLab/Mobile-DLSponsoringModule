@@ -37,8 +37,6 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         return nil;
     }
 
-    NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
-
     NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion];
 
     NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
@@ -64,11 +62,11 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         }
     }
 
-    if (advertisingId && ![advertisingId isEqual:@""]) {
-        urlString = [NSMutableString stringWithFormat:@"%@&DI=%@", urlString, advertisingId];
+    ASIdentifierManager *identifierManager = ASIdentifierManager.sharedManager;
+    if (identifierManager.isAdvertisingTrackingEnabled) {
+        NSString *advertisingId = identifierManager.advertisingIdentifier.UUIDString;
+        urlString = [NSMutableString stringWithFormat:@"%@&DI=%@&ppid=%@", urlString, advertisingId, advertisingId];
     }
-
-
 
     _url = [NSURL URLWithString:urlString];
     _store = [[DLSponsoringModuleStore alloc] initWithSite:site area:area customParams: customParams];
