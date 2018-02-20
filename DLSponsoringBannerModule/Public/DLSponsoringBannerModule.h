@@ -26,7 +26,7 @@
 *
 *  @return DLSponsoringAdView view
 */
-- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView;
+- (DLSponsoringAdView * _Nonnull)adViewForParentView:(id <UIAppearanceContainer> _Nonnull)parentView;
 
 /**
  *  Returns initialized object of class DLSponsoringAdView to be used in given Parent View.
@@ -37,8 +37,8 @@
  *
  *  @return DLSponsoringAdView view
  */
-- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView
-     shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport;
+- (DLSponsoringAdView * _Nonnull)adViewForParentView:(id<UIAppearanceContainer, DLSponsoringAdViewDelegate> _Nonnull)parentView
+              shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
@@ -48,7 +48,7 @@
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-- (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion;
+- (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site appVersion:(NSString * _Nonnull)appVersion;
 
 /**
  Initializes module with extendend set of parameters.
@@ -60,9 +60,9 @@
 
  @return Instance of initialized DLSponsoringBannerModule
  */
-- (instancetype)initWithSite:(NSString *)site
-                        area:(NSString *)area
-                customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
-                  appVersion:(NSString *)appVersion;
+- (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
+                        area:(NSString * _Nonnull)area
+                customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
+                  appVersion:(NSString * _Nonnull)appVersion;
 
 @end

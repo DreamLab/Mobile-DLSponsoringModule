@@ -36,11 +36,13 @@ Add #import statement in your AppDelegate:
 #import <DLSponsoringBannerModule/DLSponsoringBannerModule.h>
 ```
 
-In application:didFinishLaunchingWithOptions: method of your AppDelegate add following method to initialize `DLSponsoringBannerModule`:
+In application:didFinishLaunchingWithOptions: method of your AppDelegate initialise `DLSponsoringBannerModule`:
 ```
-[DLSponsoringBannerModule initializeWithSite:<SITE_PARAMETER>];
+[DLSponsoringBannerModule alloc] initWithSite:<SITE_PARAMETER>, appVersion:<APP_VERSION>];
 ```
-As `<SITE_PARAMETER>` insert your Site Identifier.
+It is **important** you keep strong reference to created module for application runtime.
+
+As `<SITE_PARAMETER>` insert your Site Identifier, as `<APP_VERSION>` you should pass actual application version.
 
 ### Step 2. Instantiation od `DLSponsoringAdView` for view controller.
 

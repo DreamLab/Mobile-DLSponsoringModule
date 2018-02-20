@@ -23,7 +23,9 @@
 *
 *  @return DLSponsoringModuleStore object.
 */
-- (instancetype)initWithSite:(NSString*)site area:(NSString*)area customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams;
+- (instancetype _Nonnull)initWithSite:(NSString* _Nonnull)site
+                                 area:(NSString* _Nonnull)area
+                         customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams;
 
 /**
  *  Saves Ad image permanently to cache folder on disk.
@@ -33,21 +35,21 @@
  *
  *  @return Status if saving file was successful.
  */
-- (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *)bannerAd;
+- (BOOL)saveAdImageFromTemporaryLocation:(NSURL * _Nonnull)temporaryLocation ofBannerAd:(DLSponsoringBannerAd *_Nonnull)bannerAd;
 
 /**
  *  Cache given Sponsoring Banner Ad object to NSUserDefaults.
  *
  *  @param bannerAd SposoringBannerAd to cache.
  */
-- (void)cacheBannerAd:(DLSponsoringBannerAd *)bannerAd;
+- (void)cacheBannerAd:(DLSponsoringBannerAd * _Nonnull)bannerAd;
 
 /**
  *  Cached Sponsoring Banner Ad from NSUserDefaults.
  *
  *  @return Cached SposoringBannerAd.
  */
-- (DLSponsoringBannerAd *)cachedBannerAd;
+- (DLSponsoringBannerAd * _Nonnull)cachedBannerAd;
 
 /**
  *  Is data fully stored in cache?
@@ -73,28 +75,28 @@
  *
  *  @return queued tracking links.
  */
-- (NSArray<NSURL *> *)queuedTrackingLinks;
+- (NSArray<NSURL *> * _Nonnull)queuedTrackingLinks;
 
 /**
  *  Queue array of tracking links.
  *
  *  @param trackingLinks array of tracking links to queue
  */
-- (void)queueTrackingLinks:(NSArray<NSURL *> *)trackingLinks;
+- (void)queueTrackingLinks:(NSArray<NSURL *> * _Nonnull)trackingLinks;
 
 /**
  *  Queue tracking link.
  *
  *  @param trackingLink Tracking link to queue.
  */
-- (void)queueTrackingLink:(NSURL *)trackingLink;
+- (void)queueTrackingLink:(NSURL * _Nonnull)trackingLink;
 
 /**
  *  Remove tracking link from queue.
  *
  *  @param trackingLink tracking link to remove from queue.
  */
-- (void)removeTrackingLink:(NSURL *)trackingLink;
+- (void)removeTrackingLink:(NSURL * _Nonnull)trackingLink;
 
 /**
  *  Remove all queue of tracking links from store.

@@ -136,24 +136,24 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
     }];
 }
 
-- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView
+- (DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer, DLSponsoringAdViewDelegate>)parentView
 {
     return [self adViewForParentView:parentView shouldBeRespondingToOrientationChanges:NO];
 }
 
--(DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer>)parentView shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport {
+-(DLSponsoringAdView *)adViewForParentView:(id<UIAppearanceContainer, DLSponsoringAdViewDelegate>)parentView shouldBeRespondingToOrientationChanges:(BOOL)orientationChangesSupport {
 
-    DLSponsoringAdView *adView = [self.viewsForControllers objectForKey:parentView];
+    NSString *identifier = [NSString stringWithFormat:@"%p", parentView];
+    DLSponsoringAdView* adView = [self.viewsForControllers objectForKey:identifier];
+
     if (adView) {
         return adView;
     }
 
     adView = [[DLSponsoringAdView alloc] initWithSponsoringModule:self];
-    [self.viewsForControllers setObject:adView forKey:parentView];
+    [self.viewsForControllers setObject:adView forKey:identifier];
 
-    if ([parentView conformsToProtocol:@protocol(DLSponsoringAdViewDelegate)]) {
-        adView.delegate = parentView;
-    }
+    adView.delegate = (id<DLSponsoringAdViewDelegate>)parentView;
 
     adView.shouldRespondToOrientationChanges = orientationChangesSupport;
 
