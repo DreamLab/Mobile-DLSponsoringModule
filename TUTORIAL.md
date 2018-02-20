@@ -42,7 +42,7 @@ In application:didFinishLaunchingWithOptions: method of your AppDelegate initial
 ```
 It is **important** you keep strong reference to created module for application runtime.
 
-As `<SITE_PARAMETER>` insert your Site Identifier, as `<APP_VERSION>` you should pass actuall application version.
+As `<SITE_PARAMETER>` insert your Site Identifier, as `<APP_VERSION>` you should pass actual application version.
 
 ### Step 2. Instantiation od `DLSponsoringAdView` for view controller.
 
