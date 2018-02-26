@@ -40,6 +40,9 @@
 
 - (void)parentViewWillAppear {
     self.bannerAd = self.sponsoringBannerModule.bannerAd;
+    if (!self.bannerAd) {
+        [self reloadAd];
+    }
     [self.sponsoringBannerModule fetchBannerAd];
     [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
     self.visible = YES;
@@ -144,7 +147,6 @@
     }
     self.currentSize = self.proportionalAdSize;
     [self reloadAd];
-    [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
 }
 
 - (CGSize)proportionalAdSize {
@@ -160,11 +162,16 @@
 
 - (void)reloadAd {
     if (!self.isAdReady) {
+        self.imageView.image = nil;
+        self.heightConstraint.constant = 0;
+        self.hidden = YES;
         return;
     }
 
+    self.hidden = NO;
     self.imageView.image = self.bannerAd.image;
     self.heightConstraint.constant = self.proportionalAdSize.height;
+    [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
 }
 
 #pragma mark - DLSponsoringBannerModuleDelegate
@@ -179,7 +186,6 @@
     self.bannerAd = ad;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self displayAd:self.bannerAd];
-        [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
     });
 }
 

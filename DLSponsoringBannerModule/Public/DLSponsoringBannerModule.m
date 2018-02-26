@@ -29,6 +29,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSponsoringModuleStore *store;
 @property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringAdView*> *viewsForControllers;
 @property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
+@property (atomic, assign) BOOL shouldClearBannerData;
 @end
 
 @implementation DLSponsoringBannerModule
@@ -88,6 +89,11 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
     self.dataFetchingInProgress = YES;
     [self waitingForDataStarted];
 
+    if (self.shouldClearBannerData) {
+        self.bannerAd = nil;
+        self.shouldClearBannerData = NO;
+    }
+
     [self.webService fetchDataWithCompletion:^(DLSponsoringBannerAd *bannerAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
@@ -102,6 +108,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
         if (bannerAd.empty) {
             [self.store clearCache];
             [self waitingForDataFinished];
+            self.shouldClearBannerData = YES;
             return;
         }
 
