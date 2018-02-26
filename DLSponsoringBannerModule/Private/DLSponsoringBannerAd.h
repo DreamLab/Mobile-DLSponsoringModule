@@ -58,7 +58,7 @@
 /**
  *  Version of campain
  */
-@property (nonatomic, assign, readonly) NSString *version;
+@property (nonatomic, strong, readonly) NSString *version;
 
 /**
  *  JSON of Sponsoring Banner Ad.
