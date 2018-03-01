@@ -40,9 +40,7 @@
 
 - (void)parentViewWillAppear {
     self.bannerAd = self.sponsoringBannerModule.bannerAd;
-    if (!self.bannerAd) {
-        [self reloadAd];
-    }
+    [self reloadAdForced: NO];
     [self.sponsoringBannerModule fetchBannerAd];
     [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
     self.visible = YES;
@@ -84,7 +82,7 @@
     self.bannerAd = module.bannerAd;
     self.currentSize = self.proportionalAdSize;
 
-    [self reloadAd];
+    [self reloadAdForced: NO];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orientationChanged)
@@ -136,11 +134,11 @@
 // This method need to be called in main queue or will crash!
 - (void)displayAd:(DLSponsoringBannerAd *)bannerAd
 {
-    BOOL shouldReloadAd = ((bannerAd || self.bannerAd) && ![bannerAd isEqual:self.bannerAd]);
+    BOOL shouldReloadAd = ((bannerAd || self.bannerAd) && ![bannerAd isEqual:self.bannerAd]) && self.isVisible;
     self.bannerAd = bannerAd;
 
     if (shouldReloadAd) {
-        [self reloadAd];
+        [self reloadAdForced: NO];
     }
 }
 
@@ -150,7 +148,7 @@
         return;
     }
     self.currentSize = self.proportionalAdSize;
-    [self reloadAd];
+    [self reloadAdForced: YES];
 }
 
 - (CGSize)proportionalAdSize {
@@ -164,13 +162,13 @@
     return CGSizeMake(screenWidth, height);
 }
 
-- (void)reloadAd {
+- (void)reloadAdForced:(BOOL forced) {
     if (!self.isAdReady && !self.hidden) {
         self.imageView.image = nil;
         self.heightConstraint.constant = 0;
         self.hidden = YES;
         [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
-    } else if (self.isAdReady) {
+    } else if (self.isAdReady && forced) {
         self.hidden = NO;
         self.imageView.image = self.bannerAd.image;
         self.heightConstraint.constant = self.proportionalAdSize.height;
