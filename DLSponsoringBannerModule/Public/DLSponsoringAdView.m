@@ -136,8 +136,12 @@
 // This method need to be called in main queue or will crash!
 - (void)displayAd:(DLSponsoringBannerAd *)bannerAd
 {
+    BOOL shouldReloadAd = ((bannerAd || self.bannerAd) && ![bannerAd isEqual:self.bannerAd]);
     self.bannerAd = bannerAd;
-    [self reloadAd];
+
+    if (shouldReloadAd) {
+        [self reloadAd];
+    }
 }
 
 - (void)orientationChanged
@@ -165,12 +169,12 @@
         self.imageView.image = nil;
         self.heightConstraint.constant = 0;
         self.hidden = YES;
-        return;
+    } else {
+        self.hidden = NO;
+        self.imageView.image = self.bannerAd.image;
+        self.heightConstraint.constant = self.proportionalAdSize.height;
     }
 
-    self.hidden = NO;
-    self.imageView.image = self.bannerAd.image;
-    self.heightConstraint.constant = self.proportionalAdSize.height;
     [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
 }
 
@@ -178,14 +182,13 @@
 
 - (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad
 {
-    if (self.bannerAd && ([self.bannerAd isEqual:ad] || self.isVisible)) {
+    if (self.bannerAd && [self.bannerAd isEqual:ad]) {
         // Do nothing if ad is already displayed on screen or reload it if it has changed
         return;
     }
 
-    self.bannerAd = ad;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self displayAd:self.bannerAd];
+        [self displayAd:ad];
     });
 }
 
