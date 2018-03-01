@@ -39,10 +39,7 @@
 }
 
 - (void)parentViewWillAppear {
-    self.bannerAd = self.sponsoringBannerModule.bannerAd;
-    [self reloadAdForced: NO];
     [self.sponsoringBannerModule fetchBannerAd];
-    [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
     self.visible = YES;
 }
 
@@ -134,7 +131,8 @@
 // This method need to be called in main queue or will crash!
 - (void)displayAd:(DLSponsoringBannerAd *)bannerAd
 {
-    BOOL shouldReloadAd = ((bannerAd || self.bannerAd) && ![bannerAd isEqual:self.bannerAd]) && self.isVisible;
+    BOOL shouldReloadAd = ((bannerAd && ![bannerAd isEqual:self.bannerAd])
+                           || (self.bannerAd && ![self.bannerAd isEqual:bannerAd])) && self.isVisible;
     self.bannerAd = bannerAd;
 
     if (shouldReloadAd) {
@@ -182,6 +180,10 @@
 
 - (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad
 {
+    if (self.visible && ad) {
+        [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:ad];
+    }
+
     if (self.bannerAd && [self.bannerAd isEqual:ad]) {
         // Do nothing if ad is already displayed on screen or reload it if it has changed
         return;
