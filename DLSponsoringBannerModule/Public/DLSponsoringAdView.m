@@ -21,6 +21,8 @@
 @property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, assign, getter=isInitialized) BOOL initialized;
 @property (nonatomic, assign, getter=isVisible) BOOL visible;
+@property (nonatomic, assign, getter=isAdPresented) BOOL adPresented;
+@property (nonatomic, assign, getter=wasAuditSent) BOOL auditSent;
 @property (nonatomic, assign) CGSize currentSize;
 @end
 
@@ -39,17 +41,13 @@
 }
 
 - (void)parentViewWillAppear {
-    self.bannerAd = self.sponsoringBannerModule.bannerAd;
-    if (!self.bannerAd) {
-        [self reloadAd];
-    }
-    [self.sponsoringBannerModule fetchBannerAd];
-    [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:self.bannerAd];
     self.visible = YES;
+    [self.sponsoringBannerModule fetchBannerAd];
 }
 
 - (void)parentViewDidDisappear {
     self.visible = NO;
+    self.auditSent = NO;
 }
 
 - (BOOL)isAdReady {
@@ -82,6 +80,7 @@
 
     self.initialized = YES;
     self.bannerAd = module.bannerAd;
+    self.adPresented = NO;
     self.currentSize = self.proportionalAdSize;
 
     [self reloadAd];
@@ -137,7 +136,11 @@
 - (void)displayAd:(DLSponsoringBannerAd *)bannerAd
 {
     self.bannerAd = bannerAd;
-    [self reloadAd];
+
+    BOOL shouldReloadAd = self.isVisible || (!self.adPresented && self.isAdReady);
+    if (shouldReloadAd) {
+        [self reloadAd];
+    }
 }
 
 - (void)orientationChanged
@@ -149,7 +152,8 @@
     [self reloadAd];
 }
 
-- (CGSize)proportionalAdSize {
+- (CGSize)proportionalAdSize
+{
     if (!self.isAdReady || self.bannerAd.imageWidth <= 0) {
         return CGSizeZero;
     }
@@ -160,17 +164,19 @@
     return CGSizeMake(screenWidth, height);
 }
 
-- (void)reloadAd {
+- (void)reloadAd
+{
     if (!self.isAdReady) {
         self.imageView.image = nil;
         self.heightConstraint.constant = 0;
         self.hidden = YES;
-        return;
+        self.adPresented = NO;
+    } else {
+        self.hidden = NO;
+        self.imageView.image = self.bannerAd.image;
+        self.heightConstraint.constant = self.proportionalAdSize.height;
+        self.adPresented = YES;
     }
-
-    self.hidden = NO;
-    self.imageView.image = self.bannerAd.image;
-    self.heightConstraint.constant = self.proportionalAdSize.height;
     [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
 }
 
@@ -178,14 +184,18 @@
 
 - (void)sposoringBannerModuleReceivedAd:(DLSponsoringBannerAd *)ad
 {
-    if (self.bannerAd && ([self.bannerAd isEqual:ad] || self.isVisible)) {
+    if (self.isVisible && ad && !self.auditSent) {
+        [self.sponsoringBannerModule adViewDidShowSuccesfulyForBannerAd:ad];
+        self.auditSent = YES;
+    }
+
+    if (self.bannerAd && [self.bannerAd isEqual:ad] && self.adPresented) {
         // Do nothing if ad is already displayed on screen or reload it if it has changed
         return;
     }
 
-    self.bannerAd = ad;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self displayAd:self.bannerAd];
+        [self displayAd:ad];
     });
 }
 

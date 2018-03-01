@@ -29,7 +29,6 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSponsoringModuleStore *store;
 @property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringAdView*> *viewsForControllers;
 @property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
-@property (atomic, assign) BOOL shouldClearBannerData;
 @end
 
 @implementation DLSponsoringBannerModule
@@ -72,12 +71,6 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                                                               appVersion:self.appVersion
                                                                     slot:self.slot];
     self.store = [[DLSponsoringModuleStore alloc] initWithSite:self.site area:self.area customParams:self.customParams];
-
-    if (self.store.isAdFullyCached) {
-        self.bannerAd = self.store.cachedBannerAd;
-    }
-
-    [self fetchBannerAd];
 }
 
 - (void)fetchBannerAd
@@ -88,11 +81,6 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
     self.dataFetchingInProgress = YES;
     [self waitingForDataStarted];
-
-    if (self.shouldClearBannerData) {
-        self.bannerAd = nil;
-        self.shouldClearBannerData = NO;
-    }
 
     [self.webService fetchDataWithCompletion:^(DLSponsoringBannerAd *bannerAd, NSError *error) {
         if (error) {
@@ -107,8 +95,8 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
         // if we get empty json
         if (bannerAd.empty) {
             [self.store clearCache];
+            self.bannerAd = nil;
             [self waitingForDataFinished];
-            self.shouldClearBannerData = YES;
             return;
         }
 
@@ -207,9 +195,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
     if (self.waitingTimer) {
         [self.waitingTimer invalidate];
         self.waitingTimer = nil;
-        if (self.bannerAd) {
-            [self notifyDelegatesBannerAdViewShouldDisplayAd];
-        }
+        [self notifyDelegatesBannerAdViewShouldDisplayAd];
     }
 }
 
