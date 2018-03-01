@@ -170,7 +170,7 @@
         self.heightConstraint.constant = 0;
         self.hidden = YES;
         [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
-    } else if (self.hidden) {
+    } else if (self.isAdReady) {
         self.hidden = NO;
         self.imageView.image = self.bannerAd.image;
         self.heightConstraint.constant = self.proportionalAdSize.height;
