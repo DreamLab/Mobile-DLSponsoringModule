@@ -165,17 +165,17 @@
 }
 
 - (void)reloadAd {
-    if (!self.isAdReady) {
+    if (!self.isAdReady && !self.hidden) {
         self.imageView.image = nil;
         self.heightConstraint.constant = 0;
         self.hidden = YES;
-    } else {
+        [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+    } else if (self.hidden) {
         self.hidden = NO;
         self.imageView.image = self.bannerAd.image;
         self.heightConstraint.constant = self.proportionalAdSize.height;
+        [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
     }
-
-    [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
 }
 
 #pragma mark - DLSponsoringBannerModuleDelegate
