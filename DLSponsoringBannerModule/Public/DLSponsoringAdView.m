@@ -151,7 +151,8 @@
     [self reloadAdForced: YES];
 }
 
-- (CGSize)proportionalAdSize {
+- (CGSize)proportionalAdSize
+{
     if (!self.isAdReady || self.bannerAd.imageWidth <= 0) {
         return CGSizeZero;
     }
@@ -162,7 +163,8 @@
     return CGSizeMake(screenWidth, height);
 }
 
-- (void)reloadAdForced:(BOOL forced) {
+- (void)reloadAdForced:(BOOL)forced
+{
     if (!self.isAdReady && !self.hidden) {
         self.imageView.image = nil;
         self.heightConstraint.constant = 0;
