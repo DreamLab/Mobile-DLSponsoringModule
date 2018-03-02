@@ -81,6 +81,7 @@
     self.initialized = YES;
     self.bannerAd = module.bannerAd;
     self.adPresented = NO;
+    self.heightConstraint.constant = self.proportionalAdSize.height;
     self.currentSize = self.proportionalAdSize;
 
     [self reloadAd];
@@ -166,6 +167,8 @@
 
 - (void)reloadAd
 {
+    CGFloat heightBefore = self.heightConstraint.constant;
+
     if (!self.isAdReady) {
         self.imageView.image = nil;
         self.heightConstraint.constant = 0;
@@ -177,7 +180,10 @@
         self.heightConstraint.constant = self.proportionalAdSize.height;
         self.adPresented = YES;
     }
-    [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+
+    if (self.heightConstraint.constant != heightBefore) {
+        [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+    }
 }
 
 #pragma mark - DLSponsoringBannerModuleDelegate
