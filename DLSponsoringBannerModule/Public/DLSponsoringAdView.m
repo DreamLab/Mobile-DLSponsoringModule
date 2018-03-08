@@ -182,7 +182,9 @@
     }
 
     if (self.heightConstraint.constant != heightBefore) {
-        [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+        });
     }
 }
 

@@ -58,7 +58,7 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSData *bannerData = [NSKeyedArchiver archivedDataWithRootObject:bannerAd.json];
+    NSData *bannerData = bannerAd.json == nil ? nil : [NSKeyedArchiver archivedDataWithRootObject:bannerAd.json];
 
     [userDefaults setObject:bannerData forKey:self.jsonCacheKey];
     [userDefaults setObject:bannerAd.imageFileName forKey:self.fileNameCacheKey];
@@ -69,22 +69,29 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSData *bannerData = [userDefaults objectForKey:self.jsonCacheKey];
-    NSDictionary *json = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:bannerData];
-    
+    NSData *bannerData = (NSData *)[userDefaults objectForKey:self.jsonCacheKey];
     NSString *imageFileName = [userDefaults objectForKey:self.fileNameCacheKey];
 
-    DLSponsoringBannerAd *cachedBannerAd = [[DLSponsoringBannerAd alloc] initWithJSONDictionary:json];
+    if (bannerData && imageFileName) {
+        NSDictionary *json = nil;
+        NSObject *dataObject = [NSKeyedUnarchiver unarchiveObjectWithData:bannerData];
 
-    if (imageFileName) {
+        if (dataObject && [dataObject isKindOfClass:[NSDictionary class]]) {
+            json = (NSDictionary*)dataObject;
+        }
+
+        DLSponsoringBannerAd *cachedBannerAd = [[DLSponsoringBannerAd alloc] initWithJSONDictionary:json];
+
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
         NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
         cachedBannerAd.imageFileName = imageFileName;
         cachedBannerAd.image = [self imageAtLocation:fileURL];
+
+        return cachedBannerAd;
     }
 
-    return cachedBannerAd;
+    return nil;
 }
 
 - (BOOL)isAdFullyCached {
