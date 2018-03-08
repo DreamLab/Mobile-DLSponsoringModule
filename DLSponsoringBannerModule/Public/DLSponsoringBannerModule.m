@@ -173,9 +173,12 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 - (void)notifyDelegatesBannerAdViewShouldDisplayAd
 {
-    for (id<DLSponsoringBannerModuleDelegate> delegate in self.delegates) {
-        [delegate sposoringBannerModuleReceivedAd:self.bannerAd];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSArray *delegates = self.delegates.allObjects;
+        for (id<DLSponsoringBannerModuleDelegate> delegate in delegates) {
+            [delegate sposoringBannerModuleReceivedAd:self.bannerAd];
+        }
+    });
 }
 
 #pragma mark - Timers
