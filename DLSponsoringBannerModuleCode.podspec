@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name            = 'DLSponsoringBannerModuleCode'
-  s.version         = '1.4'
-  s.platform        = :ios, "7.0"
+  s.version         = '1.4.100'
+  s.platform        = :ios, "9.0"
   s.summary         = 'Module to provide Sponsoring Module Ad.'
   s.author          = { 'Paweł Kordal' => 'pawel.kordal@dreamlab.pl', 'Konrad Kierys' => 'konrad.kierys@dreamlab.pl','Jacek Zapart' => 'jacek.zapart@dreamlab.pl' }
   s.homepage        = 'http://stash.grupa.onet/projects/MSC/repos/DLSponsoringBannerModule'

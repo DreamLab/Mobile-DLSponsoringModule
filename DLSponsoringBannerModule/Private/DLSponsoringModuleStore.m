@@ -57,8 +57,11 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (void)cacheBannerAd:(DLSponsoringBannerAd *)bannerAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *bannerData = nil;
 
-    NSData *bannerData = bannerAd.json == nil ? nil : [NSKeyedArchiver archivedDataWithRootObject:bannerAd.json];
+    if (bannerAd.json) {
+        bannerData = [NSJSONSerialization dataWithJSONObject:bannerAd.json options:NSJSONWritingPrettyPrinted error:nil];
+    }
 
     [userDefaults setObject:bannerData forKey:self.jsonCacheKey];
     [userDefaults setObject:bannerAd.imageFileName forKey:self.fileNameCacheKey];
@@ -68,18 +71,16 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 - (DLSponsoringBannerAd *)cachedBannerAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
     NSData *bannerData = (NSData *)[userDefaults objectForKey:self.jsonCacheKey];
     NSString *imageFileName = [userDefaults objectForKey:self.fileNameCacheKey];
 
-    if (bannerData && imageFileName) {
-        NSDictionary *json = nil;
-        NSObject *dataObject = [NSKeyedUnarchiver unarchiveObjectWithData:bannerData];
+    NSDictionary *json = nil;
 
-        if (dataObject && [dataObject isKindOfClass:[NSDictionary class]]) {
-            json = (NSDictionary*)dataObject;
-        }
+    if (bannerData && [bannerData isKindOfClass:[NSData class]]) {
+        json = [NSJSONSerialization JSONObjectWithData:bannerData options:NSJSONReadingAllowFragments error:nil];
+    }
 
+    if (json && imageFileName && [json isKindOfClass:[NSDictionary class]]) {
         DLSponsoringBannerAd *cachedBannerAd = [[DLSponsoringBannerAd alloc] initWithJSONDictionary:json];
 
         NSFileManager *fileManager = [NSFileManager defaultManager];
