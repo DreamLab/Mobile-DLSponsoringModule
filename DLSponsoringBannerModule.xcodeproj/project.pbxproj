@@ -90,6 +90,7 @@
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
+		7D890674206108AD009417B6 /* DLSponsoringBannerModuleCode.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSponsoringBannerModuleCode.podspec; sourceTree = "<group>"; };
 		872C68D71C74BE44006064FD /* DLSponsoringBannerModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSponsoringBannerModule.podspec; sourceTree = "<group>"; };
 		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 				D536CEEE1D0FD629003BB079 /* TUTORIAL.md */,
 				872C68D71C74BE44006064FD /* DLSponsoringBannerModule.podspec */,
 				872C68D81C74BE44006064FD /* LICENSE */,
+				7D890674206108AD009417B6 /* DLSponsoringBannerModuleCode.podspec */,
 				872C68D91C74BE44006064FD /* README.md */,
 			);
 			name = "Podfile metadata";
