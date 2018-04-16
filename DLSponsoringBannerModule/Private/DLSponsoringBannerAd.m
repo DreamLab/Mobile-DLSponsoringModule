@@ -61,21 +61,21 @@
         return nil;
     }
 
-    _imageURL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"image"]];
+    _imageURL = [DLSponsoringBannerAd nsurlFromUnknownValue:firstElement[@"data"][@"fields"][@"image"]];
     _imageWidth = [firstElement[@"data"][@"meta"][@"width"] doubleValue];
     _imageHeight = [firstElement[@"data"][@"meta"][@"height"] doubleValue];
-    _auditURL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"audit"]];
-    _audit2URL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"audit2"]];
+    _auditURL = [DLSponsoringBannerAd nsurlFromUnknownValue:firstElement[@"data"][@"fields"][@"audit"]];
+    _audit2URL = [DLSponsoringBannerAd nsurlFromUnknownValue:firstElement[@"data"][@"fields"][@"audit2"]];
 
     NSString *clickUrlString = [NSString stringWithFormat:@"%@%@",
                                 firstElement[@"data"][@"meta"][@"adclick"],
                                 firstElement[@"data"][@"fields"][@"click"]];
-    _clickURL = [NSURL URLWithString:clickUrlString];
+    _clickURL = [DLSponsoringBannerAd nsurlFromUnknownValue:clickUrlString];
 
     _actionCount = firstElement[@"data"][@"meta"][@"actioncount"];
     _version = firstElement[@"data"][@"fields"][@"ver"];
 
-    if (_imageURL && _imageWidth && _imageHeight && _auditURL && _audit2URL && _clickURL && _version) {
+    if (_imageURL && _imageWidth && _imageHeight && _version) {
         _empty = false;
     } else {
         _empty = true;
@@ -105,15 +105,15 @@
         return nil;
     }
 
-    _imageURL = [NSURL URLWithString:htmlDictionary[@"image"]];
+    _imageURL = [DLSponsoringBannerAd nsurlFromUnknownValue:htmlDictionary[@"image"]];
     _imageWidth = [htmlDictionary[@"width"] doubleValue];
     _imageHeight = [htmlDictionary[@"height"] doubleValue];
-    _auditURL = [NSURL URLWithString:htmlDictionary[@"audit"]];
-    _audit2URL = [NSURL URLWithString:htmlDictionary[@"audit2"]];
-    _clickURL = [NSURL URLWithString:htmlDictionary[@"click"]];
+    _auditURL = [DLSponsoringBannerAd nsurlFromUnknownValue:htmlDictionary[@"audit"]];
+    _audit2URL = [DLSponsoringBannerAd nsurlFromUnknownValue:htmlDictionary[@"audit2"]];
+    _clickURL = [DLSponsoringBannerAd nsurlFromUnknownValue:htmlDictionary[@"click"]];
     _version = htmlDictionary[@"ver"];
 
-    if (_imageURL && _imageWidth && _imageHeight && _auditURL && _audit2URL && _clickURL && _version) {
+    if (_imageURL && _imageWidth && _imageHeight && _version) {
         _empty = false;
     } else {
         _empty = true;
@@ -176,6 +176,16 @@
     NSDictionary *firstElement = [((NSArray *)json[@"ads"]) firstObject];
 
     return firstElement[@"type"];
+}
+
++ (NSURL *)nsurlFromUnknownValue:(NSObject *)value {
+    NSURL *result = nil;
+
+    if (![value isKindOfClass:[NSNull class]] && [value isKindOfClass:[NSString class]] && [((NSString *)value) length] > 0 ) {
+        result = [NSURL URLWithString:(NSString *)value];
+    }
+
+    return result;
 }
 
 @end
