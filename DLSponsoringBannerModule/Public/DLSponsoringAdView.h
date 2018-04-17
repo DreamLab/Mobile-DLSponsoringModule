@@ -21,12 +21,17 @@ View to display the image of the ad.
 /**
  Delegate of the DLAdViewDelegate protocol.
  */
-@property (nonatomic, weak) id<DLSponsoringAdViewDelegate> delegate;
+@property (nonatomic, weak, nullable) id<DLSponsoringAdViewDelegate> delegate;
 
 /**
  *  Property defining if ad is ready to be displayed
  */
 @property (nonatomic, assign, readonly, getter=isAdReady) BOOL adReady;
+
+/**
+ *  Property defining background color for ad
+ */
+@property (nonatomic, assign, readonly, nullable) UIColor *adBackgroundColor;
 
 /**
  *  Ad size - CGSizeZero when ad is not ready to be displayed.
@@ -45,7 +50,7 @@ View to display the image of the ad.
 
  @return Instance of initialized DLSponsoringAdView
  */
-- (instancetype)initWithSponsoringModule:(DLSponsoringBannerModule *)module;
+- (instancetype _Nonnull)initWithSponsoringModule:(DLSponsoringBannerModule * _Nonnull)module;
 
 /**
  *  IMPORTANT: Call this method each time viewWillAppear method of view controller was called 

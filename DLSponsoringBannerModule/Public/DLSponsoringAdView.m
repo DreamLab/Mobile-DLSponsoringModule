@@ -54,6 +54,10 @@
     return self.bannerAd != nil;
 }
 
+- (UIColor *)adBackgroundColor {
+    return self.bannerAd.backgroundColor;
+}
+
 - (CGSize)adSize {
     return self.proportionalAdSize;
 }
@@ -183,7 +187,7 @@
 
     if (self.heightConstraint.constant != heightBefore) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize];
+            [self.delegate adViewNeedsToBeReloaded:self withExpectedSize:self.proportionalAdSize withBackgroundColor:self.bannerAd.backgroundColor];
         });
     }
 }
