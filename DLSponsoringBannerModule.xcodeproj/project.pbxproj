@@ -34,6 +34,7 @@
 		71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* WrongJsonData.json */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		7DCECAE82084E30100FE7767 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCECAE62084E30100FE7767 /* UIColor+Hex.m */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
 		874529911C8072AB00747C55 /* DLSponsoringAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10C1C7F703500D4BB7F /* DLSponsoringAdView.h */; };
@@ -91,6 +92,8 @@
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
 		7D890674206108AD009417B6 /* DLSponsoringBannerModuleCode.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSponsoringBannerModuleCode.podspec; sourceTree = "<group>"; };
+		7DCECAE62084E30100FE7767 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		7DCECAE72084E30100FE7767 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		872C68D71C74BE44006064FD /* DLSponsoringBannerModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSponsoringBannerModule.podspec; sourceTree = "<group>"; };
 		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 		71BAF1021C7F703500D4BB7F /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				7DCECAE72084E30100FE7767 /* UIColor+Hex.h */,
+				7DCECAE62084E30100FE7767 /* UIColor+Hex.m */,
 				71BAF1031C7F703500D4BB7F /* DLSponsoringBannerAd.h */,
 				71BAF1041C7F703500D4BB7F /* DLSponsoringBannerAd.m */,
 				71BAF1051C7F703500D4BB7F /* DLSponsoringBannerModule+Internal.h */,
@@ -364,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BAF1151C7F703500D4BB7F /* DLSponsoringBannerModule.m in Sources */,
+				7DCECAE82084E30100FE7767 /* UIColor+Hex.m in Sources */,
 				71BAF1131C7F703500D4BB7F /* DLSponsoringModuleStore.m in Sources */,
 				71BAF1141C7F703500D4BB7F /* DLSponsoringAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */,

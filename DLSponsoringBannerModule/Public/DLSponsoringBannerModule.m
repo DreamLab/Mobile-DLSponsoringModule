@@ -35,6 +35,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 - (instancetype)initWithSite:(NSString *)site
                         area:(NSString *)area
+                        slot:(NSString *)slot
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
 {
@@ -47,15 +48,23 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
     _site = site;
     _appVersion = appVersion;
     _area = area;
+    _slot = slot;
     _customParams = customParams;
 
-    _slot = @"flat-belkagorna";
     _delegates = [[NSHashTable alloc] initWithOptions:NSHashTableWeakMemory capacity:5];
     _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory valueOptions:NSMapTableWeakMemory capacity:5];
 
     [self initializeBannerAd];
 
     return self;
+}
+
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
+                  appVersion:(NSString *)appVersion
+{
+    return [self initWithSite:site area:area slot:@"flat-belkagorna" customParams:customParams appVersion:appVersion];
 }
 
 - (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion

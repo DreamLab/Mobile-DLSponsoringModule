@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = 'DLSponsoringBannerModuleCode'
-  s.version         = '1.5.100'
+  s.version         = '1.6.100'
   s.platform        = :ios, "9.0"
   s.summary         = 'Module to provide Sponsoring Module Ad.'
   s.author          = { 'Paweł Kordal' => 'pawel.kordal@dreamlab.pl', 'Konrad Kierys' => 'konrad.kierys@dreamlab.pl','Jacek Zapart' => 'jacek.zapart@dreamlab.pl' }

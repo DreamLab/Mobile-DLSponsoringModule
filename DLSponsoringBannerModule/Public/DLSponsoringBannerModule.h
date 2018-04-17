@@ -65,4 +65,21 @@
                 customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
                   appVersion:(NSString * _Nonnull)appVersion;
 
+/**
+ Initializes module with extendend set of parameters.
+
+ @param site            Site parameter
+ @param area            Area parameter
+ @param slot            Slot parameter
+ @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
+ @param appVersion      Application version
+
+ @return Instance of initialized DLSponsoringBannerModule
+*/
+- (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
+                                  area:(NSString * _Nonnull)area
+                                  slot:(NSString * _Nonnull)slot
+                          customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
+                            appVersion:(NSString * _Nonnull)appVersion;
+
 @end

@@ -36,6 +36,11 @@
 @property (nonatomic, strong) UIImage *image;
 
 /**
+ *  Background color for sponsoring ad
+ */
+@property (nonatomic, strong, readonly) UIColor *backgroundColor;
+
+/**
  *  URL to audit
  */
 @property (nonatomic, strong, readonly) NSURL *auditURL;

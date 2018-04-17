@@ -7,6 +7,7 @@
 //
 
 #import "DLSponsoringBannerAd.h"
+#import "UIColor+Hex.h"
 
 @interface DLSponsoringBannerAd ()
 
@@ -33,6 +34,7 @@
     if (!type) {
         return nil;
     }
+
 
     if ([type isEqualToString:@"tpl"]) {
         return [self initWithTPLJSONDictionary:json];
@@ -74,6 +76,11 @@
 
     _actionCount = firstElement[@"data"][@"meta"][@"actioncount"];
     _version = firstElement[@"data"][@"fields"][@"ver"];
+
+    NSString *bgColor = firstElement[@"data"][@"fields"][@"background_color"];
+    if (![bgColor isKindOfClass:[NSNull class]] && [bgColor length] > 0) {
+        _backgroundColor= [UIColor colorFromHexString:bgColor];
+    }
 
     if (_imageURL && _imageWidth && _imageHeight && _version) {
         _empty = false;
