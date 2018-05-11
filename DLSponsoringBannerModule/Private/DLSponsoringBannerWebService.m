@@ -13,7 +13,7 @@
 #import "DLSponsoringBannerWebService.h"
 #import "DLSponsoringBannerAd.h"
 #import "DLSponsoringModuleStore.h"
-#import "DLSponsorigConsentParams.h"
+#import "DLSponsoringConsentParams.h"
 
 NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.json?site=%@&area=%@&slot0=%@&ver=%@&pubconsent=%@&adpconsent=%@&euconsent=%@&";
 
@@ -31,7 +31,7 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
                 customParams:(NSDictionary<NSString*, NSString*> *)customParams
                   appVersion:(NSString *)appVersion
                         slot:(NSString *)slot
-                consentParams:(DLSponsorigConsentParams *)consentParams;
+                consentParams:(DLSponsoringConsentParams *)consentParams;
 {
     self = [super init];
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DLSponsorigConsentParams : NSObject
+@interface DLSponsoringConsentParams : NSObject
 
 @property (nonatomic, strong, readonly) NSString *pubConsent;
 @property (nonatomic, strong, readonly) NSString *adpConsent;

@@ -6,9 +6,9 @@
 //  Copyright © 2018 DreamLab. All rights reserved.
 //
 
-#import "DLSponsorigConsentParams.h"
+#import "DLSponsoringConsentParams.h"
 
-@interface DLSponsorigConsentParams ()
+@interface DLSponsoringConsentParams ()
 
 @property (nonatomic, strong) NSString *pubConsent;
 @property (nonatomic, strong) NSString *adpConsent;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation DLSponsorigConsentParams
+@implementation DLSponsoringConsentParams
 
 - (instancetype _Nonnull)initWithPubConsent:(NSString* _Nonnull)pubConsent
                                  adpConsent:(NSString* _Nonnull)adpConsent

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class DLSponsoringBannerAd;
-@class DLSponsorigConsentParams;
+@class DLSponsoringConsentParams;
 
 /**
  *  Class to fetch data from server
@@ -32,7 +32,7 @@
                 customParams:(NSDictionary<NSString*, NSString*> *)customParams
                   appVersion:(NSString *)appVersion
                         slot:(NSString *)slot
-                consentParams:(DLSponsorigConsentParams *)consentParams;
+                consentParams:(DLSponsoringConsentParams *)consentParams;
 
 /**
  *  Fetch data from server.

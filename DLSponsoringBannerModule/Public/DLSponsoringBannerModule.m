@@ -11,7 +11,7 @@
 #import "DLSponsoringBannerModuleDelegate.h"
 #import "DLSponsoringBannerWebService.h"
 #import "DLSponsoringModuleStore.h"
-#import "DLSponsorigConsentParams.h"
+#import "DLSponsoringConsentParams.h"
 
 static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
@@ -29,7 +29,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
 @property (nonatomic, strong) DLSponsoringModuleStore *store;
 @property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringAdView*> *viewsForControllers;
-@property (nonatomic, strong) DLSponsorigConsentParams *consentParams;
+@property (nonatomic, strong) DLSponsoringConsentParams *consentParams;
 @property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
 @end
 
@@ -40,7 +40,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                         slot:(NSString *)slot
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
-                consentParams:(DLSponsorigConsentParams * _Nonnull)consentParams
+                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams
 {
     self = [super init];
 
@@ -67,7 +67,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                         area:(NSString *)area
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
-                consentParams:(DLSponsorigConsentParams * _Nonnull)consentParams
+                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams
 {
     return [self initWithSite:site
                          area:area
@@ -79,7 +79,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 - (instancetype)initWithSite:(NSString *)site
                   appVersion:(NSString *)appVersion
-                consentParams:(DLSponsorigConsentParams * _Nonnull)consentParams;
+                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams;
 {
     return [self initWithSite:site
                          area:@"SPONSORING"
