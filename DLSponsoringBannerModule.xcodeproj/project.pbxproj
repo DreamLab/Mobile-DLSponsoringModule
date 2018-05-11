@@ -22,8 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0C48C7BB20A5AE4E0037E804 /* DLSponsorigConsetParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BA20A5AE4E0037E804 /* DLSponsorigConsetParams.m */; };
-		0C48C7BC20A5B6DF0037E804 /* DLSponsorigConsetParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C48C7B920A5AE4E0037E804 /* DLSponsorigConsetParams.h */; };
+		0C48C7BB20A5AE4E0037E804 /* DLSponsorigConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BA20A5AE4E0037E804 /* DLSponsorigConsentParams.m */; };
+		0C48C7BC20A5B6DF0037E804 /* DLSponsorigConsentParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C48C7B920A5AE4E0037E804 /* DLSponsorigConsentParams.h */; };
 		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		7170B75B1C80550600DC020B /* DLSponsoringModuleStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLSponsoringModuleStoreTests.m */; };
 		71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSponsoringBannerAd.m */; };
@@ -63,7 +63,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				0C48C7BC20A5B6DF0037E804 /* DLSponsorigConsetParams.h in CopyFiles */,
+				0C48C7BC20A5B6DF0037E804 /* DLSponsorigConsentParams.h in CopyFiles */,
 				874529911C8072AB00747C55 /* DLSponsoringAdView.h in CopyFiles */,
 				874529921C8072AB00747C55 /* DLSponsoringAdViewDelegate.h in CopyFiles */,
 				874529931C8072AB00747C55 /* DLSponsoringBannerModule.h in CopyFiles */,
@@ -73,8 +73,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C48C7B920A5AE4E0037E804 /* DLSponsorigConsetParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLSponsorigConsetParams.h; path = "../../../ios-sponsoringbannermodule/DLSponsoringBannerModule/Public/DLSponsorigConsetParams.h"; sourceTree = "<group>"; };
-		0C48C7BA20A5AE4E0037E804 /* DLSponsorigConsetParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DLSponsorigConsetParams.m; path = "../../../ios-sponsoringbannermodule/DLSponsoringBannerModule/Public/DLSponsorigConsetParams.m"; sourceTree = "<group>"; };
+		0C48C7B920A5AE4E0037E804 /* DLSponsorigConsentParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLSponsorigConsentParams.h; path = "../../../ios-sponsoringbannermodule/DLSponsoringBannerModule/Public/DLSponsorigConsentParams.h"; sourceTree = "<group>"; };
+		0C48C7BA20A5AE4E0037E804 /* DLSponsorigConsentParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DLSponsorigConsentParams.m; path = "../../../ios-sponsoringbannermodule/DLSponsoringBannerModule/Public/DLSponsorigConsentParams.m"; sourceTree = "<group>"; };
 		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
 		7170B75A1C80550600DC020B /* DLSponsoringModuleStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringModuleStoreTests.m; sourceTree = "<group>"; };
 		71BAF1031C7F703500D4BB7F /* DLSponsoringBannerAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringBannerAd.h; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 				71BAF10E1C7F703500D4BB7F /* DLSponsoringAdViewDelegate.h */,
 				71BAF10F1C7F703500D4BB7F /* DLSponsoringBannerModule.h */,
 				71BAF1101C7F703500D4BB7F /* DLSponsoringBannerModule.m */,
-				0C48C7B920A5AE4E0037E804 /* DLSponsorigConsetParams.h */,
-				0C48C7BA20A5AE4E0037E804 /* DLSponsorigConsetParams.m */,
+				0C48C7B920A5AE4E0037E804 /* DLSponsorigConsentParams.h */,
+				0C48C7BA20A5AE4E0037E804 /* DLSponsorigConsentParams.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 				71BAF1151C7F703500D4BB7F /* DLSponsoringBannerModule.m in Sources */,
 				7DCECAE82084E30100FE7767 /* UIColor+Hex.m in Sources */,
 				71BAF1131C7F703500D4BB7F /* DLSponsoringModuleStore.m in Sources */,
-				0C48C7BB20A5AE4E0037E804 /* DLSponsorigConsetParams.m in Sources */,
+				0C48C7BB20A5AE4E0037E804 /* DLSponsorigConsentParams.m in Sources */,
 				71BAF1141C7F703500D4BB7F /* DLSponsoringAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */,
 				71BAF1121C7F703500D4BB7F /* DLSponsoringBannerWebService.m in Sources */,

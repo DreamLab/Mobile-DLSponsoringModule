@@ -13,7 +13,7 @@
 #import "DLSponsoringBannerWebService.h"
 #import "DLSponsoringBannerAd.h"
 #import "DLSponsoringModuleStore.h"
-#import "DLSponsorigConsetParams.h"
+#import "DLSponsorigConsentParams.h"
 
 NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.json?site=%@&area=%@&slot0=%@&ver=%@&pubconsent=%@&adpconsent=%@&euconsent=%@&";
 
@@ -31,7 +31,7 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
                 customParams:(NSDictionary<NSString*, NSString*> *)customParams
                   appVersion:(NSString *)appVersion
                         slot:(NSString *)slot
-                consetParams:(DLSponsorigConsetParams *)consetParams;
+                consentParams:(DLSponsorigConsentParams *)consentParams;
 {
     self = [super init];
 
@@ -39,7 +39,7 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         return nil;
     }
 
-    NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion, consetParams.pubConsent, consetParams.adpConsent, consetParams.euConsent];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion, consentParams.pubConsent, consentParams.adpConsent, consentParams.euConsent];
 
     NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
 

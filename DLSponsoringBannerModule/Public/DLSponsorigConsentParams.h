@@ -1,5 +1,5 @@
 //
-//  DLSponsorigConsetParams.h
+//  DLSponsorigconsentParams.h
 //  DLSponsoringBannerModule
 //
 //  Created by Kordal Paweł on 11.05.2018.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DLSponsorigConsetParams : NSObject
+@interface DLSponsorigConsentParams : NSObject
 
 @property (nonatomic, strong, readonly) NSString *pubConsent;
 @property (nonatomic, strong, readonly) NSString *adpConsent;
@@ -20,7 +20,7 @@
  @param pubConsent String
  @param adpConsent String
  @param euConsent String
- @return DLSponsorigConsetParams
+ @return DLSponsorigconsentParams
  */
 - (instancetype _Nonnull)initWithPubConsent:(NSString* _Nonnull)pubConsent
                                  adpConsent:(NSString* _Nonnull)adpConsent

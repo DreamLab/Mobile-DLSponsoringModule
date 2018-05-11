@@ -9,7 +9,7 @@
 @import Foundation;
 @import UIKit;
 #import "DLSponsoringAdView.h"
-#import "DLSponsorigConsetParams.h"
+#import "DLSponsorigConsentParams.h"
 
 @class DLSponsoringBannerAd;
 
@@ -46,13 +46,13 @@
 
  @param site          Site parameter
  @param appVersion    Application version
- @param consentParams DLSponsorigConsetParams object
+ @param consentParams DLSponsorigconsentParams object
  
  @return Instance of initialized DLSponsoringBannerModule
  */
 - (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
                             appVersion:(NSString * _Nonnull)appVersion
-                          consetParams:(DLSponsorigConsetParams * _Nonnull)consetParams;
+                          consentParams:(DLSponsorigConsentParams * _Nonnull)consentParams;
 
 /**
  Initializes module with extendend set of parameters.
@@ -61,7 +61,7 @@
  @param area            Area parameter
  @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
  @param appVersion      Application version
- @param consentParams   DLSponsorigConsetParams object
+ @param consentParams   DLSponsorigconsentParams object
 
  @return Instance of initialized DLSponsoringBannerModule
  */
@@ -69,7 +69,7 @@
                                   area:(NSString * _Nonnull)area
                           customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
                             appVersion:(NSString * _Nonnull)appVersion
-                          consetParams:(DLSponsorigConsetParams * _Nonnull)consetParams;
+                          consentParams:(DLSponsorigConsentParams * _Nonnull)consentParams;
 
 /**
  Initializes module with extendend set of parameters.
@@ -79,7 +79,7 @@
  @param slot            Slot parameter
  @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
  @param appVersion      Application version
- @param consentParams   DLSponsorigConsetParams object
+ @param consentParams   DLSponsorigconsentParams object
 
  @return Instance of initialized DLSponsoringBannerModule
  */
@@ -88,6 +88,6 @@
                                   slot:(NSString * _Nonnull)slot
                           customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
                             appVersion:(NSString * _Nonnull)appVersion
-                          consetParams:(DLSponsorigConsetParams * _Nonnull)consetParams;
+                          consentParams:(DLSponsorigConsentParams * _Nonnull)consentParams;
 
 @end

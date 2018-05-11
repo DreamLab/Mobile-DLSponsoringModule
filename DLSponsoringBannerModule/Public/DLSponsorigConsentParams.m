@@ -1,14 +1,14 @@
 //
-//  DLSponsorigConsetParams.m
+//  DLSponsorigconsentParams.m
 //  DLSponsoringBannerModule
 //
 //  Created by Kordal Paweł on 11.05.2018.
 //  Copyright © 2018 DreamLab. All rights reserved.
 //
 
-#import "DLSponsorigConsetParams.h"
+#import "DLSponsorigConsentParams.h"
 
-@interface DLSponsorigConsetParams ()
+@interface DLSponsorigConsentParams ()
 
 @property (nonatomic, strong) NSString *pubConsent;
 @property (nonatomic, strong) NSString *adpConsent;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation DLSponsorigConsetParams
+@implementation DLSponsorigConsentParams
 
 - (instancetype _Nonnull)initWithPubConsent:(NSString* _Nonnull)pubConsent
                                  adpConsent:(NSString* _Nonnull)adpConsent
