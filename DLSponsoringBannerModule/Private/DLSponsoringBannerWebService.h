@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class DLSponsoringBannerAd;
+@class DLSponsorigConsetParams;
 
 /**
  *  Class to fetch data from server
@@ -29,8 +30,9 @@
 - (instancetype)initWithSite:(NSString *)site
                         area:(NSString *)area
                 customParams:(NSDictionary<NSString*, NSString*> *)customParams
-                   appVersion:(NSString *)appVersion
-                        slot:(NSString *)slot;
+                  appVersion:(NSString *)appVersion
+                        slot:(NSString *)slot
+                consetParams:(DLSponsorigConsetParams *)consetParams;
 
 /**
  *  Fetch data from server.

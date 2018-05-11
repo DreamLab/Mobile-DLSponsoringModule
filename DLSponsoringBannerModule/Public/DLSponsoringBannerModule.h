@@ -9,6 +9,7 @@
 @import Foundation;
 @import UIKit;
 #import "DLSponsoringAdView.h"
+#import "DLSponsorigConsetParams.h"
 
 @class DLSponsoringBannerAd;
 
@@ -43,12 +44,15 @@
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site        Site parameter
- @param appVersion  Application version
+ @param site          Site parameter
+ @param appVersion    Application version
+ @param consentParams DLSponsorigConsetParams object
  
  @return Instance of initialized DLSponsoringBannerModule
  */
-- (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site appVersion:(NSString * _Nonnull)appVersion;
+- (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
+                            appVersion:(NSString * _Nonnull)appVersion
+                          consetParams:(DLSponsorigConsetParams * _Nonnull)consetParams;
 
 /**
  Initializes module with extendend set of parameters.
@@ -57,13 +61,15 @@
  @param area            Area parameter
  @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
  @param appVersion      Application version
+ @param consentParams   DLSponsorigConsetParams object
 
  @return Instance of initialized DLSponsoringBannerModule
  */
 - (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
-                        area:(NSString * _Nonnull)area
-                customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
-                  appVersion:(NSString * _Nonnull)appVersion;
+                                  area:(NSString * _Nonnull)area
+                          customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
+                            appVersion:(NSString * _Nonnull)appVersion
+                          consetParams:(DLSponsorigConsetParams * _Nonnull)consetParams;
 
 /**
  Initializes module with extendend set of parameters.
@@ -73,13 +79,15 @@
  @param slot            Slot parameter
  @param customParams    Custom parameters given as key-value strings, e.g. "lokalizacja": "wroclaw"
  @param appVersion      Application version
+ @param consentParams   DLSponsorigConsetParams object
 
  @return Instance of initialized DLSponsoringBannerModule
-*/
+ */
 - (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
                                   area:(NSString * _Nonnull)area
                                   slot:(NSString * _Nonnull)slot
                           customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
-                            appVersion:(NSString * _Nonnull)appVersion;
+                            appVersion:(NSString * _Nonnull)appVersion
+                          consetParams:(DLSponsorigConsetParams * _Nonnull)consetParams;
 
 @end
