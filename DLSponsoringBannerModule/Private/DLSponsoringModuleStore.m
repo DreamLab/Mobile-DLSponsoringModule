@@ -24,7 +24,10 @@ NSString * const kDLSponsoringBannerQueuedTrackingLinksCacheKey = @"pl.dreamlab.
 
 @implementation DLSponsoringModuleStore
 
-- (instancetype)initWithSite:(NSString*)site area:(NSString*)area customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams {
+- (instancetype)initWithSite:(NSString*)site
+                        area:(NSString*)area
+                customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
+{
     self = [super init];
     if (self == nil) {
         return nil;

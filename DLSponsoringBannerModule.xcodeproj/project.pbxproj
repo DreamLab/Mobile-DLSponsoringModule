@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0C48C7BB20A5AE4E0037E804 /* DLSponsoringConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BA20A5AE4E0037E804 /* DLSponsoringConsentParams.m */; };
+		0C48C7BC20A5B6DF0037E804 /* DLSponsoringConsentParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C48C7B920A5AE4E0037E804 /* DLSponsoringConsentParams.h */; };
+		0C48C7C320A9B22E0037E804 /* DLSponsoringConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BA20A5AE4E0037E804 /* DLSponsoringConsentParams.m */; };
 		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		7170B75B1C80550600DC020B /* DLSponsoringModuleStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLSponsoringModuleStoreTests.m */; };
 		71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSponsoringBannerAd.m */; };
@@ -61,6 +64,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				0C48C7BC20A5B6DF0037E804 /* DLSponsoringConsentParams.h in CopyFiles */,
 				874529911C8072AB00747C55 /* DLSponsoringAdView.h in CopyFiles */,
 				874529921C8072AB00747C55 /* DLSponsoringAdViewDelegate.h in CopyFiles */,
 				874529931C8072AB00747C55 /* DLSponsoringBannerModule.h in CopyFiles */,
@@ -70,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C48C7B920A5AE4E0037E804 /* DLSponsoringConsentParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLSponsoringConsentParams.h; path = "../../../ios-sponsoringbannermodule/DLSponsoringBannerModule/Public/DLSponsoringConsentParams.h"; sourceTree = "<group>"; };
+		0C48C7BA20A5AE4E0037E804 /* DLSponsoringConsentParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DLSponsoringConsentParams.m; path = "../../../ios-sponsoringbannermodule/DLSponsoringBannerModule/Public/DLSponsoringConsentParams.m"; sourceTree = "<group>"; };
 		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
 		7170B75A1C80550600DC020B /* DLSponsoringModuleStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSponsoringModuleStoreTests.m; sourceTree = "<group>"; };
 		71BAF1031C7F703500D4BB7F /* DLSponsoringBannerAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSponsoringBannerAd.h; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 				71BAF10E1C7F703500D4BB7F /* DLSponsoringAdViewDelegate.h */,
 				71BAF10F1C7F703500D4BB7F /* DLSponsoringBannerModule.h */,
 				71BAF1101C7F703500D4BB7F /* DLSponsoringBannerModule.m */,
+				0C48C7B920A5AE4E0037E804 /* DLSponsoringConsentParams.h */,
+				0C48C7BA20A5AE4E0037E804 /* DLSponsoringConsentParams.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -371,6 +379,7 @@
 				71BAF1151C7F703500D4BB7F /* DLSponsoringBannerModule.m in Sources */,
 				7DCECAE82084E30100FE7767 /* UIColor+Hex.m in Sources */,
 				71BAF1131C7F703500D4BB7F /* DLSponsoringModuleStore.m in Sources */,
+				0C48C7BB20A5AE4E0037E804 /* DLSponsoringConsentParams.m in Sources */,
 				71BAF1141C7F703500D4BB7F /* DLSponsoringAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */,
 				71BAF1121C7F703500D4BB7F /* DLSponsoringBannerWebService.m in Sources */,
@@ -381,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C48C7C320A9B22E0037E804 /* DLSponsoringConsentParams.m in Sources */,
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
 				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSponsoringBannerModuleTests.m in Sources */,

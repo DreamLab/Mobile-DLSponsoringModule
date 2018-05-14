@@ -11,6 +11,7 @@
 #import "DLSponsoringBannerModuleDelegate.h"
 #import "DLSponsoringBannerWebService.h"
 #import "DLSponsoringModuleStore.h"
+#import "DLSponsoringConsentParams.h"
 
 static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
@@ -28,6 +29,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSponsoringBannerWebService *webService;
 @property (nonatomic, strong) DLSponsoringModuleStore *store;
 @property (nonatomic, strong) NSMapTable<NSString*, DLSponsoringAdView*> *viewsForControllers;
+@property (nonatomic, strong) DLSponsoringConsentParams *consentParams;
 @property (atomic, assign, getter=isDataFetchingInProgress) BOOL dataFetchingInProgress;
 @end
 
@@ -38,6 +40,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                         slot:(NSString *)slot
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
+                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams
 {
     self = [super init];
 
@@ -50,6 +53,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
     _area = area;
     _slot = slot;
     _customParams = customParams;
+    _consentParams = consentParams;
 
     _delegates = [[NSHashTable alloc] initWithOptions:NSHashTableWeakMemory capacity:5];
     _viewsForControllers = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory valueOptions:NSMapTableWeakMemory capacity:5];
@@ -63,13 +67,25 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                         area:(NSString *)area
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
+                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams
 {
-    return [self initWithSite:site area:area slot:@"flat-belkagorna" customParams:customParams appVersion:appVersion];
+    return [self initWithSite:site
+                         area:area
+                         slot:@"flat-belkagorna"
+                 customParams:customParams
+                   appVersion:appVersion
+                 consentParams:consentParams];
 }
 
-- (instancetype)initWithSite:(NSString *)site appVersion:(NSString *)appVersion
+- (instancetype)initWithSite:(NSString *)site
+                  appVersion:(NSString *)appVersion
+                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams;
 {
-    return [self initWithSite:site area:@"SPONSORING" customParams:nil appVersion:appVersion];
+    return [self initWithSite:site
+                         area:@"SPONSORING"
+                 customParams:nil
+                   appVersion:appVersion
+                 consentParams:consentParams];
 }
 
 - (void)initializeBannerAd
@@ -78,7 +94,8 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                                                                     area:self.area
                                                             customParams:self.customParams
                                                               appVersion:self.appVersion
-                                                                    slot:self.slot];
+                                                                    slot:self.slot
+                                                            consentParams:self.consentParams];
     self.store = [[DLSponsoringModuleStore alloc] initWithSite:self.site area:self.area customParams:self.customParams];
 }
 
