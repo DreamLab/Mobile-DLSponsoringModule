@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		0C48C7BB20A5AE4E0037E804 /* DLSponsoringConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BA20A5AE4E0037E804 /* DLSponsoringConsentParams.m */; };
 		0C48C7BC20A5B6DF0037E804 /* DLSponsoringConsentParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C48C7B920A5AE4E0037E804 /* DLSponsoringConsentParams.h */; };
+		0C48C7C320A9B22E0037E804 /* DLSponsoringConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BA20A5AE4E0037E804 /* DLSponsoringConsentParams.m */; };
 		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		7170B75B1C80550600DC020B /* DLSponsoringModuleStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLSponsoringModuleStoreTests.m */; };
 		71BAF1111C7F703500D4BB7F /* DLSponsoringBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSponsoringBannerAd.m */; };
@@ -389,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C48C7C320A9B22E0037E804 /* DLSponsoringConsentParams.m in Sources */,
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
 				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
 				87E8BD141C6DEDAD004C2EAD /* DLSponsoringBannerModuleTests.m in Sources */,
