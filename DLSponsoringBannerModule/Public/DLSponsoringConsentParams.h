@@ -10,8 +10,20 @@
 
 @interface DLSponsoringConsentParams : NSObject
 
+
+/**
+ PUB Consent
+ */
 @property (nonatomic, strong, readonly) NSString *pubConsent;
+
+/**
+ ADP Consent
+ */
 @property (nonatomic, strong, readonly) NSString *adpConsent;
+
+/**
+ EU Consent
+ */
 @property (nonatomic, strong, readonly) NSString *euConsent;
 
 /**
