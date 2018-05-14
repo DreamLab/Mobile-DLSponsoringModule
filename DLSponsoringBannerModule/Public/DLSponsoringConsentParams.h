@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ Parameters required for passing User Consents over to DAS Server
+ */
 @interface DLSponsoringConsentParams : NSObject
 
 
