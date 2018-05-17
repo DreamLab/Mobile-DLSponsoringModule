@@ -40,7 +40,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                         slot:(NSString *)slot
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
-                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams
+                consentParams:(DLSponsoringConsentParams *)consentParams
 {
     self = [super init];
 
@@ -67,7 +67,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
                         area:(NSString *)area
                 customParams:(nullable NSDictionary<NSString*, NSString*>*)customParams
                   appVersion:(NSString *)appVersion
-                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams
+                consentParams:(DLSponsoringConsentParams *)consentParams
 {
     return [self initWithSite:site
                          area:area
@@ -79,7 +79,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 - (instancetype)initWithSite:(NSString *)site
                   appVersion:(NSString *)appVersion
-                consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams;
+                consentParams:(DLSponsoringConsentParams *)consentParams;
 {
     return [self initWithSite:site
                          area:@"SPONSORING"

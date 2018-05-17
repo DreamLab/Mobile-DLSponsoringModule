@@ -39,7 +39,14 @@ NSString * const kSponsoringBannerBaseURL = @"https://csr.onet.pl/_s/csr-006/csr
         return nil;
     }
 
-    NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL, site, area, slot, appVersion, consentParams.pubConsent, consentParams.adpConsent, consentParams.euConsent];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:kSponsoringBannerBaseURL,
+                                  site,
+                                  area,
+                                  slot,
+                                  appVersion,
+                                  consentParams.pubConsent ? consentParams.pubConsent : @"",
+                                  consentParams.adpConsent ? consentParams.adpConsent : @"",
+                                  consentParams.euConsent ? consentParams.euConsent : @""];
 
     NSMutableDictionary<NSString*, NSString*> *customParamsMutable = [NSMutableDictionary dictionaryWithDictionary:customParams];
 
