@@ -38,7 +38,7 @@
  @param euConsent String
  @return DLSponsorigconsentParams
  */
-- (instancetype _Nonnull)initWithPubConsent:(NSString* _Nonnull)pubConsent
-                                 adpConsent:(NSString* _Nonnull)adpConsent
-                                  euConsent:(NSString* _Nonnull)euConsent;
+- (instancetype _Nonnull)initWithPubConsent:(NSString* _Nullable)pubConsent
+                                 adpConsent:(NSString* _Nullable)adpConsent
+                                  euConsent:(NSString* _Nullable)euConsent;
 @end

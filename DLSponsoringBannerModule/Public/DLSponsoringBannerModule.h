@@ -52,7 +52,7 @@
  */
 - (instancetype _Nullable)initWithSite:(NSString * _Nonnull)site
                             appVersion:(NSString * _Nonnull)appVersion
-                          consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams;
+                          consentParams:(DLSponsoringConsentParams * _Nullable)consentParams;
 
 /**
  Initializes module with extendend set of parameters.
@@ -69,7 +69,7 @@
                                   area:(NSString * _Nonnull)area
                           customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
                             appVersion:(NSString * _Nonnull)appVersion
-                          consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams;
+                          consentParams:(DLSponsoringConsentParams * _Nullable)consentParams;
 
 /**
  Initializes module with extendend set of parameters.
@@ -88,6 +88,6 @@
                                   slot:(NSString * _Nonnull)slot
                           customParams:(NSDictionary<NSString*, NSString*>* _Nullable)customParams
                             appVersion:(NSString * _Nonnull)appVersion
-                          consentParams:(DLSponsoringConsentParams * _Nonnull)consentParams;
+                          consentParams:(DLSponsoringConsentParams * _Nullable)consentParams;
 
 @end
